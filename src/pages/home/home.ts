@@ -38,31 +38,31 @@ private createTables(): void {
       .then(() => console.log('Table PaymentData created'))
       .catch(e => console.log(e));
 
-      this.db.executeSql('CREATE TABLE `Items` ( `ItemId` INTEGER NOT NULL, `RestaurantId` INTEGER NOT NULL, `Category` TEXT, `Picture` TEXT, `Name` TEXT, `Price` NUMERIC, `Description` TEXT, `Size` TEXT, `Variants` TEXT, `Ingredients` TEXT, PRIMARY KEY(`ItemId`,`RestaurantId`) )', {})
+      this.db.executeSql('CREATE TABLE IF NOT EXISTS `Items` ( `ItemId` INTEGER NOT NULL, `RestaurantId` INTEGER NOT NULL, `Category` TEXT, `Picture` TEXT, `Name` TEXT, `Price` NUMERIC, `Description` TEXT, `Size` TEXT, `Variants` TEXT, `Ingredients` TEXT, PRIMARY KEY(`ItemId`,`RestaurantId`) )', {})
      .then(() => console.log('Table Items created'))
      .catch(e => console.log(e));
 
-     this.db.executeSql('CREATE TABLE `KitchenUser` ( `KitchenUserId` INTEGER NOT NULL, `Name` TEXT, `Password` TEXT, PRIMARY KEY(`KitchenUserId`) )', {})
+     this.db.executeSql('CREATE TABLE IF NOT EXISTS `KitchenUser` ( `KitchenUserId` INTEGER NOT NULL, `Name` TEXT, `Password` TEXT, PRIMARY KEY(`KitchenUserId`) )', {})
     .then(() => console.log('Table KitchenUser created'))
     .catch(e => console.log(e));
 
-    this.db.executeSql('CREATE TABLE `ManagementUser` ( `ManagementUserId` INTEGER NOT NULL, `Name` TEXT, `Password` TEXT, PRIMARY KEY(`ManagementUserId`) )', {})
+    this.db.executeSql('CREATE TABLE IF NOT EXISTS `ManagementUser` ( `ManagementUserId` INTEGER NOT NULL, `Name` TEXT, `Password` TEXT, PRIMARY KEY(`ManagementUserId`) )', {})
    .then(() => console.log('Table ManagementUser created'))
    .catch(e => console.log(e));
 
-   this.db.executeSql('CREATE TABLE `Orders` ( `OrderId` INTEGER NOT NULL, `Name` TEXT, `Price` NUMERIC, `Quantity` INTEGER, `Picture` TEXT, `DeliveryCosts` NUMERIC, `OrderState` TEXT, `TimeStamp` TEXT, `NameOfRestaurant` TEXT, `PayStatus` TEXT, `Annotations` TEXT, PRIMARY KEY(`OrderId`) )', {})
+   this.db.executeSql('CREATE TABLE IF NOT EXISTS `Orders` ( `OrderId` INTEGER NOT NULL, `Name` TEXT, `Price` NUMERIC, `Quantity` INTEGER, `Picture` TEXT, `DeliveryCosts` NUMERIC, `OrderState` TEXT, `TimeStamp` TEXT, `NameOfRestaurant` TEXT, `PayStatus` TEXT, `Annotations` TEXT, PRIMARY KEY(`OrderId`) )', {})
   .then(() => console.log('Table Orders created'))
   .catch(e => console.log(e));
 
-  this.db.executeSql('CREATE TABLE `Restaurants` ( `RestaurantId` INTEGER NOT NULL, `Name` TEXT, `OpeningTimes` TEXT, `Location` TEXT, PRIMARY KEY(`RestaurantId`) )', {})
+  this.db.executeSql('CREATE TABLE IF NOT EXISTS `Restaurants` ( `RestaurantId` INTEGER NOT NULL, `Name` TEXT, `OpeningTimes` TEXT, `Location` TEXT, PRIMARY KEY(`RestaurantId`) )', {})
  .then(() => console.log('Table Restaurants created'))
  .catch(e => console.log(e));
 
- this.db.executeSql('CREATE TABLE `ServiceUser` ( `ServiceUserId` INTEGER NOT NULL, `Name` TEXT, `Password` TEXT )', {})
+ this.db.executeSql('CREATE TABLE IF NOT EXISTS `ServiceUser` ( `ServiceUserId` INTEGER NOT NULL, `Name` TEXT, `Password` TEXT )', {})
 .then(() => console.log('Table ServiceUser created'))
 .catch(e => console.log(e));
 
-this.db.executeSql('CREATE TABLE `UserFavorites` ( `UserId` INTEGER NOT NULL, `RestaurantName` TEXT NOT NULL, `Rating` INTEGER, PRIMARY KEY(`UserId`) )', {})
+this.db.executeSql('CREATE TABLE IF NOT EXISTS `UserFavorites` ( `UserId` INTEGER NOT NULL, `RestaurantName` TEXT NOT NULL, `Rating` INTEGER, PRIMARY KEY(`UserId`) )', {})
 .then(() => console.log('Table UserFavorites created'))
 .catch(e => console.log(e));
 
