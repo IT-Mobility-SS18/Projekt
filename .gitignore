@@ -1,0 +1,22 @@
+# OSX specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# project files
+node_modules
+www
+.idea
+.temp
+.sass-cache
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
+app/scripts/configuration.js
