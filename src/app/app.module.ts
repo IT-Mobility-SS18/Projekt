@@ -9,11 +9,13 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { SQLite } from '@ionic-native/sqlite';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   providers: [
     StatusBar,
+    SQLite,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
