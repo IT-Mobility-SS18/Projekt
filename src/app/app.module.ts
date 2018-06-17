@@ -10,6 +10,7 @@ import { PaymentPage } from '../pages/payment/payment';
 import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -40,6 +41,7 @@ import { SQLite } from '@ionic-native/sqlite';
     RestaurantPage,
   ],
   providers: [
+    PayPal,
     StatusBar,
     SQLite,
     SplashScreen,
