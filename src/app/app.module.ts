@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { PaymentPage } from '../pages/payment/payment';
 import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 
@@ -20,6 +21,7 @@ import { SQLite } from '@ionic-native/sqlite';
     StartPage,
     HomePage,
     ListPage,
+    PaymentPage,
     RegistrationPage,
     RestaurantPage,
   ],
@@ -33,6 +35,7 @@ import { SQLite } from '@ionic-native/sqlite';
     StartPage,
     HomePage,
     ListPage,
+    PaymentPage,
     RegistrationPage,
     RestaurantPage,
   ],
