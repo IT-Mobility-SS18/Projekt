@@ -8,6 +8,8 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
+import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 
 
 @Component({
@@ -29,7 +31,9 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Registration', component: RegistrationPage },
-      { title: 'Restaurant', component: RestaurantPage }
+      { title: 'Restaurant', component: RestaurantPage },
+      { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
+      { title: 'OrderViewService', component: OrderViewServicePage }
     ];
   }
 
