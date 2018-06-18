@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { PaymentPage } from '../pages/payment/payment';
 import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
+import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
+
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -25,6 +28,8 @@ import { SQLite } from '@ionic-native/sqlite';
     PaymentPage,
     RegistrationPage,
     RestaurantPage,
+    OrderViewKitchenPage,
+    OrderViewServicePage
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,8 @@ import { SQLite } from '@ionic-native/sqlite';
     PaymentPage,
     RegistrationPage,
     RestaurantPage,
+    OrderViewKitchenPage,
+    OrderViewServicePage
   ],
   providers: [
     PayPal,
