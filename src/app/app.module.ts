@@ -12,7 +12,7 @@ import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
-
+import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,6 +23,12 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
 import { DatabaseProvider } from '../providers/database/database';
+
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../environment';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { FirebaseService } from '../providers/firebase/firebase-service';
 
 
 @NgModule({
@@ -36,13 +42,17 @@ import { DatabaseProvider } from '../providers/database/database';
     RestaurantPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
-    OrderViewCustomerPage
+    OrderViewCustomerPage,
+    RegistrationFormPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,13 +65,15 @@ import { DatabaseProvider } from '../providers/database/database';
     RestaurantPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
-    OrderViewCustomerPage
+    OrderViewCustomerPage,
+    RegistrationFormPage
   ],
   providers: [
     PayPal,
     StatusBar,
     SQLite,
     DatabaseProvider,
+    FirebaseService,
     SplashScreen,
     SQLitePorter,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

@@ -11,6 +11,7 @@ import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 
 @Component({
   templateUrl: 'app.html'
