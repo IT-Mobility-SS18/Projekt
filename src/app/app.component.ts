@@ -18,7 +18,7 @@ import { OrderViewServicePage } from '../pages/orderViewService/orderViewService
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StartPage;
+  rootPage: any = OrderViewServicePage;
 
   pages: Array<{title: string, component: any}>;
 

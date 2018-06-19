@@ -11,52 +11,95 @@
         <ion-row class="title">
           <ion-col>
             Tischnr.:
+
           </ion-col>
           <ion-col>
             Bestellnr.:
+
           </ion-col>
           <ion-col>
             Name:
+
           </ion-col>
           <ion-col>
             Menge:
+
           </ion-col>
           <ion-col>
             Timestamp:
+
           </ion-col>
           <ion-col>
             Anmerkungen:
+
           </ion-col>
           <ion-col>
             Zahlung:
+
           </ion-col>
           <ion-col>
             Status:
+
           </ion-col>
         </ion-row>
 
         <ion-row class="content">
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.TableId }}</p>
+            </ion-item>
+          </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+          <ion-item *ngFor="let ord of orders">
+            <p>{{ ord.OrderId }}</p>
+          </ion-item>
+          </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.Name }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.Quantity }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.TimeStamp }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.Annotations }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.PayStatus }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
+          <ion-col>
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.OrderState }}</p>
+            </ion-item>
+            </ion-list>
+            </ion-col>
           <ion-col>
             <button ion-button color="cgreen" (click)="login()">Fertig</button>
             <button ion-button color="cred" (click)="registration()">Ablehnen</button>
@@ -67,7 +110,48 @@
 
 
 
-      <p class="text no-content">Keine Daten vorhanden!</p>
+
       </ion-card-content>
     </ion-card>
+
+
+
+
+
+
   </ion-content>
+
+
+
+
+
+  <!-- <ion-header>
+  <ion-navbar>
+    <ion-title>
+      Order Data
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg">
+<ion-list>
+  <ion-item *ngFor="let ord of orders"> -->
+
+
+
+  <!-- <p>{{ ord.TableId }} und {{ ord.OrderId }} und {{ ord.Name }} und { ord.Quantity }} und {{ ord.TimeStamp }} und {{ ord.Annotations }} und {{ ord.PayStatus }} und {{ ord.OrderState }}</p> -->
+
+
+  <!-- <p>{{ ord.OrderId }}</p>
+  </ion-item>
+  <ion-item *ngFor="let ord of orders">
+    <p>{{ ord.Name }}</p>
+  </ion-item>
+  <ion-item *ngFor="let ord of orders">
+    <p>{{ ord.TableId }}</p>
+  </ion-item>
+  <ion-item *ngFor="let ord of orders">
+    <p>{{ ord.TimeStamp }}</p>
+  </ion-item>
+</ion-list>
+</ion-content> -->

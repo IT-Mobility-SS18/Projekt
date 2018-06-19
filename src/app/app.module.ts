@@ -18,6 +18,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { SQLite } from '@ionic-native/sqlite';
+import { SQLitePorter } from '@ionic-native/sqlite-porter';
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
+import { DatabaseProvider } from '../providers/database/database';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +38,8 @@ import { SQLite } from '@ionic-native/sqlite';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -51,7 +58,9 @@ import { SQLite } from '@ionic-native/sqlite';
     PayPal,
     StatusBar,
     SQLite,
+    DatabaseProvider,
     SplashScreen,
+    SQLitePorter,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
