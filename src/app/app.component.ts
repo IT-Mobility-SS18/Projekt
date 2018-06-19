@@ -10,7 +10,7 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-
+import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ import { OrderViewServicePage } from '../pages/orderViewService/orderViewService
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = OrderViewServicePage;
+  rootPage: any = StartPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -33,7 +33,8 @@ export class MyApp {
       { title: 'Registration', component: RegistrationPage },
       { title: 'Restaurant', component: RestaurantPage },
       { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
-      { title: 'OrderViewService', component: OrderViewServicePage }
+      { title: 'OrderViewService', component: OrderViewServicePage },
+      { title: 'OrderViewCustomer', component: OrderViewCustomerPage }
     ];
   }
 

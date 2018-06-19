@@ -11,6 +11,7 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
+import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
 
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
@@ -34,7 +35,8 @@ import { DatabaseProvider } from '../providers/database/database';
     RegistrationPage,
     RestaurantPage,
     OrderViewKitchenPage,
-    OrderViewServicePage
+    OrderViewServicePage,
+    OrderViewCustomerPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { DatabaseProvider } from '../providers/database/database';
     RegistrationPage,
     RestaurantPage,
     OrderViewKitchenPage,
-    OrderViewServicePage
+    OrderViewServicePage,
+    OrderViewCustomerPage
   ],
   providers: [
     PayPal,
