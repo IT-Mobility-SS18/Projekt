@@ -16,24 +16,26 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 })
 export class PaymentPage {
 
-  constructor(private payPal: PayPal) { }
-
-    //PayPalEnvironmentProduction: //'Aab8rhQBhpjiOjM8sk9JQNgm-AL0KPBugyfqBbktAT34D1TesXi06GtT-uSTCT9QmP2mEjt2bpDhJ7RR',
-    //PayPalEnvironmentSandbox: //'AW02jYvUMoGLK8J9zM35l3-e5zg0skvBzgsAhkzIF5TursbcHmAmn1nVD55IsJnEDtjG1p7ZjTFfJBBR'
+  constructor(private payPal: PayPal, public navCtrl: NavController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
 
+      //init: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
       this.payPal.init({
     PayPalEnvironmentProduction: 'Aab8rhQBhpjiOjM8sk9JQNgm-AL0KPBugyfqBbktAT34D1TesXi06GtT-uSTCT9QmP2mEjt2bpDhJ7RR',
     PayPalEnvironmentSandbox: 'AW02jYvUMoGLK8J9zM35l3-e5zg0skvBzgsAhkzIF5TursbcHmAmn1nVD55IsJnEDtjG1p7ZjTFfJBBR'
   }).then(() => {
     // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+
+    //prepareToRender: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
     this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
       // Only needed if you get an "Internal Service Error" after PayPal login!
       //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
     })).then(() => {
       let payment = new PayPalPayment('3.33', 'EUR', 'Description', 'sale');
+
+      //renderSinglePaymentUI: Start PayPal UI to collect payment from the user. See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/ for more documentation of the params.
       this.payPal.renderSinglePaymentUI(payment).then(() => {
         // Successfully paid
 
@@ -56,6 +58,8 @@ export class PaymentPage {
         // }
       }, () => {
         // Error or render dialog closed without being successful
+        // Wenn ein User die Zahlung abbricht
+        this.navCtrl.pop();
       });
     }, () => {
       // Error in configuration
