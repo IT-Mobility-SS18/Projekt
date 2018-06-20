@@ -1,35 +1,31 @@
-<ion-content class="bg">
-  <ion-card>
+<ion-header>
+  <!-- <img src="../assets/imgs/logo.png"> -->
+  <p>Willkommen!</p>
+  <p text-wrap>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
 
-    <ion-card-header>
-      <img src="../assets/imgs/logo.png">
-      <p>Willkommen!</p>
-      <p text-wrap>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+  <!-- nur für Payment-Test -->
+  <p (click)="testPayment()">
+    Payment-Test
+  </p>
+  <!-- end -->
+</ion-header>
 
-      <!-- nur für Payment-Test -->
-      <p (click)="testPayment()">
-        Payment-Test
-      </p>
-      <!-- end -->
-
-
-    </ion-card-header>
-
-    <ion-card-content>
-      <ion-list no-line>
-        <ion-item>
-          <ion-label><ion-icon name="ios-mail"></ion-icon></ion-label>
-          <ion-input type="text" #username placeholder="E-Mail" ng-pattern="^[a-zA-Z0-9._-]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label><ion-icon name="md-key"></ion-icon></ion-label>
-          <ion-input type="password" #password placeholder="Passwort" required></ion-input>
-        </ion-item>
-        <button ion-button block color="cgreen" (click)="login()">Anmelden</button>
-        <p><a>Passwort vergessen?</a></p>
-        <p>oder</p>
-        <button ion-button block color="light" (click)="registration()">Registrieren</button>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+<ion-content>
+  <ion-list no-line>
+    <ion-item>
+      <ion-label><ion-icon name="ios-mail"></ion-icon></ion-label>
+      <ion-input type="text" #username placeholder="E-Mail" ng-pattern="^[a-zA-Z0-9._-]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label><ion-icon name="md-key"></ion-icon></ion-label>
+      <ion-input type="password" #password placeholder="Passwort" required></ion-input>
+    </ion-item>
+    <button ion-button block color="cgreen" (click)="login()">Anmelden</button>
+    <p><a>Passwort vergessen?</a></p>
+    <p>oder</p>
+    <button ion-button block color="light" (click)="registration()">Registrieren</button>
+  </ion-list>
 </ion-content>
+
+<ion-footer>
+</ion-footer>

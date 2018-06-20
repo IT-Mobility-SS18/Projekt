@@ -47,7 +47,7 @@ export class StartPage {
     })
   	console.log('User signed in: ', this.user.value);
 }
-  
+
 
   registration(){
     this.navCtrl.push(RegistrationPage);
