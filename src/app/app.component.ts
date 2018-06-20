@@ -19,7 +19,7 @@ import { RegistrationFormPage } from '../pages/registration-form/registration-fo
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StartPage;
+  rootPage: any = OrderViewServicePage;
 
   pages: Array<{title: string, component: any}>;
 

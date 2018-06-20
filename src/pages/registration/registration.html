@@ -1,32 +1,65 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      Registrieren
-    </ion-title>
+    <ion-title>Registrieren</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
+    <ion-item>
+      <ion-label>Anrede</ion-label>
+      <ion-select>
+        <ion-option>Frau</ion-option>
+        <ion-option>Herr</ion-option>
+      </ion-select>
+    </ion-item>
 
-  <ion-item>
-    <ion-label floating>Nutzername</ion-label>
-    <ion-input type="text" #username></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label floating>Vorname</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Nachname</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Straße und Hausnummer</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <!-- Gibt es für die Postleitzahl eine Formatierung? -->
+    <ion-item>
+      <ion-label floating>Postleitzahl</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Ort</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>E-Mail</ion-label>
+      <ion-input type="text" #username required></ion-input>
+    </ion-item>
 
   <ion-item>
     <ion-label floating>Passwort</ion-label>
     <ion-input type="password" #password></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label floating>Passwort wiederholen</ion-label>
+    <ion-input type="password" #password></ion-input>
+  </ion-item>
 </ion-list>
 
-<div>
-  <button block ion-button (click)="registerUser()" item-left>Account erstellen</button>
-</div>
+<button block ion-button (click)="registerUser()" item-left>Account erstellen</button>
+
 
 </ion-content>
-
 
 <ion-footer>
 </ion-footer>

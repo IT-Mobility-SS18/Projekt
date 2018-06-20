@@ -1,26 +1,23 @@
 <ion-header>
   <ion-navbar>
     <ion-title>Bestellübersicht</ion-title>
-
-    <ion-toolbar>
-      <ion-segment [(ngModel)]="page" color="dark">
-        <ion-segment-button value="category1"(click)="selectedTab(0)">
-          Beliebt
-        </ion-segment-button>
-        <ion-segment-button value="category2" (click)="selectedTab(1)">
-          Suppe
-        </ion-segment-button>
-        <ion-segment-button value="category3" (click)="selectedTab(2)">
-          Salat
-        </ion-segment-button>
-      </ion-segment>
-    </ion-toolbar>
-
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="page" color="dark">
+      <ion-segment-button value="category1"(click)="selectedTab(0)">
+        Beliebt
+      </ion-segment-button>
+      <ion-segment-button value="category2" (click)="selectedTab(1)">
+        Suppe
+      </ion-segment-button>
+      <ion-segment-button value="category3" (click)="selectedTab(2)">
+        Salat
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
   <ion-slides #slider>
     <ion-slide>
       <h1>Tab 1</h1>
