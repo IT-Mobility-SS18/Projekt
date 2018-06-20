@@ -31,10 +31,18 @@
 
         <ion-row class="content">
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.OrderId }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col>
-            Text
+            <ion-list>
+            <ion-item *ngFor="let ord of orders">
+              <p>{{ ord.Name }}</p>
+            </ion-item>
+            </ion-list>
           </ion-col>
           <ion-col>
             Text

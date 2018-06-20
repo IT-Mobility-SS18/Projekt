@@ -1,0 +1,57 @@
+<ion-content>
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Bestellübersicht</ion-title>
+
+      <ion-toolbar>
+        <ion-segment [(ngModel)]="page" color="dark">
+          <ion-segment-button value="category1"(click)="selectedTab(0)">
+            Beliebt
+          </ion-segment-button>
+          <ion-segment-button value="category2" (click)="selectedTab(1)">
+            Suppe
+          </ion-segment-button>
+          <ion-segment-button value="category3" (click)="selectedTab(2)">
+            Salat
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+
+    </ion-navbar>
+  </ion-header>
+  <ion-card>
+
+
+
+    <ion-content padding>
+      <ion-slides #slider>
+        <ion-slide>
+          <h1>Tab 1</h1>
+          <ion-grid>
+
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-thumbnail item-left>
+                    <img src="../assets/imgs/logo.png" class="logo">
+                  </ion-thumbnail>
+                  <p class="sub-title">Gerichtname</p>
+                  <p class="text">Beschreibung</p>
+                  <button ion-button item-end color="cgreen">Hinzufügen</button>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+
+        <ion-slide>
+          <h1>Tab 2</h1>
+        </ion-slide>
+
+        <ion-slide>
+          <h1>Tab 3</h1>
+        </ion-slide>
+      </ion-slides>
+    </ion-content>
+  </ion-card>
+</ion-content>

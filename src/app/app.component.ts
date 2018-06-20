@@ -10,7 +10,8 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-
+import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 
 @Component({
   templateUrl: 'app.html'
@@ -33,7 +34,8 @@ export class MyApp {
       { title: 'Registration', component: RegistrationPage },
       { title: 'Restaurant', component: RestaurantPage },
       { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
-      { title: 'OrderViewService', component: OrderViewServicePage }
+      { title: 'OrderViewService', component: OrderViewServicePage },
+      { title: 'OrderViewCustomer', component: OrderViewCustomerPage }
     ];
   }
 

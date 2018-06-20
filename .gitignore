@@ -20,3 +20,4 @@ plugins
 *.log
 *.DS_Store
 app/scripts/configuration.js
+/src/environment.ts
