@@ -1,4 +1,4 @@
-<ion-content>
+<!--<ion-content>-->
   <ion-header>
     <ion-navbar>
       <ion-title>Bestellübersicht</ion-title>
@@ -42,6 +42,11 @@
               </ion-col>
             </ion-row>
           </ion-grid>
+          <!-- nur für Payment-Test -->
+          <p (click)="orderPayment()">
+            Payment-Test
+          </p>
+          <!-- end -->
         </ion-slide>
 
         <ion-slide>
@@ -53,5 +58,14 @@
         </ion-slide>
       </ion-slides>
     </ion-content>
+
   </ion-card>
-</ion-content>
+<!--</ion-content>-->
+
+<ion-footer>
+      <!-- nur für Payment-Test -->
+      <p (click)="orderPayment()">
+        Payment-Test
+      </p>
+      <!-- end -->
+</ion-footer>

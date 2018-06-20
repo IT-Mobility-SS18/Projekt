@@ -1,6 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Slides} from 'ionic-angular';
 
+//nur für Payment-Test
+import { PaymentPage } from '../payment/payment';
+//end
 
 
 @Component({
@@ -17,6 +20,10 @@ export class OrderViewCustomerPage {
 
      selectedTab(index) {
        this.slider.slideTo(index);
+     }
+
+     orderPayment() {
+           this.navCtrl.push(PaymentPage, {});
      }
 
 }
