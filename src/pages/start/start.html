@@ -2,9 +2,9 @@
   <ion-card>
 
     <ion-card-header>
-      <img src="../assets/imgs/logo.png" class="logo">
-      <p class="main-title">Willkommen!</p>
-      <p text-wrap class="text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
+      <img src="../assets/imgs/logo.png">
+      <p>Willkommen!</p>
+      <p text-wrap>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
 
       <!-- nur für Payment-Test -->
       <p (click)="testPayment()">
@@ -26,8 +26,8 @@
           <ion-input type="password" #password placeholder="Passwort" required></ion-input>
         </ion-item>
         <button ion-button block color="cgreen" (click)="login()">Anmelden</button>
-        <p class="text"><a>Passwort vergessen?</a></p>
-        <p class="text highlight">oder</p>
+        <p><a>Passwort vergessen?</a></p>
+        <p>oder</p>
         <button ion-button block color="light" (click)="registration()">Registrieren</button>
       </ion-list>
     </ion-card-content>

@@ -1,4 +1,4 @@
-<ion-content class="bg">
+<ion-content>
   <ion-header>
     <ion-navbar>
       <ion-title>Bestellübersicht für die Küche</ion-title>
@@ -8,7 +8,7 @@
   <ion-card>
     <ion-card-content>
       <ion-grid>
-        <ion-row class="title">
+        <ion-row>
           <ion-col>
             Bestellnr.:
           </ion-col>
@@ -29,7 +29,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row class="content">
+        <ion-row>
           <ion-col>
             <ion-list>
             <ion-item *ngFor="let ord of orders">
@@ -63,7 +63,7 @@
 
 
 
-      <p class="text no-content">Keine Daten vorhanden!</p>
+      <p>Keine Daten vorhanden!</p>
       </ion-card-content>
     </ion-card>
   </ion-content>
