@@ -13,6 +13,7 @@ import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
+import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -43,7 +44,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
-    RegistrationFormPage
+    RegistrationFormPage,
+    LastOrderViewPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
-    RegistrationFormPage
+    RegistrationFormPage,
+    LastOrderViewPage
   ],
   providers: [
     PayPal,

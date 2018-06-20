@@ -12,6 +12,7 @@ import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
+import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +20,7 @@ import { RegistrationFormPage } from '../pages/registration-form/registration-fo
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = OrderViewServicePage;
+  rootPage: any = StartPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -35,7 +36,8 @@ export class MyApp {
       { title: 'Restaurant', component: RestaurantPage },
       { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
       { title: 'OrderViewService', component: OrderViewServicePage },
-      { title: 'OrderViewCustomer', component: OrderViewCustomerPage }
+      { title: 'OrderViewCustomer', component: OrderViewCustomerPage },
+      { title: 'LastOrderView', component: LastOrderViewPage }
     ];
   }
 
