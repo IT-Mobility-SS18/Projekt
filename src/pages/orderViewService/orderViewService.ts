@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams} from 'ionic-angular';
-//import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
-import { DatabaseProvider } from './../../providers/database/database';
-import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { FirebaseService } from './../../providers/firebase/firebase-service';
 
 
@@ -18,7 +15,7 @@ export class OrderViewServicePage {
   viewarr= [];
 
 
-  constructor(public navCtrl: NavController, private databaseProvider: DatabaseProvider, public firebaseService: FirebaseService) {
+  constructor(public navCtrl: NavController, public firebaseService: FirebaseService) {
     this.firebaseService.getAllOrders().then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
