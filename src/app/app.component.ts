@@ -14,6 +14,7 @@ import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCusto
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
 
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -37,7 +38,8 @@ export class MyApp {
       { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
       { title: 'OrderViewService', component: OrderViewServicePage },
       { title: 'OrderViewCustomer', component: OrderViewCustomerPage },
-      { title: 'LastOrderView', component: LastOrderViewPage }
+      { title: 'LastOrderView', component: LastOrderViewPage },
+      { title: 'RegistrationForm', component: RegistrationFormPage }
     ];
   }
 
