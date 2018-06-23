@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+import { paypalConfig } from '../../environment';
 
 /**
  * Generated class for the PaymentPage page.
@@ -23,8 +24,10 @@ export class PaymentPage {
 
       //init: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
       this.payPal.init({
-    PayPalEnvironmentProduction: 'Aab8rhQBhpjiOjM8sk9JQNgm-AL0KPBugyfqBbktAT34D1TesXi06GtT-uSTCT9QmP2mEjt2bpDhJ7RR',
-    PayPalEnvironmentSandbox: 'AW02jYvUMoGLK8J9zM35l3-e5zg0skvBzgsAhkzIF5TursbcHmAmn1nVD55IsJnEDtjG1p7ZjTFfJBBR'
+    PayPalEnvironmentProduction: paypalConfig.PayPalEnvironmentProduction,
+    PayPalEnvironmentSandbox: paypalConfig.PayPalEnvironmentSandbox
+    //PayPalEnvironmentProduction: 'Aab8rhQBhpjiOjM8sk9JQNgm-AL0KPBugyfqBbktAT34D1TesXi06GtT-uSTCT9QmP2mEjt2bpDhJ7RR',
+    //PayPalEnvironmentSandbox: 'AW02jYvUMoGLK8J9zM35l3-e5zg0skvBzgsAhkzIF5TursbcHmAmn1nVD55IsJnEDtjG1p7ZjTFfJBBR'
   }).then(() => {
     // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
 
