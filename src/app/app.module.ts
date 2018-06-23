@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
+import { BasketPage } from '../pages/basket/basket';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PaymentPage } from '../pages/payment/payment';
@@ -37,6 +38,7 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
   declarations: [
     MyApp,
     StartPage,
+    BasketPage,
     HomePage,
     ListPage,
     PaymentPage,
@@ -62,6 +64,7 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
   entryComponents: [
     MyApp,
     StartPage,
+    BasketPage,
     HomePage,
     ListPage,
     PaymentPage,
