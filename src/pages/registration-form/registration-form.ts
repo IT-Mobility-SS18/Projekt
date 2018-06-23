@@ -25,7 +25,7 @@ export class RegistrationFormPage {
   items;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, public firebaseService: FirebaseService, private afd: AngularFireDatabase) {
-    this.UserId = fire.auth.currentUser.uid;
+    //this.UserId = fire.auth.currentUser.uid;
     this.getDataFromFireBase()
 
 
