@@ -43,11 +43,11 @@ export class RegistrationFormPage {
 
   }
   addItem() {
-    this.firebaseService.addItem(this.newItem);
+    //this.firebaseService.addItem(this.newItem);
   }
 
   removeItem(id) {
-    this.firebaseService.removeItem(id);
+    //this.firebaseService.removeItem(id);
   }
 
   getDataFromFireBase(){

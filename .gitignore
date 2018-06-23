@@ -22,3 +22,7 @@ plugins
 app/scripts/configuration.js
 /src/environment.ts
 .vscode/settings.json
+.sourcemaps
+.sourcemaps/0.js.map
+.sourcemaps/1.js.map
+.sourcemaps/main.js.map
