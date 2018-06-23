@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Neue Bestellung</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>OrderId</ion-label>
+      <ion-input type="text" [(ngModel)]="order.OrderId"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>UserId</ion-label>
+      <ion-input type="text" [(ngModel)]="order.UserId"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="order.Name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Price</ion-label>
+      <ion-input type="text" [(ngModel)]="order.Price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Quantity</ion-label>
+      <ion-input type="text" [(ngModel)]="order.Quantity"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Picture</ion-label>
+      <ion-input type="text" [(ngModel)]="order.Picture"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>DeliveryCosts</ion-label>
+      <ion-input type="text" [(ngModel)]="order.DeliveryCosts"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>OrderState</ion-label>
+      <ion-input type="text" [(ngModel)]="order.OrderState"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label floating>TimeStamp</ion-label>
+      <ion-input type="text" [(ngModel)]="order.TimeStamp"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>RestaurantId</ion-label>
+      <ion-input type="text" [(ngModel)]="order.RestaurantId"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>PayStatus</ion-label>
+      <ion-input type="text" [(ngModel)]="order.PayStatus"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Annotations</ion-label>
+      <ion-input type="text" [(ngModel)]="order.Annotations"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>TableId</ion-label>
+      <ion-input type="text" [(ngModel)]="order.TableId"></ion-input>
+    </ion-item>
+
+
+    
+  
+</ion-list>
+
+<button block ion-button (click)="addCustomerOrder(order)" item-left>Bestellung aufgeben</button>
+
+
+</ion-content>
+
+<ion-footer>
+</ion-footer>

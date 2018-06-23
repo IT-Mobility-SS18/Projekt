@@ -6,6 +6,7 @@
   </ion-header>
 
   <ion-content>
+<<<<<<< HEAD
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -105,41 +106,14 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+=======
+      <ion-list>
+          <button ion-item *ngFor="let item of viewarr" >
+            {{ item.Name }} {{ item.Price }}
+          </button>
+        </ion-list>     
+>>>>>>> 4393578f24569cc898088cd6bf58072a19e7df79
   </ion-content>
 
   <ion-footer>
   </ion-footer>
-
-
-
-
-  <!-- <ion-header>
-  <ion-navbar>
-  <ion-title>
-  Order Data
-</ion-title>
-</ion-navbar>
-</ion-header>
-
-<ion-content padding class="bg">
-<ion-list>
-<ion-item *ngFor="let ord of orders"> -->
-
-
-
-<!-- <p>{{ ord.TableId }} und {{ ord.OrderId }} und {{ ord.Name }} und { ord.Quantity }} und {{ ord.TimeStamp }} und {{ ord.Annotations }} und {{ ord.PayStatus }} und {{ ord.OrderState }}</p> -->
-
-
-<!-- <p>{{ ord.OrderId }}</p>
-</ion-item>
-<ion-item *ngFor="let ord of orders">
-<p>{{ ord.Name }}</p>
-</ion-item>
-<ion-item *ngFor="let ord of orders">
-<p>{{ ord.TableId }}</p>
-</ion-item>
-<ion-item *ngFor="let ord of orders">
-<p>{{ ord.TimeStamp }}</p>
-</ion-item>
-</ion-list>
-</ion-content> -->

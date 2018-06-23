@@ -4,6 +4,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 import { FirebaseService } from './../../providers/firebase/firebase-service';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+import firebase from "firebase";
 
 /**
  * Generated class for the RegistrationFormPage page.
@@ -19,14 +21,24 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class RegistrationFormPage {
   UserId: string;
-  shoppingItems: FirebaseListObservable<any[]>;
+  shoppingItems: Observable<any[]>;
   newItem = '';
   arrData=[];
-  items;
+  items: any;
+  firedata2 = firebase.database().ref('/shoppingItems');
+  cart=[];
+  ListCategory = [];
+  temparrCat= [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, public firebaseService: FirebaseService, private afd: AngularFireDatabase) {
     //this.UserId = fire.auth.currentUser.uid;
-    this.getDataFromFireBase()
+    //this.getDataFromFireBase();
+    this.getAllCatList().then((res: any) => {
+      this.ListCategory = res;
+      this.temparrCat = res;
+      console.log(this.temparrCat);
+  })
+  
 
 
   }
@@ -41,9 +53,28 @@ export class RegistrationFormPage {
   getDataFromFireBase(){
     this.afd.list('/shoppingItems').valueChanges().subscribe(
       data =>{
-        console.log(JSON.stringify(data))
+        console.log(JSON.stringify(data));
         this.items = data;
-      }
+      } 
     )
   }
+
+  getAllCatList() {
+    var promise = new Promise((resolve, reject) => {
+        this.firedata2.orderByChild('uid').once('value', (snapshot) => {
+            let Catdata = snapshot.val();
+            let temparr = [];
+            for (var key in Catdata) {
+                temparr.push(Catdata[key]);
+            }
+            resolve(temparr);
+        }).catch((err) => {
+            reject(err);
+        })
+    })
+    return promise;
+}
+
+
+
 }

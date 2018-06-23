@@ -3,6 +3,7 @@ import { NavController, NavParams} from 'ionic-angular';
 //import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { DatabaseProvider } from './../../providers/database/database';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
+import { FirebaseService } from './../../providers/firebase/firebase-service';
 
 
 
@@ -13,23 +14,17 @@ import { SQLitePorter } from '@ionic-native/sqlite-porter';
 
 export class OrderViewServicePage {
 
-  orders = [];
-  order = {};
+  ListCategory = [];
+  viewarr= [];
 
 
-  constructor(public navCtrl: NavController, private databaseProvider: DatabaseProvider) {
-
-    this.databaseProvider.getDatabaseState().subscribe(rdy => {
-          if (rdy) {
-            this.loadOrderData();
-          }
-        })
-  }
-  loadOrderData() {
-  this.databaseProvider.getAllOrders().then(data => {
-    this.orders = data;
-  });
-  }
+  constructor(public navCtrl: NavController, private databaseProvider: DatabaseProvider, public firebaseService: FirebaseService) {
+    this.firebaseService.getAllOrders().then((res: any) => {
+      this.ListCategory = res;
+      this.viewarr = res;
+      console.log(this.viewarr);
+  })
+}
 
 
 
