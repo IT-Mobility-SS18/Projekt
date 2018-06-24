@@ -21,11 +21,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { SQLite } from '@ionic-native/sqlite';
-import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
-import { DatabaseProvider } from '../providers/database/database';
 
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from '../environment';
@@ -80,11 +77,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
   providers: [
     PayPal,
     StatusBar,
-    SQLite,
-    DatabaseProvider,
     FirebaseService,
     SplashScreen,
-    SQLitePorter,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
