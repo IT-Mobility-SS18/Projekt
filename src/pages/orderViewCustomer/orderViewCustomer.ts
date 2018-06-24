@@ -1,10 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Slides} from 'ionic-angular';
-
-//nur für Payment-Test
-import { PaymentPage } from '../payment/payment';
-//end
-
+import { BasketPage } from '../basket/basket';
 
 @Component({
   selector: 'page-orderViewCustomer',
@@ -18,12 +14,12 @@ export class OrderViewCustomerPage {
      constructor(public navCtrl: NavController) {
      }
 
+     goToBasket() {
+      this.navCtrl.push(BasketPage, {});
+    }
+
      selectedTab(index) {
        this.slider.slideTo(index);
-     }
-
-     orderPayment() {
-           this.navCtrl.push(PaymentPage, {});
      }
 
 }
