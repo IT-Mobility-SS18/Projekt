@@ -29,6 +29,8 @@ import { firebaseConfig } from '../environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
+import { UserViewPage } from '../pages/userView/userView';
+
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewCustomerPage,
     RegistrationFormPage,
     LastOrderViewPage,
-    NewCustomerOrderPage
+    NewCustomerOrderPage,
+    UserViewPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewCustomerPage,
     RegistrationFormPage,
     LastOrderViewPage,
-    NewCustomerOrderPage
+    NewCustomerOrderPage,
+    UserViewPage
   ],
   providers: [
     PayPal,
