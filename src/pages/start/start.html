@@ -3,7 +3,7 @@
 
 <ion-content class="background">
   <ion-card>
-    <!-- <img src="../assets/imgs/logo.png" class="logo"> -->
+    <img width="80" height="80" src="../assets/imgs/logo.png" class="logo">
     <ion-card-header>Willkommen</ion-card-header>
     <ion-card-content>
       <p text-wrap>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
@@ -16,6 +16,11 @@
       <ion-item>
         <ion-icon name="ios-key-outline" item-left></ion-icon>
         <ion-input placeholder="Passwort" type="password" #password required></ion-input>
+      </ion-item>
+
+      <ion-item style="display:none;">
+        <ion-icon></ion-icon>
+        <ion-input></ion-input>
       </ion-item>
     </ion-list>
 

@@ -1,4 +1,11 @@
 page-start {
+  .logo {
+    width: 80px;
+    height:80px;
+    display: block;
+    margin: 0 auto;
+  }
+
   .background {
     background-image: url('../assets/imgs/bg-4.jpg');
     background-repeat: no-repeat;
@@ -26,7 +33,6 @@ page-start {
 
   .item {
     background: transparent;
-    border-bottom: 1px solid #fff;
     color: #fff;
   }
 
@@ -42,9 +48,14 @@ page-start {
     text-indent: 0;
     color: #fff;
   }
-  item-input-has-focus {
-    border-bottom: none !important;
+
+  .list-md .item-block .item-inner {
+    border-bottom: 1px solid #fff !important;
   }
+
+/*  :active, :focus {
+    border-bottom: 0px solid red !important;
+  }*/
 
   .highlight {
     overflow: hidden;

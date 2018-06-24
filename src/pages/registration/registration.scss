@@ -1,3 +1,18 @@
 page-registration {
+  .text-input::-moz-placeholder {
+    color: #222;
+  }
 
+  .text-input:-ms-input-placeholder {
+    color: #222;
+  }
+
+  .text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: #222;
+  }
+
+  ion-card {
+    box-shadow: none !important;
+  }
 }
