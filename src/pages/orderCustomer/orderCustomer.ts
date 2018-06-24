@@ -11,8 +11,8 @@ import { Order } from '../../models/order/order.model'
 
 @IonicPage()
 @Component({
-  selector: 'page-new-customer-order',
-  templateUrl: 'new-customer-order.html',
+  selector: 'page-orderCustomer',
+  templateUrl: 'orderCustomer.html',
 })
 export class NewCustomerOrderPage {
 
