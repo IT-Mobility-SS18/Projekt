@@ -38,6 +38,4 @@ alert(message: string) {
       buttons: ['Okay']
     }).present();
 }
-
-
 }

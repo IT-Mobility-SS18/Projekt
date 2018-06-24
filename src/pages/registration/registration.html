@@ -5,60 +5,66 @@
 </ion-header>
 
 <ion-content>
+  <ion-card>
   <ion-list>
     <ion-item>
-      <ion-label stacked>Anrede</ion-label>
-      <ion-select>
+      <ion-label stacked required>Anrede</ion-label>
+      <ion-select placeholder="Herr">
         <ion-option>Frau</ion-option>
         <ion-option>Herr</ion-option>
       </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Vorname</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked required>Vorname</ion-label>
+      <ion-input placeholder="Max" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Nachname</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked required>Nachname</ion-label>
+      <ion-input placeholder="Mustermann" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Straße und Hausnummer</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked required>Straße und Hausnummer</ion-label>
+      <ion-input placeholder="Musterstraße 1" type="text"></ion-input>
     </ion-item>
 
     <!-- Gibt es für die Postleitzahl eine Formatierung? -->
     <ion-item>
-      <ion-label stacked>Postleitzahl</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked required>Postleitzahl</ion-label>
+      <ion-input placeholder="12345" type="text" ng={1-9}[5]></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Ort</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-label stacked required>Ort</ion-label>
+      <ion-input placeholder="Musterstadt" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>E-Mail</ion-label>
-      <ion-input type="text" #username required></ion-input>
+      <ion-label stacked required>E-Mail</ion-label>
+      <ion-input placeholder="max.mustermann@mail.de" type="text" #username required></ion-input>
     </ion-item>
 
   <ion-item>
-    <ion-label stacked>Passwort</ion-label>
-    <ion-input type="password" #password></ion-input>
+    <ion-label stacked required>Passwort</ion-label>
+    <ion-input placeholder="Passwort" type="password" #password></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label stacked>Passwort wiederholen</ion-label>
-    <ion-input type="password" #password></ion-input>
+    <ion-label stacked required>Passwort wiederholen</ion-label>
+    <ion-input placeholder="Passwort" type="password" #password></ion-input>
+  </ion-item>
+
+  <ion-item style="display:none;">
+    <ion-icon></ion-icon>
+    <ion-input></ion-input>
   </ion-item>
 </ion-list>
 
 <button block ion-button (click)="registerUser()" item-left>Account erstellen</button>
-
-
+<p class="center-text">Abbrechen</p>
+</ion-card>
 </ion-content>
 
 <ion-footer>
