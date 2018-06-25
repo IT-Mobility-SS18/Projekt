@@ -8,9 +8,9 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { NewCustomerOrderPage } from '../pages/orderCustomer/orderCustomer';
+import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/userView/userView';
 
 
@@ -32,7 +32,7 @@ export class MyApp {
       { title: 'Login', component: StartPage },
       { title: 'Registrierung', component: RegistrationPage },
       { title: 'Startseite', component: UserStartPage },
-      { title: 'Bestellen', component: NewCustomerOrderPage },
+      { title: 'Bestellen', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
       { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
       { title: 'Bestellübersicht Service', component: OrderViewServicePage },

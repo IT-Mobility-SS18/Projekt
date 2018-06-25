@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { OrderViewCustomerPage } from '../orderViewCustomer/orderViewCustomer';
+import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 
 /**
  * Generated class for the PaymentConfirmationPage page.

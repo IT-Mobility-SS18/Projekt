@@ -3,85 +3,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Bestellübersicht Kunde</ion-title>
+    <ion-title>Restaurant: Hallo {{username}}! ID: {{UserId}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="category1"(click)="selectedTab(0)">
-        Kategorie 1
-      </ion-segment-button>
-      <ion-segment-button value="category2" (click)="selectedTab(1)">
-        Kategorie 2
-      </ion-segment-button>
-      <ion-segment-button value="category3" (click)="selectedTab(2)">
-        Kategorie 3
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-
-  <ion-slides #slider>
-    <ion-slide>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-thumbnail item-left>
-                <img src="../assets/imgs/logo.png">
-              </ion-thumbnail>
-              <p>Gerichtname</p>
-              <p>Beschreibung</p>
-              <p>Preis</p>
-              <p>Informationen</p>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-thumbnail item-left>
-                <img src="../assets/imgs/logo.png">
-              </ion-thumbnail>
-              <p>Gerichtname</p>
-              <p>Beschreibung</p>
-              <p>Preis</p>
-              <p>Informationen</p>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-item>
-              <ion-thumbnail item-left>
-                <img src="../assets/imgs/logo.png">
-              </ion-thumbnail>
-              <p>Gerichtname</p>
-              <p>Beschreibung</p>
-              <p>Preis</p>
-              <p>Informationen</p>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-slide>
-  </ion-slides>
 </ion-content>
 
 
 <ion-footer>
-  <p (click)="goToBasket()">
-    Zum Warenkorb
-  </p>
 </ion-footer>

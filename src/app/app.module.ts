@@ -11,9 +11,9 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { NewCustomerOrderPage } from '../pages/orderCustomer/orderCustomer';
+import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -46,7 +46,7 @@ import { UserStartPage } from '../pages/user-start/user-start';
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    NewCustomerOrderPage,
+    OrderCustomerPage,
     UserViewPage
   ],
   imports: [
@@ -72,7 +72,7 @@ import { UserStartPage } from '../pages/user-start/user-start';
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    NewCustomerOrderPage,
+    OrderCustomerPage,
     UserViewPage
   ],
   providers: [
