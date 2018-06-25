@@ -28,6 +28,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
 import { UserViewPage } from '../pages/userView/userView';
+import { UserStartPage } from '../pages/user-start/user-start';
 
 
 
@@ -37,6 +38,7 @@ import { UserViewPage } from '../pages/userView/userView';
     StartPage,
     BasketPage,
     HomePage,
+    UserStartPage,
     PaymentPage,
     RegistrationPage,
     UserStartPage,
@@ -61,6 +63,7 @@ import { UserViewPage } from '../pages/userView/userView';
     MyApp,
     StartPage,
     BasketPage,
+    UserStartPage,
     HomePage,
     PaymentPage,
     RegistrationPage,

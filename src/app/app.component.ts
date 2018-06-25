@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { StartPage } from '../pages/start/start';
 import { RegistrationPage } from '../pages/registration/registration';
+import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
@@ -30,6 +31,7 @@ export class MyApp {
     this.pages = [
       { title: 'Login', component: StartPage },
       { title: 'Registrierung', component: RegistrationPage },
+      { title: 'Startseite', component: UserStartPage },
       { title: 'Bestellen', component: NewCustomerOrderPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
       { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
