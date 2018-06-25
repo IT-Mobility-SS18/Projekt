@@ -4,15 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { StartPage } from '../pages/start/start';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
-import { RestaurantPage } from '../pages/restaurant/restaurant';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
 import { NewCustomerOrderPage } from '../pages/orderCustomer/orderCustomer';
 import { UserViewPage } from '../pages/userView/userView';
 
@@ -32,17 +28,13 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Start', component: StartPage },
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Registration', component: RegistrationPage },
-      { title: 'Restaurant', component: RestaurantPage },
-      { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
-      { title: 'OrderViewService', component: OrderViewServicePage },
-      { title: 'Übersicht', component: OrderViewCustomerPage },
-      { title: 'LastOrderView', component: LastOrderViewPage },
+      { title: 'Login', component: StartPage },
+      { title: 'Registrierung', component: RegistrationPage },
+      { title: 'Bestellen', component: NewCustomerOrderPage },
+      { title: 'Bestellübersicht Kunde', component: OrderViewCustomerPage },
+      { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
+      { title: 'Bestellübersicht Service', component: OrderViewServicePage },
       { title: 'RegistrationForm', component: RegistrationFormPage },
-      { title: 'NewCustomerOrder', component: NewCustomerOrderPage },
       { title: 'Benutzerprofil', component: UserViewPage }
     ];
   }
