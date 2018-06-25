@@ -39,7 +39,7 @@ export class MyApp {
       { title: 'Restaurant', component: RestaurantPage },
       { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
       { title: 'OrderViewService', component: OrderViewServicePage },
-      { title: 'OrderViewCustomer', component: OrderViewCustomerPage },
+      { title: 'Übersicht', component: OrderViewCustomerPage },
       { title: 'LastOrderView', component: LastOrderViewPage },
       { title: 'RegistrationForm', component: RegistrationFormPage },
       { title: 'NewCustomerOrder', component: NewCustomerOrderPage },
