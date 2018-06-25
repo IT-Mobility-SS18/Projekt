@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { BasketPage } from '../pages/basket/basket';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { PaymentPage } from '../pages/payment/payment';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
@@ -14,7 +13,6 @@ import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
 import { NewCustomerOrderPage } from '../pages/orderCustomer/orderCustomer';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
@@ -39,7 +37,6 @@ import { UserViewPage } from '../pages/userView/userView';
     StartPage,
     BasketPage,
     HomePage,
-    ListPage,
     PaymentPage,
     RegistrationPage,
     UserStartPage,
@@ -47,7 +44,6 @@ import { UserViewPage } from '../pages/userView/userView';
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    LastOrderViewPage,
     NewCustomerOrderPage,
     UserViewPage
   ],
@@ -66,7 +62,6 @@ import { UserViewPage } from '../pages/userView/userView';
     StartPage,
     BasketPage,
     HomePage,
-    ListPage,
     PaymentPage,
     RegistrationPage,
     UserStartPage,
@@ -74,7 +69,6 @@ import { UserViewPage } from '../pages/userView/userView';
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    LastOrderViewPage,
     NewCustomerOrderPage,
     UserViewPage
   ],

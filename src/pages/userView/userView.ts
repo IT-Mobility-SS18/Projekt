@@ -30,7 +30,7 @@ export class UserViewPage {
     }
   }
 
-  reset(){
+  cancelChanges(){
     this.user = {name: null, company: null, birthdate: null};
     this.dob = null;
     this.showProfile = false;
@@ -47,7 +47,4 @@ export class UserViewPage {
     let currentTime = new Date().getTime();
      return ((currentTime - birthdate)/31556952000).toFixed(0);
   }
-
-
-
 }

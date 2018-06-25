@@ -1,18 +1,19 @@
 <ion-content>
-    <ion-header>
-      <ion-navbar>
-        <ion-title>Bestellübersicht Küche</ion-title>
-      </ion-navbar>
-    </ion-header>
+  <ion-header>
+    <ion-navbar>
+      <ion-title>Bestellübersicht Küche</ion-title>
+    </ion-navbar>
+  </ion-header>
 
-    <ion-content>
+  <ion-content>
+    <ion-card-content>
       <ion-grid>
         <ion-row>
           <ion-col col-3>
             Bestellnr.:
           </ion-col>
           <ion-col col-6>
-            Info:
+            Gericht:
           </ion-col>
           <ion-col col-3>
             Status:
@@ -41,17 +42,16 @@
           <ion-col col-3>
             <ion-list>
               <ion-item-divider *ngFor="let ord of viewarr">
-            <button ion-button (click)="login()">Fe</button>
-            <button ion-button color="danger" (click)="registration()">Ab</button>
-          </ion-item-divider>
-          </ion-list>
+                <button ion-button>Fe</button>
+                <button ion-button color="danger">Ab</button>
+              </ion-item-divider>
+            </ion-list>
           </ion-col>
         </ion-row>
       </ion-grid>
+    </ion-card-content>
+    <p>Keine Daten vorhanden!</p>
+  </ion-content>
 
-
-      <p>Keine Daten vorhanden!</p>
-    </ion-content>
-
-    <ion-footer>
-    </ion-footer>
+  <ion-footer>
+  </ion-footer>

@@ -9,7 +9,7 @@ import { FirebaseService } from './../../providers/firebase/firebase-service';
 })
 
 export class OrderViewKitchenPage {
-  
+
   ListCategory = [];
   viewarr= [];
 
@@ -17,6 +17,7 @@ export class OrderViewKitchenPage {
     this.firebaseService.getOrdersKitchen().then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
-  })
+      console.log(this.viewarr);
+    })
   }
 }

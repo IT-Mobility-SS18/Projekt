@@ -11,57 +11,54 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card-content>
+    <form #formCtrl="ngForm">
+      <div align="center" *ngIf="formCtrl.form.valid">
+
+        <h1> Benutzerofil</h1>
+        <h4>{{user.name}}</h4>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Vorname</ion-label>
+          <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Familienname</ion-label>
+          <ion-input type="text" [(ngModel)]="user.surname" name="surname" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Geburtsdatum</ion-label>
+          <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Straße und Hausnummer</ion-label>
+          <ion-input type="text" [(ngModel)]="user.adress" name="adress" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Postleitzahl</ion-label>
+          <ion-input type="text" [(ngModel)]="user.plz" name="plz" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Ort</ion-label>
+          <ion-input type="text" [(ngModel)]="user.ort" name="ort" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>PayPal</ion-label>
+          <ion-input type="text" [(ngModel)]="user.payPal" name="payPal" required></ion-input>
+        </ion-item>
 
 
-  <form #formCtrl="ngForm">
-    <div align="center" *ngIf="formCtrl.form.valid">
+        <ion-item style="display:none;">
+          <ion-icon></ion-icon>
+          <ion-input></ion-input>
+        </ion-item>
 
-      <h1> Benutzerofil</h1>
-      <h4>{{user.name}}</h4>
-    </div>
-    <ion-list>
-      <ion-item>
-        <ion-label floating>Vorname</ion-label>
-        <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Familienname</ion-label>
-        <ion-input type="text" [(ngModel)]="user.surname" name="surname" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label >Geburtsdatum</ion-label>
-        <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Straße und Hausnummer</ion-label>
-        <ion-input type="text" [(ngModel)]="user.adress" name="adress" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Postleitzahl</ion-label>
-        <ion-input type="text" [(ngModel)]="user.plz" name="plz" required></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Ort</ion-label>
-        <ion-input type="text" [(ngModel)]="user.ort" name="ort" required></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>PayPal</ion-label>
-        <ion-input type="text" [(ngModel)]="user.payPal" name="payPal" required></ion-input>
-      </ion-item>
-
-
-      <ion-item style="display:none;">
-        <ion-icon></ion-icon>
-        <ion-input></ion-input>
-      </ion-item>
-
-    </ion-list>
-    <button color="secondary" [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Speichern</button>
-    <button color="danger" ion-button block (click)="reset()">Zurücksetzen</button>
-  </form>
-
-
-
+      </ion-list>
+      <button [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Speichern</button>
+      <p class="center-text" (click)="cancelChanges()">Abbrechen</p>
+    </form>
+  </ion-card-content>
 </ion-content>
