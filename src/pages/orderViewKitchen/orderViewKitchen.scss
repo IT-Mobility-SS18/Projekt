@@ -1,38 +1,25 @@
 page-orderViewKitchen {
+  ion-grid,
+   ion-row,
+   ion-column {
+     border: 1px solid black;
+   }
+
   ion-row {
     text-align: left;
     height: auto;
   }
-  .col{
-    background: gray;
-    border: think solid black;
-    //height: auto;
-    width: auto;
-  }
-
-  /* -- Formatierung der Eingabefelder -- */
-  .item {
-    margin-bottom: 10px;
-    background: rgba(255, 255, 255, 0.4);
-    border: medium none;
-  }
-
-  /* -- Schriftfarbe der Eingabefelder -- */
-  .item .text-input{
-    color: #fff;
-    text-align: left;
-  }
 
   /* -- Textausrichtung der Tabelle -- */
-  ion-col {
+  ion-col{
     text-align: left;
   }
 
-  .btn {
+  /*.btn {
     display:block;
     height: 25px;
     width: 25px;
     border-radius: 25%;
     border: 1px ;
-  }
+  }*/
 }
