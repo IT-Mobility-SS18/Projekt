@@ -14,10 +14,10 @@ export class OrderViewKitchenPage {
   viewarr= [];
 
   constructor(public navCtrl: NavController, public firebaseService: FirebaseService) {
-    this.firebaseService.getOrdersKitchen().then((res: any) => {
+    /*this.firebaseService.getOrdersKitchen().then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
       console.log(this.viewarr);
-    })
+    })*/
   }
 }
