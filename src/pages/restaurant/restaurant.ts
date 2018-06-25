@@ -12,7 +12,7 @@ export class RestaurantPage {
   username: string;
   UserId: string;
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
- 	this.username = fire.auth.currentUser.email;
-  this.UserId = fire.auth.currentUser.uid;
-}
+    this.username = fire.auth.currentUser.email;
+    this.UserId = fire.auth.currentUser.uid;
+  }
 }
