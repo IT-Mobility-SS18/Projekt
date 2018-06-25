@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { OrderViewCustomerPage } from '../orderViewCustomer/orderViewCustomer';
+
 /**
  * Generated class for the PaymentConfirmationPage page.
  *
@@ -20,6 +22,10 @@ export class PaymentConfirmationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentConfirmationPage');
+  }
+
+  goToPayment() {
+    this.navCtrl.push(OrderViewCustomerPage, {});
   }
 
 }
