@@ -3,32 +3,33 @@
 
 <ion-content class="background">
   <ion-card>
-    <img width="80" height="80" src="../assets/imgs/logo.png" class="logo">
-    <ion-card-header>Willkommen</ion-card-header>
+    <ion-card-header>
+      <img src="../assets/imgs/logo.png" class="logo">
+      Willkommen
+    </ion-card-header>
     <ion-card-content>
       <p text-wrap>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</p>
-<ion-list no lines>
-      <ion-item>
-        <ion-icon name="ios-mail-outline" item-left></ion-icon>
-        <ion-input placeholder="E-Mail" type="text" #username required></ion-input>
-      </ion-item>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="ios-mail-outline" item-left></ion-icon>
+          <ion-input placeholder="E-Mail" type="text" #username required></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-icon name="ios-key-outline" item-left></ion-icon>
-        <ion-input placeholder="Passwort" type="password" #password required></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-icon name="ios-key-outline" item-left></ion-icon>
+          <ion-input placeholder="Passwort" type="password" #password required></ion-input>
+        </ion-item>
 
-      <ion-item style="display:none;">
-        <ion-icon></ion-icon>
-        <ion-input></ion-input>
-      </ion-item>
-    </ion-list>
+        <ion-item style="display:none;">
+          <ion-icon></ion-icon>
+          <ion-input></ion-input>
+        </ion-item>
+      </ion-list>
 
-      <button ion-button block (click)="login()">Anmelden</button>
+      <button ion-button block (click)="login()" padding>Anmelden</button>
       <a><b>Passwort vergessen?</b></a>
       <p class="highlight">oder</p>
-      <button ion-button block (click)="registration()">Registrieren</button>
-
+      <button ion-button block (click)="registration()" padding>Registrieren</button>
     </ion-card-content>
   </ion-card>
 </ion-content>
