@@ -9,7 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { PaymentPage } from '../pages/payment/payment';
 import { RegistrationPage } from '../pages/registration/registration';
-import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
 import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
@@ -42,7 +42,7 @@ import { UserViewPage } from '../pages/userView/userView';
     ListPage,
     PaymentPage,
     RegistrationPage,
-    RestaurantPage,
+    UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
@@ -69,7 +69,7 @@ import { UserViewPage } from '../pages/userView/userView';
     ListPage,
     PaymentPage,
     RegistrationPage,
-    RestaurantPage,
+    UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,

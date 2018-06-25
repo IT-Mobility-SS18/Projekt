@@ -1,25 +1,18 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, IonicPage} from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-/**
- * Generated class for the UserStartPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
-@IonicPage()
 @Component({
   selector: 'page-user-start',
-  templateUrl: 'user-start.html',
+  templateUrl: 'user-start.html'
 })
+
 export class UserStartPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  username: string;
+  UserId: string;
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+    this.username = fire.auth.currentUser.email;
+    this.UserId = fire.auth.currentUser.uid;
   }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserStartPage');
-  }
-
 }
