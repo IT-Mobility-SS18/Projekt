@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, IonicPage} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, IonicPage, Slides} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { BasketPage } from '../basket/basket';
+
 
 
 @Component({
@@ -9,6 +11,19 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 
 export class UserStartPage {
+  public images: any;
+  @ViewChild('slider') slider: Slides;
+  page = 0;
+  constructor(public navCtrl: NavController) {
+  }
+
+  goToBasket() {
+    this.navCtrl.push(BasketPage, {});
+  }
+
+  selectedTab(index) {
+    this.slider.slideTo(index);
+  }
   username: string;
   UserId: string;
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
