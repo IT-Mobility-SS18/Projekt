@@ -43,7 +43,7 @@ export class MyApp {
       { title: 'LastOrderView', component: LastOrderViewPage },
       { title: 'RegistrationForm', component: RegistrationFormPage },
       { title: 'NewCustomerOrder', component: NewCustomerOrderPage },
-      { title: 'UserView', component: UserViewPage }
+      { title: 'Benutzerprofil', component: UserViewPage }
     ];
   }
 
