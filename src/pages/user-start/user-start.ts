@@ -14,7 +14,9 @@ export class UserStartPage {
   public images: any;
   @ViewChild('slider') slider: Slides;
   page = 0;
-  constructor(public navCtrl: NavController) {
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+    this.username = fire.auth.currentUser.email;
+    this.UserId = fire.auth.currentUser.uid;
   }
 
   goToBasket() {
@@ -26,8 +28,5 @@ export class UserStartPage {
   }
   username: string;
   UserId: string;
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
-    this.username = fire.auth.currentUser.email;
-    this.UserId = fire.auth.currentUser.uid;
-  }
+  
 }
