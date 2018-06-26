@@ -18,6 +18,7 @@ plugins
 *.swp
 *.swo
 *.log
+*.map
 *.DS_Store
 app/scripts/configuration.js
 /src/environment.ts
@@ -26,7 +27,3 @@ app/scripts/configuration.js
 config.xml
 package-lock.json
 package.json
-.sourcemaps
-.sourcemaps/0.js.map
-.sourcemaps/1.js.map
-
