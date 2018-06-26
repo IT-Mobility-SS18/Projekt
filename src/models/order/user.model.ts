@@ -9,6 +9,5 @@ export interface User {
     Sex;
     Mail;
     OptInNewsletter;
-    Group;
     BDay;
 }

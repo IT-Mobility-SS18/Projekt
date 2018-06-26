@@ -28,7 +28,6 @@ export class Registration2Page {
     Sex: 'undefined',
     Mail: this.fire.auth.currentUser.email,
     OptInNewsletter: 'undefined',
-    Group: 'User',
     BDay: undefined
   }
 

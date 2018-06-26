@@ -12,9 +12,8 @@ export class FirebaseService {
   OrderArray= [];
 
   private OrderListRef = this.dbInstance.list<Order>('Orders');
-  private UserListRef = this.dbInstance.list<User>('User');
   UserCreationRef = firebase.database().ref('/User');
-  UserListData = firebase.database().ref('/User/56456nr567/Group/wert');
+  UserListData = firebase.database().ref('/User');
 
   constructor(public dbInstance: AngularFireDatabase) {
 
@@ -67,8 +66,16 @@ export class FirebaseService {
   }
 
   fillFaceData() {
-    var x: '658675875';
-    this.UserListData.push(x);
+    this.UserListData.child('56456nr567').child('Group').set({
+      FaceGroupId: 658675875
+    });
+    this.UserListData.child('56456nr567').child('Group').child('Person').set({
+      FacePersonId: 5654654
+    });
+    this.UserListData.child('56456nr567').child('Group').child('Person').child('PersistedFace').set({
+      PersistedFaceId: 4654657,
+      PictureUrl: '/bla/bla.jpg'
+    })
   }
 
 }
