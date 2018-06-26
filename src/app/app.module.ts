@@ -16,6 +16,8 @@ import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCusto
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
 import { NewCustomerOrderPage } from '../pages/new-customer-order/new-customer-order';
+import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
+
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -46,7 +48,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewCustomerPage,
     RegistrationFormPage,
     LastOrderViewPage,
-    NewCustomerOrderPage
+    NewCustomerOrderPage,
+    FaceRecognitionPage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewCustomerPage,
     RegistrationFormPage,
     LastOrderViewPage,
-    NewCustomerOrderPage
+    NewCustomerOrderPage,
+    FaceRecognitionPage
   ],
   providers: [
     PayPal,

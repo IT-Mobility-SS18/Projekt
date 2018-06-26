@@ -22,14 +22,11 @@ plugins
 app/scripts/configuration.js
 /src/environment.ts
 .vscode/settings.json
-<<<<<<< HEAD
 .soucemaps\main.js.map
 config.xml
 package-lock.json
 package.json
-=======
 .sourcemaps
 .sourcemaps/0.js.map
 .sourcemaps/1.js.map
-.sourcemaps/main.js.map
->>>>>>> 9211337a2f27e5dbcadc37d23f3f171405850ba9
+

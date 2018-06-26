@@ -2,14 +2,18 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Order } from '../../models/order/order.model';
 import firebase from "firebase";
+import { User } from '../../models/order/user.model';
 
 @Injectable()
 export class FirebaseService {
+
 
   fireOrderData = firebase.database().ref('/Orders');
   OrderArray= [];
 
   private OrderListRef = this.dbInstance.list<Order>('Orders');
+  private UserListRef = this.dbInstance.list<User>('User');
+  UserListData = firebase.database().ref('/User/56456nr567/Group/wert');
 
   constructor(public dbInstance: AngularFireDatabase) {
 
@@ -55,6 +59,11 @@ export class FirebaseService {
       })
   })
   return promise;
+  }
+
+  fillFaceData() {
+    var x: '658675875';
+    this.UserListData.push(x);
   }
 
 }
