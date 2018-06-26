@@ -14,6 +14,7 @@ export class FirebaseService {
   private OrderListRef = this.dbInstance.list<Order>('Orders');
   UserCreationRef = firebase.database().ref('/User');
   UserListData = firebase.database().ref('/User');
+  ItemListData = firebase.database().ref('/Items');
 
   constructor(public dbInstance: AngularFireDatabase) {
 
@@ -86,10 +87,27 @@ export class FirebaseService {
   getUserData(UserId) {
     var promise = new Promise((resolve, reject) => {
       this.UserListData.child(UserId).orderByChild('uid').once('value', (snapshot) => {
-          let OrderData = snapshot.val();
+          let UserData = snapshot.val();
           let tmparr = [];
-          for (var key in OrderData) {
-              tmparr.push(OrderData[key]);
+          for (var key in UserData) {
+              tmparr.push(UserData[key]);
+          }
+          resolve(tmparr);
+      }).catch((err) => {
+          reject(err);
+      })
+  })
+  return promise;
+  }
+
+
+  getRestaurantItems(CurrentRestaurantId) { 
+    var promise = new Promise((resolve, reject) => {
+      this.ItemListData.orderByChild('RestaurantId').equalTo(CurrentRestaurantId).once('value', (snapshot) => {
+          let ItemData = snapshot.val();
+          let tmparr = [];
+          for (var key in ItemData) {
+              tmparr.push(ItemData[key]);
           }
           resolve(tmparr);
       }).catch((err) => {

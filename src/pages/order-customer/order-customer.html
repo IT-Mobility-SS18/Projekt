@@ -31,9 +31,19 @@
                <ion-thumbnail item-left>
                  <img src="../assets/imgs/logo.png">
                </ion-thumbnail>
-               <p>Gerichtname</p>
+               <p>Gerichtname
+                 <ion-item *ngFor="let item of viewarr">
+                   {{ item.Name }}
+                 </ion-item>
+               </p>
                <p>Beschreibung</p>
+               <ion-item *ngFor="let item of viewarr">
+                {{ item.Description }}
+              </ion-item>
                <p>Preis</p>
+               <ion-item *ngFor="let item of viewarr">
+                {{ item.Price }}
+              </ion-item>
                <p>Informationen</p>
              </ion-item>
            </ion-col>
