@@ -1,3 +1,84 @@
 page-start {
+  .logo {
+    width: 80px;
+    height:80px;
+    display: block;
+    margin: 0 auto;
+  }
 
+  .background {
+    background-image: url('../assets/imgs/bg-4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .scroll-content {
+    text-align: center;
+  }
+
+  p {
+    color: #fff  !important;
+  }
+
+  ion-card.card {
+    background: rgba(0,0,0,0.4);
+    border-radius: 10px;
+  }
+
+  ion-card-header {
+    color: #fff !important;
+    font-size: 3em !important;
+    font-weight: bold !important;
+  }
+
+  .item {
+    background: transparent;
+    color: #fff;
+  }
+
+  .text-input::-moz-placeholder {
+    color: #fff;
+  }
+
+  .text-input:-ms-input-placeholder {
+    color: #fff;
+  }
+
+  .text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: #fff;
+  }
+
+  .list-md .item-block .item-inner {
+    border-bottom: 1px solid #fff !important;
+  }
+
+/*:active, :focus {
+    border-bottom: 0px solid red !important;
+  }*/
+
+  .highlight {
+    overflow: hidden;
+  }
+
+  .highlight:before,
+  .highlight:after {
+    content: "";
+    background-color: #fff;
+    display: inline-block;
+    height: 1.2px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+  }
+
+  .highlight:before {
+    right: 0.5em;
+    margin-left: -50%;
+  }
+
+  .highlight:after {
+    left: 0.5em;
+    margin-right: -50%;
+  }
 }

@@ -4,17 +4,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { StartPage } from '../pages/start/start';
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { RegistrationPage } from '../pages/registration/registration';
-import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
-import { NewCustomerOrderPage } from '../pages/new-customer-order/new-customer-order';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
+import { OrderCustomerPage } from '../pages/order-customer/order-customer';
+import { UserViewPage } from '../pages/userView/userView';
 
 
 @Component({
@@ -32,18 +30,16 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Start', component: StartPage },
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Registration', component: RegistrationPage },
-      { title: 'Restaurant', component: RestaurantPage },
-      { title: 'OrderViewKitchen', component: OrderViewKitchenPage },
-      { title: 'OrderViewService', component: OrderViewServicePage },
-      { title: 'OrderViewCustomer', component: OrderViewCustomerPage },
-      { title: 'LastOrderView', component: LastOrderViewPage },
+      { title: 'Login', component: StartPage },
+      { title: 'Registrierung', component: RegistrationPage },
+      { title: 'Startseite', component: UserStartPage },
+      { title: 'Bestellen', component: OrderCustomerPage },
+      { title: 'Bestellungen', component: OrderViewCustomerPage },
+      { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
+      { title: 'Bestellübersicht Service', component: OrderViewServicePage },
       { title: 'RegistrationForm', component: RegistrationFormPage },
-      { title: 'NewCustomerOrder', component: NewCustomerOrderPage },
       { title: 'FaceRecognition', component: FaceRecognitionPage },
+      { title: 'Benutzerprofil', component: UserViewPage }
     ];
   }
 

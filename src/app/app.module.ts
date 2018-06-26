@@ -6,18 +6,18 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { BasketPage } from '../pages/basket/basket';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 import { PaymentPage } from '../pages/payment/payment';
 import { RegistrationPage } from '../pages/registration/registration';
-import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { LastOrderViewPage } from '../pages/lastOrderView/lastOrderView';
-import { NewCustomerOrderPage } from '../pages/new-customer-order/new-customer-order';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
+import { UserViewPage } from '../pages/userView/userView';
 
+
+import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -33,23 +33,24 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     StartPage,
     BasketPage,
     HomePage,
-    ListPage,
+    UserStartPage,
     PaymentPage,
     RegistrationPage,
-    RestaurantPage,
+    UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    LastOrderViewPage,
-    NewCustomerOrderPage,
-    FaceRecognitionPage
+    FaceRecognitionPage,
+    OrderCustomerPage,
+    UserViewPage
   ],
   imports: [
     BrowserModule,
@@ -65,18 +66,18 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     MyApp,
     StartPage,
     BasketPage,
+    UserStartPage,
     HomePage,
-    ListPage,
     PaymentPage,
     RegistrationPage,
-    RestaurantPage,
+    UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    LastOrderViewPage,
-    NewCustomerOrderPage,
-    FaceRecognitionPage
+    FaceRecognitionPage,
+    OrderCustomerPage,
+    UserViewPage
   ],
   providers: [
     PayPal,

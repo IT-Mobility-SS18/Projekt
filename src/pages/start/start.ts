@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, IonicPage, AlertController} from 'ionic-angular';
 
 import { RegistrationPage } from '../registration/registration';
-import { RestaurantPage } from '../restaurant/restaurant';
+import { UserStartPage } from '../user-start/user-start';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 //nur für Payment-Test
@@ -21,35 +21,34 @@ export class StartPage {
 
   //nur für Payment-Test
   testPayment() {
-        this.navCtrl.push(PaymentPage, {});
-  }
-  //end
+  this.navCtrl.push(PaymentPage, {});
+}
+//end
 
-  alert(message: string) {
-      this.alertCtrl.create({
-        title: 'Information',
-        subTitle: message,
-        buttons: ['Okay']
-      }).present();
-  }
-
-  login(){
-    //this.navCtrl.push(RestaurantPage);
-    this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
-    .then( data => {
-      console.log('Login data passed', this.fire.auth.currentUser);
-      this.alert('Login erfolgreich.');
-      this.navCtrl.setRoot( RestaurantPage );
-    })
-    .catch( error => {
-      console.log('Error during login', error);
-      this.alert(error.message);
-    })
-  	console.log('User signed in: ', this.user.value);
+alert(message: string) {
+  this.alertCtrl.create({
+    title: 'Information',
+    subTitle: message,
+    buttons: ['Okay']
+  }).present();
 }
 
+userStart(){
+  //this.navCtrl.push(UserStartPage);
+  this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
+  .then( data => {
+    console.log('Login data passed', this.fire.auth.currentUser);
+    this.alert('Login erfolgreich.');
+    this.navCtrl.setRoot( UserStartPage );
+  })
+  .catch( error => {
+    console.log('Error during login', error);
+    this.alert(error.message);
+  })
+  console.log('User signed in: ', this.user.value);
+}
 
-  registration(){
-    this.navCtrl.push(RegistrationPage);
-  }
+registration(){
+  this.navCtrl.push(RegistrationPage);
+}
 }

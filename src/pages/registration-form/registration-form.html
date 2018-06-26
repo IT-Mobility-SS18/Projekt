@@ -1,5 +1,8 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>
       RegistrationForm: Hallo! ID: {{UserId}}
     </ion-title>
@@ -7,6 +10,7 @@
 </ion-header>
 
 <ion-content>
+    <ion-card-content>
   <p>+++Test Seite+++</p>
   <ion-row>
     <ion-col col-9>
@@ -34,6 +38,7 @@
       {{ item }}
     </button>
   </ion-list>
+</ion-card-content>
 </ion-content>
 
 <ion-footer>

@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RegistrationFormPage } from '../registration-form/registration-form';
+import { StartPage } from '../start/start';
+
 
 @Component({
   selector: 'page-registration',
@@ -15,9 +17,9 @@ export class RegistrationPage {
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
 
-}
+  }
 
-registerUser() {
+  registerUser() {
     this.fire.auth.createUserWithEmailAndPassword(this.user.value, this.password.value)
     .then(data => {
       console.log('data passed ', data);
@@ -26,18 +28,20 @@ registerUser() {
     })
     .catch(error => {
       console.log('error creating user ', error);
-        this.alert('Fehler bei der Registrierung! ' + error);
+      this.alert('Fehler bei der Registrierung! ' + error);
     });
-  	console.log('user registered: ', this.user.value);
-}
+    console.log('user registered: ', this.user.value);
+  }
 
-alert(message: string) {
+  alert(message: string) {
     this.alertCtrl.create({
       title: 'Information',
       subTitle: message,
       buttons: ['Okay']
     }).present();
-}
+  }
 
-
+  cancelRegistration(){
+    this.navCtrl.pop();
+  }
 }

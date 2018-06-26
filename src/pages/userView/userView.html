@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Benutzerprofil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card-content>
+    <form #formCtrl="ngForm">
+      <div align="center" *ngIf="formCtrl.form.valid">
+
+        <h1> Benutzerofil</h1>
+        <h4>{{user.name}}</h4>
+      </div>
+      <ion-list>
+        <ion-item>
+          <ion-label stacked required>Anrede</ion-label>
+          <ion-select>
+            <ion-option>Frau</ion-option>
+            <ion-option>Herr</ion-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Vorname</ion-label>
+          <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Nachname</ion-label>
+          <ion-input type="text" [(ngModel)]="user.surname" name="surname" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Geburtsdatum</ion-label>
+          <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Straße und Hausnummer</ion-label>
+          <ion-input type="text" [(ngModel)]="user.adress" name="adress" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Postleitzahl</ion-label>
+          <ion-input type="text" [(ngModel)]="user.plz" name="plz" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Ort</ion-label>
+          <ion-input type="text" [(ngModel)]="user.ort" name="ort" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked required>E-Mail</ion-label>
+          <ion-input type="text" #username required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked required>Passwort</ion-label>
+          <ion-input type="password" #password></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked required>Passwort wiederholen</ion-label>
+          <ion-input type="password" #password></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>PayPal</ion-label>
+          <ion-input type="text" [(ngModel)]="user.payPal" name="payPal" required></ion-input>
+        </ion-item>
+
+
+        <ion-item style="display:none;">
+          <ion-icon></ion-icon>
+          <ion-input></ion-input>
+        </ion-item>
+
+      </ion-list>
+      <button [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Speichern</button>
+      <p class="center-text" (click)="cancelChanges()">Abbrechen</p>
+    </form>
+  </ion-card-content>
+</ion-content>

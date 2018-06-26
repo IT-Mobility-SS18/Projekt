@@ -1,3 +1,16 @@
 page-orderViewService {
-  
+  ion-grid,
+  ion-row,
+  ion-column {
+    border: 1px solid black;
+  }
+
+  ion-row {
+    text-align: left;
+    height: auto;
+  }
+
+  ion-col {
+    text-align: left;
+  }
 }
