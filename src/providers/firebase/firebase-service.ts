@@ -2,14 +2,18 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Order } from '../../models/order/order.model';
 import firebase from "firebase";
+import { User } from '../../models/order/user.model';
 
 @Injectable()
 export class FirebaseService {
+
 
   fireOrderData = firebase.database().ref('/Orders');
   OrderArray= [];
 
   private OrderListRef = this.dbInstance.list<Order>('Orders');
+  UserCreationRef = firebase.database().ref('/User');
+  UserListData = firebase.database().ref('/User');
 
   constructor(public dbInstance: AngularFireDatabase) {
 
@@ -23,6 +27,10 @@ export class FirebaseService {
 
   addCustomerOrder(order: Order) {
     return this.OrderListRef.push(order);
+  }
+
+  addUser(user: User, UserId) {
+    this.UserCreationRef.child(UserId).set(user);
   }
 
   getAllOrders() {
@@ -55,6 +63,19 @@ export class FirebaseService {
       })
   })
   return promise;
+  }
+
+  fillFaceData() {
+    this.UserListData.child('56456nr567').child('Group').set({
+      FaceGroupId: 658675875
+    });
+    this.UserListData.child('56456nr567').child('Group').child('Person').set({
+      FacePersonId: 5654654
+    });
+    this.UserListData.child('56456nr567').child('Group').child('Person').child('PersistedFace').set({
+      PersistedFaceId: 4654657,
+      PictureUrl: '/bla/bla.jpg'
+    })
   }
 
 }

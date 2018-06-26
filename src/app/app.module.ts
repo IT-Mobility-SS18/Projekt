@@ -7,13 +7,18 @@ import { StartPage } from '../pages/start/start';
 import { BasketPage } from '../pages/basket/basket';
 import { HomePage } from '../pages/home/home';
 import { PaymentPage } from '../pages/payment/payment';
+import { Registration2Page } from '../pages/registration2/registration2';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
 import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
-import { OrderViewCustomerPage } from '../pages/orderViewCustomer/orderViewCustomer';
+import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
-import { NewCustomerOrderPage } from '../pages/orderCustomer/orderCustomer';
+import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
+import { UserViewPage } from '../pages/userView/userView';
+
+
+import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -27,8 +32,6 @@ import { firebaseConfig } from '../environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
-import { UserViewPage } from '../pages/userView/userView';
-import { UserStartPage } from '../pages/user-start/user-start';
 
 
 
@@ -40,13 +43,15 @@ import { UserStartPage } from '../pages/user-start/user-start';
     HomePage,
     UserStartPage,
     PaymentPage,
+    Registration2Page,
     RegistrationPage,
     UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    NewCustomerOrderPage,
+    FaceRecognitionPage,
+    OrderCustomerPage,
     UserViewPage
   ],
   imports: [
@@ -66,14 +71,16 @@ import { UserStartPage } from '../pages/user-start/user-start';
     UserStartPage,
     HomePage,
     PaymentPage,
-    RegistrationPage,
+    Registration2Page,
     UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
     RegistrationFormPage,
-    NewCustomerOrderPage,
-    UserViewPage
+    FaceRecognitionPage,
+    OrderCustomerPage,
+    UserViewPage,
+    RegistrationPage
   ],
   providers: [
     PayPal,

@@ -1,6 +1,7 @@
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import firebase from "firebase";
 
 
 
@@ -46,5 +47,9 @@ export class UserViewPage {
   getAge(birthdate){
     let currentTime = new Date().getTime();
      return ((currentTime - birthdate)/31556952000).toFixed(0);
+  }
+
+  logout() {
+    firebase.auth().signOut();
   }
 }
