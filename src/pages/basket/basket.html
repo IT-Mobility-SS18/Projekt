@@ -1,18 +1,91 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu" ></ion-icon>
+      <ion-icon name="search" item-right></ion-icon>
+      <ion-icon name="basket"item-right></ion-icon>
+      <ion-icon name="flash"item-right></ion-icon>
     </button>
     <ion-title>Warenkorb</ion-title>
+
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
+
+<ion-card-content>
+   <ion-slides #slider>
+     <ion-slide>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-item>
+               <ion-thumbnail item-left>
+                 <img src="../assets/imgs/logo.png">
+               </ion-thumbnail>
+               <p>Gerichtname</p>
+               <p>Beschreibung</p>
+               <p>Preis</p>
+               <p>Informationen</p>
+             </ion-item>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-slide>
+
+     <!--<ion-slide>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-item>
+               <ion-thumbnail item-left>
+                 <img src="../assets/imgs/logo.png">
+               </ion-thumbnail>
+               <p>Gerichtname</p>
+               <p>Beschreibung</p>
+               <p>Preis</p>
+               <p>Informationen</p>
+             </ion-item>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-slide>
+
+     <ion-slide>
+       <ion-grid>
+         <ion-row>
+           <ion-col>
+             <ion-item>
+               <ion-thumbnail item-left>
+                 <img src="../assets/imgs/logo.png">
+               </ion-thumbnail>
+               <p>Gerichtname</p>
+               <p>Beschreibung</p>
+               <p>Preis</p>
+               <p>Informationen</p>
+             </ion-item>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+     </ion-slide>-->
+   </ion-slides>
+   <ion-item><p>Lieferkosten:</p></ion-item>
+   <ion-item><p>Betrag:</p></ion-item>
+
+   <button ion-button block (click)="payment()" padding>Bezahlen</button>
+   <button ion-button block (click)="registration()" padding>Kellner rufen</button>
+</ion-card-content>
+</ion-content>
+
+
+
+
+
+<!--<ion-content>
   <ion-card-content>
   Hier ist der Warenkorb.
   <p (click)="goToPayment()">
     Jetzt bezahlen
   </p>
 </ion-card-content>
-</ion-content>
+</ion-content>-->
