@@ -13,6 +13,7 @@ export class FirebaseService {
 
   private OrderListRef = this.dbInstance.list<Order>('Orders');
   private UserListRef = this.dbInstance.list<User>('User');
+  UserCreationRef = firebase.database().ref('/User');
   UserListData = firebase.database().ref('/User/56456nr567/Group/wert');
 
   constructor(public dbInstance: AngularFireDatabase) {
@@ -27,6 +28,10 @@ export class FirebaseService {
 
   addCustomerOrder(order: Order) {
     return this.OrderListRef.push(order);
+  }
+
+  addUser(user: User, UserId) {
+    this.UserCreationRef.child(UserId).set(user);
   }
 
   getAllOrders() {

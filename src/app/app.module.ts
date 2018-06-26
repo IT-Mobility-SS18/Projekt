@@ -7,6 +7,7 @@ import { StartPage } from '../pages/start/start';
 import { BasketPage } from '../pages/basket/basket';
 import { HomePage } from '../pages/home/home';
 import { PaymentPage } from '../pages/payment/payment';
+import { Registration2Page } from '../pages/registration2/registration2';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
@@ -42,6 +43,7 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     HomePage,
     UserStartPage,
     PaymentPage,
+    Registration2Page,
     RegistrationPage,
     UserStartPage,
     OrderViewKitchenPage,
@@ -69,7 +71,7 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     UserStartPage,
     HomePage,
     PaymentPage,
-    RegistrationPage,
+    Registration2Page,
     UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
@@ -77,7 +79,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     RegistrationFormPage,
     FaceRecognitionPage,
     OrderCustomerPage,
-    UserViewPage
+    UserViewPage,
+    RegistrationPage
   ],
   providers: [
     PayPal,

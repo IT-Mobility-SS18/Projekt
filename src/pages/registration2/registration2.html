@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Registrieren {{ UserMail }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card-content>
+    <ion-list>
+     <!--  <ion-item>
+        <ion-label stacked required>Anrede</ion-label>
+        <ion-select>
+          <ion-option [(ngModel)]="user.Sex">Frau</ion-option>
+          <ion-option [(ngModel)]="user.Sex">Herr</ion-option>
+        </ion-select>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked required>Vorname</ion-label>
+        <ion-input type="text" [(ngModel)]="user.FirstName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Nachname</ion-label>
+        <ion-input type="text" [(ngModel)]="user.LastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Geburtsdatum</ion-label>
+        <ion-datetime [(ngModel)]="user.BDay" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" required></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Straße und Hausnummer</ion-label>
+        <ion-input type="text" [(ngModel)]="user.Street"></ion-input>
+      </ion-item>
+
+      <!-- Gibt es für die Postleitzahl eine Formatierung? -->
+      <ion-item>
+        <ion-label stacked required>Postleitzahl</ion-label>
+        <ion-input type="text" ng-pattern="[1-9]{5}" [(ngModel)]="user.ZipCode"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Ort</ion-label>
+        <ion-input type="text" [(ngModel)]="user.City"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Land</ion-label>
+        <ion-input type="text" [(ngModel)]="user.Country"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label stacked required>Newsletter empfangen?</ion-label>
+        <ion-select>
+          <ion-option [(ngModel)]="user.OptInNewsletter">Ja</ion-option>
+          <ion-option [(ngModel)]="user.OptInNewsletter">Lieber nicht</ion-option>
+        </ion-select>
+      </ion-item> -->
+
+      <ion-item>
+        <ion-label stacked required>Telefonnummer</ion-label>
+        <ion-input type="text" [(ngModel)]="user.Phone"></ion-input>
+      </ion-item>
+
+
+    
+      <ion-item style="display:none;">
+        <ion-icon></ion-icon>
+        <ion-input></ion-input>
+      </ion-item>
+    </ion-list>
+
+    &nbsp;
+
+    <button block ion-button (click)="addUserDataToDatabase()" item-left>Registrierung abschließen</button>
+    <p class="center-text" (click)="cancelRegistration()">Abbrechen</p>
+  </ion-card-content>
+</ion-content>
+
+<ion-footer>
+</ion-footer>

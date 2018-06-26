@@ -10,4 +10,5 @@ export interface User {
     Mail;
     OptInNewsletter;
     Group;
+    BDay;
 }
