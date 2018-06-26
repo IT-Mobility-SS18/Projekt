@@ -33,6 +33,10 @@ export class FirebaseService {
     this.UserCreationRef.child(UserId).set(user);
   }
 
+  updateUser(user: User, UserId) {
+    this.UserCreationRef.child(UserId).set(user);
+  }
+
   getAllOrders() {
     var promise = new Promise((resolve, reject) => {
       this.fireOrderData.orderByChild('uid').once('value', (snapshot) => {
@@ -76,6 +80,23 @@ export class FirebaseService {
       PersistedFaceId: 4654657,
       PictureUrl: '/bla/bla.jpg'
     })
+  }
+
+
+  getUserData(UserId) {
+    var promise = new Promise((resolve, reject) => {
+      this.UserListData.child(UserId).orderByChild('uid').once('value', (snapshot) => {
+          let OrderData = snapshot.val();
+          let tmparr = [];
+          for (var key in OrderData) {
+              tmparr.push(OrderData[key]);
+          }
+          resolve(tmparr);
+      }).catch((err) => {
+          reject(err);
+      })
+  })
+  return promise;
   }
 
 }

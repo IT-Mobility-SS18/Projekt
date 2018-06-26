@@ -26,32 +26,32 @@
         </ion-item>
         <ion-item>
           <ion-label stacked>Vorname</ion-label>
-          <ion-input type="text" [(ngModel)]="user.name" name="name" required></ion-input>
+          <ion-input type="text" [(ngModel)]="user.FirstName" name="name" required value="{{CurrentFirstName}}"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label stacked>Nachname</ion-label>
-          <ion-input type="text" [(ngModel)]="user.surname" name="surname" required></ion-input>
+          <ion-input type="text" [(ngModel)]="user.LastName" name="surname" required></ion-input>
         </ion-item>
-        <ion-item>
+        <!-- <ion-item>
           <ion-label stacked>Geburtsdatum</ion-label>
           <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
-        </ion-item>
-        <ion-item>
+        </ion-item> -->
+        <!-- <ion-item>
           <ion-label stacked>Straße und Hausnummer</ion-label>
           <ion-input type="text" [(ngModel)]="user.adress" name="adress" required></ion-input>
-        </ion-item>
+        </ion-item>  -->
         <ion-item>
           <ion-label stacked>Postleitzahl</ion-label>
-          <ion-input type="text" [(ngModel)]="user.plz" name="plz" required></ion-input>
+          <ion-input type="text" [(ngModel)]="user.plz" name="plz" required value="{{CurrentZipCode}}"></ion-input>
         </ion-item>
-        <ion-item>
+        <!-- <ion-item>
           <ion-label stacked>Ort</ion-label>
           <ion-input type="text" [(ngModel)]="user.ort" name="ort" required></ion-input>
-        </ion-item>
+        </ion-item> -->
 
         <ion-item>
           <ion-label stacked required>E-Mail</ion-label>
-          <ion-input type="text" #username required></ion-input>
+          <ion-input type="text" #username required value="{{CurrentMail}}"></ion-input>
         </ion-item>
 
         <ion-item>
@@ -64,10 +64,10 @@
           <ion-input type="password" #password></ion-input>
         </ion-item>
 
-        <ion-item>
+        <!-- <ion-item>
           <ion-label stacked>PayPal</ion-label>
           <ion-input type="text" [(ngModel)]="user.payPal" name="payPal" required></ion-input>
-        </ion-item>
+        </ion-item> -->
 
 
         <ion-item style="display:none;">
@@ -76,7 +76,7 @@
         </ion-item>
 
       </ion-list>
-      <button [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Speichern</button>
+      <button [disabled]="!formCtrl.form.valid" ion-button block (click)="updateUser()">Speichern</button>
       <p class="center-text" (click)="cancelChanges()">Abbrechen</p>
       <p class="center-text" (click)="logout()">Abmelden</p>
     </form>
