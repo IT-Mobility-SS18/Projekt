@@ -15,6 +15,8 @@
           <ion-input placeholder="E-Mail" type="text" #username required></ion-input>
         </ion-item>
 
+        &nbsp;
+
         <ion-item>
           <ion-icon name="ios-key-outline" item-left></ion-icon>
           <ion-input placeholder="Passwort" type="password" #password required></ion-input>
@@ -26,9 +28,13 @@
         </ion-item>
       </ion-list>
 
+      &nbsp;
+
       <button ion-button block (click)="userStart()" padding>Anmelden</button>
       <a><b>Passwort vergessen?</b></a>
+      &nbsp;
       <p class="highlight">oder</p>
+      &nbsp;
       <button ion-button block (click)="registration()" padding>Registrieren</button>
     </ion-card-content>
   </ion-card>
