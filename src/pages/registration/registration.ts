@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Registration2Page } from '../registration2/registration2';
+import { StartPage } from '../start/start';
 
 @IonicPage()
 @Component({
@@ -9,6 +10,8 @@ import { Registration2Page } from '../registration2/registration2';
   templateUrl: 'registration.html',
 })
 export class RegistrationPage {
+
+  public rootPage: any = StartPage;
 
   @ViewChild('username') user;
   @ViewChild('password') password;
@@ -19,7 +22,6 @@ export class RegistrationPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
   }
-
 
   registerUser() {
     this.fire.auth.createUserWithEmailAndPassword(this.user.value, this.password.value)
@@ -47,6 +49,5 @@ export class RegistrationPage {
     this.navCtrl.pop();
   }
 
-  
-}
 
+}

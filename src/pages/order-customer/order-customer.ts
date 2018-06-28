@@ -4,6 +4,7 @@ import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { Order } from '../../models/order/order.model'
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from 'angularfire2/auth';
+import firebase, { storage } from "firebase";
 
 
 @IonicPage()
@@ -31,6 +32,12 @@ export class OrderCustomerPage {
   viewarr= [];
   ItemId = '65246b5b456bvgbrgber';
   UserId;
+  PicStorage = firebase.storage();
+  PicReference = this.PicStorage.ref();
+  ImagesRef = this.PicReference.child('ItemPics');
+  IMGRef = this.ImagesRef.child('image.jpg').getDownloadURL();
+  test;
+  
   public images: any;
    @ViewChild('slider') slider: Slides;
    page = 0;
@@ -40,6 +47,11 @@ export class OrderCustomerPage {
       this.ListCategory = res;
       this.viewarr = res;
     })
+    //IMG testing
+    this.test= this.IMGRef.then(function(url) {
+     return url;
+    })
+    console.log('IMG Path is: ' + this.test);
    }
 
    goToBasket() {
