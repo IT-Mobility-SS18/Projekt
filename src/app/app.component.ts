@@ -34,7 +34,6 @@ export class MyApp {
       { title: 'Login', component: StartPage },
       { title: 'Registrierung', component: RegistrationPage },
       { title: 'Startseite', component: UserStartPage },
-      { title: 'Warenkorb', component: BasketPage },
       { title: 'Bestellen', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
       { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },

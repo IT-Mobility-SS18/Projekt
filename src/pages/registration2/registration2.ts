@@ -6,7 +6,7 @@ import { StartPage } from '../start/start';
 import { User } from '../../models/order/user.model'
 import { firebaseConfig } from '../../environment';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
-import { UserViewPage } from '../userView/userView';
+import { UserStartPage } from '../user-start/user-start';
 
 
 @Component({
@@ -45,6 +45,7 @@ export class Registration2Page {
 
   addUserDataToDatabase() {
     this.FirebaseService.addUser(this.user, this.UserId);
-    this.navCtrl.setRoot(UserViewPage);
+    this.navCtrl.setRoot(UserStartPage);
+
   }
 }
