@@ -31,13 +31,13 @@ export class Registration2Page {
     BDay: undefined
   }
 
-  
+
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
     this.UserId = this.fire.auth.currentUser.uid;
   }
 
-  
+
 
   cancelRegistration(){
     this.navCtrl.pop();
