@@ -95,8 +95,8 @@
 
       </ion-list>
       <button [disabled]="!formCtrl.form.valid" ion-button block (click)="updateUser()">Speichern</button>
-      <p class="center-text" (click)="cancelChanges()">Abbrechen</p>
-      <p class="center-text" (click)="logout()">Abmelden</p>
+      <a class="center-text" (click)="cancelChanges()">Abbrechen</a>
+      <a class="center-text" (click)="logout()">Abmelden</a>
     </form>
   </ion-card-content>
 </ion-content>
