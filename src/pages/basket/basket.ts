@@ -26,5 +26,7 @@ export class BasketPage {
   goToPayment() {
     this.navCtrl.push(PaymentPage, {});
   }
-
+  cancelBasket(){
+    this.navCtrl.pop();
+  }
 }
