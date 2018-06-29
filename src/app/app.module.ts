@@ -5,13 +5,12 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { BasketPage } from '../pages/basket/basket';
-import { HomePage } from '../pages/home/home';
 import { PaymentPage } from '../pages/payment/payment';
 import { Registration2Page } from '../pages/registration2/registration2';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
-import { OrderViewKitchenPage } from '../pages/orderViewKitchen/orderViewKitchen';
-import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
+import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';
+import { OrderViewServicePage } from '../pages/order-view-service/order-view-service';
 import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
@@ -40,7 +39,6 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     MyApp,
     StartPage,
     BasketPage,
-    HomePage,
     UserStartPage,
     PaymentPage,
     Registration2Page,
@@ -69,7 +67,6 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     StartPage,
     BasketPage,
     UserStartPage,
-    HomePage,
     PaymentPage,
     Registration2Page,
     UserStartPage,
