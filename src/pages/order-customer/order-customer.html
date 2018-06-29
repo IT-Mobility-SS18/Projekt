@@ -7,7 +7,7 @@
     </ion-buttons>
 
     <ion-title>Bestellübersicht Kunde</ion-title>
-    
+
     <ion-buttons end>
       <button ion-button>
         <ion-icon name="search" item-right></ion-icon>
@@ -18,7 +18,7 @@
       <button ion-button>
         <ion-icon name="flash" item-right></ion-icon>
       </button>
-      <button ion-button>
+      <button ion-button (click)="goToBasket()">
         <ion-icon name="basket"item-right></ion-icon>
       </button>
     </ion-buttons>
@@ -66,7 +66,7 @@
                 <p>Informationen</p>
               </ion-item>
 
-              
+
             </ion-col>
           </ion-row>
         </ion-grid>

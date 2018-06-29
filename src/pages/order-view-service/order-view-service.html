@@ -44,8 +44,10 @@
         <ion-col col-3>
           <ion-list>
             <ion-item *ngFor="let item of viewarr">
-              <p>Tnr.: {{ item.TableId }}</p>
-              <p>Bnr.: {{ item.OrderId }}</p>
+              <p>TNr.:</p>
+                 <p>{{ item.TableId }}</p>
+              <p>BNr.: </p>
+                <p>{{ item.OrderId }}</p>
             </ion-item>
           </ion-list>
         </ion-col>
