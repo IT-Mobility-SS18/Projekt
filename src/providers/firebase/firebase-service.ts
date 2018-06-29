@@ -27,7 +27,9 @@ export class FirebaseService {
   }
 
   addCustomerOrder(order: Order) {
-    return this.OrderListRef.push(order);
+    //return this.OrderListRef.push(order);
+     this.fireOrderData.push(order);
+    
   }
 
   addUser(user: User, UserId) {

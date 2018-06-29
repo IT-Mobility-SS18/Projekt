@@ -1,14 +1,14 @@
 export interface Order {
-    UserId: string;
-    Name: string;
-    Price: number;
-    Quantity: number;
-    Picture;
-    DeliveryCosts;
+    ItemId;
+    Quantity;
+    UserId;
     OrderState;
+    /* Picture;
+    DeliveryCosts;
+   
     TimeStamp;
     RestaurantId;
     PayStatus;
     Annotations;
-    TableId;
+    TableId; */
 }
