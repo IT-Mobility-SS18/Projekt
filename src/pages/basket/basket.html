@@ -32,15 +32,9 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-item>
-                <ion-thumbnail item-left>
-                  <img src="../assets/imgs/logo.png">
-                </ion-thumbnail>
-                <p>Gerichtname</p>
-                <p>Beschreibung</p>
-                <p>Preis</p>
-                <p>Informationen</p>
-              </ion-item>
+                <ion-item>
+                    <button ion-button *ngFor="let item of ItemSelection" (click)="removeItem(item.Uid)">{{item.ItemId}}</button>
+                  </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -86,6 +80,7 @@
 <ion-item><p>Betrag:</p></ion-item>
 <button ion-button block (click)="goToPayment()">Bezahlen</button>
 <button ion-button block padding>Kellner rufen</button>
+<button ion-button block (click)="createOrder(ItemSelection)">PaymentOK</button>
 <a class="center-text" (click)="cancelBasket()">Abbrechen</a>
 </ion-card-content>
 </ion-content>
