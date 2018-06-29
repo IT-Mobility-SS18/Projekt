@@ -18,8 +18,8 @@
       <button ion-button>
         <ion-icon name="flash" item-right></ion-icon>
       </button>
-      <button ion-button>
-        <ion-icon name="basket"item-right></ion-icon>
+      <button ion-button (click)="goToBasket()">
+        <ion-icon name="basket" item-right></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -32,12 +32,12 @@
         <ion-col col-3>
           Nummern:
         </ion-col>
-        <ion-col col-6>
+        <ion-col col-7>
           Gericht:
         </ion-col>
-        <ion-col col-3>
+        <!--<ion-col col-3>
           Status:
-        </ion-col>
+        </ion-col>-->
       </ion-row>
 
       <ion-row>
@@ -49,25 +49,28 @@
             </ion-item>
           </ion-list>
         </ion-col>
-        <ion-col col-6>
+        <ion-col col-7>
           <ion-list>
             <ion-item *ngFor="let item of viewarr">
               <p>Name: {{ item.Name }}</p>
               <p>Menge: {{ item.Quantity }}</p>
               <p>Zahlung: {{ item.PayStatus }}</p>
+              <!--<ion-icon name="checkmark"></ion-icon>
+              <ion-icon name="close"></ion-icon>-->
+
+              <button ion-button><ion-icon name="checkmark"></ion-icon></button>
+              <button ion-button color="danger"><ion-icon name="close"></ion-icon></button>
             </ion-item>
           </ion-list>
         </ion-col>
-        <ion-col col-3>
-
+      <!--  <ion-col col-3>
           <ion-list>
             <ion-item *ngFor="let item of viewarr">
-              <!--<p>Status: {{ item.OrderState }}</p>-->
               <button ion-button>Fe</button>
               <button ion-button color="danger">Ab</button>
             </ion-item>
           </ion-list>
-        </ion-col>
+        </ion-col>-->
       </ion-row>
     </ion-grid>
     <p>Keine Daten vorhanden!</p>

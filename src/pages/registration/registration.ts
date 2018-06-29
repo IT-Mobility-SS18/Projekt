@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Registration2Page } from '../registration2/registration2';
 import { StartPage } from '../start/start';
+import { BasketPage } from '../basket/basket';
 
 @IonicPage()
 @Component({
@@ -47,5 +48,8 @@ export class RegistrationPage {
 
   cancelRegistration(){
     this.navCtrl.pop();
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 }

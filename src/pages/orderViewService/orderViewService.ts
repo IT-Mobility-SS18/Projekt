@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams} from 'ionic-angular';
 import { FirebaseService } from './../../providers/firebase/firebase-service';
+import { BasketPage } from '../basket/basket';
 
 
 @Component({
@@ -19,5 +20,8 @@ export class OrderViewServicePage {
       this.viewarr = res;
       console.log(this.viewarr);
     })
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 }
