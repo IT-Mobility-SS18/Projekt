@@ -84,10 +84,9 @@
 </ion-slides>
 <ion-item><p>Lieferkosten:</p></ion-item>
 <ion-item><p>Betrag:</p></ion-item>
-
-<button ion-button block (click)="payment()" padding>Bezahlen</button>
-<button ion-button block (click)="registration()" padding>Kellner rufen</button>
-<a class="center-text" (click)="cancelRegistration()">Abbrechen</a>
+<button ion-button block (click)="goToPayment()">Bezahlen</button>
+<button ion-button block padding>Kellner rufen</button>
+<a class="center-text" (click)="cancelBasket()">Abbrechen</a>
 </ion-card-content>
 </ion-content>
 
