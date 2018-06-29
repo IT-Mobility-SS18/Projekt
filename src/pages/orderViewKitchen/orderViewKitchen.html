@@ -1,60 +1,77 @@
-<ion-content>
-  <ion-header>
-    <ion-navbar>
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
       <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
+        <ion-icon name="menu" item-left></ion-icon>
       </button>
-      <ion-title>Bestellübersicht Küche</ion-title>
-    </ion-navbar>
-  </ion-header>
+    </ion-buttons>
 
-  <ion-content>
-    <ion-card-content>
-      <ion-grid>
-        <ion-row>
-          <ion-col col-3>
-            Bestellnr.:
-          </ion-col>
-          <ion-col col-6>
-            Gericht:
-          </ion-col>
-          <ion-col col-3>
-            Status:
-          </ion-col>
-        </ion-row>
+    <ion-title>Bestellübersicht Küche</ion-title>
 
-        <ion-row>
-          <ion-col col-3>
-            <ion-list>
-              <ion-item-divider *ngFor="let item of viewarr">
-                <p>{{ item.OrderId }}</p>
-              </ion-item-divider>
-            </ion-list>
-          </ion-col>
-          <ion-col col-6>
-            <ion-list>
-              <ion-item-divider *ngFor="let item of viewarr">
-                <!--<p>{{ ord.Name }}</p>
-                <p>{{ ord.size }}</p>-->
-                <p>Name: {{ item.Name }}</p>
-                <p>Menge: {{ item.Quantity }}</p>
-              </ion-item-divider>
-            </ion-list>
-          </ion-col>
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="search" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="md-options" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="flash" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="basket"item-right></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
-          <ion-col col-3>
-            <ion-list>
-              <ion-item-divider *ngFor="let ord of viewarr">
-                <button ion-button>Fe</button>
-                <button ion-button color="danger">Ab</button>
-              </ion-item-divider>
-            </ion-list>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+<ion-content>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          Bestellnr.:
+        </ion-col>
+        <ion-col col-6>
+          Gericht:
+        </ion-col>
+        <ion-col col-3>
+          Status:
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-3>
+          <ion-list>
+            <ion-item-divider *ngFor="let item of viewarr">
+              <p>{{ item.OrderId }}</p>
+            </ion-item-divider>
+          </ion-list>
+        </ion-col>
+        <ion-col col-6>
+          <ion-list>
+            <ion-item-divider *ngFor="let item of viewarr">
+              <!--<p>{{ ord.Name }}</p>
+              <p>{{ ord.size }}</p>-->
+              <p>Name: {{ item.Name }}</p>
+              <p>Menge: {{ item.Quantity }}</p>
+            </ion-item-divider>
+          </ion-list>
+        </ion-col>
+
+        <ion-col col-3>
+          <ion-list>
+            <ion-item-divider *ngFor="let ord of viewarr">
+              <button ion-button>Fe</button>
+              <button ion-button color="danger">Ab</button>
+            </ion-item-divider>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <p>Keine Daten vorhanden!</p>
   </ion-card-content>
-  </ion-content>
+</ion-content>
 
-  <ion-footer>
-  </ion-footer>
+<ion-footer>
+</ion-footer>

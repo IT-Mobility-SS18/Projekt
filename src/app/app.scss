@@ -28,5 +28,6 @@ https://pixabay.com/de/lebensmittel-messer-hintergrund-2879265/
 }
 
 .center-text {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }

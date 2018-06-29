@@ -48,6 +48,4 @@ export class RegistrationPage {
   cancelRegistration(){
     this.navCtrl.pop();
   }
-
-
 }

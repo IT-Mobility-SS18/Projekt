@@ -1,93 +1,112 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu" item-left></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>Bestellübersicht Kunde</ion-title>
+    
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="search" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="md-options" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="flash" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="basket"item-right></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
   <ion-toolbar>
-     <ion-segment [(ngModel)]="page" color="dark">
-       <ion-segment-button value="category1"(click)="selectedTab(0)">
-         Kategorie 1
-       </ion-segment-button>
-       <ion-segment-button value="category2" (click)="selectedTab(1)">
-         Kategorie 2
-       </ion-segment-button>
-       <ion-segment-button value="category3" (click)="selectedTab(2)">
-         Kategorie 3
-       </ion-segment-button>
-     </ion-segment>
-   </ion-toolbar>
-<ion-card-content>
-   <ion-slides #slider>
-     <ion-slide>
-       <ion-grid>
-         <ion-row>
-           <ion-col>
-             <ion-item>
-               <ion-thumbnail item-left>
-                 <img src="../assets/imgs/logo.png">
-               </ion-thumbnail>
-               <p>Gerichtname
-                 <ion-item *ngFor="let item of viewarr">
-                   {{ item.Name }}
-                 </ion-item>
-               </p>
-               <p>Beschreibung</p>
-               <ion-item *ngFor="let item of viewarr">
-                {{ item.Description }}
+    <ion-segment [(ngModel)]="page" color="dark">
+      <ion-segment-button value="category1"(click)="selectedTab(0)">
+        Kategorie 1
+      </ion-segment-button>
+      <ion-segment-button value="category2" (click)="selectedTab(1)">
+        Kategorie 2
+      </ion-segment-button>
+      <ion-segment-button value="category3" (click)="selectedTab(2)">
+        Kategorie 3
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-card-content>
+    <ion-slides #slider>
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-thumbnail item-left>
+                  <img src="../assets/imgs/logo.png">
+                </ion-thumbnail>
+                <p>Gerichtname
+                  <ion-item *ngFor="let item of viewarr">
+                    {{ item.Name }}
+                  </ion-item>
+                </p>
+                <p>Beschreibung</p>
+                <ion-item *ngFor="let item of viewarr">
+                  {{ item.Description }}
+                </ion-item>
+                <p>Preis</p>
+                <ion-item *ngFor="let item of viewarr">
+                  {{ item.Price }}
+                </ion-item>
+                <p>Informationen</p>
               </ion-item>
-               <p>Preis</p>
-               <ion-item *ngFor="let item of viewarr">
-                {{ item.Price }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-thumbnail item-left>
+                  <img src="../assets/imgs/logo.png">
+                </ion-thumbnail>
+                <p>Gerichtname</p>
+                <p>Beschreibung</p>
+                <p>Preis</p>
+                <p>Informationen</p>
               </ion-item>
-               <p>Informationen</p>
-             </ion-item>
-           </ion-col>
-         </ion-row>
-       </ion-grid>
-     </ion-slide>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
 
-     <ion-slide>
-       <ion-grid>
-         <ion-row>
-           <ion-col>
-             <ion-item>
-               <ion-thumbnail item-left>
-                 <img src="../assets/imgs/logo.png">
-               </ion-thumbnail>
-               <p>Gerichtname</p>
-               <p>Beschreibung</p>
-               <p>Preis</p>
-               <p>Informationen</p>
-             </ion-item>
-           </ion-col>
-         </ion-row>
-       </ion-grid>
-     </ion-slide>
-
-     <ion-slide>
-       <ion-grid>
-         <ion-row>
-           <ion-col>
-             <ion-item>
-               <ion-thumbnail item-left>
-                 <img src="../assets/imgs/logo.png">
-               </ion-thumbnail>
-               <p>Gerichtname</p>
-               <p>Beschreibung</p>
-               <p>Preis</p>
-               <p>Informationen</p>
-             </ion-item>
-           </ion-col>
-         </ion-row>
-       </ion-grid>
-     </ion-slide>
-   </ion-slides>
-</ion-card-content>
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-thumbnail item-left>
+                  <img src="../assets/imgs/logo.png">
+                </ion-thumbnail>
+                <p>Gerichtname</p>
+                <p>Beschreibung</p>
+                <p>Preis</p>
+                <p>Informationen</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+  </ion-card-content>
 </ion-content>
 
 

@@ -1,17 +1,35 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu" item-left></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>Zahlungsbestätigung</ion-title>
+
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="search" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="md-options" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="flash" item-right></ion-icon>
+      </button>
+      <button ion-button>
+        <ion-icon name="basket"item-right></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
   <ion-card-content>
-  <p (click)="goToOrderViewCustomer()">
-    Meine Bestellungen
-  </p>
-</ion-card-content>
+    <p (click)="goToOrderViewCustomer()">
+      Meine Bestellungen
+    </p>
+  </ion-card-content>
 </ion-content>
