@@ -71,16 +71,25 @@ export class FirebaseService {
   }
 
   fillFaceData() {
-    this.UserListData.child('56456nr567').child('Group').set({
+    //FaceRec/GroupId/PersonId/#PersistedFace
+    this.UserListData.child('56456nr567').child('FaceRecognition').set({
       FaceGroupId: 658675875
     });
-    this.UserListData.child('56456nr567').child('Group').child('Person').set({
-      FacePersonId: 5654654
+    this.UserListData.child('56456nr567').child('FaceRecognition').child('658675875').set({
+      FacePersonId: 56546545
     });
-    this.UserListData.child('56456nr567').child('Group').child('Person').child('PersistedFace').set({
-      PersistedFaceId: 4654657,
+    /* this.UserListData.child('56456nr567').child('Group').child('Person').set({
+      FacePersonId: 5654654
+    }); */
+    this.UserListData.child('56456nr567').child('FaceRecognition').child('658675875').child('56546545').push({
+      PersistedFaceId: 56546456,
       PictureUrl: '/bla/bla.jpg'
     })
+  }
+
+  PersonGroupCreate() {
+    UserId = '56456nr567';
+    this.UserListData.child.child(UserId).child('FaceRecognition');
   }
 
 
