@@ -88,8 +88,8 @@ export class FirebaseService {
   }
 
   PersonGroupCreate() {
-    UserId = '56456nr567';
-    this.UserListData.child.child(UserId).child('FaceRecognition');
+   // UserId = '56456nr567';
+    //this.UserListData.child.child(UserId).child('FaceRecognition');
   }
 
 
