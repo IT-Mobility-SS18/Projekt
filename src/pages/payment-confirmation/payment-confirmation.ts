@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BasketPage } from '../basket/basket';
 
 import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 
@@ -26,6 +27,9 @@ export class PaymentConfirmationPage {
 
   goToPayment() {
     this.navCtrl.push(OrderViewCustomerPage, {});
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 
 }
