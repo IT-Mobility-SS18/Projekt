@@ -5,8 +5,8 @@ import { BasketPage } from '../basket/basket';
 
 
 @Component({
-  selector: 'page-orderViewKitchen',
-  templateUrl: 'orderViewKitchen.html'
+  selector: 'page-order-view-kitchen',
+  templateUrl: 'order-view-kitchen.html'
 })
 
 export class OrderViewKitchenPage {
