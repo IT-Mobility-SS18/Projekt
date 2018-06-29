@@ -31,8 +31,8 @@
       <!--  <ion-item>
       <ion-label stacked required>Anrede</ion-label>
       <ion-select>
-      <ion-option [(ngModel)]="user.Sex">Frau</ion-option>
-      <ion-option [(ngModel)]="user.Sex">Herr</ion-option>
+      <ion-option [(ngModel)]="user.Sex" value="f">Frau</ion-option>
+      <ion-option [(ngModel)]="user.Sex" value="m">Herr</ion-option>
     </ion-select>
   </ion-item> -->
 
@@ -92,6 +92,18 @@
   <ion-input></ion-input>
 </ion-item>
 </ion-list>
+
+&nbsp;
+
+<ion-item>
+  <ion-label stacked required>Ich stimme der <b>Datenschutzerklärung</b> und den <b>AGB</b> zu.</ion-label>
+  <ion-checkbox></ion-checkbox>
+</ion-item>
+
+<ion-item>
+  <ion-label stacked required>Ich möchte den Newsletter von <b>App-Name</b> erhalten.</ion-label>
+  <ion-checkbox></ion-checkbox>
+</ion-item>
 
 &nbsp;
 
