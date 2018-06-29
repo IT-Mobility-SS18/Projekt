@@ -40,6 +40,14 @@
             <p>Datum</p>
             <p>Informationen</p>
           </ion-item>
+          <ion-list>
+              <ion-item-divider *ngFor="let item of viewarr">
+                <!--<p>{{ ord.Name }}</p>
+                <p>{{ ord.size }}</p>-->
+                <p>Name: {{ item.Name }}</p>
+                <p>Menge: {{ item.Quantity }}</p>
+              </ion-item-divider>
+            </ion-list>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -18,7 +18,11 @@ export class BasketPage {
     ItemId: undefined,
     Quantity: undefined,
     UserId: this.fire.auth.currentUser.uid,
-    OrderState: 'open'
+    OrderState: 'open',
+    Name: undefined,
+    TableId: 44,
+    RestaurantId: 45,
+    TimeStamp: '2018-xxxxx'
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth,) {
@@ -37,8 +41,10 @@ export class BasketPage {
   }
   createOrder(ItemSelection){
     for (var idIteration in ItemSelection) {
+      //hier müssen alle order bestandteile rein!! später auch die oben hardgecodeden
       this.order.ItemId = ItemSelection[idIteration].ItemId;
       this.order.Quantity = ItemSelection[idIteration].Quantity;
+      this.order.Name = ItemSelection[idIteration].Name;
       console.log('aktuele Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
   }

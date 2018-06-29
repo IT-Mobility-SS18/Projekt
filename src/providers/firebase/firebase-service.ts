@@ -28,6 +28,7 @@ export class FirebaseService {
 
   addCustomerOrder(order: Order) {
     //return this.OrderListRef.push(order);
+    console.log('Daten werden geschrieben: ' + JSON.stringify(order));
      this.fireOrderData.push(order);
     
   }
@@ -119,6 +120,22 @@ export class FirebaseService {
           let tmparr = [];
           for (var key in ItemData) {
               tmparr.push(ItemData[key]);
+          }
+          resolve(tmparr);
+      }).catch((err) => {
+          reject(err);
+      })
+  })
+  return promise;
+  }
+
+  getOrdersPerUser(UserIdInput) {
+    var promise = new Promise((resolve, reject) => {
+      this.fireOrderData.orderByChild('UserId').equalTo(UserIdInput).once('value', (snapshot) => {
+          let OrderData = snapshot.val();
+          let tmparr = [];
+          for (var key in OrderData) {
+              tmparr.push(OrderData[key]);
           }
           resolve(tmparr);
       }).catch((err) => {

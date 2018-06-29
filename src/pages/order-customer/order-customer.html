@@ -48,14 +48,7 @@
             <ion-col>
 
               <ion-item>
-                <ion-label>Items</ion-label>
-                <ion-select multiple>
-                  <ion-option *ngFor="let item of viewarr" [value] ="item.Name"  >{{item.Name}}</ion-option>
-                </ion-select>
-              </ion-item>
-
-              <ion-item>
-                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid)">{{item.Name}}</button>
+                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)">{{item.Name}}</button>
               </ion-item>
 
             </ion-col>

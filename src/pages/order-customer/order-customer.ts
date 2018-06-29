@@ -68,13 +68,14 @@ export class OrderCustomerPage {
     this.FirebaseService.addCustomerOrder(order);
   }
 
-  addToArray(ItemId) {
+  addToArray(ItemId, ItemName) {
     //alert mit Auswahl der Menge
     //this.CurrentQuantity= this.presentPrompt(ItemId);
-    //console.log('eingetrsgene Menge: ' + this.EnteredQuantity);
+    console.log('Gelesener NAme: ' + ItemName);
     this.ItemSelection.push({
       ItemId: ItemId,
-      Quantity: 3}
+      Quantity: 3,
+      Name: ItemName}
     );
   }
 

@@ -3,12 +3,13 @@ export interface Order {
     Quantity;
     UserId;
     OrderState;
+    Name;
+    TableId;
+    RestaurantId;
+    TimeStamp;
     /* Picture;
     DeliveryCosts;
-   
-    TimeStamp;
-    RestaurantId;
     PayStatus;
     Annotations;
-    TableId; */
+     */
 }
