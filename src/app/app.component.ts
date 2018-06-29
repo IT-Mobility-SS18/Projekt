@@ -8,7 +8,7 @@ import { BasketPage } from '../pages/basket/basket';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';
-import { OrderViewServicePage } from '../pages/orderViewService/orderViewService';
+import { OrderViewServicePage } from '../pages/order-view-service/order-view-service';
 import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
