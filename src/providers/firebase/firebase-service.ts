@@ -20,7 +20,7 @@ export class FirebaseService {
 
 }
 
-  
+
 
   removeItem(id) {
     this.dbInstance.list('/shoppingItems/').remove(id);
@@ -54,7 +54,7 @@ export class FirebaseService {
   return promise;
   }
 
-  getOrdersKitchen() { 
+  getOrdersKitchen() {
     var promise = new Promise((resolve, reject) => {
       this.fireOrderData.orderByChild('OrderState').equalTo('open').once('value', (snapshot) => {
           let OrderData = snapshot.val();
@@ -110,7 +110,7 @@ export class FirebaseService {
   }
 
 
-  getRestaurantItems(CurrentRestaurantId) { 
+  getRestaurantItems(CurrentRestaurantId) {
     var promise = new Promise((resolve, reject) => {
       this.ItemListData.orderByChild('RestaurantId').equalTo(CurrentRestaurantId).once('value', (snapshot) => {
           let ItemData = snapshot.val();

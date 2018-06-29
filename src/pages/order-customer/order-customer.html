@@ -46,7 +46,7 @@
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-item>
+             <!--  <ion-item>
                 <ion-thumbnail item-left>
                   <img src="../assets/imgs/logo.png">
                 </ion-thumbnail>
@@ -64,7 +64,15 @@
                   {{ item.Price }}
                 </ion-item>
                 <p>Informationen</p>
+              </ion-item> -->
+
+               <ion-item>
+              <ion-label>Gerichte</ion-label>
+              <ion-select [(ngModel)]="data.person" multiple>
+                <ion-option *ngFor="let item of viewarr" [value]="" [checked]="false">{{item.Name}}</ion-option>
+              </ion-select>
               </ion-item>
+
             </ion-col>
           </ion-row>
         </ion-grid>
