@@ -15,7 +15,16 @@ import { BasketPage } from '../basket/basket';
   templateUrl: 'registration2.html'
 })
 
+
 export class Registration2Page {
+  onChangeSex(SelectedValue){
+    console.log("Selected Sex", SelectedValue);
+  }
+
+  onChangeOptInNewsletter(SelectedValue){
+    console.log("Selected OptInNewsletter", SelectedValue);
+  }
+
   UserId: string;
   UserMail: string;
   user: User = {
@@ -26,19 +35,15 @@ export class Registration2Page {
     City: undefined,
     Country: undefined,
     Phone: undefined,
-    Sex: 'undefined',
+    Sex: undefined,
     Mail: this.fire.auth.currentUser.email,
-    OptInNewsletter: 'undefined',
+    OptInNewsletter: undefined,
     BDay: undefined
   }
-
-
 
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
     this.UserId = this.fire.auth.currentUser.uid;
   }
-
-
 
   cancelRegistration(){
     this.navCtrl.pop();

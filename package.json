@@ -33,7 +33,7 @@
         "angularfire2": "^5.0.0-rc.10",
         "card.io.cordova.mobilesdk": "^2.1.0",
         "com.paypal.cordova.mobilesdk": "^3.5.0",
-        "cordova-android": "^7.1.0",
+        "cordova-android": "7.1.0",
         "cordova-browser": "5.0.3",
         "cordova-ios": "^4.5.4",
         "cordova-plugin-dbcopy": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
@@ -50,7 +50,7 @@
         "paypal": "^1.0.1",
         "rxjs": "5.5.11",
         "sw-toolbox": "3.6.0",
-        "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.0.2",
+        "uk.co.workingedge.cordova.plugin.sqliteporter": "^1.0.3",
         "zone.js": "0.8.26"
     },
     "devDependencies": {

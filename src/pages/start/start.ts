@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 //nur für Payment-Test
 import { PaymentPage } from '../payment/payment';
+import { FirebaseService } from '../../providers/firebase/firebase-service';
 //end
 
 @Component({
@@ -14,16 +15,32 @@ import { PaymentPage } from '../payment/payment';
   templateUrl: 'start.html'
 })
 
+
+
 export class StartPage {
   @ViewChild('username') user;
   @ViewChild('password') password;
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, private fire:AngularFireAuth,public navParams: NavParams){}
+  constructor(public navCtrl: NavController,private alertCtrl: AlertController, private fire:AngularFireAuth,public navParams: NavParams, public FirebaseService: FirebaseService){
+    
+  }
 
   //nur für Payment-Test
   testPayment() {
   this.navCtrl.push(PaymentPage, {});
 }
 //end
+ionViewDidLoad() {
+  //console.log('test!!!!!');
+  this.RedirectUser();
+}
+
+RedirectUser() {
+  var givenValue = this.FirebaseService.checkAuthentication();
+  console.log('Value givenValue ist: ' + givenValue);
+if (givenValue == true) {
+this.navCtrl.setRoot(UserStartPage);
+}
+}
 
 alert(message: string) {
   this.alertCtrl.create({

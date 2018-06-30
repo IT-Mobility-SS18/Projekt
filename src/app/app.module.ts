@@ -15,8 +15,6 @@ import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-c
 import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
 import { UserViewPage } from '../pages/userView/userView';
-
-
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'

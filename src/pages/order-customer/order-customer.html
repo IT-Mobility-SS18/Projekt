@@ -40,6 +40,9 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+
+
+
   <ion-card-content>
     <ion-slides #slider>
       <ion-slide>
@@ -48,7 +51,7 @@
             <ion-col>
 
               <ion-item>
-                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)">{{item.Name}}</button>
+                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)" class="button-inner">{{item.Name}}</button>
               </ion-item>
 
 

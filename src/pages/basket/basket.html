@@ -33,7 +33,7 @@
           <ion-row>
             <ion-col>
                 <ion-item>
-                    <button ion-button *ngFor="let item of ItemSelection" (click)="removeItem(item.Uid)">{{item.ItemId}}</button>
+                    <button ion-button *ngFor="let item of ItemSelection" (click)="removeItem(item.Uid)" class="button-inner">{{item.ItemId}} ({{item.Name}})</button>
                   </ion-item>
             </ion-col>
           </ion-row>
