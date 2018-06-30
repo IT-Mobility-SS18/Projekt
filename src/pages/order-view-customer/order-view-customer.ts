@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, Slides} from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { BasketPage } from '../basket/basket';
 
 @Component({
   selector: 'page-order-view-customer',
@@ -20,6 +21,9 @@ export class OrderViewCustomerPage {
       this.viewarr = res;
       console.log(this.viewarr);
     })
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 
 }
