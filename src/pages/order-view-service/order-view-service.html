@@ -19,65 +19,98 @@
         <ion-icon name="flash" item-right></ion-icon>
       </button>
       <button ion-button (click)="goToBasket()">
-        <ion-icon name="basket" item-right></ion-icon>
+        <ion-icon name="basket"item-right></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="page" color="dark">
+      <ion-segment-button value="open"(click)="selectedTab(0)">
+        Offen
+      </ion-segment-button>
+      <ion-segment-button value="ready" (click)="selectedTab(1)">
+        Bereit
+      </ion-segment-button>
+      <ion-segment-button value="done" (click)="selectedTab(2)">
+        Erledigt
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+
+
   <ion-card-content>
-    <ion-grid>
-      <ion-row>
-        <ion-col col-3>
-          Nummern:
-        </ion-col>
-        <ion-col col-7>
-          Gericht:
-        </ion-col>
-        <!--<ion-col col-3>
-          Status:
-        </ion-col>-->
-      </ion-row>
-
-      <ion-row>
-        <ion-col col-3>
-          <ion-list>
-            <ion-item *ngFor="let item of viewarr">
-              <p>TNr.:</p>
-                 <p>{{ item.TableId }}</p>
-              <p>BNr.: </p>
+    <ion-slides #slider>
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3>
+              Nummern:
+            </ion-col>
+            <ion-col col-7>
+              Gericht:
+            </ion-col>
+            <!--<ion-col col-3>
+            Status:
+          </ion-col>-->
+        </ion-row>
+        <ion-row>
+          <ion-col col-3>
+            <ion-list>
+              <ion-item *ngFor="let item of viewarr">
+                <p>TNr.:</p>
+                <p>{{ item.TableId }}</p>
+                <p>BNr.: </p>
                 <p>{{ item.OrderId }}</p>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-        <ion-col col-7>
-          <ion-list>
-            <ion-item *ngFor="let item of viewarr">
-              <p>Name: {{ item.Name }}</p>
-              <p>Menge: {{ item.Quantity }}</p>
-              <p>Zahlung: {{ item.PayStatus }}</p>
-              <!--<ion-icon name="checkmark"></ion-icon>
-              <ion-icon name="close"></ion-icon>-->
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <ion-col col-7>
+            <ion-list>
+              <ion-item *ngFor="let item of viewarr">
+                <p>Name: {{ item.Name }}</p>
+                <p>Menge: {{ item.Quantity }}</p>
+                <p>Zahlung: {{ item.PayStatus }}</p>
+                <!--<ion-icon name="checkmark"></ion-icon>
+                <ion-icon name="close"></ion-icon>-->
 
-              <button ion-button><ion-icon name="checkmark"></ion-icon></button>
-              <button ion-button color="danger"><ion-icon name="close"></ion-icon></button>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      <!--  <ion-col col-3>
+                <button ion-button><ion-icon name="checkmark"></ion-icon></button>
+                <button ion-button color="danger"><ion-icon name="close"></ion-icon></button>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+          <!--  <ion-col col-3>
           <ion-list>
-            <ion-item *ngFor="let item of viewarr">
-              <button ion-button>Fe</button>
-              <button ion-button color="danger">Ab</button>
-            </ion-item>
-          </ion-list>
-        </ion-col>-->
-      </ion-row>
-    </ion-grid>
-    <p>Keine Daten vorhanden!</p>
-  </ion-card-content>
+          <ion-item *ngFor="let item of viewarr">
+          <button ion-button>Fe</button>
+          <button ion-button color="danger">Ab</button>
+        </ion-item>
+      </ion-list>
+    </ion-col>-->
+  </ion-row>
+
+</ion-grid>
+<p>Keine Daten vorhanden!</p>
+</ion-slide>
+
+<ion-slide>
+
+  <p>Keine Daten vorhanden!</p>
+
+</ion-slide>
+
+<ion-slide>
+  <p>Keine Daten vorhanden!</p>
+</ion-slide>
+</ion-slides>
+</ion-card-content>
 </ion-content>
 
+
 <ion-footer>
+
 </ion-footer>
