@@ -18,7 +18,7 @@ import { BasketPage } from '../basket/basket';
 
 export class Registration2Page {
   onChangeSex(SelectedValue){
-    console.log("Selected Sex:", SelectedValue);
+    console.log("Selected Sex", SelectedValue);
   }
 
   onChangeOptInNewsletter(SelectedValue){
