@@ -7,6 +7,7 @@ import { User } from '../../models/order/user.model'
 import { firebaseConfig } from '../../environment';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { UserStartPage } from '../user-start/user-start';
+import { BasketPage } from '../basket/basket';
 
 
 @Component({
@@ -47,5 +48,8 @@ export class Registration2Page {
     this.FirebaseService.addUser(this.user, this.UserId);
     this.navCtrl.setRoot(UserStartPage);
 
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 }

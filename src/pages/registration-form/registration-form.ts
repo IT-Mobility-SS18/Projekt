@@ -5,6 +5,7 @@ import { FirebaseService } from './../../providers/firebase/firebase-service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import firebase from "firebase";
+import { BasketPage } from '../basket/basket';
 
 @IonicPage()
 @Component({
@@ -66,4 +67,7 @@ getAllCatList() {
   })
   return promise;
 }
+goToBasket(){
+    this.navCtrl.push(BasketPage);
+  }
 }

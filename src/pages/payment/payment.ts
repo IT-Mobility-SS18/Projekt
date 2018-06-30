@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { paypalConfig } from '../../environment';
+import { BasketPage } from '../basket/basket';
 
 import { PaymentConfirmationPage } from '../payment-confirmation/payment-confirmation';
 
@@ -71,6 +72,9 @@ export class PaymentPage {
   }, () => {
     // Error in initialization, maybe PayPal isn't supported or something else
   });
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 
 }

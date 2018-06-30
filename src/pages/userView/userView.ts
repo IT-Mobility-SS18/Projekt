@@ -4,6 +4,7 @@ import firebase from "firebase";
 import { User } from '../../models/order/user.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { BasketPage } from '../basket/basket';
 
 
 
@@ -73,7 +74,7 @@ export class UserViewPage {
       this.CurrentZipCode = this.viewarr[10];
     })
     //var item1 = this.viewarr.find(i => i.id == 1);
-    
+
   }
 
   /* ionViewDidLoad() {
@@ -110,5 +111,8 @@ export class UserViewPage {
 
   updateUser() {
     this.FirebaseService.updateUser(this.user, this.UserId);
+  }
+  goToBasket(){
+    this.navCtrl.push(BasketPage);
   }
 }

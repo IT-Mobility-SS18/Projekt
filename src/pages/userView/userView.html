@@ -18,7 +18,7 @@
       <button ion-button>
         <ion-icon name="flash" item-right></ion-icon>
       </button>
-      <button ion-button>
+      <button ion-button (click)="goToBasket()">
         <ion-icon name="basket"item-right></ion-icon>
       </button>
     </ion-buttons>
@@ -31,7 +31,7 @@
     <form #formCtrl="ngForm">
       <div align="center" *ngIf="formCtrl.form.valid">
 
-        <h1> Benutzerofil</h1>
+        <h1> Benutzerprofil</h1>
         <h4>{{user.name}}</h4>
       </div>
       <ion-list>
