@@ -145,4 +145,17 @@ export class FirebaseService {
   return promise;
   }
 
+
+  checkAuthentication() {
+    var user = firebase.auth().currentUser;
+
+    if (user) {
+      // User is signed in.
+      return true;
+    } else {
+      // No user is signed in.
+      return false;
+    }
+  }
+
 }
