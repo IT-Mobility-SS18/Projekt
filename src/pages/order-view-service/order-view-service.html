@@ -47,11 +47,15 @@
     <ion-list>
       <ion-item-sliding *ngFor="let item of viewarr">
         <ion-item>
+          <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
+          <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+          <p>Tisch {{ item.TableId }}</p>
+          <!--
           <p>Tisch Nummer:{{ item.TableId }}</p>
           <p>Bestell Nummer:{{ item.OrderId }}</p>
           <p>Name: {{ item.Name }}</p>
           <p>Menge: {{ item.Quantity }}</p>
-          <p>Zahlung: {{ item.PayStatus }}</p>
+          <p>Zahlung: {{ item.PayStatus }}</p>-->
         </ion-item>
         <ion-item-options side="left">
           <button ion-button color="danger">
