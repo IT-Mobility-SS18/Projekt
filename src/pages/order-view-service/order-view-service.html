@@ -25,54 +25,88 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content>
-<ion-toolbar>
-    <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="open"(click)="selectedTab(0)">
-        Offen
-      </ion-segment-button>
-      <ion-segment-button value="ready" (click)="selectedTab(1)">
-        Bereit
-      </ion-segment-button>
-      <ion-segment-button value="done" (click)="selectedTab(2)">
-        Erledigt
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
+  <ion-list>
+    <ion-list-header color="light">
+      <b>Auslieferung</b>
+    </ion-list-header>
 
-
-  <ion-content padding>
-    <ion-slides #slider>
-  <ion-slide>
-    <ion-list>
-      <ion-item-sliding *ngFor="let item of viewarr">
-        <ion-item>
-          <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
-          <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-          <p>Tisch {{ item.TableId }}</p>
-          <!--
-          <p>Tisch Nummer:{{ item.TableId }}</p>
-          <p>Bestell Nummer:{{ item.OrderId }}</p>
-          <p>Name: {{ item.Name }}</p>
-          <p>Menge: {{ item.Quantity }}</p>
-          <p>Zahlung: {{ item.PayStatus }}</p>-->
-        </ion-item>
-        <ion-item-options side="left">
-          <button ion-button color="danger">
-            <ion-icon name="trash"></ion-icon> Stornieren</button>
+    <ion-item-sliding *ngFor="let item of viewarr">
+      <ion-item>
+        <ion-icon name="ios-radio-button-off"  item-start></ion-icon>
+        <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+        <p>Tisch {{ item.TableId }}</p>
+        <!--
+        <p>Tisch Nummer:{{ item.TableId }}</p>
+        <p>Bestell Nummer:{{ item.OrderId }}</p>
+        <p>Name: {{ item.Name }}</p>
+        <p>Menge: {{ item.Quantity }}</p>
+        <p>Zahlung: {{ item.PayStatus }}</p>-->
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+          <ion-icon name="trash"></ion-icon> Stornieren</button>
           <button ion-button color="secondary">
             <ion-icon name="checkmark"></ion-icon>Fertig</button>
-        </ion-item-options>
-      </ion-item-sliding>
-  </ion-list>
-  </ion-slide>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+      <ion-list>
+        <ion-list-header color="light">
+          <b>Offen</b>
+        </ion-list-header>
 
-  <ion-slide>
-   <p>Keine Daten vorhanden!</p>
-  </ion-slide>
-  <ion-slide>
-    <p>Keine Daten vorhanden!</p>
-  </ion-slide>
-  </ion-slides>
-  </ion-content>
-  </ion-content>
+        <ion-item-sliding *ngFor="let item of viewarr">
+          <ion-item>
+            <ion-icon name="help-circle" color="lightgrey" item-start></ion-icon>
+            <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+            <p>Tisch {{ item.TableId }}</p>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="danger">
+              <ion-icon name="trash"></ion-icon> Stornieren</button>
+              <button ion-button color="secondary">
+                <ion-icon name="checkmark"></ion-icon>Fertig</button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+          <ion-list>
+            <ion-list-header color="light">
+              <b>Geliefert</b>
+            </ion-list-header>
+
+            <ion-item-sliding *ngFor="let item of viewarr">
+              <ion-item>
+                <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
+                <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+                <p>Tisch {{ item.TableId }}</p>
+              </ion-item>
+              <ion-item-options side="right">
+                <button ion-button color="danger">
+                  <ion-icon name="trash"></ion-icon> Stornieren</button>
+                  <button ion-button color="secondary">
+                    <ion-icon name="checkmark"></ion-icon>Fertig</button>
+                  </ion-item-options>
+                </ion-item-sliding>
+              </ion-list>
+              <ion-list>
+                <ion-list-header color="light">
+                  <b>Storniert</b>
+                </ion-list-header>
+
+                <ion-item-sliding *ngFor="let item of viewarr">
+                  <ion-item>
+                    <ion-icon name="close-circle" color="danger" item-start></ion-icon>
+                    <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+                    <p>Tisch {{ item.TableId }}</p>
+                  </ion-item>
+                  <ion-item-options side="right">
+                    <button ion-button color="danger">
+                      <ion-icon name="trash"></ion-icon> Stornieren</button>
+                      <button ion-button color="secondary">
+                        <ion-icon name="checkmark"></ion-icon>Fertig</button>
+                      </ion-item-options>
+                    </ion-item-sliding>
+                  </ion-list>
+                </ion-content>
