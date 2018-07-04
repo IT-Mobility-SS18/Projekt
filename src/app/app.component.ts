@@ -10,7 +10,6 @@ import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';
 import { OrderViewServicePage } from '../pages/order-view-service/order-view-service';
 import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
-import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/userView/userView';
@@ -38,7 +37,6 @@ export class MyApp {
       { title: 'Bestellungen', component: OrderViewCustomerPage },
       { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
       { title: 'Bestellübersicht Service', component: OrderViewServicePage },
-      { title: 'RegistrationForm', component: RegistrationFormPage },
       { title: 'FaceRecognition', component: FaceRecognitionPage },
       { title: 'Benutzerprofil', component: UserViewPage }
     ];
