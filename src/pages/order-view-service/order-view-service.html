@@ -27,7 +27,7 @@
 
 
 <ion-content>
-  <ion-list>
+  <!--<ion-list>
     <ion-list-header color="light">
       <b>Auslieferung</b>
     </ion-list-header>
@@ -36,14 +36,14 @@
       <ion-item>
         <ion-icon name="ios-radio-button-off"  item-start></ion-icon>
         <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-        <p>Tisch {{ item.TableId }}</p>
+        <p>Tisch {{ item.TableId }}</p>-->
         <!--
         <p>Tisch Nummer:{{ item.TableId }}</p>
         <p>Bestell Nummer:{{ item.OrderId }}</p>
         <p>Name: {{ item.Name }}</p>
         <p>Menge: {{ item.Quantity }}</p>
         <p>Zahlung: {{ item.PayStatus }}</p>-->
-      </ion-item>
+      <!--</ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger">
           <ion-icon name="trash"></ion-icon> Stornieren</button>
@@ -51,7 +51,7 @@
             <ion-icon name="checkmark"></ion-icon>Fertig</button>
           </ion-item-options>
         </ion-item-sliding>
-      </ion-list>
+      </ion-list>-->
       <ion-list>
         <ion-list-header color="light">
           <b>Offen</b>
@@ -66,7 +66,7 @@
           <ion-item-options side="right">
             <button ion-button color="danger">
               <ion-icon name="trash"></ion-icon> Stornieren</button>
-              <button ion-button color="secondary">
+              <button ion-button color="primary">
                 <ion-icon name="checkmark"></ion-icon>Fertig</button>
               </ion-item-options>
             </ion-item-sliding>
@@ -82,12 +82,12 @@
                 <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
                 <p>Tisch {{ item.TableId }}</p>
               </ion-item>
-              <ion-item-options side="right">
+              <!--<ion-item-options side="right">
                 <button ion-button color="danger">
                   <ion-icon name="trash"></ion-icon> Stornieren</button>
                   <button ion-button color="secondary">
                     <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                  </ion-item-options>
+                  </ion-item-options>-->
                 </ion-item-sliding>
               </ion-list>
               <ion-list>
@@ -101,12 +101,12 @@
                     <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
                     <p>Tisch {{ item.TableId }}</p>
                   </ion-item>
-                  <ion-item-options side="right">
+                  <!--<ion-item-options side="right">
                     <button ion-button color="danger">
                       <ion-icon name="trash"></ion-icon> Stornieren</button>
                       <button ion-button color="secondary">
                         <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                      </ion-item-options>
+                      </ion-item-options>-->
                     </ion-item-sliding>
                   </ion-list>
                 </ion-content>

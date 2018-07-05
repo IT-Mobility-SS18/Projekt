@@ -25,23 +25,45 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
+    <ion-list-header color="light">
+      <b>Offen</b>
+    </ion-list-header>
+  <!--<ion-list>-->
     <ion-item-sliding *ngFor="let item of viewarr">
       <ion-item>
-        <p>Bestell Nummer:{{ item.OrderId }}</p>
-        <p>Name: {{ item.Name }}</p>
-        <p>Menge: {{ item.Quantity }}</p>
+        <ion-icon name="help-circle" color="lightgrey" item-start></ion-icon>
+        <h2>Bestell Nummer:{{ item.OrderId }}</h2>
+          <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger">
           <ion-icon name="trash"></ion-icon> Stornieren</button>
-        <button ion-button color="secondary">
-          <ion-icon name="checkmark"></ion-icon>fertig</button>
-
-
+        <button ion-button color="primary">
+          <ion-icon name="checkmark"></ion-icon>übergeben</button>
       </ion-item-options>
     </ion-item-sliding>
+    </ion-list>
+    <ion-list>
+      <ion-list-header color="light">
+        <b>Übergeben</b>
+      </ion-list-header>
+      <ion-item *ngFor="let item of viewarr">
+            <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
+          <h2>Bestell Nummer:{{ item.OrderId }}</h2>
+            <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+        </ion-item>
+</ion-list>
+<ion-list>
+  <ion-list-header color="light">
+    <b>Storniert</b>
+  </ion-list-header>
+  <ion-item *ngFor="let item of viewarr">
+        <ion-icon name="close-circle" color="danger" item-start></ion-icon>
+      <h2>Bestell Nummer:{{ item.OrderId }}</h2>
+        <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+    </ion-item>
 </ion-list>
 </ion-content>
 
