@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Item } from 'ionic-angular';
 import { PaymentPage } from '../payment/payment';
 import { Order } from '../../models/order/order.model';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
@@ -13,6 +13,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class BasketPage {
 
   ItemSelection = [];
+  BasketStateColor: string;
 
   order: Order = {
     ItemId: undefined,
@@ -27,10 +28,12 @@ export class BasketPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth,) {
     this.ItemSelection = navParams.get('ItemSelection');
+   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
+    this.checkBasketContent();
   }
 
   goToPayment() {
@@ -48,5 +51,13 @@ export class BasketPage {
       console.log('aktuele Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
   }
+  }
+
+  checkBasketContent() {
+    if (this.ItemSelection.length > 0) {
+      this.BasketStateColor = "#0094d2"; //blau
+    } else {
+      this.BasketStateColor = "#99cc33"; //grün ios, android weiß?!
+    }
   }
 }
