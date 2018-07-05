@@ -19,7 +19,8 @@
         <ion-icon name="flash" item-right></ion-icon>
       </button>
       <button ion-button>
-        <ion-icon name="basket"item-right></ion-icon>
+
+          <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -33,7 +34,7 @@
           <ion-row>
             <ion-col>
                 <ion-item>
-                    <button ion-button *ngFor="let item of ItemSelection" (click)="removeItem(item.Uid)" class="button-inner">{{item.ItemId}} ({{item.Name}})</button>
+                    <button ion-button *ngFor="let item of ItemSelection" (click)="removeItem(item.Uid)" class="button-inner">{{item.ItemId}} ... {{item.Name}} ... {{item.Price.toFixed(2)}} €</button>
                   </ion-item>
             </ion-col>
           </ion-row>

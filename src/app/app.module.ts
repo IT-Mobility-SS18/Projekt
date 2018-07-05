@@ -12,7 +12,6 @@ import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';
 import { OrderViewServicePage } from '../pages/order-view-service/order-view-service';
 import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
-import { RegistrationFormPage } from '../pages/registration-form/registration-form';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
 import { UserViewPage } from '../pages/userView/userView';
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
@@ -45,7 +44,6 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
-    RegistrationFormPage,
     FaceRecognitionPage,
     OrderCustomerPage,
     UserViewPage
@@ -71,7 +69,6 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewKitchenPage,
     OrderViewServicePage,
     OrderViewCustomerPage,
-    RegistrationFormPage,
     FaceRecognitionPage,
     OrderCustomerPage,
     UserViewPage,

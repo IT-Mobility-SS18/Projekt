@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { RegistrationFormPage } from '../registration-form/registration-form';
 import { StartPage } from '../start/start';
 import { User } from '../../models/order/user.model'
 import { firebaseConfig } from '../../environment';
