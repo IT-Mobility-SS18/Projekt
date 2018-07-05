@@ -4,8 +4,6 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 import { paypalConfig } from '../../environment';
 import { BasketPage } from '../basket/basket';
 
-import { PaymentConfirmationPage } from '../payment-confirmation/payment-confirmation';
-
 /**
  * Generated class for the PaymentPage page.
  *
@@ -41,7 +39,7 @@ export class PaymentPage {
 
       //renderSinglePaymentUI: Start PayPal UI to collect payment from the user. See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/ for more documentation of the params.
       this.payPal.renderSinglePaymentUI(payment).then(() => {
-        this.navCtrl.push(PaymentConfirmationPage);
+
         // Successfully paid
 
         // Example sandbox response
