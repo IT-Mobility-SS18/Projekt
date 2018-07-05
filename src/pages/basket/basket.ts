@@ -20,6 +20,7 @@ export class BasketPage {
     UserId: this.fire.auth.currentUser.uid,
     OrderState: 'open',
     Name: undefined,
+    Price: undefined,
     TableId: 44,
     RestaurantId: 45,
     TimeStamp: '2018-xxxxx'
@@ -45,6 +46,7 @@ export class BasketPage {
       this.order.ItemId = ItemSelection[idIteration].ItemId;
       this.order.Quantity = ItemSelection[idIteration].Quantity;
       this.order.Name = ItemSelection[idIteration].Name;
+      this.order.Price = ItemSelection[idIteration].Price;
       console.log('aktuele Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
   }

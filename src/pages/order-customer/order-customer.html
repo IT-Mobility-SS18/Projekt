@@ -51,7 +51,7 @@
             <ion-col>
 
               <ion-item>
-                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)" class="button-inner">{{item.Name}}...{{item.Price.toFixed(2)}} €</button>
+                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)" class="button-inner">{{item.Name}}...{{item.Price.toFixed(2)}} €</button>
               </ion-item>
 
 

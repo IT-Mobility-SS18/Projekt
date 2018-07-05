@@ -7,6 +7,7 @@ export interface Order {
     TableId;
     RestaurantId;
     TimeStamp;
+    Price;
     /* Picture;
     DeliveryCosts;
     PayStatus;
