@@ -43,61 +43,25 @@
 
 
 
-  <ion-card-content>
-    <ion-slides #slider>
-      <ion-slide>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
 
-              <ion-item>
-                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)" class="button-inner">{{item.Name}}</button>
-              </ion-item>
+  <ion-content>
+    <ion-list>
+      <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)">
+        <ion-item>
+          <p>{{item.Name}}</p>
+          <p>{{item.Description}}</p>
+            <p>{{item.Price}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="light">
+           <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
+        </ion-item-options>
+      </ion-item-sliding>
+      </ion-list>
+
+  </ion-content>
 
 
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-
-      <ion-slide>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-thumbnail item-left>
-                  <img src="../assets/imgs/logo.png">
-                </ion-thumbnail>
-                <p>Gerichtname</p>
-                <p>Beschreibung</p>
-                <p>Preis</p>
-                <p>Informationen</p>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-
-      <ion-slide>
-        <ion-grid>
-          <ion-row>
-            <ion-col>
-              <ion-item>
-                <ion-thumbnail item-left>
-                  <img src="../assets/imgs/logo.png">
-                </ion-thumbnail>
-                <p>Gerichtname</p>
-                <p>Beschreibung</p>
-                <p>Preis</p>
-                <p>Informationen</p>
-              </ion-item>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
-  </ion-card-content>
-</ion-content>
 
 
 <ion-footer>
