@@ -14,6 +14,7 @@ export class BasketPage {
 
   ItemSelection = [];
   BasketStateColor: string;
+  amount: string;
 
   order: Order = {
     ItemId: undefined,
@@ -29,12 +30,12 @@ export class BasketPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth,) {
     this.ItemSelection = navParams.get('ItemSelection');
-   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
     this.checkBasketContent();
+    this.sumPrices();
   }
 
   goToPayment() {
@@ -52,7 +53,7 @@ export class BasketPage {
       this.order.Price = ItemSelection[idIteration].Price;
       console.log('aktuele Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
-  }
+    }
   }
 
   checkBasketContent() {
@@ -61,5 +62,13 @@ export class BasketPage {
     } else {
       this.BasketStateColor = "#99cc33"; //grün ios, android weiß?!
     }
+  }
+
+  sumPrices(){
+    var tmpPrice = 0.0;
+    for (var idIteration in this.ItemSelection){
+      tmpPrice = this.ItemSelection[idIteration].Price + tmpPrice;
+    }
+    this.amount = tmpPrice.toFixed(2);
   }
 }

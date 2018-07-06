@@ -44,11 +44,11 @@
 
   <ion-content>
     <ion-list>
-      <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)">
+      <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)">
         <ion-item>
           <p>{{item.Name}}</p>
           <p>{{item.Description}}</p>
-            <p>{{item.Price}}</p>
+            <p>{{item.Price.toFixed(2)}} €</p>
         </ion-item>
         <ion-item-options side="right">
           <button ion-button color="light">
