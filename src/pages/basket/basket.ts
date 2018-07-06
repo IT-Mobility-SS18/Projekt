@@ -39,7 +39,7 @@ export class BasketPage {
   }
 
   goToPayment() {
-    this.navCtrl.push(PaymentPage, {});
+    this.navCtrl.push(PaymentPage, {amount: this.amount});
   }
   cancelBasket(){
     this.navCtrl.pop();
