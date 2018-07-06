@@ -23,10 +23,10 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>
+<ion-header>
   <ion-toolbar>
     <ion-segment [(ngModel)]="page" color="dark">
       <ion-segment-button value="category1"(click)="selectedTab(0)">
@@ -40,37 +40,40 @@
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
+</ion-header>
 
 
-  <ion-content>
-    <ion-list>
-      <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name)">
-        <ion-item>
-          <p>{{item.Name}}</p>
-          <p>{{item.Description}}</p>
-            <p>{{item.Price}}</p>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="light">
-           <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
-        </ion-item-options>
-      </ion-item-sliding>
-      </ion-list>
+<ion-content padding>
+  <div [ngSwitch]="page">
+      <ion-list *ngSwitchCase="'category1'">
+        <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)">
+          <ion-item>
+            <p>{{item.Name}}</p>
+            <p>{{item.Description}}</p>
+              <p>{{item.Price.toFixed(2)}} €</p>
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button color="light">
+             <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
+          </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+ <ion-list *ngSwitchCase="'category2'">
+      <ion-item>
+        Test1
+      </ion-item>
+    </ion-list>
 
-            <!--  <ion-item>
-                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)" class="button-inner">{{item.Name}}...{{item.Price.toFixed(2)}} €</button>
-              </ion-item>-->
-
-
-            <!--  <ion-item>
-                <button ion-button *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)" class="button-inner">{{item.Name}}...{{item.Price.toFixed(2)}} €</button>
-              </ion-item>-->
-
-
-  </ion-content>
-
-
-
+    <ion-list *ngSwitchCase="'category3'">
+      <ion-item>
+        Test2
+      </ion-item>
+      <ion-item>
+        Test3
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
 
 <ion-footer>
   <p (click)="goToBasket()">
