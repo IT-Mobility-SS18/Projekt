@@ -7,7 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import firebase, { storage } from "firebase";
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-order-customer',
   templateUrl: 'order-customer.html',

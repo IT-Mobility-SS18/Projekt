@@ -8,7 +8,7 @@ import { BasketPage } from '../basket/basket';
 
 
 
-@IonicPage()
+
 @Component({
   selector: 'page-userView',
   templateUrl: 'userView.html',

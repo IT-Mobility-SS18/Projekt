@@ -5,7 +5,7 @@ import { Registration2Page } from '../registration2/registration2';
 import { StartPage } from '../start/start';
 import { BasketPage } from '../basket/basket';
 
-@IonicPage()
+
 @Component({
   selector: 'page-registration',
   templateUrl: 'registration.html',

@@ -5,7 +5,7 @@ import { Order } from '../../models/order/order.model';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-@IonicPage()
+
 @Component({
   selector: 'page-basket',
   templateUrl: 'basket.html',

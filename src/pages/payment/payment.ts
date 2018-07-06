@@ -11,7 +11,7 @@ import { BasketPage } from '../basket/basket';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
+
 @Component({
   selector: 'page-payment',
   templateUrl: 'payment.html',
