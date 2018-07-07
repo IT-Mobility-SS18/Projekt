@@ -32,7 +32,6 @@ import { BasketService } from '../providers/basket/basket-service';
 
 
 import { Camera } from '@ionic-native/camera'; /* QR-Code */
-import { QrScannerPage } from '../pages/qr-scanner/qr-scanner'; /* QR-Code */
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
 
 class CameraMock extends Camera {  /* QR-Code */
@@ -59,7 +58,6 @@ class CameraMock extends Camera {  /* QR-Code */
     FaceRecognitionPage,
     OrderCustomerPage,
     UserViewPage,
-    QrScannerPage,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +84,6 @@ class CameraMock extends Camera {  /* QR-Code */
     OrderCustomerPage,
     UserViewPage,
     RegistrationPage,
-    QrScannerPage,
   ],
   providers: [
     PayPal,
