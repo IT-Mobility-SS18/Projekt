@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, IonicPage, Slides} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
+import { BasketService } from '../../providers/basket/basket-service';
 
 
 
@@ -12,9 +13,10 @@ import { BasketPage } from '../basket/basket';
 
 export class UserStartPage {
   public images: any;
+  BasketStateColor = this.BasketService.BasketStateColor;
   @ViewChild('slider') slider: Slides;
   page = 0;
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private BasketService: BasketService) {
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
   }

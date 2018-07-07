@@ -29,6 +29,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
 import {QrcodePage} from "../pages/qrcode/qrcode";
+import { BasketService } from '../providers/basket/basket-service';
 
 
 
@@ -82,6 +83,7 @@ import {QrcodePage} from "../pages/qrcode/qrcode";
     PayPal,
     StatusBar,
     FirebaseService,
+    BasketService,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -15,7 +15,6 @@ import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/userView/userView';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-
 @Component({
   templateUrl: 'app.html'
 })

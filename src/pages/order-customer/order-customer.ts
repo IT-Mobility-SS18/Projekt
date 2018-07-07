@@ -5,6 +5,8 @@ import { Order } from '../../models/order/order.model'
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase, { storage } from "firebase";
+import { BasketService } from '../../providers/basket/basket-service';
+import { isPlatformBrowser } from '@angular/common';
 
 
 
@@ -13,6 +15,7 @@ import firebase, { storage } from "firebase";
   templateUrl: 'order-customer.html',
 })
 export class OrderCustomerPage {
+  BasketStateColor = this.BasketService.BasketStateColor;
  /*  order: Order = {
     UserId: undefined,
     Name: undefined,
@@ -44,7 +47,7 @@ export class OrderCustomerPage {
   public images: any;
    @ViewChild('slider') slider: Slides;
    page = 0;
-   constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController) {
+   constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController, private BasketService: BasketService) {
     this.UserId = this.fire.auth.currentUser.uid;
     FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
       this.ListCategory = res;
@@ -58,7 +61,7 @@ export class OrderCustomerPage {
    }
 
    goToBasket() {
-     this.navCtrl.push(BasketPage, {ItemSelection: this.ItemSelection});
+     this.navCtrl.push(BasketPage, {});
    }
 
    selectedTab(index) {
@@ -68,19 +71,19 @@ export class OrderCustomerPage {
     this.FirebaseService.addCustomerOrder(order);
   }
 
-  addToArray(ItemId, ItemName, ItemPrice) {
-    //alert mit Auswahl der Menge
-    //this.CurrentQuantity= this.presentPrompt(ItemId);
-    console.log('Gelesener NAme: ' + ItemName);
-    this.ItemSelection.push({
-      ItemId: ItemId,
-      Quantity: 3,
-      Name: ItemName,
-      Price: ItemPrice}
-    );
-  }
-
-  presentPrompt(ItemId) {
+    addToArray(ItemId, ItemName, ItemPrice) {   
+      this.ItemSelection = this.BasketService.ItemSelection;
+        this.ItemSelection.push({
+          ItemId: ItemId,
+          Quantity: 1,
+          Name: ItemName,
+          Price: ItemPrice}
+        );
+      this.BasketService.ItemSelection = this.ItemSelection;
+      this.BasketService.checkBasketContent();
+    }
+ 
+ presentPrompt(ItemId) {
     let alert = this.alertCtrl.create({
       title: 'Menge',
       inputs: [
@@ -96,7 +99,7 @@ export class OrderCustomerPage {
           handler: data => {
             //console.log('ausgelesene Menge: ' + data.Quantity);
             this.CurrentQuantity = data.Quantity
-            this.ItemSelection.push({Quantity: data.Quantity});
+            this.BasketService.ItemSelection.push({Quantity: data.Quantity});
             //return  data.Quantity;
           }
         }

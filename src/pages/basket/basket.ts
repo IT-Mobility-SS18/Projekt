@@ -4,6 +4,8 @@ import { PaymentPage } from '../payment/payment';
 import { Order } from '../../models/order/order.model';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { BasketService } from '../../providers/basket/basket-service';
+import { checkBindingNoChanges } from '@angular/core/src/view/util';
 
 
 @Component({
@@ -12,8 +14,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class BasketPage {
 
-  ItemSelection = [];
-  BasketStateColor: string;
+  BasketStateColor = this.BasketService.BasketStateColor;
+  ItemSelection = this.BasketService.ItemSelection;
   amount: string;
 
   order: Order = {
@@ -28,13 +30,11 @@ export class BasketPage {
     TimeStamp: '2018-xxxxx'
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth,) {
-    this.ItemSelection = navParams.get('ItemSelection');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
-    this.checkBasketContent();
     this.sumPrices();
   }
 
@@ -51,16 +51,8 @@ export class BasketPage {
       this.order.Quantity = ItemSelection[idIteration].Quantity;
       this.order.Name = ItemSelection[idIteration].Name;
       this.order.Price = ItemSelection[idIteration].Price;
-      console.log('aktuele Menge: ' + this.order.Quantity);
+      console.log('aktuelle Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
-    }
-  }
-
-  checkBasketContent() {
-    if (this.ItemSelection.length > 0) {
-      this.BasketStateColor = "#0094d2"; //blau
-    } else {
-      this.BasketStateColor = "#99cc33"; //grün ios, android weiß?!
     }
   }
 
@@ -70,5 +62,15 @@ export class BasketPage {
       tmpPrice = this.ItemSelection[idIteration].Price + tmpPrice;
     }
     this.amount = tmpPrice.toFixed(2);
+  }
+
+  removeItem(ind) {
+    this.BasketService.removeFromArray(ind);
+    this.sumPrices();
+    console.log(this.ItemSelection.length);
+    if (this.ItemSelection.length < 1) {
+      this.BasketService.checkBasketContent();
+      this.navCtrl.pop();
+    }
   }
 }

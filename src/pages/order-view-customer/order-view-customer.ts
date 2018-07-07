@@ -3,6 +3,7 @@ import { NavController, NavParams, Slides} from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
+import { BasketService } from '../../providers/basket/basket-service';
 
 @Component({
   selector: 'page-order-view-customer',
@@ -14,8 +15,9 @@ export class OrderViewCustomerPage {
   ListCategory = [];
   viewarr= [];
   UserId = this.fire.auth.currentUser.uid;
+  BasketStateColor = this.BasketService.BasketStateColor;
 
-  constructor(public navCtrl: NavController, public firebaseService: FirebaseService, private fire: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public firebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService) {
     this.firebaseService.getOrdersPerUser(this.UserId).then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
