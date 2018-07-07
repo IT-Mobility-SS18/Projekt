@@ -28,6 +28,7 @@ import { firebaseConfig } from '../environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
+import {QrcodePage} from "../pages/qrcode/qrcode";
 
 
 
@@ -46,7 +47,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewCustomerPage,
     FaceRecognitionPage,
     OrderCustomerPage,
-    UserViewPage
+    UserViewPage,
+    QrcodePage
   ],
   imports: [
     BrowserModule,
@@ -72,7 +74,9 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     FaceRecognitionPage,
     OrderCustomerPage,
     UserViewPage,
-    RegistrationPage
+    RegistrationPage,
+    QrcodePage
+
   ],
   providers: [
     PayPal,

@@ -30,16 +30,6 @@ export class StartPage {
 }
 //end
 ionViewDidLoad() {
-  //console.log('test!!!!!');
-  this.RedirectUser();
-}
-
-RedirectUser() {
-  var givenValue = this.FirebaseService.checkAuthentication();
-  console.log('Value givenValue ist: ' + givenValue);
-if (givenValue == true) {
-this.navCtrl.setRoot(UserStartPage);
-}
 }
 
 alert(message: string) {
@@ -51,7 +41,6 @@ alert(message: string) {
 }
 
 userStart(){
-  //this.navCtrl.push(UserStartPage);
   this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
   .then( data => {
     console.log('Login data passed', this.fire.auth.currentUser);
