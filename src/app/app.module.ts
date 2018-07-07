@@ -28,7 +28,6 @@ import { firebaseConfig } from '../environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
-import {QrcodePage} from "../pages/qrcode/qrcode";  /* QR-Code */
 import { BasketService } from '../providers/basket/basket-service';
 
 
