@@ -14,6 +14,7 @@ import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition'
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/userView/userView';
 import { QrScannerPage } from '../pages/qr-scanner/qr-scanner';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,13 +22,24 @@ import { QrScannerPage } from '../pages/qr-scanner/qr-scanner';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = StartPage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private fire: AngularFireAuth) {
+    
+    const unsubscribe = fire.auth.onAuthStateChanged(user => {
+      if (!user) {
+        this.nav.setRoot(StartPage);
+        unsubscribe();
+      } else {
+        this.nav.setRoot(UserStartPage);
+        unsubscribe();
+      }
+    })
     this.initializeApp();
 
+    //test
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Login', component: StartPage },

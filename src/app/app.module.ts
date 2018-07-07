@@ -28,13 +28,15 @@ import { firebaseConfig } from '../environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
+import {QrcodePage} from "../pages/qrcode/qrcode";  /* QR-Code */
+import { BasketService } from '../providers/basket/basket-service';
 
 
 import { Camera } from '@ionic-native/camera'; /* QR-Code */
 import { QrScannerPage } from '../pages/qr-scanner/qr-scanner'; /* QR-Code */
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
 
-class CameraMock extends Camera {
+class CameraMock extends Camera {  /* QR-Code */
   getPicture(options) {
     return new Promise((resolve, reject) => {
       resolve("BASE_64_ENCODED_DATA_GOES_HERE");
@@ -91,11 +93,12 @@ class CameraMock extends Camera {
     PayPal,
     StatusBar,
     FirebaseService,
+    BasketService,
     SplashScreen,
     Camera, /* QR-Code */
-    QRScanner,
+    QRScanner, /* QR-Code */
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock}
+    {provide: Camera, useClass: CameraMock}  /* QR-Code */
   ]
 })
 export class AppModule {}
