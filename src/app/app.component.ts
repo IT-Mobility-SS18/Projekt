@@ -13,7 +13,7 @@ import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-c
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/userView/userView';
-
+import { QrScannerPage } from '../pages/qr-scanner/qr-scanner';
 
 @Component({
   templateUrl: 'app.html'
@@ -38,7 +38,8 @@ export class MyApp {
       { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
       { title: 'Bestellübersicht Service', component: OrderViewServicePage },
       { title: 'FaceRecognition', component: FaceRecognitionPage },
-      { title: 'Benutzerprofil', component: UserViewPage }
+      { title: 'Benutzerprofil', component: UserViewPage },
+      { title: 'QR', component: QrScannerPage }
     ];
   }
 

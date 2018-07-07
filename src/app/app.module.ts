@@ -30,6 +30,17 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
 
 
+import { Camera } from '@ionic-native/camera'; /* QR-Code */
+import { QrScannerPage } from '../pages/qr-scanner/qr-scanner'; /* QR-Code */
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
+
+class CameraMock extends Camera {
+  getPicture(options) {
+    return new Promise((resolve, reject) => {
+      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
+    })
+  }
+}
 
 @NgModule({
   declarations: [
@@ -46,7 +57,8 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     OrderViewCustomerPage,
     FaceRecognitionPage,
     OrderCustomerPage,
-    UserViewPage
+    UserViewPage,
+    QrScannerPage,
   ],
   imports: [
     BrowserModule,
@@ -72,14 +84,18 @@ import { FirebaseService } from '../providers/firebase/firebase-service';
     FaceRecognitionPage,
     OrderCustomerPage,
     UserViewPage,
-    RegistrationPage
+    RegistrationPage,
+    QrScannerPage,
   ],
   providers: [
     PayPal,
     StatusBar,
     FirebaseService,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Camera, /* QR-Code */
+    QRScanner,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: Camera, useClass: CameraMock}
   ]
 })
 export class AppModule {}
