@@ -106,5 +106,14 @@ export class OrderCustomerPage {
       ]
     });
     alert.present();
-  }         
+  }
+  
+  details() {
+    const alert = this.alertCtrl.create({
+      title: 'Text',
+      subTitle: 'Text',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }

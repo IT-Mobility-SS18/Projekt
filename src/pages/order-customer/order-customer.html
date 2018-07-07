@@ -29,7 +29,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-segment [(ngModel)]="page" color="dark">
-      <ion-segment-button value="category1"(click)="selectedTab(0)">
+      <ion-segment-button value="category1" (click)="selectedTab(0)">
         Kategorie 1
       </ion-segment-button>
       <ion-segment-button value="category2" (click)="selectedTab(1)">
@@ -53,7 +53,7 @@
               <p>{{item.Price.toFixed(2)}} €</p>
           </ion-item>
           <ion-item-options side="right">
-            <button ion-button color="light">
+            <button ion-button color="light" (click)="details()">
              <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
           </ion-item-options>
         </ion-item-sliding>
