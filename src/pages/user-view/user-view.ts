@@ -6,14 +6,15 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
+import { StartPage } from '../start/start';
 
 
 
 
 
 @Component({
-  selector: 'page-userView',
-  templateUrl: 'userView.html',
+  selector: 'page-user-view',
+  templateUrl: 'user-view.html',
 })
 
 export class UserViewPage {
@@ -111,6 +112,7 @@ export class UserViewPage {
 
   logout() {
     firebase.auth().signOut();
+    this.navCtrl.push(StartPage);
   }
 
   updateUser() {
