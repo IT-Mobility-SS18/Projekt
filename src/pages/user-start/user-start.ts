@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, IonicPage, Slides,MenuController} from 'ionic-angular';
+import { NavController, NavParams, IonicPage, Slides,MenuController, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
@@ -22,10 +22,12 @@ export class UserStartPage {
               public navParams: NavParams,
               private BasketService: BasketService,
               private qrScanner: QRScanner,
-              private menu: MenuController) {
+              private menu: MenuController,
+              public alertCtrl: AlertController) {
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
   }
+
 
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
@@ -41,6 +43,13 @@ export class UserStartPage {
   username: string;
   UserId: string;
 
+  alert(message: string) {
+        this.alertCtrl.create({
+            title: 'Information',
+            subTitle: message,
+            buttons: ['Okay']
+        }).present();
+    }
   start() {
     // Optionally request the permission early
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
@@ -58,7 +67,9 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
+        this.alert(myData['result']);
       });
+
  
     } else if (status.denied) {
       // camera permission was permanently denied
@@ -67,8 +78,15 @@ export class UserStartPage {
     } else {
       // permission was denied, but not permanently. You can ask for permission again at a later time.
     }
+
   })
-  .catch((e: any) => console.log('Error is', e));
-}
-  
+  .catch((e: any) => {
+    console.log('Error is', e);
+      this.alert(e.message);
+  });
+
+
+  }
+
+
 }
