@@ -1,5 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
+<<<<<<< HEAD
 import { NavController, NavParams, IonicPage, Slides} from 'ionic-angular';
+=======
+import { NavController, NavParams, IonicPage, Slides,MenuController} from 'ionic-angular';
+>>>>>>> parent of 0120daf9... Alert-Meldung nach dem Scannen hinzugefügt
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
@@ -17,11 +21,27 @@ export class UserStartPage {
   BasketStateColor = this.BasketService.BasketStateColor;
   @ViewChild('slider') slider: Slides;
   page = 0;
+<<<<<<< HEAD
   constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private BasketService: BasketService, private qrScanner: QRScanner) {
+=======
+  constructor(private fire: AngularFireAuth,
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              private BasketService: BasketService,
+              private qrScanner: QRScanner,
+              private menu: MenuController) {
+>>>>>>> parent of 0120daf9... Alert-Meldung nach dem Scannen hinzugefügt
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
   }
 
+<<<<<<< HEAD
+=======
+  ionViewDidEnter() {
+        this.menu.swipeEnable(false);
+  }
+
+>>>>>>> parent of 0120daf9... Alert-Meldung nach dem Scannen hinzugefügt
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }
