@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
+import { StartPage } from '../start/start';
 
 
 
@@ -111,6 +112,7 @@ export class UserViewPage {
 
   logout() {
     firebase.auth().signOut();
+    this.navCtrl.push(StartPage);
   }
 
   updateUser() {
