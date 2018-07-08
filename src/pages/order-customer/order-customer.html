@@ -48,7 +48,7 @@
       <ion-list *ngSwitchCase="'category1'">
         <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)">
           <ion-item>
-            <p>{{item.Name}}</p>
+            {{item.Name}}
             <p>{{item.Description}}</p>
               <p>{{item.Price.toFixed(2)}} €</p>
           </ion-item>
