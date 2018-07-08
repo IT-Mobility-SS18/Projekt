@@ -26,9 +26,5 @@ removeFromArray(GivenIndex) {
     (this.ItemSelection).splice(GivenIndex,1);
 }
 
-removeAll() {
-  this.ItemSelection = [];
-}
-
   
 }

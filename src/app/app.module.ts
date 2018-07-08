@@ -13,7 +13,7 @@ import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kit
 import { OrderViewServicePage } from '../pages/order-view-service/order-view-service';
 import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
-import { UserViewPage } from '../pages/user-view/user-view';
+import { UserViewPage } from '../pages/userView/userView';
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'

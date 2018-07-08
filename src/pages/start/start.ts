@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, IonicPage, AlertController} from 'ionic-angular';
+
 import { RegistrationPage } from '../registration/registration';
 import { UserStartPage } from '../user-start/user-start';
 import { AngularFireAuth } from 'angularfire2/auth';

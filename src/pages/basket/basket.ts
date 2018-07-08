@@ -73,10 +73,4 @@ export class BasketPage {
       this.navCtrl.pop();
     }
   }
-
-  clearBasket() {
-    this.BasketService.removeAll();
-    this.BasketService.checkBasketContent();
-    this.navCtrl.pop();
-  }
 }
