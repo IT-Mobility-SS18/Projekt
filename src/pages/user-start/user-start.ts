@@ -1,9 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-<<<<<<< HEAD
-import { NavController, NavParams, IonicPage, Slides} from 'ionic-angular';
-=======
-import { NavController, NavParams, IonicPage, Slides,MenuController} from 'ionic-angular';
->>>>>>> parent of 0120daf9... Alert-Meldung nach dem Scannen hinzugefügt
+import { NavController, NavParams, IonicPage, Slides,MenuController, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
@@ -21,27 +17,22 @@ export class UserStartPage {
   BasketStateColor = this.BasketService.BasketStateColor;
   @ViewChild('slider') slider: Slides;
   page = 0;
-<<<<<<< HEAD
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private BasketService: BasketService, private qrScanner: QRScanner) {
-=======
   constructor(private fire: AngularFireAuth,
               public navCtrl: NavController,
               public navParams: NavParams,
               private BasketService: BasketService,
               private qrScanner: QRScanner,
-              private menu: MenuController) {
->>>>>>> parent of 0120daf9... Alert-Meldung nach dem Scannen hinzugefügt
+              private menu: MenuController,
+              public alertCtrl: AlertController) {
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
   }
 
-<<<<<<< HEAD
-=======
+
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
   }
 
->>>>>>> parent of 0120daf9... Alert-Meldung nach dem Scannen hinzugefügt
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }
@@ -52,20 +43,33 @@ export class UserStartPage {
   username: string;
   UserId: string;
 
+  alert(message: string) {
+        this.alertCtrl.create({
+            title: 'Information',
+            subTitle: message,
+            buttons: ['Okay']
+        }).present();
+    }
   start() {
     // Optionally request the permission early
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
+
     if (status.authorized) {
       // camera permission was granted
- 
- 
       // start scanning
       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-        console.log('Scanned something', text);
- 
+        var myData = <any>{};
+        myData  = text;
+
+        console.log(myData);
+        console.log('result', myData['result']);
+
+
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
+        this.alert(myData['result']);
       });
+
  
     } else if (status.denied) {
       // camera permission was permanently denied
@@ -74,8 +78,15 @@ export class UserStartPage {
     } else {
       // permission was denied, but not permanently. You can ask for permission again at a later time.
     }
+
   })
-  .catch((e: any) => console.log('Error is', e));
-}
-  
+  .catch((e: any) => {
+    console.log('Error is', e);
+      this.alert(e.message);
+  });
+
+
+  }
+
+
 }
