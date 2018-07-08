@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, IonicPage, Slides} from 'ionic-angular';
+import { NavController, NavParams, IonicPage, Slides,MenuController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
@@ -17,9 +17,18 @@ export class UserStartPage {
   BasketStateColor = this.BasketService.BasketStateColor;
   @ViewChild('slider') slider: Slides;
   page = 0;
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private BasketService: BasketService, private qrScanner: QRScanner) {
+  constructor(private fire: AngularFireAuth,
+              public navCtrl: NavController,
+              public navParams: NavParams,
+              private BasketService: BasketService,
+              private qrScanner: QRScanner,
+              private menu: MenuController) {
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
+  }
+
+  ionViewDidEnter() {
+        this.menu.swipeEnable(false);
   }
 
   goToBasket() {
@@ -35,14 +44,18 @@ export class UserStartPage {
   start() {
     // Optionally request the permission early
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
+
     if (status.authorized) {
       // camera permission was granted
- 
- 
       // start scanning
       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-        console.log('Scanned something', text);
- 
+        var myData = <any>{};
+        myData  = text;
+
+        console.log(myData);
+        console.log('result', myData['result']);
+
+
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
       });
