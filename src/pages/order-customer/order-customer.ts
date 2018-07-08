@@ -33,6 +33,9 @@ export class OrderCustomerPage {
   CurrentRestaurantId = 45;
   ListCategory = [];
   viewarr= [];
+  HauptspeiseArr = [];
+  GetränkeArr = [];
+  NachspeiseArr = [];
   ItemId = '65246b5b456bvgbrgber';
   UserId;
   PicStorage = firebase.storage();
@@ -52,6 +55,8 @@ export class OrderCustomerPage {
     FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
+    }).then((res: any) => {
+      this.filterItems();
     })
     //IMG testing
     this.test= this.IMGRef.then(function(url) {
@@ -115,5 +120,29 @@ export class OrderCustomerPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  filterItems() {
+    //alle Getränke
+    for (var iter in this.viewarr) {
+      if (this.viewarr[iter].Category == "Getränke" ) {
+        this.GetränkeArr.push(this.viewarr[iter]);
+      }
+     
+    } console.log("GetränkeItems: " + this.GetränkeArr[0].Name);
+    //alle Hauptspeisen
+    for (var iter in this.viewarr) {
+      if (this.viewarr[iter].Category == "Hauptspeise" ) {
+        this.HauptspeiseArr.push(this.viewarr[iter]);
+      }
+     
+    } console.log("HauptspeiseItems: " + this.HauptspeiseArr[0].Name);
+    //alle Nachspeisen
+    for (var iter in this.viewarr) {
+      if (this.viewarr[iter].Category == "Nachspeise" ) {
+        this.NachspeiseArr.push(this.viewarr[iter]);
+      }
+     
+    } console.log("NachspeiseItems: " + this.NachspeiseArr[0].Name);
   }
 }
