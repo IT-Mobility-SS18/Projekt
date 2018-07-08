@@ -13,8 +13,8 @@ import { StartPage } from '../start/start';
 
 
 @Component({
-  selector: 'page-userView',
-  templateUrl: 'userView.html',
+  selector: 'page-user-view',
+  templateUrl: 'user-view.html',
 })
 
 export class UserViewPage {
