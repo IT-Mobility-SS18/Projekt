@@ -14,6 +14,7 @@ import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition'
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/user-view/user-view';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { LogoutPage } from '../pages/logout/logout';
 
 @Component({
   templateUrl: 'app.html'
@@ -49,7 +50,8 @@ export class MyApp {
       { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
       { title: 'Bestellübersicht Service', component: OrderViewServicePage },
       { title: 'FaceRecognition', component: FaceRecognitionPage },
-      { title: 'Benutzerprofil', component: UserViewPage }
+      { title: 'Benutzerprofil', component: UserViewPage },
+      { title: 'Abmelden', component: LogoutPage }
     ];
   }
 
