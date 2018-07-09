@@ -48,6 +48,7 @@
       <ion-list *ngSwitchCase="'category1'">
         <ion-item-sliding *ngFor="let item of viewarr" (click)="addToArray(item.Uid, item.Name, item.Price)">
           <ion-item>
+              <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
             {{item.Name}}
             <p>{{item.Description}}</p>
               <p>{{item.Price.toFixed(2)}} €</p>
