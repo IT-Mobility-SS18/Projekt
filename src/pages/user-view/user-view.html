@@ -27,13 +27,16 @@
         <h4>{{user.name}}</h4>
       </div>
       <ion-list>
+
         <ion-item>
           <ion-label stacked required>Anrede</ion-label>
-          <ion-select>
-            <ion-option>Frau</ion-option>
-            <ion-option>Herr</ion-option>
-          </ion-select>
-        </ion-item>
+          <ion-input type="text" [(ngModel)]="user.Sex" name="Sex" required value="{{CurrentSex}}"></ion-input>
+          <!--<ion-select>
+          <ion-option>Frau</ion-option>
+          <ion-option>Herr</ion-option>
+        </ion-select>-->
+      </ion-item>
+
         <ion-item>
           <ion-label stacked>Vorname</ion-label>
           <ion-input type="text" [(ngModel)]="user.FirstName" name="name" required value="{{CurrentFirstName}}"></ion-input>
@@ -42,14 +45,18 @@
           <ion-label stacked>Nachname</ion-label>
           <ion-input type="text" [(ngModel)]="user.LastName" name="surname" required value="{{CurrentLastName}}" >></ion-input>
         </ion-item>
+
+        <ion-item>
+          <ion-label stacked required>Geburtsdatum</ion-label>
+          <ion-input [(ngModel)]="user.BDay"  name="birthdate" required value="{{CurrentBDay}}"></ion-input>
+        <!--  <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="user.BDay" [ngModelOptions]="{standalone:true}" ></ion-datetime>-->
+        </ion-item>
+
         <!-- <ion-item>
           <ion-label stacked>Geburtsdatum</ion-label>
           <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
         </ion-item> -->
-        <!-- <ion-item>
-          <ion-label stacked>Straße und Hausnummer</ion-label>
-          <ion-input type="text" [(ngModel)]="user.adress" name="adress" required></ion-input>
-        </ion-item>  -->
+
 
         <ion-item>
           <ion-label stacked required>Straße und Hausnummer</ion-label>
@@ -60,10 +67,6 @@
           <ion-label stacked>Postleitzahl</ion-label>
           <ion-input type="text" [(ngModel)]="user.ZipCode" name="ZipCode" required value="{{CurrentZipCode}}"></ion-input>
         </ion-item>
-        <!-- <ion-item>
-          <ion-label stacked>Ort</ion-label>
-          <ion-input type="text" [(ngModel)]="user.ort" name="ort" required></ion-input>
-        </ion-item> -->
 
         <ion-item>
           <ion-label stacked required>Ort</ion-label>
