@@ -35,7 +35,7 @@ export class OrderCustomerPage {
   ListCategory = [];
   viewarr= [];
   HauptspeiseArr = [];
-  GetränkeArr = [];
+  GetraenkeArr = [];
   NachspeiseArr = [];
   ItemId = '65246b5b456bvgbrgber';
   UserId;
@@ -125,23 +125,23 @@ export class OrderCustomerPage {
 
   filterItems() {
     //alle Getränke
-    for (var iter in this.viewarr) {
-      if (this.viewarr[iter].Category == "Getränke" ) {
-        this.GetränkeArr.push(this.viewarr[iter]);
+    for (var iterG in this.viewarr) {
+      if (this.viewarr[iterG].Category == "Getränke" ) {
+        this.GetraenkeArr.push(this.viewarr[iterG]);
       }
      
-    } console.log("GetränkeItems: " + this.GetränkeArr[0].Name);
+    } console.log("GetränkeItems: " + this.GetraenkeArr[0].Name);
     //alle Hauptspeisen
-    for (var iter in this.viewarr) {
-      if (this.viewarr[iter].Category == "Hauptspeise" ) {
-        this.HauptspeiseArr.push(this.viewarr[iter]);
+    for (var iterH in this.viewarr) {
+      if (this.viewarr[iterH].Category == "Hauptspeise" ) {
+        this.HauptspeiseArr.push(this.viewarr[iterH]);
       }
      
     } console.log("HauptspeiseItems: " + this.HauptspeiseArr[0].Name);
     //alle Nachspeisen
-    for (var iter in this.viewarr) {
-      if (this.viewarr[iter].Category == "Nachspeise" ) {
-        this.NachspeiseArr.push(this.viewarr[iter]);
+    for (var iterN in this.viewarr) {
+      if (this.viewarr[iterN].Category == "Nachspeise" ) {
+        this.NachspeiseArr.push(this.viewarr[iterN]);
       }
      
     } console.log("NachspeiseItems: " + this.NachspeiseArr[0].Name);

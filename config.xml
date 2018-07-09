@@ -96,5 +96,5 @@
     <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-qrscanner" spec="~2.6.0" />
     <plugin name="cordova-plugin-camera" spec="~4.0.3" />
-    <engine name="android" spec="~6.3.0" />
+    <engine name="android" spec="~7.0.0" />
 </widget>

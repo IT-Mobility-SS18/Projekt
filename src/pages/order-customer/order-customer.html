@@ -33,7 +33,7 @@
   </ion-list-header>
       <ion-item-sliding *ngFor="let item of HauptspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
         <ion-item>
-            <!--<p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>-->
+          <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
           {{item.Name}}
           <p>{{item.Description}}</p>
             <p>{{item.Price.toFixed(2)}} €</p>
@@ -49,9 +49,9 @@
     <ion-list-header color="light">
       <b>Getränke</b>
     </ion-list-header>
-        <ion-item-sliding *ngFor="let item of NachspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
+        <ion-item-sliding *ngFor="let item of GetraenkeArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
           <ion-item>
-            <!--  <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>-->
+           <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
             {{item.Name}}
             <p>{{item.Description}}</p>
               <p>{{item.Price.toFixed(2)}} €</p>
@@ -69,7 +69,7 @@
     </ion-list-header>
         <ion-item-sliding *ngFor="let item of NachspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
           <ion-item>
-            <!--  <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>-->
+           <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
             {{item.Name}}
             <p>{{item.Description}}</p>
               <p>{{item.Price.toFixed(2)}} €</p>
