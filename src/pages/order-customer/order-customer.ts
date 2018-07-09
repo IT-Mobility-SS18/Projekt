@@ -1,14 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, IonicPage, Slides, AlertController} from 'ionic-angular';
+import { NavController, Slides, AlertController} from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { Order } from '../../models/order/order.model'
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from 'angularfire2/auth';
-import firebase, { storage } from "firebase";
+import firebase from "firebase";
 import { BasketService } from '../../providers/basket/basket-service';
-import { isPlatformBrowser } from '@angular/common';
 
-
+//import { IonicPage } from 'ionic-angular';
+//import { isPlatformBrowser } from '@angular/common';
+//import storage from "firebase";
 
 @Component({
   selector: 'page-order-customer',

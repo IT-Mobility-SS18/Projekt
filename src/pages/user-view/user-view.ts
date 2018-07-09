@@ -1,15 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/order/user.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
-import { StartPage } from '../start/start';
 
-
-
-
+//import { IonicPage } from 'ionic-angular';
 
 @Component({
   selector: 'page-user-view',

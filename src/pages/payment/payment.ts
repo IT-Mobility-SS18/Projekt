@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { paypalConfig } from '../../environment';
 import { BasketPage } from '../basket/basket';
+
+//import { IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the PaymentPage page.

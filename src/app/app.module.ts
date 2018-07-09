@@ -16,7 +16,7 @@ import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition'
 import { UserViewPage } from '../pages/user-view/user-view';
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal'
+import { PayPal } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 

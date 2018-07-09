@@ -1,13 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { StartPage } from '../start/start';
 import { User } from '../../models/order/user.model'
-import { firebaseConfig } from '../../environment';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { UserStartPage } from '../user-start/user-start';
 import { BasketPage } from '../basket/basket';
 
+//import { firebaseConfig } from '../../environment';
+//import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'page-registration2',

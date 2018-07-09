@@ -4,7 +4,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { StartPage } from '../pages/start/start';
-import { BasketPage } from '../pages/basket/basket';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';

@@ -1,9 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Slides, AlertController} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, AlertController} from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
+
+//import { ViewChild } from '@angular/core';
+//import { Slides } from 'ionic-angular';
 
 @Component({
   selector: 'page-order-view-customer',

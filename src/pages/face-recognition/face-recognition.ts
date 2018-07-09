@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';
 
+//import { IonicPage } from 'ionic-angular';
 
 /**
  * Generated class for the FaceRecognitionPage page.

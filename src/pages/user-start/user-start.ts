@@ -1,11 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, IonicPage, Slides,MenuController, AlertController} from 'ionic-angular';
+import { NavController, NavParams, Slides,MenuController, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 
-
+//import { IonicPage } from 'ionic-angular';
 
 @Component({
   selector: 'page-user-start',

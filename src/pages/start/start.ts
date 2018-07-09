@@ -1,21 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, IonicPage, AlertController} from 'ionic-angular';
-
+import { NavController, NavParams, AlertController} from 'ionic-angular';
 import { RegistrationPage } from '../registration/registration';
 import { UserStartPage } from '../user-start/user-start';
 import { AngularFireAuth } from 'angularfire2/auth';
-
-//nur für Payment-Test
-import { PaymentPage } from '../payment/payment';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
-//end
+
+//import { IonicPage } from 'ionic-angular';
 
 @Component({
   selector: 'page-start',
   templateUrl: 'start.html'
 })
-
-
 
 export class StartPage {
   @ViewChild('username') user;
@@ -24,11 +19,6 @@ export class StartPage {
     
   }
 
-  //nur für Payment-Test
-  testPayment() {
-  this.navCtrl.push(PaymentPage, {});
-}
-//end
 ionViewDidLoad() {
 }
 

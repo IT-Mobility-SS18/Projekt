@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Item } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { PaymentPage } from '../payment/payment';
 import { Order } from '../../models/order/order.model';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketService } from '../../providers/basket/basket-service';
-import { checkBindingNoChanges } from '@angular/core/src/view/util';
 
+//import { checkBindingNoChanges, Item } from '@angular/core/src/view/util';
+//import { IonicPage } from 'ionic-angular';
 
 @Component({
   selector: 'page-basket',
