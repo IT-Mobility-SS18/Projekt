@@ -8,9 +8,11 @@ export interface Order {
     RestaurantId;
     TimeStamp;
     Price;
+    Size;
+    Variant;
+    Annotations;
     /* Picture;
     DeliveryCosts;
     PayStatus;
-    Annotations;
      */
 }

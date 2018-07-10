@@ -28,7 +28,10 @@ export class BasketPage {
     Price: undefined,
     TableId: 44,
     RestaurantId: 45,
-    TimeStamp: '2018-xxxxx'
+    TimeStamp: '2018-xxxxx',
+    Size: undefined,
+    Variant: undefined,
+    Annotations: undefined
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService) {
@@ -52,6 +55,10 @@ export class BasketPage {
       this.order.Quantity = ItemSelection[idIteration].Quantity;
       this.order.Name = ItemSelection[idIteration].Name;
       this.order.Price = ItemSelection[idIteration].Price;
+      this.order.Size = ItemSelection[idIteration].Size;
+      this.order.Variant = ItemSelection[idIteration].Variant;
+      this.order.Quantity = ItemSelection[idIteration].Quantity;
+      this.order.Annotations = ItemSelection[idIteration].Annotations;
       console.log('aktuelle Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
     }
