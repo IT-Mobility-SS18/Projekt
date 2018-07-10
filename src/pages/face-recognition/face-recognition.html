@@ -7,11 +7,21 @@
     </ion-buttons>
 
     <ion-title>Gesichtserkennung</ion-title>
-    
+
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+
+  <button  ion-button color="primary" (click)="createPersonGroup()"> 1. PersonGroup - Create </button>
+  <button  ion-button color="primary" (click)="createPersonGroupPerson()"> 2. PersonGroup Person - Create </button>
+  <button  ion-button color="primary" (click)="addfacePersonGroupPerson()"> 3. PersonGroup Person - Add Face </button>
+  <button  ion-button color="primary" (click)="trainMachine()"> 4. trainMachine </button>
+  <button  ion-button color="primary" (click)="verifyPerson()"> 5. Person - Verify </button>
+
+  <h2>Analyzed Results </h2>
+  <p>hier steht eine Ausgabe:</p>
+  <p>{{str_Ausgabe}}</p>
 
 </ion-content>

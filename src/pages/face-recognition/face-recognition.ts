@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { FaceApiProvider } from '../../providers/face-api/face-api';
 import { BasketPage } from '../basket/basket';
 
 //import { IonicPage } from 'ionic-angular';
@@ -12,14 +13,15 @@ import { BasketPage } from '../basket/basket';
  * Ionic pages and navigation.
  */
 
-
 @Component({
   selector: 'page-face-recognition',
   templateUrl: 'face-recognition.html',
 })
 export class FaceRecognitionPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService) {
+  str_Ausgabe:string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private faceapi:FaceApiProvider) {
     this.FirebaseService.fillFaceData();
   }
 
@@ -28,6 +30,20 @@ export class FaceRecognitionPage {
   }
   goToBasket(){
     this.navCtrl.push(BasketPage);
+  }
+
+  createPersonGroup(){
+    //this.faceapi.PersonGroupCreate();
+    this.faceapi.PersonGroupCreate()
+    .then((resultPersonGroupCreate)=> {
+      console.log(resultPersonGroupCreate);
+      this.str_Ausgabe=resultPersonGroupCreate;
+    })
+    .catch((err) => {
+      console.log("Error@ Creation of Person Group" + err);
+      this.str_Ausgabe = "Error@ Creation of Person Group" + err;
+    });
+
   }
 
 }

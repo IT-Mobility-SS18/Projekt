@@ -30,10 +30,15 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
 import { BasketService } from '../providers/basket/basket-service';
 
+//for face api
+import { FaceApiProvider } from '../providers/face-api/face-api';
+import { HttpClientModule,} from '@angular/common/http';
+// end face api
 
 import { Camera } from '@ionic-native/camera'; /* QR-Code */
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
 import { LogoutPage } from '../pages/logout/logout';
+
 
 class CameraMock extends Camera {  /* QR-Code */
   getPicture(options) {
@@ -69,6 +74,9 @@ class CameraMock extends Camera {  /* QR-Code */
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    HttpClientModule,
+    HttpModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -97,7 +105,8 @@ class CameraMock extends Camera {  /* QR-Code */
     Camera, /* QR-Code */
     QRScanner, /* QR-Code */
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock}  /* QR-Code */
+    {provide: Camera, useClass: CameraMock},
+    FaceApiProvider  /* QR-Code */
   ]
 })
 export class AppModule {}
