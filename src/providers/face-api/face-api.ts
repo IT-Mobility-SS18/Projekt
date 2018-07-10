@@ -250,7 +250,7 @@ export class FaceApiProvider {
           this.http
               .post(uriBase, body, httpOptions)
               .subscribe((result) =>{
-                this.persistedFaceId=result[0]['persistedFaceId'];
+                this.persistedFaceId=result[0].persistedFaceId;
                 //console.log("this.persistedFaceId: " +this.persistedFaceId);
                 //persistedFaceId
 
