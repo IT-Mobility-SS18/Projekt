@@ -3,7 +3,7 @@
     <name>Turty</name>
     <description>Slogan</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Turtle-Team</author>
-    <content original-src="index.html" src="http://192.168.178.24:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -97,4 +97,5 @@
     <plugin name="cordova-plugin-camera" spec="~4.0.3" />
     <engine name="ios" spec="^4.5.4" />
     <engine name="android" spec="7.0.0" />
+    <engine name="browser" spec="5.0.3" />
 </widget>
