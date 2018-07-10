@@ -57,6 +57,7 @@ export class UserStartPage {
     if (status.authorized) {
       // camera permission was granted
       // start scanning
+      this.qrScanner.show();
       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
         var myData = <any>{};
         myData  = text;
