@@ -19,7 +19,7 @@
         <ion-icon name="flash" item-right></ion-icon>
       </button>
       <button ion-button (click)="goToBasket()">
-        <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
+        <ion-icon name="basket" item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -27,57 +27,138 @@
 
 
 <ion-content>
-<ion-list>
-  <ion-list-header color="light">
-    <b>Hauptspeise</b>
-  </ion-list-header>
-      <ion-item-sliding *ngFor="let item of HauptspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
-        <ion-item>
-          <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
-          {{item.Name}}
-          <p>{{item.Description}}</p>
-            <p>{{item.Price.toFixed(2)}} €</p>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="light" (click)="details()">
-           <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
-        </ion-item-options>
-      </ion-item-sliding>
+  <ion-list>
+    <ion-list-header color="light">
+      <b>Hauptspeise</b>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of HauptspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
+
+      <ion-item>
+        <p>
+          <img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}">
+        </p>
+        {{item.Name}}
+        <p>{{item.Description}}</p>
+        <p>{{item.Price.toFixed(2)}} €</p>
+        
+        <ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Variante</ion-label>
+        <ion-select>
+          <ion-option>1: Auswahl 1</ion-option>
+          <ion-option>2: Auswahl 2</ion-option>
+          <ion-option>3: Auswahl 3</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Größe</ion-label>
+        <ion-select>
+          <ion-option>Groß</ion-option>
+          <ion-option>Mittel</ion-option>
+          <ion-option>Klein</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Menge</ion-label>
+        <ion-select>
+          <ion-option>1</ion-option>
+          <ion-option>2</ion-option>
+          <ion-option>3</ion-option>
+          <ion-option>4</ion-option>
+          <ion-option>5</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Anmerkungen</ion-label>
+        <ion-textarea type="text"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <button block ion-button>Hinzufügen</button>
+        <a class="center-text">Abbrechen</a>
+      </ion-item>
+    </ion-item-sliding>
   </ion-list>
 
   <ion-list>
     <ion-list-header color="light">
       <b>Getränke</b>
     </ion-list-header>
-        <ion-item-sliding *ngFor="let item of GetraenkeArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
-          <ion-item>
-           <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
-            {{item.Name}}
-            <p>{{item.Description}}</p>
-              <p>{{item.Price.toFixed(2)}} €</p>
-          </ion-item>
-          <ion-item-options side="right">
-            <button ion-button color="light" (click)="details()">
-             <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
-          </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
+    <ion-item-sliding *ngFor="let item of GetraenkeArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
+      <ion-item>
+        <p>
+          <img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}">
+        </p>
+        {{item.Name}}
+        <p>{{item.Description}}</p>
+        <p>{{item.Price.toFixed(2)}} €</p>
+
+        <ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Variante</ion-label>
+        <ion-select>
+          <ion-option>1: Auswahl 1</ion-option>
+          <ion-option>2: Auswahl 2</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Größe</ion-label>
+        <ion-select>
+          <ion-option>Groß</ion-option>
+          <ion-option>Mittel</ion-option>
+          <ion-option>Klein</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Menge</ion-label>
+        <ion-select>
+          <ion-option>1</ion-option>
+          <ion-option>2</ion-option>
+          <ion-option>3</ion-option>
+          <ion-option>4</ion-option>
+          <ion-option>5</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <button block ion-button>Hinzufügen</button>
+        <a class="center-text">Abbrechen</a>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 
   <ion-list>
     <ion-list-header color="light">
       <b>Dessert</b>
     </ion-list-header>
-        <ion-item-sliding *ngFor="let item of NachspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
-          <ion-item>
-           <p><img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}"></p>
-            {{item.Name}}
-            <p>{{item.Description}}</p>
-              <p>{{item.Price.toFixed(2)}} €</p>
-          </ion-item>
-          <ion-item-options side="right">
-            <button ion-button color="light" (click)="details()">
-             <ion-icon name="ios-information-circle-outline"></ion-icon>details</button>
-          </ion-item-options>
-        </ion-item-sliding>
-    </ion-list>
-    </ion-content>
+    <ion-item-sliding *ngFor="let item of NachspeiseArr" (click)="addToArray(item.Uid, item.Name, item.Price)">
+      <ion-item>
+        <p>
+          <img src="{{'https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/ItemPics%2F'+ item.Uid +'.jpg?alt=media'}}">
+        </p>
+        {{item.Name}}
+        <p>{{item.Description}}</p>
+        <p>{{item.Price.toFixed(2)}} €</p>
+        <ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Menge</ion-label>
+        <ion-select>
+          <ion-option>1</ion-option>
+          <ion-option>2</ion-option>
+          <ion-option>3</ion-option>
+          <ion-option>4</ion-option>
+          <ion-option>5</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" stacked required>Anmerkungen</ion-label>
+        <ion-textarea type="text"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <button block ion-button>Hinzufügen</button>
+        <a class="center-text">Abbrechen</a>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides, AlertController} from 'ionic-angular';
+import { NavController, Slides, AlertController, Item} from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { Order } from '../../models/order/order.model'
 import { BasketPage } from '../basket/basket';
@@ -31,6 +31,20 @@ export class OrderCustomerPage {
     Annotations: undefined,
     TableId: 12
   } */
+  order: Order = {
+    ItemId: undefined,
+    Quantity: undefined,
+    UserId: this.fire.auth.currentUser.uid,
+    OrderState: 'open',
+    Name: undefined,
+    Price: undefined,
+    TableId: 44,
+    RestaurantId: 45,
+    TimeStamp: '2018-xxxxx',
+    Size: undefined,
+    Variant: undefined,
+    Annotations: undefined
+  }
   CurrentRestaurantId = 45;
   ListCategory = [];
   viewarr= [];
@@ -77,14 +91,22 @@ export class OrderCustomerPage {
     this.FirebaseService.addCustomerOrder(order);
   }
 
-    addToArray(ItemId, ItemName, ItemPrice) {   
+    addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {   
       this.ItemSelection = this.BasketService.ItemSelection;
-        this.ItemSelection.push({
+        /* this.ItemSelection.push({
           ItemId: ItemId,
           Quantity: 1,
           Name: ItemName,
           Price: ItemPrice}
-        );
+        ); */
+        this.order.ItemId = ItemId;
+        this.order.Name = Name;
+        this.order.Price = Price;
+        this.order.Size = 'mysize';
+        this.order.Variant = 'myvariant';
+        this.order.Quantity = 'myquant';
+        this.order.Annotations = 'myannot';
+        this.ItemSelection.push(this.order);
       this.BasketService.ItemSelection = this.ItemSelection;
       this.BasketService.checkBasketContent();
     }
@@ -114,14 +136,6 @@ export class OrderCustomerPage {
     alert.present();
   }
   
-  details() {
-    const alert = this.alertCtrl.create({
-      title: 'Text',
-      subTitle: 'Text',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 
   filterItems() {
     //alle Getränke

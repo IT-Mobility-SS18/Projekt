@@ -19,7 +19,7 @@
         <ion-icon name="flash" item-right></ion-icon>
       </button>
       <button ion-button (click)="goToBasket()">
-        <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
+        <ion-icon name="basket" item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -54,23 +54,28 @@
 
 <ion-content>
   <ion-list>
+    <ion-list-header color="light">
+      <b>Datum</b>
+    </ion-list-header>
     <ion-item-sliding>
       <ion-item>
-        <ion-thumbnail item-left>
+        <p>
           <img src="../assets/imgs/logo.png">
-        </ion-thumbnail>
-        <p><strong>Restaurantname</strong> </p>
+        </p>
+        Restaurantname
         <p>Beschreibung</p>
-        <p>Betrag</p>
-        <p>Datum</p>
+        <p><b>Betrag</b></p>
+        <ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>   
       </ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="light" (click)="details()">
-          <ion-icon name="ios-information-circle-outline"></ion-icon>Details</button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-  </ion-content>
+      <ion-item>
+        <p>Menge x Gerichtname (Menge x Preis)</p>
+        <button block ion-button>Ok</button>
+        <button block ion-button>Bestellung stornieren</button>
+        <a class="center-text">Abbrechen</a>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
 
 
 
