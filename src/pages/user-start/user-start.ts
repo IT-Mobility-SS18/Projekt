@@ -68,7 +68,7 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
-        this.alert(myData['result']);
+        this.alert(myData);
       });
 
  
