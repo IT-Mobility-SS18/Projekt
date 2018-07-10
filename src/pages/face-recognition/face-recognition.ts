@@ -28,6 +28,7 @@ export class FaceRecognitionPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FaceRecognitionPage');
   }
+
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }
@@ -36,8 +37,8 @@ export class FaceRecognitionPage {
     //this.faceapi.PersonGroupCreate();
     this.faceapi.PersonGroupCreate()
     .then((resultPersonGroupCreate)=> {
-      console.log(resultPersonGroupCreate);
-      this.str_Ausgabe=resultPersonGroupCreate;
+      console.log(JSON.stringify(resultPersonGroupCreate));
+      this.str_Ausgabe=JSON.stringify(resultPersonGroupCreate);
     })
     .catch((err) => {
       console.log("Error@ Creation of Person Group" + err);

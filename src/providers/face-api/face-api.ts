@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders, HttpParams } from '@angular/common/http';
+import { faceApiConfig } from '../../environment';
 // import { Http, Headers, RequestOptions } from '@angular/http';
 // import 'rxjs/add/operator/map';
 
 @Injectable()
 export class FaceApiProvider {
 
-  public subscriptionKey : string;
-  public personGroupId : string;
-  public personId : string;
+  public subscriptionKey:string;
+  public personGroupId:string;
+  public personId:string;
   public username:string;
   public detectFaceId:string;
+  public persistedFaceId:string;
 
 
   public data: any = null;
@@ -23,9 +25,9 @@ export class FaceApiProvider {
 
   constructor(public http: HttpClient) {
     console.log('Hello FaceApiProvider Provider');
-    this.subscriptionKey= "f5c657cce6eb4949bce363fc666d6d5b";
+    this.subscriptionKey= faceApiConfig.faceApi;
     this.username="FamilyDad"
-    this.personGroupId="7z3748fbund23d5";
+    this.personGroupId="7z3748fbund23d6";
 
     this.gitimgurl1="https://github.com/Microsoft/Cognitive-Face-Windows/blob/master/Data/PersonGroup/Family1-Dad/Family1-Dad1.jpg?raw=true";
     this.gitimgurl2="https://github.com/Microsoft/Cognitive-Face-Windows/blob/master/Data/PersonGroup/Family1-Dad/Family1-Dad2.jpg?raw=true";
@@ -151,19 +153,19 @@ export class FaceApiProvider {
 
           console.log(uriBase+ JSON.stringify(body)+ JSON.stringify(httpOptions));
 
-          this.http
-              .post(uriBase, body, httpOptions)
-              .subscribe(result => {
-                  if (result.isIdentical != null) {
-                      // this.detectFaceId=result[0]['faceId'];
-                      // console.log("FaceIdFromFaceDetect: " + this.detectFaceId);
-                      resolve(result);
-                  } else {
-                      resolve(result);
-                  }
-              }, err => {
-                    resolve(err);
-              });
+          // this.http
+          //     .post(uriBase, body, httpOptions)
+          //     .subscribe(result => {
+          //         if (result.isIdentical != null) {
+          //             // this.detectFaceId=result[0]['faceId'];
+          //             // console.log("FaceIdFromFaceDetect: " + this.detectFaceId);
+          //             resolve(result);
+          //         } else {
+          //             resolve(result);
+          //         }
+          //     }, err => {
+          //           resolve(err);
+          //     });
 
     });//end promise
 
@@ -176,12 +178,12 @@ export class FaceApiProvider {
     console.log("Hello function FaceDetectAndVerify");
 
     this.FaceIdFromFaceDetect().then(result => {
-      console.log("im then FaceDetectAndVerify: " + result);
-      console.log("!!!FaceDetectAndVerify: " + this.detectFaceId);
-      this.VerificationFromVerify(result).then(result2 => {
-        console.log("verify"+result2);
-        console.log("verify: "+result2.isIdentical);
-        console.log("verify: "+result2.confidence);
+      // console.log("im then FaceDetectAndVerify: " + JSON.stringify(result));
+      // console.log("!!!FaceDetectAndVerify: " + JSON.stringify(this.detectFaceId));
+      this.VerificationFromVerify(JSON.stringify(result)).then(result2 => {
+        // console.log("verify"+JSON.stringify(result2));
+        // console.log("verify: "+JSON.stringify(result2.isIdentical));
+        // console.log("verify: "+JSON.stringify(result2.confidence));
 
       });
 
@@ -248,8 +250,8 @@ export class FaceApiProvider {
           this.http
               .post(uriBase, body, httpOptions)
               .subscribe((result) =>{
-                this.persistedFaceId=result.persistedFaceId;
-                console.log("this.persistedFaceId: " +this.persistedFaceId);
+                this.persistedFaceId=result[0]['persistedFaceId'];
+                //console.log("this.persistedFaceId: " +this.persistedFaceId);
                 //persistedFaceId
 
                 // this.personId=result.personId;
@@ -287,8 +289,8 @@ export class FaceApiProvider {
           this.http
               .post(uriBase, body, httpOptions)
               .subscribe((result) =>{
-                this.personId=result.personId;
-                console.log("this.personId" + this.personId);
+                this.personId=result[0]['personId'];
+                console.log("this.personId" + JSON.stringify(this.personId));
                 }
               );
     });//end promise

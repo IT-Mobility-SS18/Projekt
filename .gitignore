@@ -20,7 +20,6 @@ plugins
 *.log
 *.map
 *.DS_Store
-app/scripts/configuration.js
 /src/environment.ts
 .vscode/settings.json
 .soucemaps\main.js.map
