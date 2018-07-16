@@ -57,6 +57,7 @@ export class PaymentPage {
     });
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
   }

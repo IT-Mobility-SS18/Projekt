@@ -25,6 +25,7 @@ export class FaceRecognitionPage {
     this.FirebaseService.fillFaceData();
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad FaceRecognitionPage');
   }

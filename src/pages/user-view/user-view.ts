@@ -101,6 +101,7 @@ export class UserViewPage {
     localStorage.setItem('USER', JSON.stringify(this.user));
   } */
 
+  // calculating user's age
   getAge(birthdate){
     let currentTime = new Date().getTime();
      return ((currentTime - birthdate)/31556952000).toFixed(0);
@@ -109,6 +110,7 @@ export class UserViewPage {
   updateUser() {
     this.FirebaseService.updateUser(this.user, this.UserId);
   }
+
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }

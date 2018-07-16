@@ -84,13 +84,17 @@ export class OrderCustomerPage {
      this.navCtrl.push(BasketPage, {});
    }
 
+   // not in use at the moment
    selectedTab(index) {
      this.slider.slideTo(index);
    }
+
+   // not in use at the moment
    addCustomerOrder(order: Order) {
     this.FirebaseService.addCustomerOrder(order);
   }
 
+  // add to (temporary) basket array
     addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {   
       this.ItemSelection = this.BasketService.ItemSelection;
         /* this.ItemSelection.push({
@@ -111,6 +115,7 @@ export class OrderCustomerPage {
       this.BasketService.checkBasketContent();
     }
  
+    //not in use at the moment
  presentPrompt(ItemId) {
     let alert = this.alertCtrl.create({
       title: 'Menge',
@@ -136,7 +141,7 @@ export class OrderCustomerPage {
     alert.present();
   }
   
-
+  // not in use at the moment
   filterItems() {
     //alle Getränke
     for (var iterG in this.viewarr) {

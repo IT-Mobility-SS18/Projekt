@@ -53,6 +53,7 @@ export class Registration2Page {
     this.navCtrl.setRoot(UserStartPage);
 
   }
+  
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }

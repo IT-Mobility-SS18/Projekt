@@ -21,6 +21,7 @@ export class RegistrationPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
   }
@@ -39,6 +40,7 @@ export class RegistrationPage {
     console.log('user registered: ', this.user.value);
   }
 
+  // not in use at the moment
   alert(message: string) {
     this.alertCtrl.create({
       title: 'Information',
@@ -50,6 +52,7 @@ export class RegistrationPage {
   cancelRegistration(){
     this.navCtrl.pop();
   }
+
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }

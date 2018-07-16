@@ -27,10 +27,12 @@ export class OrderViewCustomerPage {
       console.log(this.viewarr);
     })
   }
+
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }
 
+  // not in use at the moment
   details() {
     const alert = this.alertCtrl.create({
       title: 'Text',
