@@ -113,6 +113,8 @@ export class OrderCustomerPage {
         this.ItemSelection.push(this.order);
       this.BasketService.ItemSelection = this.ItemSelection;
       this.BasketService.checkBasketContent();
+
+      this.BasketStateColor = this.BasketService.BasketStateColor;
     }
  
     //not in use at the moment

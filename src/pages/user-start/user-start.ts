@@ -28,7 +28,6 @@ export class UserStartPage {
     this.UserId = fire.auth.currentUser.uid;
   }
 
-
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
   }
@@ -37,9 +36,11 @@ export class UserStartPage {
     this.navCtrl.push(BasketPage, {});
   }
 
+  // not in use at the moment
   selectedTab(index) {
     this.slider.slideTo(index);
   }
+
   username: string;
   UserId: string;
 
