@@ -15,6 +15,9 @@
       <button ion-button (click)="goToBasket()">
         <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
+      <button ion-button (click)="goToSetting()">
+        <ion-icon name="md-cog" item-right></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -29,7 +32,7 @@
 
         <ion-item>
           <ion-label stacked required>Anrede</ion-label>
-          <ion-input type="text" [(ngModel)]="user.Sex" name="Sex" required value="{{CurrentSex}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.Sex" name="Sex" required value="{{CurrentSex}}"></ion-input>
           <!--<ion-select>
           <ion-option>Frau</ion-option>
           <ion-option>Herr</ion-option>
@@ -38,16 +41,16 @@
 
         <ion-item>
           <ion-label stacked>Vorname</ion-label>
-          <ion-input type="text" [(ngModel)]="user.FirstName" name="name" required value="{{CurrentFirstName}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.FirstName" name="name" required value="{{CurrentFirstName}}"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label stacked>Nachname</ion-label>
-          <ion-input type="text" [(ngModel)]="user.LastName" name="surname" required value="{{CurrentLastName}}" >></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.LastName" name="surname" required value="{{CurrentLastName}}" >></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>Geburtsdatum</ion-label>
-          <ion-input [(ngModel)]="user.BDay"  name="birthdate" required value="{{CurrentBDay}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" [(ngModel)]="user.BDay"  name="birthdate" required value="{{CurrentBDay}}"></ion-input>
         <!--  <ion-datetime required name="birthdate" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="user.BDay" [ngModelOptions]="{standalone:true}" ></ion-datetime>-->
         </ion-item>
 
@@ -59,42 +62,42 @@
 
         <ion-item>
           <ion-label stacked required>Straße und Hausnummer</ion-label>
-          <ion-input type="text" [(ngModel)]="user.Street" name="Street" required value="{{CurrentStreet}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.Street" name="Street" required value="{{CurrentStreet}}"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked>Postleitzahl</ion-label>
-          <ion-input type="text" [(ngModel)]="user.ZipCode" name="ZipCode" required value="{{CurrentZipCode}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.ZipCode" name="ZipCode" required value="{{CurrentZipCode}}"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>Ort</ion-label>
-          <ion-input type="text" [(ngModel)]="user.City" name="City" required value="{{CurrentCity}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.City" name="City" required value="{{CurrentCity}}"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>Land</ion-label>
-          <ion-input type="text" [(ngModel)]="user.Country" name="Country" required value="{{CurrentCountry}}" ></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.Country" name="Country" required value="{{CurrentCountry}}" ></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>Telefonnummer</ion-label>
-          <ion-input type="text" [(ngModel)]="user.Phone" name="Phone" required value="{{CurrentPhone}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.Phone" name="Phone" required value="{{CurrentPhone}}"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>E-Mail</ion-label>
-          <ion-input type="text" [(ngModel)]="user.Mail" name="Mail" #username required value="{{CurrentMail}}"></ion-input>
+          <ion-input [disabled]="inputDisabled" type="text" [(ngModel)]="user.Mail" name="Mail" #username required value="{{CurrentMail}}"></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>Passwort</ion-label>
-          <ion-input type="password" #password></ion-input>
+          <ion-input [disabled]="inputDisabled" type="password" #password></ion-input>
         </ion-item>
 
         <ion-item>
           <ion-label stacked required>Passwort wiederholen</ion-label>
-          <ion-input type="password" #password></ion-input>
+          <ion-input [disabled]="inputDisabled" type="password" #password></ion-input>
         </ion-item>
 
         <!-- <ion-item>
