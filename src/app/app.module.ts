@@ -40,13 +40,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Cod
 import { LogoutPage } from '../pages/logout/logout';
 
 
-class CameraMock extends Camera {  /* QR-Code */
-  getPicture(options) {
-    return new Promise((resolve, reject) => {
-      resolve("BASE_64_ENCODED_DATA_GOES_HERE");
-    })
-  }
-}
+
 
 @NgModule({
   declarations: [
@@ -105,7 +99,6 @@ class CameraMock extends Camera {  /* QR-Code */
     Camera, /* QR-Code */
     QRScanner, /* QR-Code */
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock},
     FaceApiProvider  /* QR-Code */
   ]
 })
