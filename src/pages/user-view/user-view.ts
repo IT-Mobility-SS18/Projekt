@@ -109,6 +109,7 @@ export class UserViewPage {
 
   updateUser() {
     this.FirebaseService.updateUser(this.user, this.UserId);
+    this.navCtrl.getActive(this.inputDisabled=true);
   }
 
   goToBasket(){
