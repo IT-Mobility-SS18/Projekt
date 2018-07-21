@@ -4,6 +4,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Registration2Page } from '../registration2/registration2';
 import { StartPage } from '../start/start';
 import { BasketPage } from '../basket/basket';
+import { User } from '../../models/order/user.model'
+import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { UserStartPage } from '../user-start/user-start';
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -18,7 +21,32 @@ export class RegistrationPage {
   @ViewChild('username') user;
   @ViewChild('password') password;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController) {
+  onChangeSex(SelectedValue){
+    console.log("Selected Sex", SelectedValue);
+  }
+
+  onChangeOptInNewsletter(SelectedValue){
+    console.log("Selected OptInNewsletter", SelectedValue);
+  }
+
+  UserId: string;
+  UserMail: string;
+  MyUser: User = {
+    FirstName: undefined,
+    LastName: undefined,
+    Street: undefined,
+    ZipCode: undefined,
+    City: undefined,
+    Country: undefined,
+    Phone: undefined,
+    Sex: undefined,
+    Mail: undefined,
+    OptInNewsletter: undefined,
+    BDay: undefined
+  }
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
   }
 
   // After loading the page
@@ -31,7 +59,9 @@ export class RegistrationPage {
     .then(data => {
       console.log('data passed ', data);
       this.alert('Registrierung erfolgreich!');
-      this.navCtrl.push(Registration2Page);
+      this.UserId = this.fire.auth.currentUser.uid;
+      this.MyUser.Mail = this.fire.auth.currentUser.email;
+      this.addUserDataToDatabase();
     })
     .catch(error => {
       console.log('error creating user ', error);
@@ -55,5 +85,11 @@ export class RegistrationPage {
 
   goToBasket(){
     this.navCtrl.push(BasketPage);
+  }
+
+  addUserDataToDatabase() {
+    this.FirebaseService.addUser(this.MyUser, this.UserId);
+    this.navCtrl.setRoot(UserStartPage);
+
   }
 }
