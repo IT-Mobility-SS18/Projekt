@@ -19,6 +19,7 @@ export class RegistrationPage {
 
   @ViewChild('username') user;
   @ViewChild('password') password;
+  @ViewChild('passwordRep') passwordRep;
 
   onChangeSex(SelectedValue){
     console.log("Selected Sex", SelectedValue);
@@ -92,6 +93,16 @@ export class RegistrationPage {
   checkRegistrationFields() {
     console.log("entered checkRegistrationFields ");
     try {
+        if (this.password.value.match(this.passwordRep.value) === null || this.passwordRep.value === "") {
+        this.alert("Die eingegebenen Passwörter stimmen nicht überein!");
+    } 
+      
+    } catch (error) {
+      console.log("error PW values: " + error);
+    }
+
+
+    try {
     if (this.MyUser.FirstName == undefined) {
      throw Error("missingFirstName");
     }
@@ -124,32 +135,44 @@ export class RegistrationPage {
      }
      this.registerUser();
     } catch (error) {
-      switch(Error) {
-        case Error: "missingFirstName"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Vorname angegeben."
-        case Error: "missingLastName"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Nachname angegeben."
-        case Error: "missingSex"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Geschlecht angegeben."
-        case Error: "missingBDay"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Geburtsdatum angegeben."
-        case Error: "missingStreet"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Straße angegeben."
-        case Error: "missingZipCode"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Postleitzahl angegeben."
-        case Error: "missingCity"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Stadt angegeben."
-        case Error: "missingCountry"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Land angegeben."
-        case Error: "missingPhone"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Telefonnummer angegeben."
-        case Error: "missingOptInNewsletter"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Angabe zum Newsletter gemacht."
-  }
-  this.alert(this.MyErrorMessage);
+      this.MyErrorMessage = "Ein Fehler ist aufgetreten:";
+      console.log("error ist: " + error);
+      
+      var myerr = JSON.stringify(error.message);
+      console.log("my error ist: " + myerr);
+        this.MyErrorMessage = "Bitte alle Felder ausfüllen!";
+        this.alert(this.MyErrorMessage);
+      }
+      /* switch(myerr) {
+        case "missingFirstName":
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Vorname angegeben.";
+        break;
+        case error: "missingLastName"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Nachname angegeben.";
+        break;
+        case error: "missingSex"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Geschlecht angegeben.";
+        case error: "missingBDay"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Geburtsdatum angegeben.";
+        case error: "missingStreet"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Straße angegeben.";
+        case error: "missingZipCode"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Postleitzahl angegeben.";
+        case error: "missingCity"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Stadt angegeben.";
+        case error: "missingCountry"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Land angegeben.";
+        case error: "missingPhone"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Telefonnummer angegeben.";
+        case error: "missingOptInNewsletter"
+        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Angabe zum Newsletter gemacht."; */
+        //case Error: "differentPasswords"
+        //this.MyErrorMessage = this.MyErrorMessage + " " + "Die eingegebenen Passwörter stimmen nicht überein."
+  
+  
     }
     
-  }
+  
 
   cancelRegistration(){
     this.navCtrl.pop();
