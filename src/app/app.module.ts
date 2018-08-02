@@ -99,12 +99,8 @@ import { LogoutPage } from '../pages/logout/logout';
     Camera, /* QR-Code und face api*/
     QRScanner, /* QR-Code */
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-<<<<<<< HEAD
     //{provide: Camera, useClass: CameraMock},
     FaceApiProvider
-=======
-    FaceApiProvider  /* QR-Code */
->>>>>>> b737ef121e40d1eb945d7a486cd7b438e7260313
   ]
 })
 export class AppModule {}

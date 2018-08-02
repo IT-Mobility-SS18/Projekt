@@ -93,11 +93,11 @@
     <allow-navigation href="http://10.51.190.123:8100" />
     <allow-navigation href="http://10.51.161.70:8100" />
     <plugin name="cordova-plugin-android-permissions" spec="^1.0.0" />
-    <engine name="ios" spec="^4.5.4" />
     <plugin name="cordova-plugin-qrscanner" spec="~2.6.0" />
     <allow-navigation href="http://192.168.245.1:8100" />
-    <engine name="browser" spec="~5.0.3" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="cordova-plugin-camera" spec="^4.0.3" />
     <plugin name="cordova-plugin-file" spec="~6.0.1" />
+    <engine name="ios" spec="^4.5.4" />
+    <engine name="browser" spec="5.0.3" />
+    <engine name="android" spec="7.0.0" />
 </widget>

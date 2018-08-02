@@ -28,6 +28,10 @@ export class UserStartPage {
     this.UserId = fire.auth.currentUser.uid;
   }
 
+  ionViewDidLoad() {
+    this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');
+  }
+
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
   }
@@ -52,16 +56,20 @@ export class UserStartPage {
             buttons: ['Okay']
         }).present();
     }
- 
+
     // start qr scanner
-  start() {
+  scanQRcode() {
     // Optionally request the permission early
+
+    console.log('Hello qrcode scanner');
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
 
     if (status.authorized) {
+      console.log('authorized is true');
       // camera permission was granted
       // start scanning
       this.qrScanner.show();
+      console.log('qrScanner.show');
       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
         var myData = <any>{};
         myData  = text;
@@ -72,10 +80,11 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
+        this.qrScanner.destroy(); // zerstör die scheiß kamera auch wieder ...
         this.alert(myData);
       });
 
- 
+
     } else if (status.denied) {
       // camera permission was permanently denied
       // you must use QRScanner.openSettings() method to guide the user to the settings page

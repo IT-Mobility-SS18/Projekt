@@ -20,8 +20,10 @@
 </ion-header>
 
 <ion-content style="background: none transparent !important;">
-    <p>"ionic cordova run browser" statt "ionic serve" verwenden, da sonst die Erlaubnisabfrage bzgl. der Kamera nicht erscheint. Es sollte nicht spiegeln oder zu dunkel sein! Nach dem erfolgreichen Scan schließt sich die Kamera und in der Console werden Details ausgegeben.</p>
-    <button ion-button (click)="start()">qrscanner</button>
+    <p></p>
+    <button ion-button (click)="scanQRcode()">qrscanner</button>
+    <button ion-button (click)="Taschenlampe einschalten">qrscanner</button>
+    <button ion-button (click)="stop()">STOP</button>
 </ion-content>
 
 

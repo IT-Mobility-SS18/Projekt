@@ -86,15 +86,9 @@
             "cordova-plugin-file": {}
         },
         "platforms": [
-<<<<<<< HEAD
             "ios",
             "browser",
             "android"
-=======
-            "android",
-            "browser",
-            "ios"
->>>>>>> b737ef121e40d1eb945d7a486cd7b438e7260313
         ]
     }
 }
