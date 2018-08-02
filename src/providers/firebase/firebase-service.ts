@@ -19,8 +19,35 @@ export class FirebaseService {
   constructor(public dbInstance: AngularFireDatabase) {
 
 }
+//------------------------------------------------------------------
+//von mir
+
+xxx_FirebasePersonGroupCreate(userId:string, personGroupId:string,UserCreationRef:string){
+  //Schritt 1.1
+  //PersonGroup in firebase anlegen
+  console.log("Hello function PersonGroupCreate");
+
+  return new Promise((resolve, reject)=>{
+
+    firebase.database().ref('/User')
+    .child(userId).child('FaceRecognition')
+    .child(personGroupId).set({'FaceGroupId':personGroupId})
+    .then((resultFirebasePersonGroupCreate)=>{
+        console.log('Firebase Creation of Group successful '+resultFirebasePersonGroupCreate);
+        UserCreationRef = resultFirebasePersonGroupCreate;
+        resolve(resultFirebasePersonGroupCreate);
+    }, err => {
+      console.log("Error@ Firebase Creation of PersonGroup: " + err);
+      reject(err);
+    });//end resultFirebasePersonGroupCreate
+
+  });//end promise
+}
 
 
+
+
+//------------------------------------------------------------------
 
   removeItem(id) {
     this.dbInstance.list('/shoppingItems/').remove(id);
@@ -30,7 +57,7 @@ export class FirebaseService {
     //return this.OrderListRef.push(order);
     console.log('Daten werden geschrieben: ' + JSON.stringify(order));
      this.fireOrderData.push(order);
-    
+
   }
 
   addUser(user: User, UserId) {

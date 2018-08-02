@@ -5,6 +5,7 @@ import { Order } from '../../models/order/order.model';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketService } from '../../providers/basket/basket-service';
+import { FaceRecognitionPage } from '../face-recognition/face-recognition';
 
 //import { checkBindingNoChanges, Item } from '@angular/core/src/view/util';
 //import { IonicPage } from 'ionic-angular';
@@ -43,7 +44,11 @@ export class BasketPage {
   }
 
   goToPayment() {
-    this.navCtrl.push(PaymentPage, {amount: this.amount});
+
+    //Aufruf FaceRecognition page
+    this.navCtrl.push(FaceRecognitionPage, {amount: this.amount});
+
+    //this.navCtrl.push(PaymentPage, {amount: this.amount});
   }
   cancelBasket(){
     this.navCtrl.pop();

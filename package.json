@@ -23,7 +23,7 @@
         "@angular/platform-browser-dynamic": "5.2.10",
         "@ionic-native/android-permissions": "^4.9.0",
         "@ionic-native/barcode-scanner": "^4.9.0",
-        "@ionic-native/camera": "^4.9.1",
+        "@ionic-native/camera": "^4.9.2",
         "@ionic-native/core": "4.7.0",
         "@ionic-native/http": "^4.7.0",
         "@ionic-native/paypal": "^4.7.0",
@@ -41,7 +41,7 @@
         "cordova-browser": "5.0.3",
         "cordova-ios": "^4.5.4",
         "cordova-plugin-android-permissions": "^1.0.0",
-        "cordova-plugin-camera": "~4.0.3",
+        "cordova-plugin-camera": "^4.0.3",
         "cordova-plugin-dbcopy": "git+https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
         "cordova-plugin-device": "^2.0.2",
         "cordova-plugin-ionic-keyboard": "^2.1.2",
@@ -54,6 +54,7 @@
         "firebase": "^5.0.4",
         "ionic-angular": "3.9.2",
         "ionicons": "3.0.0",
+        "lab": "15.5.0",
         "ngx-qrcode2": "0.0.9",
         "paypal": "^1.0.1",
         "rxjs": "5.5.11",
@@ -80,13 +81,14 @@
             "uk.co.workingedge.cordova.plugin.sqliteporter": {},
             "cordova-plugin-dbcopy": {},
             "cordova-plugin-qrscanner": {},
+            "cordova-plugin-android-permissions": {},
             "cordova-plugin-camera": {},
-            "cordova-plugin-android-permissions": {}
+            "cordova-plugin-file": {}
         },
         "platforms": [
             "ios",
-            "android",
-            "browser"
+            "browser",
+            "android"
         ]
     }
 }

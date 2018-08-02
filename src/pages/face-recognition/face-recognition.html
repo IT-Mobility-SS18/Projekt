@@ -14,14 +14,31 @@
 
 <ion-content padding>
 
-  <button  ion-button color="primary" (click)="createPersonGroup()"> 1. PersonGroup - Create </button>
-  <button  ion-button color="primary" (click)="createPersonGroupPerson()"> 2. PersonGroup Person - Create </button>
-  <button  ion-button color="primary" (click)="addfacePersonGroupPerson()"> 3. PersonGroup Person - Add Face </button>
-  <button  ion-button color="primary" (click)="trainMachine()"> 4. trainMachine </button>
-  <button  ion-button color="primary" (click)="verifyPerson()"> 5. Person - Verify </button>
+  <button  ion-button color="primary" (click)="GroupAndPersonfaceApiandFirebase()"> 1. Registrierung: Gruppe und Person anlegen </button>
+  <button  ion-button color="primary" (click)="takeapicture()"> 2. Selfie </button>
+  <!--<button  ion-button color="primary" (click)="uploadpicturetofirebase()"> upload selfie 2 firebase </button>
+  -->
+  <button  ion-button color="primary" (click)="testfunktion_addingface()"> X. Gesicht zuordnen und trainieren</button>
+  <button  ion-button color="primary" (click)="verify_me()"> Person - Verify </button>
+
+  <p>Latest Picture:</p>
+      <!--
+      Varianten funktionieren nicht
+      <img src={{currentImage}} />
+      <img [src]="base64Image" *ngIf="base64Image" />
+      <img class="object-img" [src]="getImgContent1()">
+      <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(base64Image)"/>
+      <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(base64Image_mit_attrib)"/>
+      -->
+
+      <!-- beide Varianten funktioniern
+      <img class="object-img" [src]="getImgContent2()">
+      <img [src]="base64Image_mit_attrib" *ngIf="base64Image_mit_attrib" />
+      -->
+      <img [src]="base64Image_mit_attrib" *ngIf="base64Image_mit_attrib" />
 
   <h2>Analyzed Results </h2>
-  <p>hier steht eine Ausgabe:</p>
+  <p>Resultate der FaceApi:</p>
   <p>{{str_Ausgabe}}</p>
 
 </ion-content>

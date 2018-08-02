@@ -35,7 +35,7 @@ import { FaceApiProvider } from '../providers/face-api/face-api';
 import { HttpClientModule,} from '@angular/common/http';
 // end face api
 
-import { Camera } from '@ionic-native/camera'; /* QR-Code */
+import { Camera } from '@ionic-native/camera'; /* QR-Code und face api*/
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
 import { LogoutPage } from '../pages/logout/logout';
 
@@ -102,11 +102,11 @@ class CameraMock extends Camera {  /* QR-Code */
     FirebaseService,
     BasketService,
     SplashScreen,
-    Camera, /* QR-Code */
+    Camera, /* QR-Code und face api*/
     QRScanner, /* QR-Code */
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    {provide: Camera, useClass: CameraMock},
-    FaceApiProvider  /* QR-Code */
+    //{provide: Camera, useClass: CameraMock},
+    FaceApiProvider
   ]
 })
 export class AppModule {}
