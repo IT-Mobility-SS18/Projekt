@@ -57,6 +57,11 @@ export class UserStartPage {
         }).present();
     }
 
+    //stoppe den qr code scann vorgang
+  stop(){
+    this.qrScanner.destroy();
+  }
+
     // start qr scanner
   scanQRcode() {
     // Optionally request the permission early
@@ -80,7 +85,7 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
-        this.qrScanner.destroy(); // zerstör die scheiß kamera auch wieder ...
+        this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
         this.alert(myData);
       });
 
