@@ -16,10 +16,16 @@ import { FaceRecognitionPage } from '../face-recognition/face-recognition';
 })
 export class BasketPage {
 
+  // Basket icon: green if empty, blue if not
   BasketStateColor = this.BasketService.BasketStateColor;
+
+  // Items put in basket
   ItemSelection = this.BasketService.ItemSelection;
+
+  // Amount to pay
   amount: string;
 
+  // Initialize order and its attributes
   order: Order = {
     ItemId: undefined,
     Quantity: undefined,
@@ -38,6 +44,7 @@ export class BasketPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
     this.sumPrices();
@@ -50,9 +57,12 @@ export class BasketPage {
 
     //this.navCtrl.push(PaymentPage, {amount: this.amount});
   }
+
   cancelBasket(){
     this.navCtrl.pop();
   }
+
+  // Unused at the moment -> was at PaymentOK
   createOrder(ItemSelection){
     for (var idIteration in ItemSelection) {
       //hier müssen alle order bestandteile rein!! später auch die oben hardgecodeden
@@ -69,6 +79,7 @@ export class BasketPage {
     }
   }
 
+  // Sum prices of items put in the basket -> after loading and when removing an item
   sumPrices(){
     var tmpPrice = 0.0;
     for (var idIteration in this.ItemSelection){
@@ -77,6 +88,7 @@ export class BasketPage {
     this.amount = tmpPrice.toFixed(2);
   }
 
+  // Remove an item from the basket by clicking on it
   removeItem(ind) {
     this.BasketService.removeFromArray(ind);
     this.sumPrices();
@@ -87,9 +99,11 @@ export class BasketPage {
     }
   }
 
+  // Remove all items from the basket
   clearBasket() {
     this.BasketService.removeAll();
     this.BasketService.checkBasketContent();
     this.navCtrl.pop();
   }
+  
 }

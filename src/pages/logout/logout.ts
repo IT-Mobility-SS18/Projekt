@@ -22,6 +22,7 @@ export class LogoutPage {
     this.navCtrl.push(StartPage);
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogoutPage');
   }

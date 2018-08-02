@@ -19,9 +19,11 @@ export class StartPage {
     
   }
 
-ionViewDidLoad() {
-}
+  // After loading the page
+  ionViewDidLoad() {
+  }
 
+  // not in use at the moment
 alert(message: string) {
   this.alertCtrl.create({
     title: 'Information',
@@ -30,6 +32,7 @@ alert(message: string) {
   }).present();
 }
 
+// login
 userStart(){
   this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
   .then( data => {
@@ -44,6 +47,7 @@ userStart(){
   console.log('User signed in: ', this.user.value);
 }
 
+// go to registration
 registration(){
   this.navCtrl.push(RegistrationPage);
 }

@@ -26,8 +26,58 @@
 
       <ion-item>
         <ion-label stacked required>Passwort wiederholen</ion-label>
-        <ion-input type="password" #password></ion-input>
+        <ion-input type="password" #passwordRep></ion-input>
       </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Anrede</ion-label>
+        <ion-select #newSelect [(ngModel)]="MyUser.Sex" (change)="onChangeSex(MyUser.Sex)">
+          <ion-option value="f">Frau</ion-option>
+          <ion-option value="m">Herr</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Vorname</ion-label>
+        <ion-input type="text" [(ngModel)]="MyUser.FirstName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Nachname</ion-label>
+        <ion-input type="text" [(ngModel)]="MyUser.LastName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Geburtsdatum</ion-label>
+        <ion-datetime [(ngModel)]="MyUser.BDay" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" required></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Straße und Hausnummer</ion-label>
+        <ion-input type="text" [(ngModel)]="MyUser.Street"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Postleitzahl</ion-label>
+        <ion-input type="text" ng-pattern="[1-9]{5}" [(ngModel)]="MyUser.ZipCode"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Ort</ion-label>
+        <ion-input type="text" [(ngModel)]="MyUser.City"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Land</ion-label>
+        <ion-input type="text" [(ngModel)]="MyUser.Country"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked required>Telefonnummer</ion-label>
+        <ion-input type="text" [(ngModel)]="MyUser.Phone"></ion-input>
+      </ion-item>
+
+
 
       <ion-item style="display:none;">
         <ion-icon></ion-icon>
@@ -37,7 +87,16 @@
 
     &nbsp;
 
-    <button block ion-button (click)="registerUser()" item-left>Account erstellen</button>
+    <ion-item>
+      <ion-label stacked required>Newsletter empfangen?</ion-label>
+      <ion-select #newSelect [(ngModel)]="MyUser.OptInNewsletter" (change)="onChangeOptInNewsletter(MyUser.OptInNewsletter)">
+        <ion-option value="ja">Ja</ion-option>
+        <ion-option value="nein">Lieber nicht</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <button block ion-button (click)="checkRegistrationFields()" item-left>Account erstellen</button>
     <a class="center-text" (click)="cancelRegistration()">Abbrechen</a>
   </ion-card-content>
 </ion-content>

@@ -30,6 +30,7 @@ export class OrderViewServicePage {
     })
   }
 
+  // not in use at the moment
   selectedTab(index) {
        this.slider.slideTo(index);
      }

@@ -28,7 +28,6 @@ export class UserStartPage {
     this.UserId = fire.auth.currentUser.uid;
   }
 
-
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
   }
@@ -37,12 +36,15 @@ export class UserStartPage {
     this.navCtrl.push(BasketPage, {});
   }
 
+  // not in use at the moment
   selectedTab(index) {
     this.slider.slideTo(index);
   }
+
   username: string;
   UserId: string;
 
+  // not in use at the moment
   alert(message: string) {
         this.alertCtrl.create({
             title: 'Information',
@@ -50,6 +52,8 @@ export class UserStartPage {
             buttons: ['Okay']
         }).present();
     }
+ 
+    // start qr scanner
   start() {
     // Optionally request the permission early
     this.qrScanner.prepare().then((status: QRScannerStatus) => {

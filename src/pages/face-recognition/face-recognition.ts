@@ -140,10 +140,14 @@ export class FaceRecognitionPage {
 
   }
 
+<<<<<<< HEAD
   // *******************************************************
   // allg. Funktionen zum Start der Seite
   // *******************************************************
 
+=======
+  // After loading the page
+>>>>>>> b737ef121e40d1eb945d7a486cd7b438e7260313
   ionViewDidLoad() {
     console.log('ionViewDidLoad FaceRecognitionPage');
   }
