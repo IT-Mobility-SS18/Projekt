@@ -6,6 +6,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 
 //import { IonicPage } from 'ionic-angular';
+import { MenuController } from 'ionic-angular'; //Side-Menu löschen
 
 @Component({
   selector: 'page-start',
@@ -15,12 +16,16 @@ import { FirebaseService } from '../../providers/firebase/firebase-service';
 export class StartPage {
   @ViewChild('username') user;
   @ViewChild('password') password;
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, private fire:AngularFireAuth,public navParams: NavParams, public FirebaseService: FirebaseService){
+  constructor(private menu: MenuController, public navCtrl: NavController,private alertCtrl: AlertController, private fire:AngularFireAuth,public navParams: NavParams, public FirebaseService: FirebaseService){
     
   }
 
-  // After loading the page
-  ionViewDidLoad() {
+  ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
+    this.menu.enable(false);
+  }
+    
+  ionViewWillLeave() { //beim Verlassen der Seite Side-Menu wieder einblenden
+    this.menu.enable(true);
   }
 
   // not in use at the moment

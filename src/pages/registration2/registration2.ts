@@ -8,6 +8,7 @@ import { BasketPage } from '../basket/basket';
 
 //import { firebaseConfig } from '../../environment';
 //import { ViewChild } from '@angular/core';
+import { MenuController } from 'ionic-angular'; //Side-Menu löschen
 
 @Component({
   selector: 'page-registration2',
@@ -40,8 +41,16 @@ export class Registration2Page {
     BDay: undefined
   }
 
-  constructor(private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
+  constructor(private menu: MenuController, private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
     this.UserId = this.fire.auth.currentUser.uid;
+  }
+
+  ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
+    this.menu.enable(false);
+  }
+    
+  ionViewWillLeave() { //beim Verlassen der Seite Side-Menu wieder einblenden
+    this.menu.enable(true);
   }
 
   cancelRegistration(){

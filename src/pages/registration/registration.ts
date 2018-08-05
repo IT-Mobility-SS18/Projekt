@@ -7,7 +7,9 @@ import { BasketPage } from '../basket/basket';
 import { User } from '../../models/order/user.model'
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { UserStartPage } from '../user-start/user-start';
+
 //import { IonicPage } from 'ionic-angular';
+import { MenuController } from 'ionic-angular'; //Side-Menu löschen
 
 @Component({
   selector: 'page-registration',
@@ -47,12 +49,20 @@ export class RegistrationPage {
   }
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
+  constructor(private menu: MenuController, public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
   }
 
   // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
+  }
+
+  ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
+    this.menu.enable(false);
+  }
+    
+  ionViewWillLeave() { //beim Verlassen der Seite Side-Menu wieder einblenden
+    this.menu.enable(true);
   }
 
   registerUser() {
