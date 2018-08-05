@@ -14,6 +14,12 @@ import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { UserViewPage } from '../pages/user-view/user-view';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LogoutPage } from '../pages/logout/logout';
+import { ImprintPage } from '../pages/imprint/imprint';
+import { ContactPage } from '../pages/contact/contact';
+import { SettingsPage } from '../pages/settings/settings';
+import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
+import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -41,16 +47,22 @@ export class MyApp {
     //test
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Login', component: StartPage },
-      { title: 'Registrierung', component: RegistrationPage },
-      { title: 'Startseite', component: UserStartPage },
-      { title: 'Bestellen', component: OrderCustomerPage },
+      /*{ title: 'Login', component: StartPage },*/
+      /*{ title: 'Registrierung', component: RegistrationPage },*/
+      { title: 'Restaurants', component: UserStartPage },
+      { title: 'Gerichteübersicht', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
-      { title: 'Bestellübersicht Küche', component: OrderViewKitchenPage },
-      { title: 'Bestellübersicht Service', component: OrderViewServicePage },
-      { title: 'FaceRecognition', component: FaceRecognitionPage },
-      { title: 'Benutzerprofil', component: UserViewPage },
-      { title: 'Abmelden', component: LogoutPage }
+      { title: 'Kontakt', component: ContactPage },
+      { title: 'Benutzerkonto', component: UserViewPage },
+      { title: 'Einstellungen', component: SettingsPage },
+      { title: 'Abmelden', component: LogoutPage },
+      { title: 'AGB', component: TermsAndConditionsPage },
+      { title: 'Datenschutz', component: PrivacyPolicyPage },
+      { title: 'Impressum', component: ImprintPage },
+
+      { title: 'Gesichtserkennung', component: FaceRecognitionPage },
+      { title: 'Küchenübersicht', component: OrderViewKitchenPage },
+      { title: 'Serviceübersicht', component: OrderViewServicePage }
     ];
   }
 

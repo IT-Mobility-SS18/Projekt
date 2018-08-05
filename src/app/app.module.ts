@@ -15,6 +15,13 @@ import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-c
 import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
 import { UserViewPage } from '../pages/user-view/user-view';
 import { OrderCustomerPage } from '../pages/order-customer/order-customer';
+import { ImprintPage } from '../pages/imprint/imprint';
+import { LogoutPage } from '../pages/logout/logout';
+
+import { ContactPage } from '../pages/contact/contact';
+import { SettingsPage } from '../pages/settings/settings';
+import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
+import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
 
 import { PayPal } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -37,7 +44,6 @@ import { HttpClientModule,} from '@angular/common/http';
 
 import { Camera } from '@ionic-native/camera'; /* QR-Code und face api*/
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
-import { LogoutPage } from '../pages/logout/logout';
 
 
 
@@ -59,6 +65,11 @@ import { LogoutPage } from '../pages/logout/logout';
     FaceRecognitionPage,
     OrderCustomerPage,
     UserViewPage,
+    ImprintPage,
+    ContactPage,
+    SettingsPage,
+    PrivacyPolicyPage,
+    TermsAndConditionsPage,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +100,11 @@ import { LogoutPage } from '../pages/logout/logout';
     OrderCustomerPage,
     UserViewPage,
     RegistrationPage,
+    ImprintPage,
+    ContactPage,
+    SettingsPage,
+    PrivacyPolicyPage,
+    TermsAndConditionsPage,
   ],
   providers: [
     PayPal,
