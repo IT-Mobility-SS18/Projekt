@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+import { OrderCustomerPage } from '../order-customer/order-customer';
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -85,6 +86,9 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
+        
+        this.navCtrl.push(OrderCustomerPage, {});
+        
         this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
         this.alert(myData);
       });
@@ -103,9 +107,5 @@ export class UserStartPage {
     console.log('Error is', e);
       this.alert(e.message);
   });
-
-
   }
-
-
 }
