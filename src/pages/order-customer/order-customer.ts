@@ -17,20 +17,7 @@ import { BasketService } from '../../providers/basket/basket-service';
 })
 export class OrderCustomerPage {
   BasketStateColor = this.BasketService.BasketStateColor;
- /*  order: Order = {
-    UserId: undefined,
-    Name: undefined,
-    Price: undefined,
-    Quantity: undefined,
-    Picture: 'none',
-    DeliveryCosts: 0.0,
-    OrderState: 'open',
-    TimeStamp: 'timestampvalue',
-    RestaurantId: 45,
-    PayStatus: 'not paid',
-    Annotations: undefined,
-    TableId: 12
-  } */
+  
   order: Order = {
     ItemId: undefined,
     Quantity: undefined,
@@ -53,10 +40,6 @@ export class OrderCustomerPage {
   NachspeiseArr = [];
   ItemId = '65246b5b456bvgbrgber';
   UserId;
-  PicStorage = firebase.storage();
-  PicReference = this.PicStorage.ref();
-  ImagesRef = this.PicReference.child('ItemPics');
-  IMGRef = this.ImagesRef.child('image.jpg').getDownloadURL();
   test;
   ItemSelection = [];
   CurrentQuantity;
@@ -73,11 +56,6 @@ export class OrderCustomerPage {
     }).then((res: any) => {
       this.filterItems();
     })
-    //IMG testing
-    this.test= this.IMGRef.then(function(url) {
-     return url;
-    })
-    console.log('IMG Path is: ' + this.test);
    }
 
    goToBasket() {
@@ -97,20 +75,20 @@ export class OrderCustomerPage {
   // add to (temporary) basket array
     addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {   
       this.ItemSelection = this.BasketService.ItemSelection;
-        /* this.ItemSelection.push({
+        this.ItemSelection.push({
           ItemId: ItemId,
-          Quantity: 1,
-          Name: ItemName,
-          Price: ItemPrice}
-        ); */
-        this.order.ItemId = ItemId;
-        this.order.Name = Name;
-        this.order.Price = Price;
-        this.order.Size = 'mysize';
-        this.order.Variant = 'myvariant';
-        this.order.Quantity = 'myquant';
-        this.order.Annotations = 'myannot';
-        this.ItemSelection.push(this.order);
+          Quantity: 'myquant',
+          UserId: this.fire.auth.currentUser.uid,
+          OrderState: 'open',
+          Name: Name,
+          Price: Price,
+          TableId: 44,
+          RestaurantId: 45,
+          TimeStamp: '2018-xxxxx',
+          Size: 'mysize',
+          Variant: 'myvariant',
+          Annotations: 'myannot'
+        });
       this.BasketService.ItemSelection = this.ItemSelection;
       this.BasketService.checkBasketContent();
 
@@ -142,8 +120,6 @@ export class OrderCustomerPage {
     });
     alert.present();
   }
-  
-  // not in use at the moment
   filterItems() {
     //alle Getränke
     for (var iterG in this.viewarr) {
