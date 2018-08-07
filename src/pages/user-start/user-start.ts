@@ -26,7 +26,8 @@ export class UserStartPage {
               private BasketService: BasketService,
               private qrScanner: QRScanner,
               private menu: MenuController,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+            ) {
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
   }
@@ -100,7 +101,11 @@ export class UserStartPage {
         this.navCtrl.push(OrderCustomerPage, {});
         
         this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
-        this.alert(myData);
+        //this.alert(myData);
+        this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId
+        console.log("QR: RestaurantID: " +  myData.split(" ")[1]);
+        this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
+        console.log("QR: TischNr: " +  myData.split(" ")[3]);
       });
 
 

@@ -32,9 +32,9 @@ export class OrderCustomerPage {
     Variant: undefined,
     Annotations: undefined
   }
-  CurrentRestaurantId = 45;
-  ListCategory = [];
-  viewarr= [];
+  CurrentRestaurantId:number;
+  ListCategory;
+  viewarr;
   HauptspeiseArr = [];
   GetraenkeArr = [];
   NachspeiseArr = [];
@@ -48,12 +48,29 @@ export class OrderCustomerPage {
   public images: any;
    @ViewChild('slider') slider: Slides;
    page = 0;
+
+   ionViewWillEnter() {
+    this.FillItemArray();
+   }
+
    constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController, private BasketService: BasketService) {
     this.UserId = this.fire.auth.currentUser.uid;
-    FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
+   }
+
+   async getRestaurantId() {
+    try {
+      this.CurrentRestaurantId = this.BasketService.QRRestaurantId;
+    } catch (error) {
+    console.log("BasketService problem",error);
+    }
+   }
+
+   async FillItemArray() {
+    await this.getRestaurantId();
+    this.FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
-    }).then((res: any) => {
+      console.log("FillItemArray:",this.viewarr);
       this.filterItems();
     })
    }
@@ -124,27 +141,26 @@ export class OrderCustomerPage {
     });
     alert.present();
   }
-  filterItems() {
+  async filterItems() {
     //alle Getränke
     for (var iterG in this.viewarr) {
       if (this.viewarr[iterG].Category == "Getränke" ) {
         this.GetraenkeArr.push(this.viewarr[iterG]);
       }
-     
-    } console.log("GetränkeItems: " + this.GetraenkeArr[0].Name);
+    }
     //alle Hauptspeisen
     for (var iterH in this.viewarr) {
       if (this.viewarr[iterH].Category == "Hauptspeise" ) {
         this.HauptspeiseArr.push(this.viewarr[iterH]);
       }
      
-    } console.log("HauptspeiseItems: " + this.HauptspeiseArr[0].Name);
+    }
     //alle Nachspeisen
     for (var iterN in this.viewarr) {
       if (this.viewarr[iterN].Category == "Nachspeise" ) {
         this.NachspeiseArr.push(this.viewarr[iterN]);
       }
      
-    } console.log("NachspeiseItems: " + this.NachspeiseArr[0].Name);
+    }
   }
 }

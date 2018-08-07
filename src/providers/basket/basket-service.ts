@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 export class BasketService {
    public ItemSelection = [];
    public BasketStateColor;
+   public QRRestaurantId:number;
+   public QRTischNr:number;
 
    checkBasketContent() {
     if (this.ItemSelection.length > 0) {
