@@ -5,6 +5,8 @@ import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { OrderCustomerPage } from '../order-customer/order-customer';
+import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
+import { UserViewPage } from '../user-view/user-view';
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -56,6 +58,14 @@ export class UserStartPage {
             subTitle: message,
             buttons: ['Okay']
         }).present();
+    }
+
+    goToOrderViewCustomer(){
+      this.navCtrl.push(OrderViewCustomerPage);
+    }
+
+    goToUserView(){
+      this.navCtrl.push(UserViewPage);
     }
 
     //stoppe den qr code scann vorgang
