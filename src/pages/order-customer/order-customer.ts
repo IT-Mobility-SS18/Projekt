@@ -62,6 +62,10 @@ export class OrderCustomerPage {
      this.navCtrl.push(BasketPage, {});
    }
 
+   ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
+  }
+
    // not in use at the moment
    selectedTab(index) {
      this.slider.slideTo(index);
