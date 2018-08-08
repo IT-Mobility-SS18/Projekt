@@ -41,7 +41,12 @@ export class BasketPage {
     Annotations: undefined
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public FirebaseService: FirebaseService,
+    private fire: AngularFireAuth,
+    private BasketService: BasketService) {
   }
 
   // After loading the page
@@ -53,7 +58,7 @@ export class BasketPage {
   goToPayment() {
 
     //Aufruf FaceRecognition page
-    this.navCtrl.push(FaceRecognitionPage, {amount: this.amount});
+    this.navCtrl.push(FaceRecognitionPage, {amount: this.amount, registration: false});
 
     //this.navCtrl.push(PaymentPage, {amount: this.amount});
   }
@@ -105,5 +110,5 @@ export class BasketPage {
     this.BasketService.checkBasketContent();
     this.navCtrl.pop();
   }
-  
+
 }

@@ -21,64 +21,20 @@ export class FaceApiProvider {
   public gitimgurl2:string;
   public gitimgurl3:string;
 
-  constructor(
-    public http: HttpClient)
-    {
-
+  constructor(public http: HttpClient){
     console.log('Hello FaceApiProvider Provider');
-
     this.subscriptionKey= faceApiConfig.faceApi;
-
-    //this.username="FamilyDad"
-    // this.personGroupId="7z3748fbund23d6";
-
-    // this.gitimgurl1="https://github.com/Microsoft/Cognitive-Face-Windows/blob/master/Data/PersonGroup/Family1-Dad/Family1-Dad1.jpg?raw=true";
-    // this.gitimgurl2="https://github.com/Microsoft/Cognitive-Face-Windows/blob/master/Data/PersonGroup/Family1-Dad/Family1-Dad2.jpg?raw=true";
-    // this.gitimgurl3="https://github.com/Microsoft/Cognitive-Face-Windows/blob/master/Data/PersonGroup/Family1-Dad/Family1-Dad3.jpg?raw=true";
-
-    //zum test von addface
-    //this.personId;//="2d2755b8-216d-4998-a77f-a304b7b01b8e";
-
-    //zum test von verify
-    //this.detectFaceId="4e0fdc5a-e27a-4c11-bda1-0d0eae32c4df";
   }
 
+  // *******************************************************
+  // ApiFunktion für Schritt X.X
+  // FaceId erzeugen, mithilfe Api face detect
+  // *******************************************************
 
   FaceIdFromFaceDetect(picture_url:string){
-    //parameters
-    //1. url mit bild
-
-    // Promises
-    // function do1() {
-    //   return service
-    //     .do()
-    //     // some transformations
-    //     .then(result => result.fieldA);
-    // }
-    //
-    // function do2(resultOfDo1) {
-    //   return service
-    //     .do2(resultOfDo1)
-    //     // some transformations
-    //     .then(result => result.fieldB);
-    // }
-    //
-    // return do1()
-    //       .then(do2);
-
-
-    // var promise = new Promise(function(resolve, reject) {
-    //   // do a thing, possibly async, then…
-    //
-    //   if (/* everything turned out fine */) {
-    //     resolve("Stuff worked!");
-    //   }
-    //   else {
-    //     reject(Error("It broke"));
-    //   }
-    // });
 
     console.log("Hello function FaceIdFromFaceDetect");
+    console.log('picture_url'+picture_url);
 
     //        POST https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect         ?returnFaceId=true&returnFaceLandmarks=false
     let uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect/';
@@ -100,7 +56,6 @@ export class FaceApiProvider {
           };
 
           let body = JSON.stringify({ url: picture_url});
-
           //console.log(uriBase+ JSON.stringify(body)+ JSON.stringify(httpOptions));
 
           this.http
@@ -127,6 +82,11 @@ export class FaceApiProvider {
     });//end promise
 
   }
+
+  // *******************************************************
+  // ApiFunktion für Schritt X.X
+  // Verification der Person, anhand übergebener Ids
+  // *******************************************************
 
   VerificationFromVerify(faceId: string, personId: string, PersonGroupId: string){
     //params
@@ -160,13 +120,7 @@ export class FaceApiProvider {
           this.http
               .post(uriBase, body, httpOptions)
               .subscribe(result => {
-                  // if (result.isIdentical != null) {
-                  //     this.detectFaceId=result[0]['faceId'];
-                  //     console.log("FaceIdFromFaceDetect: " + this.detectFaceId);
-                  //     resolve(result);
-                  // } else {
                       resolve(result);
-                  //}
               }, err => {
                     resolve(err);
               });
@@ -176,31 +130,36 @@ export class FaceApiProvider {
 
   }
 
-  FaceDetectAndVerify(){
+  // *******************************************************
+  // Zentrale ApiFunktion für Schritt X.X
+  // Aufruf für Verification der Person
+  // *******************************************************
 
-    // console.log("Hello function FaceDetectAndVerify");
-    //
-    // this.FaceIdFromFaceDetect().then(result => {
-    //   // console.log("im then FaceDetectAndVerify: " + JSON.stringify(result));
-    //   // console.log("!!!FaceDetectAndVerify: " + JSON.stringify(this.detectFaceId));
-    //   this.VerificationFromVerify(JSON.stringify(result)).then(result2 => {
-    //     // console.log("verify"+JSON.stringify(result2));
-    //     // console.log("verify: "+JSON.stringify(result2.isIdentical));
-    //     // console.log("verify: "+JSON.stringify(result2.confidence));
-    //
-    //   });
-    //
-    //
-    // });
-    }
+  // FaceDetectAndVerify(){
+  //
+  //   console.log("Hello function FaceDetectAndVerify");
+  //
+  //   this.FaceIdFromFaceDetect().then(result => {
+  //     // console.log("im then FaceDetectAndVerify: " + JSON.stringify(result));
+  //     // console.log("!!!FaceDetectAndVerify: " + JSON.stringify(this.detectFaceId));
+  //     this.VerificationFromVerify(JSON.stringify(result)).then(result2 => {
+  //       // console.log("verify"+JSON.stringify(result2));
+  //       // console.log("verify: "+JSON.stringify(result2.isIdentical));
+  //       // console.log("verify: "+JSON.stringify(result2.confidence));
+  //     });
+  //   });
+  // }
+
+  // *******************************************************
+  // ApiFunktion für Schritt X.X
+  // Machine Learning
+  // *******************************************************
 
   TrainTheMachine(personGroupId:string){
-    //parameters
-    //1. personGroupId
 
     console.log("Hello function TrainTheMachine");
 
-    //        POST https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/    mygroupid            /train
+    //        POST https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/    mygroupid       /train
     let uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/' + personGroupId +'/train/';
 
     return new Promise((resolve, reject)=>{
@@ -225,15 +184,16 @@ export class FaceApiProvider {
     });//end promise
   }
 
+  // *******************************************************
+  // ApiFunktion für Schritt X.X
+  // Gesicht für eine Person in Personengruppe in faceapi anlegen
+  // *******************************************************
+
   PersonGroupPersonAddFace(personGroupId:string, personId:string, picture_url:string){
-    //parameters
-    //1. personGroupId
-    //2. personId
-    //3. url mit bild
 
     console.log("Hello function PersonGroupPersonAddFace");
 
-    //        POST https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/mypersongroupid          /persons/   mypersonid       /persistedFaces
+    //        POST https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/mypersongroupid     /persons/   mypersonid  /persistedFaces
     let uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/' + personGroupId +'/persons/'+ personId + '/persistedFaces/';
 
     return new Promise((resolve, reject)=>{
@@ -259,6 +219,11 @@ export class FaceApiProvider {
     });//end promise
   }
 
+  // *******************************************************
+  // ApiFunktion für Schritt 2.0
+  // Person in Personengruppe in faceapi anlegen
+  // *******************************************************
+
   PersonGroupPersonCreate(personGroupId:string, username:string){
 
     console.log("Hello function PersonGroupPersonCreate: "+personGroupId+","+username);
@@ -275,7 +240,6 @@ export class FaceApiProvider {
           const httpOptions = {headers: myheader};
 
           let body = JSON.stringify({name: username});
-
           //console.log(uriBase+ JSON.stringify(body)+ JSON.stringify(httpOptions));
 
           this.http
@@ -285,14 +249,16 @@ export class FaceApiProvider {
               }, err => {
                   reject(err.statusText);
               });
-
     });//end promise
-
   }
 
+  // *******************************************************
+  // ApiFunktion für Schritt 1.0
+  // Personengruppe in faceapi anlegen
+  // *******************************************************
+
   PersonGroupCreate(groupName:string, personGroupId:string) {
-        //Schritt 1
-        // Personengruppe in faceapi anlegen
+
         console.log("Hello function PersonGroupCreate");
 
         let uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/persongroups/' + personGroupId +'/';
@@ -316,14 +282,10 @@ export class FaceApiProvider {
                         reject(err.statusText);
                   });
 
-
                   // if (response.statusCode >= 200 && response.statusCode <= 299) {
                   //       resolve({ response: response, body: body });
                   //   } else {
                   //       reject({ response: response, body: body });
-
-
-
 
         });//end promise
   }

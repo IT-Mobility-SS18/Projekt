@@ -43,12 +43,15 @@ export class Registration2Page {
 
   constructor(private menu: MenuController, private fire: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
     this.UserId = this.fire.auth.currentUser.uid;
+    console.log('hello registration2 page');
+    console.log(this.UserId);
+
   }
 
   ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
     this.menu.enable(false);
   }
-    
+
   ionViewWillLeave() { //beim Verlassen der Seite Side-Menu wieder einblenden
     this.menu.enable(true);
   }
@@ -62,7 +65,7 @@ export class Registration2Page {
     this.navCtrl.setRoot(UserStartPage);
 
   }
-  
+
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }

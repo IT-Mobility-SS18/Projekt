@@ -11,6 +11,10 @@ import { UserStartPage } from '../user-start/user-start';
 //import { IonicPage } from 'ionic-angular';
 import { MenuController } from 'ionic-angular'; //Side-Menu löschen
 
+//bei FaceRecognition registrieren
+import { FaceRecognitionPage } from '../face-recognition/face-recognition';
+import { Events } from 'ionic-angular';
+
 @Component({
   selector: 'page-registration',
   templateUrl: 'registration.html',
@@ -49,7 +53,16 @@ export class RegistrationPage {
   }
 
 
-  constructor(private menu: MenuController, public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController, public FirebaseService: FirebaseService) {
+  constructor(
+    private menu: MenuController,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private fire: AngularFireAuth,
+    private alertCtrl: AlertController,
+    public FirebaseService: FirebaseService,
+    public events: Events
+  ) {
+    console.log('hello registration page');
   }
 
   // After loading the page
@@ -60,7 +73,7 @@ export class RegistrationPage {
   ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
     this.menu.enable(false);
   }
-    
+
   ionViewWillLeave() { //beim Verlassen der Seite Side-Menu wieder einblenden
     this.menu.enable(true);
   }
@@ -74,6 +87,16 @@ export class RegistrationPage {
       this.UserId = this.fire.auth.currentUser.uid;
       this.MyUser.Mail = this.fire.auth.currentUser.email;
       this.addUserDataToDatabase();
+
+
+      console.log('starting event: ');
+      // publish an event when a user is created to register in FaceRecognition
+      //this.events.publish('user:created', this.UserId, Date.now());
+      //FaceRecognitionPage.registrieren();
+
+      //Aufruf FaceRecognition page
+      this.navCtrl.push(FaceRecognitionPage, {amount: 0.0, registration: true});
+
     })
     .catch(error => {
       console.log('error creating user ', error);
@@ -86,9 +109,9 @@ export class RegistrationPage {
               case "auth/weak-password":
               this.MyErrorMessage = this.MyErrorMessage + " " + "Das Passwort erfüllt nicht die Mindestanforderungen und sollte mindestens sechs Zeichen lang sein."
         }
-        
+
       this.alert(this.MyErrorMessage);
-    }); 
+    });
   }
 
   // is and was in use!
@@ -105,8 +128,8 @@ export class RegistrationPage {
     try {
         if (this.password.value.match(this.passwordRep.value) === null || this.passwordRep.value === "") {
         this.alert("Die eingegebenen Passwörter stimmen nicht überein!");
-    } 
-      
+    }
+
     } catch (error) {
       console.log("error PW values: " + error);
     }
@@ -147,7 +170,7 @@ export class RegistrationPage {
     } catch (error) {
       this.MyErrorMessage = "Ein Fehler ist aufgetreten:";
       console.log("error ist: " + error);
-      
+
       var myerr = JSON.stringify(error.message);
       console.log("my error ist: " + myerr);
         this.MyErrorMessage = "Bitte alle Felder ausfüllen!";
@@ -178,11 +201,11 @@ export class RegistrationPage {
         this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Angabe zum Newsletter gemacht."; */
         //case Error: "differentPasswords"
         //this.MyErrorMessage = this.MyErrorMessage + " " + "Die eingegebenen Passwörter stimmen nicht überein."
-  
-  
+
+
     }
-    
-  
+
+
 
   cancelRegistration(){
     this.navCtrl.pop();

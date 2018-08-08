@@ -14,12 +14,9 @@
 
 <ion-content padding>
 
-  <button  ion-button color="primary" (click)="GroupAndPersonfaceApiandFirebase()"> 1. Registrierung: Gruppe und Person anlegen </button>
-  <button  ion-button color="primary" (click)="takeapicture()"> 2. Selfie </button>
-  <!--<button  ion-button color="primary" (click)="uploadpicturetofirebase()"> upload selfie 2 firebase </button>
-  -->
-  <button  ion-button color="primary" (click)="testfunktion_addingface()"> X. Gesicht zuordnen und trainieren</button>
-  <button  ion-button color="primary" (click)="verify_me()"> Person - Verify </button>
+  <button  ion-button color="primary" (click)="registrieren()"> 1. Gruppe und Person registrieren </button>
+  <button  ion-button color="primary" (click)="bezahlen()"> 2. bezahlen </button>
+
 
   <p>Latest Picture:</p>
       <!--
@@ -37,8 +34,8 @@
       -->
       <img [src]="base64Image_mit_attrib" *ngIf="base64Image_mit_attrib" />
 
-  <h2>Analyzed Results </h2>
+  <!-- <h2>Analyzed Results </h2>
   <p>Resultate der FaceApi:</p>
-  <p>{{str_Ausgabe}}</p>
+  <p>{{str_Ausgabe}}</p>-->
 
 </ion-content>

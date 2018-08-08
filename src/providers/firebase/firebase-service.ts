@@ -19,9 +19,9 @@ export class FirebaseService {
   constructor(public dbInstance: AngularFireDatabase) {
 
 }
+
 //------------------------------------------------------------------
 //von mir
-
 xxx_FirebasePersonGroupCreate(userId:string, personGroupId:string,UserCreationRef:string){
   //Schritt 1.1
   //PersonGroup in firebase anlegen
@@ -43,10 +43,6 @@ xxx_FirebasePersonGroupCreate(userId:string, personGroupId:string,UserCreationRe
 
   });//end promise
 }
-
-
-
-
 //------------------------------------------------------------------
 
   removeItem(id) {
@@ -117,9 +113,26 @@ xxx_FirebasePersonGroupCreate(userId:string, personGroupId:string,UserCreationRe
     })
   }
 
-  PersonGroupCreate() {
-   // UserId = '56456nr567';
-    //this.UserListData.child.child(UserId).child('FaceRecognition');
+  getPersonId(UserId,GroupId) {
+    var personId:string;
+    var promise = new Promise((resolve, reject) => {
+      this.UserListData.child(UserId).child('FaceRecognition').child(GroupId).once('value', (snapshot) => {
+        let UserData = snapshot.val();
+        let tmparr = [];
+        for (var key in UserData) {
+            tmparr.push(UserData[key]);
+        }
+        if(tmparr!=null){
+          personId=tmparr[0].FacePersonId;
+          resolve(personId);
+        } else {
+          resolve('keine personId gefunden');
+        }
+      }).catch((err) => {
+          reject(err);
+      })
+  })
+  return promise;
   }
 
 
