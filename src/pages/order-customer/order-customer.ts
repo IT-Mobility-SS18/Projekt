@@ -45,6 +45,21 @@ export class OrderCustomerPage {
   CurrentQuantity;
   EnteredQuantity;
   
+  //Datenbank-Auswahl
+  onChangeVariant(SelectedValue){
+    console.log("Selected Variant", SelectedValue);
+  }
+
+  //Datenbank-Auswahl
+  onChangeSize(SelectedValue){
+    console.log("Selected Size", SelectedValue);
+  }
+
+  //Datenbank-Auswahl
+  onChangeQuantity(SelectedValue){
+    console.log("Selected Quantity", SelectedValue);
+  }
+
   public images: any;
    @ViewChild('slider') slider: Slides;
    page = 0;

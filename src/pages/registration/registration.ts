@@ -27,10 +27,12 @@ export class RegistrationPage {
   @ViewChild('password') password;
   @ViewChild('passwordRep') passwordRep;
 
+  //Datenbank-Auswahl
   onChangeSex(SelectedValue){
     console.log("Selected Sex", SelectedValue);
   }
 
+  //Datenbank-Auswahl
   onChangeOptInNewsletter(SelectedValue){
     console.log("Selected OptInNewsletter", SelectedValue);
   }
