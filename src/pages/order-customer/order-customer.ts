@@ -17,20 +17,7 @@ import { BasketService } from '../../providers/basket/basket-service';
 })
 export class OrderCustomerPage {
   BasketStateColor = this.BasketService.BasketStateColor;
- /*  order: Order = {
-    UserId: undefined,
-    Name: undefined,
-    Price: undefined,
-    Quantity: undefined,
-    Picture: 'none',
-    DeliveryCosts: 0.0,
-    OrderState: 'open',
-    TimeStamp: 'timestampvalue',
-    RestaurantId: 45,
-    PayStatus: 'not paid',
-    Annotations: undefined,
-    TableId: 12
-  } */
+  
   order: Order = {
     ItemId: undefined,
     Quantity: undefined,
@@ -45,18 +32,14 @@ export class OrderCustomerPage {
     Variant: undefined,
     Annotations: undefined
   }
-  CurrentRestaurantId = 45;
-  ListCategory = [];
-  viewarr= [];
+  CurrentRestaurantId:number;
+  ListCategory;
+  viewarr;
   HauptspeiseArr = [];
   GetraenkeArr = [];
   NachspeiseArr = [];
   ItemId = '65246b5b456bvgbrgber';
   UserId;
-  PicStorage = firebase.storage();
-  PicReference = this.PicStorage.ref();
-  ImagesRef = this.PicReference.child('ItemPics');
-  IMGRef = this.ImagesRef.child('image.jpg').getDownloadURL();
   test;
   ItemSelection = [];
   CurrentQuantity;
@@ -65,24 +48,40 @@ export class OrderCustomerPage {
   public images: any;
    @ViewChild('slider') slider: Slides;
    page = 0;
+
+   ionViewWillEnter() {
+    this.FillItemArray();
+   }
+
    constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController, private BasketService: BasketService) {
     this.UserId = this.fire.auth.currentUser.uid;
-    FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
+   }
+
+   async getRestaurantId() {
+    try {
+      this.CurrentRestaurantId = this.BasketService.QRRestaurantId;
+    } catch (error) {
+    console.log("BasketService problem",error);
+    }
+   }
+
+   async FillItemArray() {
+    await this.getRestaurantId();
+    this.FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
-    }).then((res: any) => {
+      console.log("FillItemArray:",this.viewarr);
       this.filterItems();
     })
-    //IMG testing
-    this.test= this.IMGRef.then(function(url) {
-     return url;
-    })
-    console.log('IMG Path is: ' + this.test);
    }
 
    goToBasket() {
      this.navCtrl.push(BasketPage, {});
    }
+
+   ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
+  }
 
    // not in use at the moment
    selectedTab(index) {
@@ -97,20 +96,20 @@ export class OrderCustomerPage {
   // add to (temporary) basket array
     addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {   
       this.ItemSelection = this.BasketService.ItemSelection;
-        /* this.ItemSelection.push({
+        this.ItemSelection.push({
           ItemId: ItemId,
-          Quantity: 1,
-          Name: ItemName,
-          Price: ItemPrice}
-        ); */
-        this.order.ItemId = ItemId;
-        this.order.Name = Name;
-        this.order.Price = Price;
-        this.order.Size = 'mysize';
-        this.order.Variant = 'myvariant';
-        this.order.Quantity = 'myquant';
-        this.order.Annotations = 'myannot';
-        this.ItemSelection.push(this.order);
+          Quantity: 'myquant',
+          UserId: this.fire.auth.currentUser.uid,
+          OrderState: 'open',
+          Name: Name,
+          Price: Price,
+          TableId: 44,
+          RestaurantId: 45,
+          TimeStamp: '2018-xxxxx',
+          Size: 'mysize',
+          Variant: 'myvariant',
+          Annotations: 'myannot'
+        });
       this.BasketService.ItemSelection = this.ItemSelection;
       this.BasketService.checkBasketContent();
 
@@ -142,29 +141,26 @@ export class OrderCustomerPage {
     });
     alert.present();
   }
-  
-  // not in use at the moment
-  filterItems() {
+  async filterItems() {
     //alle Getränke
     for (var iterG in this.viewarr) {
       if (this.viewarr[iterG].Category == "Getränke" ) {
         this.GetraenkeArr.push(this.viewarr[iterG]);
       }
-     
-    } console.log("GetränkeItems: " + this.GetraenkeArr[0].Name);
+    }
     //alle Hauptspeisen
     for (var iterH in this.viewarr) {
       if (this.viewarr[iterH].Category == "Hauptspeise" ) {
         this.HauptspeiseArr.push(this.viewarr[iterH]);
       }
      
-    } console.log("HauptspeiseItems: " + this.HauptspeiseArr[0].Name);
+    }
     //alle Nachspeisen
     for (var iterN in this.viewarr) {
       if (this.viewarr[iterN].Category == "Nachspeise" ) {
         this.NachspeiseArr.push(this.viewarr[iterN]);
       }
      
-    } console.log("NachspeiseItems: " + this.NachspeiseArr[0].Name);
+    }
   }
 }

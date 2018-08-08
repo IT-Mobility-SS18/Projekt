@@ -27,6 +27,7 @@ export class OrderViewCustomerPage {
       console.log(this.viewarr);
     })
   }
+  
 
   goToBasket(){
     this.navCtrl.push(BasketPage);

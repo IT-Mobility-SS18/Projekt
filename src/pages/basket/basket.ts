@@ -6,6 +6,7 @@ import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketService } from '../../providers/basket/basket-service';
 import { FaceRecognitionPage } from '../face-recognition/face-recognition';
+import { AlertController } from 'ionic-angular';
 
 //import { checkBindingNoChanges, Item } from '@angular/core/src/view/util';
 //import { IonicPage } from 'ionic-angular';
@@ -41,12 +42,7 @@ export class BasketPage {
     Annotations: undefined
   }
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public FirebaseService: FirebaseService,
-    private fire: AngularFireAuth,
-    private BasketService: BasketService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService, public alertCtrl: AlertController) {
   }
 
   // After loading the page
@@ -106,9 +102,27 @@ export class BasketPage {
 
   // Remove all items from the basket
   clearBasket() {
-    this.BasketService.removeAll();
-    this.BasketService.checkBasketContent();
-    this.navCtrl.pop();
+    const confirm = this.alertCtrl.create({
+      title: 'Alles löschen?',
+      message: 'Möchtest du alle Artikel aus dem Warenkorb entfernen?',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.BasketService.removeAll();
+            this.BasketService.checkBasketContent();
+            this.navCtrl.pop();
+          }
+        },
+        {
+          text: 'Abbrechen',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }
