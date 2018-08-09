@@ -21,5 +21,37 @@
 
 
 <ion-content padding>
+    <ion-item>
+      <ion-label stacked required>Anrede</ion-label>
+      <ion-select>
+        <ion-option>Frau</ion-option>
+        <ion-option>Herr</ion-option>
+      </ion-select>
+    </ion-item>
 
+  <ion-item>
+    <ion-label stacked required>Vorname</ion-label>
+    <ion-input type="text" maxLength="35"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked required>Nachname</ion-label>
+    <ion-input type="text" maxLength="35"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked required>Betreff</ion-label>
+    <ion-input type="text" maxLength="35"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked required>Nachicht</ion-label>
+    <ion-textarea type="text" rows="3" maxLength="100"></ion-textarea>
+  </ion-item>
+
+
+  &nbsp;
+
+  <button block ion-button>Absenden</button>
+  <a class="center-text" (click)="cancelPage()">Abbrechen</a>
 </ion-content>
