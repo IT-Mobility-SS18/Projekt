@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
+import { UserStartPage } from '../user-start/user-start';
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -78,7 +79,7 @@ export class UserViewPage {
 
   }
 
-  /* ionViewDidLoad() {
+   /* ionViewDidLoad() {
     console.log('ionViewDidLoad UserViewPage');
     let user = JSON.parse(localStorage.getItem('USER'));
     if (user){
@@ -87,15 +88,15 @@ export class UserViewPage {
       this.dob = new Date(this.user.birthdate).toISOString();
     }
   }
-
+ */
   cancelChanges(){
-    this.user = {name: null, company: null, birthdate: null};
-    this.dob = null;
-    this.showProfile = false;
+    //this.user = {name: null, company: null, birthdate: null};
+    //this.dob = null;
+    //this.showProfile = false;
     this.navCtrl.setRoot(UserStartPage);
   }
 
-  save(){
+  /* save(){
     this.user.birthdate = new Date(this.dob).getTime();
     this.age = this.getAge(this.user.birthdate);
     this.showProfile = true;
