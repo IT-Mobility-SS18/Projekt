@@ -6,7 +6,6 @@ import { MyApp } from './app.component';
 import { StartPage } from '../pages/start/start';
 import { BasketPage } from '../pages/basket/basket';
 import { PaymentPage } from '../pages/payment/payment';
-import { Registration2Page } from '../pages/registration2/registration2';
 import { RegistrationPage } from '../pages/registration/registration';
 import { UserStartPage } from '../pages/user-start/user-start';
 import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';
@@ -56,7 +55,6 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Cod
     LogoutPage,
     UserStartPage,
     PaymentPage,
-    Registration2Page,
     RegistrationPage,
     UserStartPage,
     OrderViewKitchenPage,
@@ -91,7 +89,6 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Cod
     LogoutPage,
     UserStartPage,
     PaymentPage,
-    Registration2Page,
     UserStartPage,
     OrderViewKitchenPage,
     OrderViewServicePage,

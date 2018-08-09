@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserStartPage } from '../user-start/user-start';
 
 
 @Component({
@@ -15,4 +16,8 @@ export class ContactPage {
     console.log('ionViewDidLoad ContactPage');
   }
 
+    //Weiterleitung auf die Startseite
+  cancelPage(){
+    this.navCtrl.setRoot(UserStartPage);
+  }
 }

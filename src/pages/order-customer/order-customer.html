@@ -99,27 +99,28 @@
       </ion-item>
       <!--<ion-item>
         <ion-label color="primary" stacked required>Variante</ion-label>
-        <ion-select>
-          <ion-option>1: Auswahl 1</ion-option>
-          <ion-option>2: Auswahl 2</ion-option>
+        <ion-select #newSelect [(ngModel)]="MyUser.Variant" (change)="onChangeVariant(MyUser.Variant)">
+          <ion-option value="1">1: Auswahl 1</ion-option>
+          <ion-option value="2">2: Auswahl 2</ion-option>
+          <ion-option value="3">3: Auswahl 3</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked required>Größe</ion-label>
-        <ion-select>
-          <ion-option>Groß</ion-option>
-          <ion-option>Mittel</ion-option>
-          <ion-option>Klein</ion-option>
+        <ion-select #newSelect [(ngModel)]="MyUser.Size" (change)="onChangeSize(MyUser.Size)">
+          <ion-option value="groß">Groß</ion-option>
+          <ion-option value="mittel">Mittel</ion-option>
+          <ion-option value="klein">Klein</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked required>Menge</ion-label>
-        <ion-select>
-          <ion-option>1</ion-option>
-          <ion-option>2</ion-option>
-          <ion-option>3</ion-option>
-          <ion-option>4</ion-option>
-          <ion-option>5</ion-option>
+        <ion-select #newSelect [(ngModel)]="MyUser.Quantity" (change)="onChangeQuantity(MyUser.Quantity)">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
         </ion-select>
       </ion-item>-->
       <ion-item>
@@ -145,17 +146,17 @@
       </ion-item>
       <!--<ion-item>
         <ion-label color="primary" stacked required>Menge</ion-label>
-        <ion-select>
-          <ion-option>1</ion-option>
-          <ion-option>2</ion-option>
-          <ion-option>3</ion-option>
-          <ion-option>4</ion-option>
-          <ion-option>5</ion-option>
+        <ion-select #newSelect [(ngModel)]="MyUser.Quantity" (change)="onChangeQuantity(MyUser.Quantity)">
+          <ion-option value="1">1</ion-option>
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label color="primary" stacked required>Anmerkungen</ion-label>
-        <ion-textarea type="text"></ion-textarea>
+        <ion-textarea type="text" rows="3" maxLength="100"></ion-textarea>
       </ion-item>-->
       <ion-item>
         <button block ion-button>Hinzufügen</button>

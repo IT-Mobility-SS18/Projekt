@@ -4,6 +4,7 @@ import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
+import { UserStartPage } from '../user-start/user-start';
 
 //import { ViewChild } from '@angular/core';
 //import { Slides } from 'ionic-angular';
@@ -43,4 +44,8 @@ export class OrderViewCustomerPage {
     alert.present();
   }
 
+  //Weiterleitung auf die Startseite
+  cancelPage(){
+    this.navCtrl.setRoot(UserStartPage);
+  }
 }
