@@ -20,7 +20,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
 import { FurtherPagesPage } from '../pages/further-pages/further-pages';
-
+import { RestaurantPage } from '../pages/restaurant/restaurant';
 
 @Component({
   templateUrl: 'app.html'
@@ -50,7 +50,8 @@ export class MyApp {
     this.pages = [
       /*{ title: 'Login', component: StartPage },*/
       /*{ title: 'Registrierung', component: RegistrationPage },*/
-      { title: 'Restaurants', component: UserStartPage },
+      { title: 'QR-Scanner', component: UserStartPage },
+      { title: 'Restaurant', component: RestaurantPage },
       { title: 'Gerichteübersicht', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
       /*{ title: 'Kontakt', component: ContactPage },*/
