@@ -35,6 +35,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FirebaseService } from '../providers/firebase/firebase-service';
 import { BasketService } from '../providers/basket/basket-service';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 //for face api
 import { FaceApiProvider } from '../providers/face-api/face-api';
@@ -111,6 +112,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Cod
     SplashScreen,
     Camera, /* QR-Code und face api*/
     QRScanner, /* QR-Code */
+    UniqueDeviceID,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     //{provide: Camera, useClass: CameraMock},
     FaceApiProvider

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Order } from '../../models/order/order.model';
 import firebase from "firebase";
 import { User } from '../../models/order/user.model';
+import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
 
 @Injectable()
 export class FirebaseService {
@@ -19,31 +20,6 @@ export class FirebaseService {
   constructor(public dbInstance: AngularFireDatabase) {
 
 }
-
-//------------------------------------------------------------------
-//von mir
-xxx_FirebasePersonGroupCreate(userId:string, personGroupId:string,UserCreationRef:string){
-  //Schritt 1.1
-  //PersonGroup in firebase anlegen
-  console.log("Hello function PersonGroupCreate");
-
-  return new Promise((resolve, reject)=>{
-
-    firebase.database().ref('/User')
-    .child(userId).child('FaceRecognition')
-    .child(personGroupId).set({'FaceGroupId':personGroupId})
-    .then((resultFirebasePersonGroupCreate)=>{
-        console.log('Firebase Creation of Group successful '+resultFirebasePersonGroupCreate);
-        UserCreationRef = resultFirebasePersonGroupCreate;
-        resolve(resultFirebasePersonGroupCreate);
-    }, err => {
-      console.log("Error@ Firebase Creation of PersonGroup: " + err);
-      reject(err);
-    });//end resultFirebasePersonGroupCreate
-
-  });//end promise
-}
-//------------------------------------------------------------------
 
   removeItem(id) {
     this.dbInstance.list('/shoppingItems/').remove(id);
@@ -62,6 +38,26 @@ xxx_FirebasePersonGroupCreate(userId:string, personGroupId:string,UserCreationRe
 
   updateUser(user: User, UserId) {
     this.UserCreationRef.child(UserId).set(user);
+  }
+
+  changeOrderState(newOrderState: String, SearchedOrderId) {
+    var mykey;
+    var promise = new Promise((resolve, reject) => {
+      this.fireOrderData.orderByChild('OurOrderId').equalTo(SearchedOrderId).once("value", (snapshot) =>{
+
+         snapshot.forEach((child) =>{
+            mykey = child.key;
+         })
+          this.fireOrderData.child(mykey).child('OrderState').set(newOrderState);
+      })//.catch((err) => {
+         // reject(err);
+         //resolve(mykey);
+         //return promise;
+         resolve(true);
+      }
+    )
+  //})
+
   }
 
   getAllOrders() {

@@ -14,6 +14,8 @@ import * as firebase from 'firebase';
 //import firebase from "firebase";
 
 import { Events } from 'ionic-angular';
+import { UserViewPage } from '../user-view/user-view';
+import { UserStartPage } from '../user-start/user-start';
 
 
 @Component({
@@ -745,4 +747,11 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
     return this.domSanitizer.bypassSecurityTrustUrl(this.base64Image_mit_attrib);
   }
 
+  pushUserStartPage() {
+    this.navCtrl.push(UserStartPage);
+  }
+
+  pushUserViewPage() {
+    this.navCtrl.push(UserViewPage);
+  }
 }

@@ -6,6 +6,7 @@ import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from "firebase";
 import { BasketService } from '../../providers/basket/basket-service';
+import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 //import { IonicPage } from 'ionic-angular';
 //import { isPlatformBrowser } from '@angular/common';
@@ -21,16 +22,17 @@ export class OrderCustomerPage {
   order: Order = {
     ItemId: undefined,
     Quantity: undefined,
-    UserId: this.fire.auth.currentUser.uid,
-    OrderState: 'open',
+    UserId: undefined,
+    OrderState: undefined,
     Name: undefined,
     Price: undefined,
-    TableId: 44,
-    RestaurantId: 45,
-    TimeStamp: '2018-xxxxx',
+    TableId: undefined,
+    RestaurantId: undefined,
+    TimeStamp: undefined,
     Size: undefined,
     Variant: undefined,
-    Annotations: undefined
+    Annotations: undefined,
+    OurOrderId: undefined
   }
   CurrentRestaurantId:number;
   ListCategory;
@@ -68,7 +70,7 @@ export class OrderCustomerPage {
     this.FillItemArray();
    }
 
-   constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController, private BasketService: BasketService) {
+   constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController, private BasketService: BasketService,private uniqueDeviceID: UniqueDeviceID) {
     this.UserId = this.fire.auth.currentUser.uid;
    }
 
@@ -111,6 +113,12 @@ export class OrderCustomerPage {
   // add to (temporary) basket array
     addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {   
       this.ItemSelection = this.BasketService.ItemSelection;
+      let varOurOrderId;
+
+      this.uniqueDeviceID.get()
+    .then((uuid: any) => varOurOrderId = uuid)
+    .catch((error: any) => console.log(error));
+      console.log("uuid ist: ",varOurOrderId);
         this.ItemSelection.push({
           ItemId: ItemId,
           Quantity: 'myquant',
@@ -118,12 +126,13 @@ export class OrderCustomerPage {
           OrderState: 'open',
           Name: Name,
           Price: Price,
-          TableId: 44,
-          RestaurantId: 45,
-          TimeStamp: '2018-xxxxx',
+          TableId: this.BasketService.QRTischNr,
+          RestaurantId: this.BasketService.QRRestaurantId,
+          TimeStamp: 'vom order customer',
           Size: 'mysize',
           Variant: 'myvariant',
-          Annotations: 'myannot'
+          Annotations: 'myannot',
+          OurOrderId: varOurOrderId
         });
       this.BasketService.ItemSelection = this.ItemSelection;
       this.BasketService.checkBasketContent();

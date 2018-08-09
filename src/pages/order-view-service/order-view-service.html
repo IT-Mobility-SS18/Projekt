@@ -48,14 +48,15 @@
       </ion-list>-->
       <ion-list>
         <ion-list-header color="light">
-          <b>Offen</b>
+          <b>Zur Auslieferung bereit</b>
         </ion-list-header>
 
-        <ion-item-sliding *ngFor="let item of viewarr">
+        <ion-item-sliding *ngFor="let item of readyArr">
           <ion-item>
             <ion-icon name="help-circle" color="grey" item-start></ion-icon>
             <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
             <p>Tisch {{ item.TableId }}</p>
+            <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)">Ausliefern</button>
           </ion-item>
           <ion-item-options side="right">
             <button ion-button color="danger">
@@ -67,10 +68,10 @@
           </ion-list>
           <ion-list>
             <ion-list-header color="light">
-              <b>Geliefert</b>
+              <b>Offen</b>
             </ion-list-header>
 
-            <ion-item-sliding *ngFor="let item of viewarr">
+            <ion-item-sliding *ngFor="let item of openOrdersArr">
               <ion-item>
                 <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
                 <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
@@ -86,10 +87,10 @@
               </ion-list>
               <ion-list>
                 <ion-list-header color="light">
-                  <b>Storniert</b>
+                  <b>In Zubereitung</b>
                 </ion-list-header>
 
-                <ion-item-sliding *ngFor="let item of viewarr">
+                <ion-item-sliding *ngFor="let item of preparingArr">
                   <ion-item>
                     <ion-icon name="close-circle" color="danger" item-start></ion-icon>
                     <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
@@ -103,4 +104,23 @@
                       </ion-item-options>-->
                     </ion-item-sliding>
                   </ion-list>
+                  <ion-list>
+                    <ion-list-header color="light">
+                      <b>Erledigt</b>
+                    </ion-list-header>
+    
+                    <ion-item-sliding *ngFor="let item of doneArr">
+                      <ion-item>
+                        <ion-icon name="close-circle" color="danger" item-start></ion-icon>
+                        <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+                        <p>Tisch {{ item.TableId }}</p>
+                      </ion-item>
+                      <!--<ion-item-options side="right">
+                        <button ion-button color="danger">
+                          <ion-icon name="trash"></ion-icon> Stornieren</button>
+                          <button ion-button color="secondary">
+                            <ion-icon name="checkmark"></ion-icon>Fertig</button>
+                          </ion-item-options>-->
+                        </ion-item-sliding>
+                      </ion-list>
                 </ion-content>

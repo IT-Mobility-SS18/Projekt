@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { paypalConfig } from '../../environment';
 import { BasketPage } from '../basket/basket';
+import { BasketService } from '../../providers/basket/basket-service';
+import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -21,9 +23,15 @@ import { BasketPage } from '../basket/basket';
 export class PaymentPage {
 
   paymentAmount: string;
+  // Items put in basket
+  ItemSelection = this.BasketService.ItemSelection;
 
-  constructor(private payPal: PayPal, public navCtrl: NavController, public navParams: NavParams) { 
+  constructor(private payPal: PayPal, 
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private BasketService: BasketService) { 
     this.paymentAmount = navParams.get('amount');
+    
 
     //init: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
     this.payPal.init({
@@ -43,7 +51,9 @@ export class PaymentPage {
         this.payPal.renderSinglePaymentUI(payment).then(() => {
   
           // Successfully paid
-  
+          this.BasketService.createOrder(this.ItemSelection);
+          this.BasketService.removeAll();
+          this.navCtrl.push(OrderViewCustomerPage);
         }, () => {
           // Error or render dialog closed without being successful
           // Wenn ein User die Zahlung abbricht

@@ -39,7 +39,8 @@ export class BasketPage {
     TimeStamp: '2018-xxxxx',
     Size: undefined,
     Variant: undefined,
-    Annotations: undefined
+    Annotations: undefined,
+    OurOrderId: undefined
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService, public alertCtrl: AlertController) {
