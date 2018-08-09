@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu" item-left></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Weiteres</ion-title>
+
+    <ion-buttons end>
+      <button ion-button>
+        <ion-icon name="flash" item-right></ion-icon>
+      </button>
+      <button ion-button (click)="goToBasket()">
+        <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button block ion-button (click)="changePageKontakt()" item-left>Kontakt</button>
+  <button block ion-button (click)="changePageAGB()" item-left>AGB</button>
+  <button block ion-button (click)="changePageDatenschutz()" item-left>Datenschutz</button>
+  <button block ion-button (click)="changePageImpressum()" item-left>Impressum</button>
+</ion-content>

@@ -21,6 +21,8 @@ import { ContactPage } from '../pages/contact/contact';
 import { SettingsPage } from '../pages/settings/settings';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
+import { FurtherPagesPage } from '../pages/further-pages/further-pages';
+
 
 import { PayPal } from '@ionic-native/paypal'
 import { StatusBar } from '@ionic-native/status-bar';
@@ -69,6 +71,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Cod
     SettingsPage,
     PrivacyPolicyPage,
     TermsAndConditionsPage,
+    FurtherPagesPage,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +106,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Cod
     SettingsPage,
     PrivacyPolicyPage,
     TermsAndConditionsPage,
+    FurtherPagesPage,
   ],
   providers: [
     PayPal,

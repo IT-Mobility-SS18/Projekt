@@ -19,6 +19,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { SettingsPage } from '../pages/settings/settings';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
+import { FurtherPagesPage } from '../pages/further-pages/further-pages';
 
 
 @Component({
@@ -52,15 +53,16 @@ export class MyApp {
       { title: 'Restaurants', component: UserStartPage },
       { title: 'Gerichteübersicht', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
-      { title: 'Kontakt', component: ContactPage },
+      /*{ title: 'Kontakt', component: ContactPage },*/
       { title: 'Benutzerkonto', component: UserViewPage },
       { title: 'Einstellungen', component: SettingsPage },
       { title: 'Abmelden', component: LogoutPage },
-      { title: 'AGB', component: TermsAndConditionsPage },
-      { title: 'Datenschutz', component: PrivacyPolicyPage },
-      { title: 'Impressum', component: ImprintPage },
+      { title: 'Weiteres', component: FurtherPagesPage },
+      /*{ title: 'AGB', component: TermsAndConditionsPage },*/
+      /*{ title: 'Datenschutz', component: PrivacyPolicyPage },*/
+      /*{ title: 'Impressum', component: ImprintPage },*/
 
-      { title: 'Gesichtserkennung', component: FaceRecognitionPage },
+      /*{ title: 'Gesichtserkennung', component: FaceRecognitionPage },*/
       { title: 'Küchenübersicht', component: OrderViewKitchenPage },
       { title: 'Serviceübersicht', component: OrderViewServicePage }
     ];

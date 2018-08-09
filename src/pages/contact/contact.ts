@@ -16,8 +16,4 @@ export class ContactPage {
     console.log('ionViewDidLoad ContactPage');
   }
 
-    //Weiterleitung auf die Startseite
-  cancelPage(){
-    this.navCtrl.setRoot(UserStartPage);
-  }
 }
