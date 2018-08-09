@@ -92,6 +92,7 @@ export class UserViewPage {
     this.user = {name: null, company: null, birthdate: null};
     this.dob = null;
     this.showProfile = false;
+    this.navCtrl.setRoot(UserStartPage);
   }
 
   save(){
@@ -119,8 +120,10 @@ export class UserViewPage {
   inputDisabled: boolean = true;
 
   goToSetting(){
-    this.navCtrl.getActive(this.inputDisabled=false);
+    if(this.inputDisabled==true) {
+      this.navCtrl.getActive(this.inputDisabled=false);
+    } else if (this.inputDisabled==false){
+      this.navCtrl.getActive(this.inputDisabled=true);
+    }
   }
-
-
 }
