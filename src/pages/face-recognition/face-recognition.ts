@@ -91,6 +91,12 @@ export class FaceRecognitionPage {
 
     //amount durchgeschliffen für payment
     this.amount = navParams.get('amount');
+    console.log('amount: '+ this.amount);
+
+    if (this.amount== undefined || this.amount== null){
+      this.amount = '0.0';
+    }
+
     this.registration = navParams.get('registration');
     this.alertCtrl = alertCtrl;
 
@@ -126,42 +132,33 @@ export class FaceRecognitionPage {
     //this.personId= '6101bbf8-eb3e-4dc1-9027-ba61d87430f4';
 
 
-    // listen for the user created event after function is called
-
-    //this.myeventhandler();
-
-    this.func();
-
-
+    // eventhandler für:
+    // 1. "von Registrierung kommend" oder
+    // 2. "vom basket kommend"
+    this.myeventhandler();
   }
 
-  func(){
-    console.log('hello func');
-    this.creation_new(this.groupName, this.personGroupId, this.userId, this.userName)
+  myeventhandler(){
+    console.log('hello eventhandler');
+    console.log('this.registration: '+this.registration);
+    console.log('this.amount: '+this.amount);
+
+    //if (this.registration == undefined || this.registration == null || this.registration == false){
+    if (this.registration == true){
+      console.log('eventhandler registrieren');
+      this.creation_new(this.groupName, this.personGroupId, this.userId, this.userName)
+    }
+
+    if (this.amount != '0.0'){
+      console.log('eventhandler bezahlen');
+      this.bezahlen();
+    }
+    console.log('goodbye eventhandler');
   }
-
-  alert(message: string) {
-    this.alertCtrl.create({
-      title: 'Information',
-      subTitle: message,
-      buttons: ['Okay']
-    }).present();
-  }
-
-
 
 
   bezahlen(){
-    // // erstmal die personId lesen
-    // this.PersonIdFromFirebase();
-    //
-    // // selfie machen
-    // this.takePictureAndUploadToFirebase(this.userId);
-    //
-    // // danach verifizieren
-    // this.verify_me(this.userId, this.pictureName, this.img_url, this.personId, this.personGroupId);
-
-
+    console.log('hello bezahlen');
 
     return this.PersonIdFromFirebase()
     .then(() => this.takePictureAndUploadToFirebase(this.userId))
@@ -171,7 +168,7 @@ export class FaceRecognitionPage {
   }
 
   PersonIdFromFirebase(){
-
+    console.log('hello PersonIdFromFirebase');
     return new Promise((resolve, reject)=>{
       this.FirebaseService.getPersonId(this.fire.auth.currentUser.uid,this.personGroupId)
       .then(result=>{
@@ -180,11 +177,17 @@ export class FaceRecognitionPage {
           console.log('PersonIdFromFirebase: '+this.personId);
           //this.alert('personId: ' + this.personId);
       }).catch(console.log);
-
+      console.log('goodbye PersonIdFromFirebase');
       resolve(true);
-
     });//end promise
+  }
 
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: 'Information',
+      subTitle: message,
+      buttons: ['Okay']
+    }).present();
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -212,8 +215,11 @@ export class FaceRecognitionPage {
       if(resultgetUrlfromFirebaseUserPictures){
         console.log('resultgetUrlfromFirebaseUserPictures: '+resultgetUrlfromFirebaseUserPictures);
 
-        console.log('img_url'+this.img_url);
-
+        console.log('userId:        '+userId);
+        console.log('pictureName:   '+pictureName);
+        console.log('img_url:       '+this.img_url);
+        console.log('personId:      '+personId);
+        console.log('personGroupId: '+personGroupId);
 
         setTimeout(() => {
 
@@ -221,10 +227,10 @@ export class FaceRecognitionPage {
         // Schritt 5.1: Bild zu faceApi - face detect hochladen. FaceId wird zurückgegeben
         this.faceapi.FaceIdFromFaceDetect(this.img_url)
         .then(resultFaceIdFromFaceDetect=>{
-          console.log('resultFaceIdFromFaceDetect: '+ JSON.stringify(resultFaceIdFromFaceDetect));
+          console.log('Schritt 5.1 resultFaceIdFromFaceDetect: '+ JSON.stringify(resultFaceIdFromFaceDetect));
           //this.faceId=JSON.stringify(resultFaceIdFromFaceDetect[0]['faceId']);
           this.faceId=(resultFaceIdFromFaceDetect[0]['faceId']);
-          console.log('verify_me this faceid: '+ this.faceId);
+          console.log('Schritt 5.1 verify_me this faceid: '+ this.faceId);
 
           //Schritt 5.2: Aufruf Verifikation mit faceID, personId und personId
           // Rückgabe erfolgt in der From:
@@ -232,7 +238,7 @@ export class FaceRecognitionPage {
           // "confidence": 0.9
           this.faceapi.VerificationFromVerify(this.faceId, personId, personGroupId)
           .then(resultVerificationFromVerify=>{
-            console.log('resultVerificationFromVerify: '+ JSON.stringify(resultVerificationFromVerify));
+            console.log('Schritt 5.2 resultVerificationFromVerify: '+ JSON.stringify(resultVerificationFromVerify));
             // console.log('isIdentical'+JSON.stringify(resultVerificationFromVerify[0]['isIdentical']));
             // console.log('confidence'+JSON.stringify(resultVerificationFromVerify[0]['confidence']));
 
@@ -252,10 +258,14 @@ export class FaceRecognitionPage {
             console.log('this.isIdentical: '+this.verify_isIdentical);
             console.log('this.verify_confidence: '+this.verify_confidence);
 
+            this.alert('this.isIdentical: '+this.verify_isIdentical);
+            this.alert('this.verify_confidence: '+this.verify_confidence);
+
             //Schritt 5.3:
             // wenn beide Rückgabewerte die definierten Schwellen erreicht haben, dann erfolgt eine Weiterleitung an die payment Funktion
             if (this.verify_isIdentical==true && this.verify_confidence>=0.6){
               console.log('push to payment');
+
               this.navCtrl.push(PaymentPage, {amount: this.amount});
             } else {
               console.log('kein push to payment, da nicht identisch oder confidence zu gering');
@@ -266,7 +276,7 @@ export class FaceRecognitionPage {
         });//end resultFaceIdFromFaceDetect
 
 
-        console.log('am arsch');
+        console.log('goodbye verify_me');
         }, 5000);
 
 
@@ -348,8 +358,8 @@ export class FaceRecognitionPage {
 
             });//end resultCreatePersonGroupPerson
 
-        console.log('am arsch');
-        }, 5000);
+        console.log('goodbye addingface');
+      }, 10000);
 
       } else {
         console.log('Error@ resultgetUrlfromFirebaseUserPictures: '+resultgetUrlfromFirebaseUserPictures);
@@ -409,7 +419,10 @@ export class FaceRecognitionPage {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// für Registrierung
+// *******************************************************
+// Zentrale Funktion für Registrierung
+// *******************************************************
+
 creation_new(groupName:string, personGroupId:string, userId:string, username:string){
 
     return this.createPersonGroup_FaceApi(groupName, personGroupId)
@@ -443,7 +456,7 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
   // FaceApi und firebase anzulegen
   // *******************************************************
 
-  createGroupAndPersonInFaceApiAndFirebase(groupName:string, personGroupId:string, userId:string, username:string){
+  xxx_zum_loeschen_createGroupAndPersonInFaceApiAndFirebase(groupName:string, personGroupId:string, userId:string, username:string){
     // Schritt 1:   Gruppe in FaceApi anlegen
     // Schritt 1.1: Gruppe in Firebase anlegen
     // Schritt 2:   Person in FaceApi anlegen und personId anfordern
