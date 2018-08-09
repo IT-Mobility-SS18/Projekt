@@ -52,10 +52,10 @@ export class MyApp {
       /*{ title: 'Registrierung', component: RegistrationPage },*/
       { title: 'QR-Scanner', component: UserStartPage },
       { title: 'Restaurant', component: RestaurantPage },
-      { title: 'Gerichteübersicht', component: OrderCustomerPage },
+      { title: 'Speisekarte', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
       /*{ title: 'Kontakt', component: ContactPage },*/
-      { title: 'Benutzerkonto', component: UserViewPage },
+      { title: 'Benutzerprofil', component: UserViewPage },
       { title: 'Einstellungen', component: SettingsPage },
       { title: 'Abmelden', component: LogoutPage },
       { title: 'Weiteres', component: FurtherPagesPage },

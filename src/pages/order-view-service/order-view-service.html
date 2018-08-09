@@ -9,12 +9,12 @@
     <ion-title>Serviceübersicht</ion-title>
 
     <ion-buttons end>
-      <button ion-button>
+      <!--<button ion-button>
         <ion-icon name="search" item-right></ion-icon>
       </button>
       <button ion-button>
         <ion-icon name="md-options" item-right></ion-icon>
-      </button>
+      </button>-->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -46,26 +46,7 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>-->
-      <ion-list>
-        <ion-list-header color="light">
-          <b>Zur Auslieferung bereit</b>
-        </ion-list-header>
 
-        <ion-item-sliding *ngFor="let item of readyArr">
-          <ion-item>
-            <ion-icon name="help-circle" color="grey" item-start></ion-icon>
-            <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-            <p>Tisch {{ item.TableId }}</p>
-            <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)">Ausliefern</button>
-          </ion-item>
-          <ion-item-options side="right">
-            <button ion-button color="danger">
-              <ion-icon name="trash"></ion-icon>Stornieren</button>
-              <button ion-button color="primary">
-                <ion-icon name="checkmark"></ion-icon>Fertig</button>
-              </ion-item-options>
-            </ion-item-sliding>
-          </ion-list>
           <ion-list>
             <ion-list-header color="light">
               <b>Offen</b>
@@ -105,6 +86,27 @@
                     </ion-item-sliding>
                   </ion-list>
                   <ion-list>
+                      <ion-list-header color="light">
+                        <b>Zur Auslieferung bereit</b>
+                      </ion-list-header>
+              
+                      <ion-item-sliding *ngFor="let item of readyArr">
+                        <ion-item>
+                          <ion-icon name="help-circle" color="grey" item-start></ion-icon>
+                          <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
+                          <p>Tisch {{ item.TableId }}</p>
+                          <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)">Ausliefern</button>
+                        </ion-item>
+                        <ion-item-options side="right">
+                          <button ion-button color="danger">
+                            <ion-icon name="trash"></ion-icon>Stornieren</button>
+                            <button ion-button color="primary">
+                              <ion-icon name="checkmark"></ion-icon>Fertig</button>
+                            </ion-item-options>
+                          </ion-item-sliding>
+                        </ion-list>
+
+                  <ion-list>
                     <ion-list-header color="light">
                       <b>Erledigt</b>
                     </ion-list-header>
@@ -123,4 +125,5 @@
                           </ion-item-options>-->
                         </ion-item-sliding>
                       </ion-list>
+                      
                 </ion-content>

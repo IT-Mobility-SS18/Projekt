@@ -7,7 +7,14 @@
     </ion-buttons>
 
     <ion-title>Gesichtserkennung</ion-title>
-
+    <ion-buttons end>
+        <!--<button ion-button>
+          <ion-icon name="flash" item-right></ion-icon>
+        </button>-->
+        <button ion-button (click)="goToBasket()">
+          <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 

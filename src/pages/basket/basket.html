@@ -9,7 +9,7 @@
     <ion-title>Warenkorb</ion-title>
 
     <ion-buttons end>
-      <button ion-button>
+      <!--<button ion-button>
         <ion-icon name="search" item-right></ion-icon>
       </button>
       <button ion-button>
@@ -17,9 +17,8 @@
       </button>
       <button ion-button>
         <ion-icon name="flash" item-right></ion-icon>
-      </button>
+      </button>-->
       <button ion-button>
-
           <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
     </ion-buttons>
@@ -80,7 +79,7 @@
 <!--<ion-item><p>Lieferkosten:</p></ion-item>-->
 <ion-item><p>Betrag: {{ amount }} €</p></ion-item>
 <button ion-button block (click)="goToPayment()">Bezahlen</button>
-<button ion-button block padding>Kellner rufen</button>
+<!--<button ion-button block padding>Kellner rufen</button>-->
 <!--<button ion-button block (click)="createOrder(ItemSelection)">PaymentOK</button>-->
 <a class="center-text" (click)="cancelBasket()">Abbrechen</a>
 <a class="center-text" (click)="clearBasket()">Warenkorb leeren</a>
