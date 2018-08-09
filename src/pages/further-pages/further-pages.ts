@@ -5,6 +5,7 @@ import { TermsAndConditionsPage } from '../terms-and-conditions/terms-and-condit
 import { ContactPage } from '../contact/contact';
 import { ImprintPage } from '../imprint/imprint';
 
+import { BasketPage } from '../basket/basket';   
 
 @Component({
   selector: 'page-further-pages',
@@ -34,6 +35,10 @@ export class FurtherPagesPage {
 
   changePageImpressum(){
     this.navCtrl.push(ImprintPage);
+  }
+
+  goToBasket() {
+    this.navCtrl.setRoot(BasketPage, {});
   }
 
 }

@@ -16,7 +16,7 @@
     <ion-list>
       <ion-item>
         <ion-label stacked required>E-Mail</ion-label>
-        <ion-input type="text" #username required></ion-input>
+        <ion-input type="email" #username required></ion-input>
       </ion-item>
 
       <ion-item>
@@ -59,7 +59,7 @@
 
       <ion-item>
         <ion-label stacked required>Postleitzahl</ion-label>
-        <ion-input type="text" ng-pattern="[1-9]{5}" [(ngModel)]="MyUser.ZipCode"></ion-input>
+        <ion-input type="number" ng-pattern="[1-9]{5}" [(ngModel)]="MyUser.ZipCode"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -74,7 +74,7 @@
 
       <ion-item>
         <ion-label stacked required>Telefonnummer</ion-label>
-        <ion-input type="text" [(ngModel)]="MyUser.Phone"></ion-input>
+        <ion-input type="number" [(ngModel)]="MyUser.Phone"></ion-input>
       </ion-item>
 
 

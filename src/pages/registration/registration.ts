@@ -212,9 +212,6 @@ export class RegistrationPage {
     this.navCtrl.pop();
   }
 
-  goToBasket(){
-    this.navCtrl.push(BasketPage);
-  }
 
   addUserDataToDatabase() {
     this.FirebaseService.addUser(this.MyUser, this.UserId);

@@ -39,7 +39,7 @@ export class OrderViewKitchenPage {
    }
   
   goToBasket(){
-    this.navCtrl.push(BasketPage);
+    this.navCtrl.setRoot(BasketPage);
   }
 
   filterItems() {

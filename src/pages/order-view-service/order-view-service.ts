@@ -86,7 +86,7 @@ export class OrderViewServicePage {
      }
 
   goToBasket(){
-    this.navCtrl.push(BasketPage);
+    this.navCtrl.setRoot(BasketPage);
   }
 
   changeOrderState(newOrderState: String, SearchedOrderId) {

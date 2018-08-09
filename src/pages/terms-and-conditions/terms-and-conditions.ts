@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { BasketPage } from '../basket/basket';   
 
 @Component({
   selector: 'page-terms-and-conditions',
@@ -15,4 +16,7 @@ export class TermsAndConditionsPage {
     console.log('ionViewDidLoad TermsAndConditionsPage');
   }
 
+  goToBasket() {
+    this.navCtrl.setRoot(BasketPage, {});
+  }
 }

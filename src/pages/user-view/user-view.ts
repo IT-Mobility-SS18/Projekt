@@ -115,7 +115,7 @@ export class UserViewPage {
   }
 
   goToBasket(){
-    this.navCtrl.push(BasketPage);
+    this.navCtrl.setRoot(BasketPage);
   }
 
   inputDisabled: boolean = true;
