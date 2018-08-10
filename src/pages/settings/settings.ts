@@ -19,4 +19,9 @@ export class SettingsPage {
   goToBasket() {
     this.navCtrl.setRoot(BasketPage, {});
   }
+
+  //Datenbank-Auswahl
+  onChangeOptInNewsletter(SelectedValue){
+    console.log("Selected OptInNewsletter", SelectedValue);
+  }
 }

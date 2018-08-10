@@ -54,18 +54,18 @@ export class MyApp {
       { title: 'Restaurant', component: RestaurantPage },
       { title: 'Speisekarte', component: OrderCustomerPage },
       { title: 'Bestellungen', component: OrderViewCustomerPage },
+      { title: 'Küchenübersicht', component: OrderViewKitchenPage },
+      { title: 'Serviceübersicht', component: OrderViewServicePage },
       /*{ title: 'Kontakt', component: ContactPage },*/
       { title: 'Benutzerprofil', component: UserViewPage },
       { title: 'Einstellungen', component: SettingsPage },
       { title: 'Abmelden', component: LogoutPage },
-      { title: 'Weiteres', component: FurtherPagesPage },
+      { title: 'Weiteres', component: FurtherPagesPage }
       /*{ title: 'AGB', component: TermsAndConditionsPage },*/
       /*{ title: 'Datenschutz', component: PrivacyPolicyPage },*/
       /*{ title: 'Impressum', component: ImprintPage },*/
 
       /*{ title: 'Gesichtserkennung', component: FaceRecognitionPage },*/
-      { title: 'Küchenübersicht', component: OrderViewKitchenPage },
-      { title: 'Serviceübersicht', component: OrderViewServicePage }
     ];
   }
 

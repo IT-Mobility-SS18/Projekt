@@ -21,5 +21,11 @@
 
 
 <ion-content padding>
-
+  <ion-item>
+    <ion-label stacked required>Newsletter empfangen?</ion-label>
+    <ion-select #newSelect (change)="onChangeOptInNewsletter(MyUser.OptInNewsletter)">
+      <ion-option value="ja">Ja</ion-option>
+      <ion-option value="nein">Lieber nicht</ion-option>
+    </ion-select>
+  </ion-item>
 </ion-content>
