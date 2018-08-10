@@ -69,7 +69,7 @@ createOrder(ItemSelection){
     this.order.Annotations = ItemSelection[idIteration].Annotations;
     this.order.TableId = ItemSelection[idIteration].TableId;
     this.order.RestaurantId = ItemSelection[idIteration].RestaurantId;
-    this.order.TimeStamp = new Date().getTime();
+    this.order.TimeStamp = ItemSelection[idIteration].TimeStamp;
     this.order.UserId = ItemSelection[idIteration].UserId;
     this.order.OrderState = ItemSelection[idIteration].OrderState;
     this.order.OurOrderId = ItemSelection[idIteration].OurOrderId;

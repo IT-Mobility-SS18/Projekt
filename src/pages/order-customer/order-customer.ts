@@ -116,10 +116,27 @@ export class OrderCustomerPage {
       let varOurOrderId;
 
       this.uniqueDeviceID.get()
-    .then((uuid: any) => varOurOrderId = uuid)
-    .catch((error: any) => console.log(error));
+    .then((uuid: any) => varOurOrderId = uuid + new Date().getTime()).then(() => {
       console.log("uuid ist: ",varOurOrderId);
-        this.ItemSelection.push({
+      this.ItemSelection.push({
+        ItemId: ItemId,
+        Quantity: 'myquant',
+        UserId: this.fire.auth.currentUser.uid,
+        OrderState: 'open',
+        Name: Name,
+        Price: Price,
+        TableId: this.BasketService.QRTischNr,
+        RestaurantId: this.BasketService.QRRestaurantId,
+        TimeStamp: new Date().getTime(),
+        Size: 'mysize',
+        Variant: 'myvariant',
+        Annotations: 'myannot',
+        OurOrderId: varOurOrderId
+      });
+    })
+    .catch((error: any) => console.log(error));
+      //console.log("uuid ist: ",varOurOrderId);
+        /* this.ItemSelection.push({
           ItemId: ItemId,
           Quantity: 'myquant',
           UserId: this.fire.auth.currentUser.uid,
@@ -133,9 +150,12 @@ export class OrderCustomerPage {
           Variant: 'myvariant',
           Annotations: 'myannot',
           OurOrderId: varOurOrderId
-        });
+        }); */
       this.BasketService.ItemSelection = this.ItemSelection;
       this.BasketService.checkBasketContent();
+      //console.log("Order Customer Order OurOrderId: ", this.ItemSelection[0].OurOrderId);
+      //console.log("Order Customer BasketService.ItemSelection OurOrderId: ", this.BasketService.ItemSelection[0].OurOrderId);
+
 
       this.BasketStateColor = this.BasketService.BasketStateColor;
     }

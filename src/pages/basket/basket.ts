@@ -30,13 +30,13 @@ export class BasketPage {
   order: Order = {
     ItemId: undefined,
     Quantity: undefined,
-    UserId: this.fire.auth.currentUser.uid,
-    OrderState: 'open',
+    UserId: undefined,
+    OrderState: undefined,
     Name: undefined,
     Price: undefined,
-    TableId: 44,
-    RestaurantId: 45,
-    TimeStamp: '2018-xxxxx',
+    TableId: undefined,
+    RestaurantId: undefined,
+    TimeStamp: undefined,
     Size: undefined,
     Variant: undefined,
     Annotations: undefined,
@@ -70,12 +70,17 @@ export class BasketPage {
       //hier müssen alle order bestandteile rein!! später auch die oben hardgecodeden
       this.order.ItemId = ItemSelection[idIteration].ItemId;
       this.order.Quantity = ItemSelection[idIteration].Quantity;
+      this.order.UserId = ItemSelection[idIteration].UserId;
+      this.order.OrderState = ItemSelection[idIteration].OrderState;
       this.order.Name = ItemSelection[idIteration].Name;
       this.order.Price = ItemSelection[idIteration].Price;
+      this.order.TableId = ItemSelection[idIteration].TableId;
+      this.order.RestaurantId = ItemSelection[idIteration].RestaurantId;
+      this.order.TimeStamp = ItemSelection[idIteration].TimeStamp;
       this.order.Size = ItemSelection[idIteration].Size;
       this.order.Variant = ItemSelection[idIteration].Variant;
-      this.order.Quantity = ItemSelection[idIteration].Quantity;
       this.order.Annotations = ItemSelection[idIteration].Annotations;
+      this.order.OurOrderId = ItemSelection[idIteration].OurOrderId;
       console.log('aktuelle Menge: ' + this.order.Quantity);
       this.FirebaseService.addCustomerOrder(this.order);
     }
