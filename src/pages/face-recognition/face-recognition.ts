@@ -164,8 +164,8 @@ export class FaceRecognitionPage {
 
     return this.PersonIdFromFirebase()
     .then(() => this.takePictureAndUploadToFirebase(this.userId))
-    .then(() => this.addingface(this.userId, this.pictureName, this.personGroupId, this.personId, this.img_url))
-    .then(() => this.verify_me(this.userId, this.pictureName, this.img_url, this.personId, this.personGroupId));
+    .then(() => this.verify_me(this.userId, this.pictureName, this.img_url, this.personId, this.personGroupId))
+    .then(() => this.addingface(this.userId, this.pictureName, this.personGroupId, this.personId, this.img_url));
 
   }
 
