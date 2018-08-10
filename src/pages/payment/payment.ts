@@ -8,13 +8,6 @@ import { OrderViewCustomerPage } from '../order-view-customer/order-view-custome
 
 //import { IonicPage } from 'ionic-angular';
 
-/**
- * Generated class for the PaymentPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 
 @Component({
   selector: 'page-payment',

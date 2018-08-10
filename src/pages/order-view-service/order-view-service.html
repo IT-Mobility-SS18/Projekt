@@ -55,8 +55,8 @@
             <ion-item-sliding *ngFor="let item of openOrdersArr">
               <ion-item>
                 <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
-                <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-                <p>Tisch {{ item.TableId }}</p>
+                <h2><b>{{ item.Name }}</b></h2>
+                <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
               </ion-item>
               <!--<ion-item-options side="right">
                 <button ion-button color="danger">
@@ -74,8 +74,8 @@
                 <ion-item-sliding *ngFor="let item of preparingArr">
                   <ion-item>
                     <ion-icon name="md-restaurant" color="cyellow" item-start></ion-icon>
-                    <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-                    <p>Tisch {{ item.TableId }}</p>
+                    <h2><b>{{ item.Name }}</b></h2>
+                    <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
                   </ion-item>
                   <!--<ion-item-options side="right">
                     <button ion-button color="danger">
@@ -93,9 +93,9 @@
                       <ion-item-sliding *ngFor="let item of readyArr">
                         <ion-item>
                           <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
-                          <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-                          <p>Tisch {{ item.TableId }}</p>
-                          <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)">Ausliefern</button>
+                          <h2><b>{{ item.Name }}</b></h2>
+                          <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
+                          <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end>Ausliefern</button>
                         </ion-item>
                       <!--  <ion-item-options side="right">
                           <button ion-button color="danger">
@@ -114,8 +114,8 @@
                     <ion-item-sliding *ngFor="let item of doneArr">
                       <ion-item>
                         <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
-                        <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-                        <p>Tisch {{ item.TableId }}</p>
+                        <h2><b>{{ item.Name }}</b></h2>
+                        <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
                       </ion-item>
                       <!--<ion-item-options side="right">
                         <button ion-button color="danger">

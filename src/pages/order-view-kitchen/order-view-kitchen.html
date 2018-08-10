@@ -28,9 +28,9 @@
     <ion-item-sliding *ngFor="let item of openOrdersArr; let i = index">
       <ion-item>
         <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
-        <h2>Bestell Nummer:{{ item.OrderId }}</h2>
-          <h2>{{ item.TableId }}:  {{ item.Name }}</h2>
-          <button ion-button color="danger" (click)="changeOrderState('preparing', item.OurOrderId)">Zubereiten</button>
+        <h2><b>{{ item.Name }}</b></h2>
+        <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
+        <button class="button-height" ion-button color="danger" (click)="changeOrderState('preparing', item.OurOrderId)" item-end>Zubereiten</button>
       </ion-item>
       <!--<ion-item-options side="right">
         <button ion-button color="danger">
@@ -47,9 +47,9 @@
       </ion-list-header>
       <ion-item *ngFor="let item of preparingArr">
             <ion-icon name="md-restaurant" color="danger" item-start></ion-icon>
-          <h2>Bestell Nummer:{{ item.OrderId }}</h2>
-            <h2>{{ item.TableId }}:  {{ item.Name }}</h2>
-            <button ion-button color="danger" (click)="changeOrderState('ready', item.OurOrderId)">Zubereitet</button>
+            <h2><b>{{ item.Name }}</b></h2>
+            <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
+            <button ion-button color="danger" (click)="changeOrderState('ready', item.OurOrderId)" item-end>Zubereitet</button>
         </ion-item>
         <!--<ion-item-options side="right">
           <button ion-button color="danger">
@@ -65,8 +65,10 @@
   </ion-list-header>
   <ion-item *ngFor="let item of readyArr">
         <ion-icon name="ios-archive" color="primary" item-start></ion-icon>
-      <h2>Bestell Nummer:{{ item.OrderId }}</h2>
-        <h2>{{ item.TableId }}: {{ item.Name }}</h2>
+        <h2><b>{{ item.Name }}</b></h2>
+            <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
+            <!--<h2>Bestell Nummer:{{ item.OrderId }}</h2>
+        <h2>{{ item.TableId }}: {{ item.Name }}</h2>-->
     </ion-item>
 </ion-list>
 </ion-content>
