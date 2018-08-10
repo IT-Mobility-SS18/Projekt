@@ -89,7 +89,7 @@
                       <ion-list-header color="light">
                         <b>Zur Auslieferung bereit</b>
                       </ion-list-header>
-              
+
                       <ion-item-sliding *ngFor="let item of readyArr">
                         <ion-item>
                           <ion-icon name="help-circle" color="grey" item-start></ion-icon>
@@ -97,12 +97,12 @@
                           <p>Tisch {{ item.TableId }}</p>
                           <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)">Ausliefern</button>
                         </ion-item>
-                        <ion-item-options side="right">
+                      <!--  <ion-item-options side="right">
                           <button ion-button color="danger">
                             <ion-icon name="trash"></ion-icon>Stornieren</button>
                             <button ion-button color="primary">
                               <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                            </ion-item-options>
+                            </ion-item-options>-->
                           </ion-item-sliding>
                         </ion-list>
 
@@ -110,7 +110,7 @@
                     <ion-list-header color="light">
                       <b>Erledigt</b>
                     </ion-list-header>
-    
+
                     <ion-item-sliding *ngFor="let item of doneArr">
                       <ion-item>
                         <ion-icon name="close-circle" color="danger" item-start></ion-icon>
@@ -125,5 +125,5 @@
                           </ion-item-options>-->
                         </ion-item-sliding>
                       </ion-list>
-                      
+
                 </ion-content>
