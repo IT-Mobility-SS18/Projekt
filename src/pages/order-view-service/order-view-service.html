@@ -54,7 +54,7 @@
 
             <ion-item-sliding *ngFor="let item of openOrdersArr">
               <ion-item>
-                <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
+                <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
                 <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
                 <p>Tisch {{ item.TableId }}</p>
               </ion-item>
@@ -73,7 +73,7 @@
 
                 <ion-item-sliding *ngFor="let item of preparingArr">
                   <ion-item>
-                    <ion-icon name="close-circle" color="danger" item-start></ion-icon>
+                    <ion-icon name="md-restaurant" color="cyellow" item-start></ion-icon>
                     <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
                     <p>Tisch {{ item.TableId }}</p>
                   </ion-item>
@@ -92,7 +92,7 @@
 
                       <ion-item-sliding *ngFor="let item of readyArr">
                         <ion-item>
-                          <ion-icon name="help-circle" color="grey" item-start></ion-icon>
+                          <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
                           <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
                           <p>Tisch {{ item.TableId }}</p>
                           <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)">Ausliefern</button>
@@ -113,7 +113,7 @@
 
                     <ion-item-sliding *ngFor="let item of doneArr">
                       <ion-item>
-                        <ion-icon name="close-circle" color="danger" item-start></ion-icon>
+                        <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
                         <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
                         <p>Tisch {{ item.TableId }}</p>
                       </ion-item>

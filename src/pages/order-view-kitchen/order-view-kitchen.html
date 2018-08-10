@@ -27,7 +27,7 @@
   <!--<ion-list>-->
     <ion-item-sliding *ngFor="let item of openOrdersArr; let i = index">
       <ion-item>
-        <ion-icon name="help-circle" color="lightgrey" item-start></ion-icon>
+        <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
         <h2>Bestell Nummer:{{ item.OrderId }}</h2>
           <h2>{{ item.TableId }}:  {{ item.Name }}</h2>
           <button ion-button color="danger" (click)="changeOrderState('preparing', item.OurOrderId)">Zubereiten</button>
@@ -46,7 +46,7 @@
         <b>In Zubereitung</b>
       </ion-list-header>
       <ion-item *ngFor="let item of preparingArr">
-            <ion-icon name="md-restaurant" color="primary" item-start></ion-icon>
+            <ion-icon name="md-restaurant" color="danger" item-start></ion-icon>
           <h2>Bestell Nummer:{{ item.OrderId }}</h2>
             <h2>{{ item.TableId }}:  {{ item.Name }}</h2>
             <button ion-button color="danger" (click)="changeOrderState('ready', item.OurOrderId)">Zubereitet</button>
@@ -64,7 +64,7 @@
     <b>Bereit zur Abholung</b>
   </ion-list-header>
   <ion-item *ngFor="let item of readyArr">
-        <ion-icon name="md-cube" color="danger" item-start></ion-icon>
+        <ion-icon name="ios-archive" color="primary" item-start></ion-icon>
       <h2>Bestell Nummer:{{ item.OrderId }}</h2>
         <h2>{{ item.TableId }}: {{ item.Name }}</h2>
     </ion-item>
