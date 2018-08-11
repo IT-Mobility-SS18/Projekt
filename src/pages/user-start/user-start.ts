@@ -33,7 +33,7 @@ export class UserStartPage {
   }
 
   ionViewDidLoad() {
-    this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');
+    /*this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');*/
   }
 
   ionViewDidEnter() {
