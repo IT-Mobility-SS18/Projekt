@@ -35,10 +35,12 @@ export class PaymentPage {
 
       //prepareToRender: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
       this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+        languageOrLocale: 'de',
+        merchantName: 'Turty'
         // Only needed if you get an "Internal Service Error" after PayPal login!
         //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
       })).then(() => {
-        let payment = new PayPalPayment(this.paymentAmount, 'EUR', 'Description', 'sale');
+        let payment = new PayPalPayment(this.paymentAmount, 'EUR', 'Bestellung über Turty', 'sale');
 
         //renderSinglePaymentUI: Start PayPal UI to collect payment from the user. See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/ for more documentation of the params.
         this.payPal.renderSinglePaymentUI(payment).then(() => {
@@ -66,7 +68,7 @@ export class PaymentPage {
   }
 
   goToBasket(){
-    this.navCtrl.push(BasketPage, {});
+    this.navCtrl.push(BasketPage);
   }
 
 }
