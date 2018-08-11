@@ -142,7 +142,7 @@ export class FaceRecognitionPage {
 
 
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...'
+      content: 'Wir arbeiten für dich...'
     });
 
     // eventhandler für:
