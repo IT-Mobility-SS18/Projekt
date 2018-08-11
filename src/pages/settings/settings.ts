@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { BasketPage } from '../basket/basket';  
+import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { User } from '../../models/order/user.model';
@@ -41,7 +41,7 @@ export class SettingsPage {
   CurrentStreet;
   CurrentZipCode;
   constructor(public navCtrl: NavController, public navParams: NavParams,private fire: AngularFireAuth,public FirebaseService: FirebaseService) {
-    
+
   }
 
   ionViewWillEnter() {
@@ -66,7 +66,7 @@ export class SettingsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-  
+
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }
@@ -85,12 +85,25 @@ export class SettingsPage {
     this.user.ZipCode = this.CurrentZipCode;
     this.FirebaseService.updateUser(this.user, this.UserId); */
     this.FirebaseService.updateUserNewsletter(this.CurrentOptInNewsletter, this.UserId);
+    this.navCtrl.getActive(this.inputDisabled=true);
   }
 
   //Datenbank-Auswahl
   onChangeOptInNewsletter(SelectedValue){
     console.log("Selected OptInNewsletter", SelectedValue);
   }
-
   
+  inputDisabled: boolean = true;
+  goToSetting(){
+    if(this.inputDisabled==true) {
+      this.navCtrl.getActive(this.inputDisabled=false);
+    } else if (this.inputDisabled==false){
+      this.navCtrl.getActive(this.inputDisabled=true);
+    }
+  }
+  cancelChanges(){
+    this.navCtrl.setRoot(SettingsPage);
+}
+
+
 }
