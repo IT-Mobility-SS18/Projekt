@@ -64,6 +64,11 @@ export class RegistrationPage {
     public events: Events
   ) {
     console.log('hello registration page');
+    var myYear = new Date().getFullYear();
+    var myDay = new Date().getDate();
+    var myMonth = new Date().getUTCMonth();
+    var myDate = myYear + "-" + myMonth + "-" + myDay;
+    console.log('myDate', myDate);
   }
 
   // After loading the page
@@ -126,9 +131,11 @@ export class RegistrationPage {
 
   checkRegistrationFields() {
     console.log("entered checkRegistrationFields ");
+    console.log("this.MyUser.BDay",this.MyUser.BDay);
     try {
         if (this.password.value.match(this.passwordRep.value) === null || this.passwordRep.value === "") {
-        this.alert("Die eingegebenen Passwörter stimmen nicht überein!");
+        //this.alert("Die eingegebenen Passwörter stimmen nicht überein!");
+        this.MyErrorMessage = "Bitte alle Felder ausfüllen!";
     }
 
     } catch (error) {
@@ -169,12 +176,12 @@ export class RegistrationPage {
      }
      this.registerUser();
     } catch (error) {
-      this.MyErrorMessage = "Ein Fehler ist aufgetreten:";
-      console.log("error ist: " + error);
+      //this.MyErrorMessage = "Ein Fehler ist aufgetreten:";
+      //console.log("error ist: " + error);
 
       var myerr = JSON.stringify(error.message);
       console.log("my error ist: " + myerr);
-        this.MyErrorMessage = "Bitte alle Felder ausfüllen!";
+        this.MyErrorMessage = "Bitte alle Felder (korrekt) ausfüllen!";
         this.alert(this.MyErrorMessage);
       }
       /* switch(myerr) {
