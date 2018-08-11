@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { FaceApiProvider } from '../../providers/face-api/face-api';
 import { BasketPage } from '../basket/basket';
@@ -48,6 +48,8 @@ export class FaceRecognitionPage {
   public verify_isIdentical:boolean;
   public verify_confidence:number;
 
+  public loading:any;
+
 
   // für tests
   // public str_Ausgabe:string;
@@ -88,7 +90,8 @@ export class FaceRecognitionPage {
     public domSanitizer:DomSanitizer,
     public alertCtrl: AlertController,
     private fire: AngularFireAuth,
-    public events: Events
+    public events: Events,
+    public loadingCtrl: LoadingController
     ) {
 
     //amount durchgeschliffen für payment
@@ -133,6 +136,10 @@ export class FaceRecognitionPage {
     //personId wird von faceApi erzeugt, zum Testen kann diese verwendet werden
     //this.personId= '6101bbf8-eb3e-4dc1-9027-ba61d87430f4';
 
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
 
     // eventhandler für:
     // 1. "von Registrierung kommend" oder
@@ -191,6 +198,16 @@ export class FaceRecognitionPage {
       buttons: ['Okay']
     }).present();
   }
+
+  presentLoadingDefault() {
+    this.loading.present();
+  }
+
+  presentDismissDefault(){
+    console.log('presentDismissDefault');
+    this.loading.dismiss();
+  }
+
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -260,8 +277,8 @@ export class FaceRecognitionPage {
             console.log('this.isIdentical: '+this.verify_isIdentical);
             console.log('this.verify_confidence: '+this.verify_confidence);
 
-            this.alert('this.isIdentical: '+this.verify_isIdentical);
-            this.alert('this.verify_confidence: '+this.verify_confidence);
+            //this.alert('this.isIdentical: '+this.verify_isIdentical);
+            //this.alert('this.verify_confidence: '+this.verify_confidence);
 
             //Schritt 5.3:
             // wenn beide Rückgabewerte die definierten Schwellen erreicht haben, dann erfolgt eine Weiterleitung an die payment Funktion
@@ -271,7 +288,9 @@ export class FaceRecognitionPage {
               this.navCtrl.push(PaymentPage, {amount: this.amount});
             } else {
               console.log('kein push to payment, da nicht identisch oder confidence zu gering');
-              this.alert('kein push to payment, da nicht identisch oder confidence zu gering.');
+              this.alert('Du wurdest leider nicht erkannt. Bitte versuche es noch einmal.');
+              this.navCtrl.setRoot(BasketPage);
+
             }
 
           });//end resultVerificationFromVerify
@@ -730,6 +749,11 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FaceRecognitionPage');
+    this.presentLoadingDefault();
+  }
+
+  ionViewDidLeave(){
+    this.presentDismissDefault();
   }
   goToBasket(){
     this.navCtrl.push(BasketPage);
