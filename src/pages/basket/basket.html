@@ -78,11 +78,11 @@
 </ion-slides>
 <!--<ion-item><p>Lieferkosten:</p></ion-item>-->
 <ion-item><p>Betrag: {{ amount }} €</p></ion-item>
-<button ion-button block (click)="goToPayment()">Bezahlen</button>
+<button ion-button block [disabled]="inputDisabled" (click)="goToPayment()">Bezahlen</button>
 <!--<button ion-button block padding>Kellner rufen</button>-->
 <!--<button ion-button block (click)="createOrder(ItemSelection)">PaymentOK</button>-->
-<a class="center-text" (click)="cancelBasket()">Abbrechen</a>
-<a class="center-text" (click)="clearBasket()">Warenkorb leeren</a>
+<!--<a class="center-text" (click)="cancelBasket()">Abbrechen</a>-->
+<button ion-button block [disabled]="inputDisabled" (click)="clearBasket()">Warenkorb leeren</button>
 </ion-card-content>
 </ion-content>
 

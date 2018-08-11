@@ -40,10 +40,12 @@
         {{item.Name}}
         <p>{{item.Description}}</p>
         <p>{{item.Price.toFixed(2)}} €</p>
-       
+
+        <button block ion-button>Hinzufügen</button>
+
         <!--<ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>-->
       </ion-item>
-      <!-- 
+      <!--
       <ion-item>
         <ion-label color="primary" stacked required>Variante</ion-label>
         <ion-select #newSelect [(ngModel)]="MyUser.Variant" (change)="onChangeVariant(MyUser.Variant)">
@@ -75,10 +77,14 @@
         <ion-textarea type="text"></ion-textarea>
       </ion-item>
       -->
-      <ion-item>
-        <button block ion-button>Hinzufügen</button>
-        <a class="center-text">Abbrechen</a>
-      </ion-item>
+        <!--<ion-item>
+        <button block ion-button>Hinzufügen</button>-->
+        <!--
+         (click)="addToArray(item.Uid, item.Name, item.Price)"
+         nicht nötig, da click sich auf alle clickables im sliding bezieht
+        -->
+        <!--<a class="center-text">Abbrechen</a>-->
+        <!--</ion-item>-->
     </ion-item-sliding>
   </ion-list>
 
@@ -94,6 +100,8 @@
         {{item.Name}}
         <p>{{item.Description}}</p>
         <p>{{item.Price.toFixed(2)}} €</p>
+
+        <button block ion-button>Hinzufügen</button>
 
         <!--<ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>-->
       </ion-item>
@@ -123,10 +131,14 @@
           <ion-option value="5">5</ion-option>
         </ion-select>
       </ion-item>-->
-      <ion-item>
-        <button block ion-button>Hinzufügen</button>
-        <a class="center-text">Abbrechen</a>
-      </ion-item>
+      <!--<ion-item>
+        <button block ion-button>Hinzufügen</button>-->
+        <!--
+         (click)="addToArray(item.Uid, item.Name, item.Price)"
+         nicht nötig, da click sich auf alle clickables im sliding bezieht
+        -->
+        <!--<a class="center-text">Abbrechen</a>-->
+      <!--</ion-item>-->
     </ion-item-sliding>
   </ion-list>
 
@@ -142,6 +154,9 @@
         {{item.Name}}
         <p>{{item.Description}}</p>
         <p>{{item.Price.toFixed(2)}} €</p>
+
+        <button block ion-button>Hinzufügen</button>
+
        <!-- <ion-icon color="primary" name="md-arrow-dropdown-circle"></ion-icon>-->
       </ion-item>
       <!--<ion-item>
@@ -158,10 +173,14 @@
         <ion-label color="primary" stacked required>Anmerkungen</ion-label>
         <ion-textarea type="text" rows="3" maxLength="100"></ion-textarea>
       </ion-item>-->
-      <ion-item>
-        <button block ion-button>Hinzufügen</button>
-        <a class="center-text">Abbrechen</a>
-      </ion-item>
+      <!--<ion-item>
+        <button block ion-button>Hinzufügen</button>-->
+        <!--
+         (click)="addToArray(item.Uid, item.Name, item.Price)"
+         nicht nötig, da click sich auf alle clickables im sliding bezieht
+        -->
+        <!--<a class="center-text">Abbrechen</a>-->
+        <!--</ion-item>-->
     </ion-item-sliding>
   </ion-list>
 </ion-content>

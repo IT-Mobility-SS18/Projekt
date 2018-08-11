@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BasketPage } from '../basket/basket';  
+import { BasketPage } from '../basket/basket';
+import { OrderCustomerPage } from '../order-customer/order-customer';
+import { BasketService } from '../../providers/basket/basket-service';
+
 
 @Component({
   selector: 'page-restaurant',
@@ -8,14 +11,29 @@ import { BasketPage } from '../basket/basket';
 })
 export class RestaurantPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  BasketStateColor:any;
+
+  constructor(public navCtrl: NavController,
+      private BasketService: BasketService,
+      public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestaurantPage');
   }
-  
-  goToBasket() {
-    this.navCtrl.push(BasketPage, {});
+
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
   }
+
+
+  goToBasket() {
+    this.navCtrl.push(BasketPage);
+  }
+
+  goToOrderCustomer(){
+    this.navCtrl.push(OrderCustomerPage);
+  }
+
+
 }

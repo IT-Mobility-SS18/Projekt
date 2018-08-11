@@ -7,6 +7,8 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { OrderCustomerPage } from '../order-customer/order-customer';
 import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 import { UserViewPage } from '../user-view/user-view';
+import { RestaurantPage } from '../restaurant/restaurant';
+
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -33,7 +35,7 @@ export class UserStartPage {
   }
 
   ionViewDidLoad() {
-    this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');
+    /*this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');*/
   }
 
   ionViewDidEnter() {
@@ -90,6 +92,8 @@ export class UserStartPage {
       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
         var myData = <any>{};
         myData  = text;
+        this.BasketService.removeAll();
+        this.BasketService.checkBasketContent();
 
         console.log(myData);
         console.log('result', myData['result']);
@@ -97,15 +101,20 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
-        
-        this.navCtrl.push(OrderCustomerPage, {});
-        
+
+        this.navCtrl.setRoot(RestaurantPage);
+
         this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
         //this.alert(myData);
+        
         this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId
         console.log("QR: RestaurantID: " +  myData.split(" ")[1]);
         this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
         console.log("QR: TischNr: " +  myData.split(" ")[3]);
+        if(myData == undefined || !this.BasketService.QRRestaurantId || !this.BasketService.QRTischNr) {
+          this.alert("Es gab ein Problem mit dem QR-Code!");
+          this.navCtrl.setRoot(UserStartPage);
+        }
       });
 
 

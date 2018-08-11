@@ -47,8 +47,10 @@ export class FaceRecognitionPage {
   public persistedFaceId:string;      // wird von faceApi erzeugt
   public verify_isIdentical:boolean;
   public verify_confidence:number;
+  public verify_me_delivered_isidentical:boolean; // Steuerung der adding face
 
   public loading:any;
+
 
 
   // für tests
@@ -101,6 +103,8 @@ export class FaceRecognitionPage {
     if (this.amount== undefined || this.amount== null){
       this.amount = '0.0';
     }
+
+    this.verify_me_delivered_isidentical=false; //Steurung der adding face
 
     this.registration = navParams.get('registration');
     this.alertCtrl = alertCtrl;
@@ -284,10 +288,11 @@ export class FaceRecognitionPage {
             // wenn beide Rückgabewerte die definierten Schwellen erreicht haben, dann erfolgt eine Weiterleitung an die payment Funktion
             if (this.verify_isIdentical==true && this.verify_confidence>=0.6){
               console.log('push to payment');
-
+              this.verify_me_delivered_isidentical=true;
               this.navCtrl.push(PaymentPage, {amount: this.amount});
             } else {
               console.log('kein push to payment, da nicht identisch oder confidence zu gering');
+              this.verify_me_delivered_isidentical=false;
               this.alert('Du wurdest leider nicht erkannt. Bitte versuche es noch einmal.');
               this.navCtrl.setRoot(BasketPage);
 
@@ -361,31 +366,38 @@ export class FaceRecognitionPage {
 
     console.log("Hello function addingface");
 
-    this.getUrlfromFirebaseUserPictures(userId, pictureName)
-    .then(resultgetUrlfromFirebaseUserPictures=>{
-      if(resultgetUrlfromFirebaseUserPictures){
-        console.log('resultgetUrlfromFirebaseUserPictures: '+resultgetUrlfromFirebaseUserPictures);
+    if (this.verify_me_delivered_isidentical==true) {
 
-        setTimeout(() => {
+      this.getUrlfromFirebaseUserPictures(userId, pictureName)
+      .then(resultgetUrlfromFirebaseUserPictures=>{
+        if(resultgetUrlfromFirebaseUserPictures){
+          console.log('resultgetUrlfromFirebaseUserPictures: '+resultgetUrlfromFirebaseUserPictures);
 
-            // Schritt 3.3: addFace in faceApi
-            this.addingfacetofaceApi(personGroupId,personId, img_url)
-            .then(resultaddingfacetofaceApi=>{
-              console.log('resultaddingfacetofaceApi: '+resultaddingfacetofaceApi);
-              this.persistedFaceId=JSON.stringify(resultaddingfacetofaceApi);
+          setTimeout(() => {
 
-              // Schritt 3.4: Machine learning - Maschine trainieren
-              this.faceapi.TrainTheMachine(personGroupId);
+              // Schritt 3.3: addFace in faceApi
+              this.addingfacetofaceApi(personGroupId,personId, img_url)
+              .then(resultaddingfacetofaceApi=>{
+                console.log('resultaddingfacetofaceApi: '+resultaddingfacetofaceApi);
+                this.persistedFaceId=JSON.stringify(resultaddingfacetofaceApi);
 
-            });//end resultCreatePersonGroupPerson
+                // Schritt 3.4: Machine learning - Maschine trainieren
+                this.faceapi.TrainTheMachine(personGroupId);
 
-        console.log('goodbye addingface');
-      }, 10000);
+              });//end resultCreatePersonGroupPerson
 
-      } else {
-        console.log('Error@ resultgetUrlfromFirebaseUserPictures: '+resultgetUrlfromFirebaseUserPictures);
-      }
-    });//end resultgetUrlfromFirebaseUserPictures
+          console.log('goodbye addingface');
+        }, 10000);
+
+        } else {
+          console.log('Error@ resultgetUrlfromFirebaseUserPictures: '+resultgetUrlfromFirebaseUserPictures);
+        }
+      });//end resultgetUrlfromFirebaseUserPictures
+    } else {
+      // this.verify_me_delivered_isidentical hat false geliefert
+      // Gesicht/Selfie wird nicht hinzugefügt
+    }
+
   }
 
   // *******************************************************
