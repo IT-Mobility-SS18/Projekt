@@ -6,27 +6,28 @@
       </button>
     </ion-buttons>
 
-    <ion-title>Gesichtserkennung</ion-title>
+    <ion-title>Mach ein Selfie zum Bezahlen</ion-title>
     <ion-buttons end>
         <!--<button ion-button>
           <ion-icon name="flash" item-right></ion-icon>
-        </button>-->
+        </button>
         <button ion-button (click)="goToBasket()">
           <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
         </button>
+        -->
       </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-
+<!--
   <button  ion-button color="primary" (click)="pushUserStartPage()"> Los geht's! QR Code scannen </button>
   <button  ion-button color="primary" (click)="pushUserViewPage()"> Profil ansehen </button>
   <button  ion-button color="primary" (click)="bezahlen()"> 2. bezahlen </button>
+-->
 
-
-  <p>Latest Picture:</p>
+  <p>Dein Bild:</p>
       <!--
       Varianten funktionieren nicht
       <img src={{currentImage}} />
@@ -40,7 +41,9 @@
       <img class="object-img" [src]="getImgContent2()">
       <img [src]="base64Image_mit_attrib" *ngIf="base64Image_mit_attrib" />
       -->
-      <img [src]="base64Image_mit_attrib" *ngIf="base64Image_mit_attrib" />
+      <img [src]="base64Image_mit_attrib" *ngIf="base64Image_mit_attrib"
+      class="bild"
+      />
 
   <!-- <h2>Analyzed Results </h2>
   <p>Resultate der FaceApi:</p>
