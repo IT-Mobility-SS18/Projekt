@@ -4,10 +4,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-import { OrderCustomerPage } from '../order-customer/order-customer';
 import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 import { UserViewPage } from '../user-view/user-view';
 import { RestaurantPage } from '../restaurant/restaurant';
+import { ToastController } from 'ionic-angular';
 
 
 //import { IonicPage } from 'ionic-angular';
@@ -29,6 +29,7 @@ export class UserStartPage {
               private qrScanner: QRScanner,
               private menu: MenuController,
               public alertCtrl: AlertController,
+              private toastCtrl: ToastController
             ) {
     this.username = fire.auth.currentUser.email;
     this.UserId = fire.auth.currentUser.uid;
@@ -76,6 +77,16 @@ export class UserStartPage {
     this.qrScanner.destroy();
   }
 
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Es gab ein Problem mit dem QR-Code!',
+      duration: 4000,
+      position: 'bottom',
+      cssClass: 'toast-container'
+    });
+    toast.present();
+  }
+
     // start qr scanner
   scanQRcode() {
     // Optionally request the permission early
@@ -112,7 +123,8 @@ export class UserStartPage {
         this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
         console.log("QR: TischNr: " +  myData.split(" ")[3]);
         if(myData == undefined || !this.BasketService.QRRestaurantId || !this.BasketService.QRTischNr) {
-          this.alert("Es gab ein Problem mit dem QR-Code!");
+          //this.alert("Es gab ein Problem mit dem QR-Code!");
+          this.presentToast();
           this.navCtrl.setRoot(UserStartPage);
         }
       });
