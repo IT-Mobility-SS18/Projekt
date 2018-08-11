@@ -68,7 +68,7 @@ export class SettingsPage {
   }
   
   goToBasket() {
-    this.navCtrl.setRoot(BasketPage, {});
+    this.navCtrl.push(BasketPage, {});
   }
 
   updateUser() {

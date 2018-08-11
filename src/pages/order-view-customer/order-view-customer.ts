@@ -31,7 +31,7 @@ export class OrderViewCustomerPage {
   
 
   goToBasket(){
-    this.navCtrl.setRoot(BasketPage);
+    this.navCtrl.push(BasketPage, {});
   }
 
   // not in use at the moment

@@ -93,7 +93,7 @@ export class OrderCustomerPage {
    }
 
    goToBasket() {
-     this.navCtrl.push(BasketPage, {});
+    this.navCtrl.push(BasketPage, {});
    }
 
    ionViewDidEnter(){

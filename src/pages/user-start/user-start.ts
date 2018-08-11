@@ -41,7 +41,7 @@ export class UserStartPage {
   }
 
   goToBasket() {
-    this.navCtrl.setRoot(BasketPage, {});
+    this.navCtrl.push(BasketPage, {});
   }
 
   // not in use at the moment

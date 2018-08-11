@@ -18,6 +18,6 @@ export class ContactPage {
   }
 
   goToBasket() {
-    this.navCtrl.setRoot(BasketPage, {});
+    this.navCtrl.push(BasketPage, {});
   }
 }
