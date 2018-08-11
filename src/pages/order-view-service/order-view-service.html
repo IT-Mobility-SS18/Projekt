@@ -46,7 +46,27 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>-->
+      <ion-list>
+        <ion-list-header color="light">
+          <b>Zur Auslieferung bereit</b>
+        </ion-list-header>
 
+        <ion-item-sliding *ngFor="let item of readyArr">
+          <ion-item>
+            <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
+            <h2><b>{{ item.Name }}</b></h2>
+            <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
+            <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end style="height:50px;">Ausliefern</button>
+          </ion-item>
+        <!--  <ion-item-options side="right">
+            <button ion-button color="danger">
+              <ion-icon name="trash"></ion-icon>Stornieren</button>
+              <button ion-button color="primary">
+                <ion-icon name="checkmark"></ion-icon>Fertig</button>
+              </ion-item-options>-->
+            </ion-item-sliding>
+          </ion-list>
+          
           <ion-list>
             <ion-list-header color="light">
               <b>Offen</b>
@@ -85,27 +105,6 @@
                       </ion-item-options>-->
                     </ion-item-sliding>
                   </ion-list>
-                  <ion-list>
-                      <ion-list-header color="light">
-                        <b>Zur Auslieferung bereit</b>
-                      </ion-list-header>
-
-                      <ion-item-sliding *ngFor="let item of readyArr">
-                        <ion-item>
-                          <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
-                          <h2><b>{{ item.Name }}</b></h2>
-                          <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
-                          <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end style="height:50px;">Ausliefern</button>
-                        </ion-item>
-                      <!--  <ion-item-options side="right">
-                          <button ion-button color="danger">
-                            <ion-icon name="trash"></ion-icon>Stornieren</button>
-                            <button ion-button color="primary">
-                              <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                            </ion-item-options>-->
-                          </ion-item-sliding>
-                        </ion-list>
-
                   <ion-list>
                     <ion-list-header color="light">
                       <b>Erledigt</b>
