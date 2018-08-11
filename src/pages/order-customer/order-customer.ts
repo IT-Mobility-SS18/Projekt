@@ -18,7 +18,7 @@ import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 })
 export class OrderCustomerPage {
   BasketStateColor = this.BasketService.BasketStateColor;
-  
+
   order: Order = {
     ItemId: undefined,
     Quantity: undefined,
@@ -46,7 +46,7 @@ export class OrderCustomerPage {
   ItemSelection = [];
   CurrentQuantity;
   EnteredQuantity;
-  
+
   //Datenbank-Auswahl
   onChangeVariant(SelectedValue){
     console.log("Selected Variant", SelectedValue);
@@ -70,7 +70,13 @@ export class OrderCustomerPage {
     this.FillItemArray();
    }
 
-   constructor(public navCtrl: NavController, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private alertCtrl: AlertController, private BasketService: BasketService,private uniqueDeviceID: UniqueDeviceID) {
+   constructor(public navCtrl: NavController,
+      public FirebaseService: FirebaseService,
+      private fire: AngularFireAuth,
+      private alertCtrl: AlertController,
+      private BasketService: BasketService,
+      private uniqueDeviceID: UniqueDeviceID
+    ) {
     this.UserId = this.fire.auth.currentUser.uid;
    }
 
@@ -111,7 +117,7 @@ export class OrderCustomerPage {
   }
 
   // add to (temporary) basket array
-    addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {   
+    addToArray(ItemId, Name, Price, Size, Variant, Quantity, Annotations) {
       this.ItemSelection = this.BasketService.ItemSelection;
       let varOurOrderId;
 
@@ -133,6 +139,15 @@ export class OrderCustomerPage {
         Annotations: 'myannot',
         OurOrderId: varOurOrderId
       });
+
+      this.BasketService.ItemSelection = this.ItemSelection;
+      this.BasketService.checkBasketContent();
+      //console.log("Order Customer Order OurOrderId: ", this.ItemSelection[0].OurOrderId);
+      //console.log("Order Customer BasketService.ItemSelection OurOrderId: ", this.BasketService.ItemSelection[0].OurOrderId);
+
+      this.BasketStateColor = this.BasketService.BasketStateColor;
+
+
     })
     .catch((error: any) => console.log(error));
       //console.log("uuid ist: ",varOurOrderId);
@@ -151,15 +166,9 @@ export class OrderCustomerPage {
           Annotations: 'myannot',
           OurOrderId: varOurOrderId
         }); */
-      this.BasketService.ItemSelection = this.ItemSelection;
-      this.BasketService.checkBasketContent();
-      //console.log("Order Customer Order OurOrderId: ", this.ItemSelection[0].OurOrderId);
-      //console.log("Order Customer BasketService.ItemSelection OurOrderId: ", this.BasketService.ItemSelection[0].OurOrderId);
 
-
-      this.BasketStateColor = this.BasketService.BasketStateColor;
     }
- 
+
     //not in use at the moment
  presentPrompt(ItemId) {
     let alert = this.alertCtrl.create({
@@ -171,7 +180,7 @@ export class OrderCustomerPage {
         }
       ],
       buttons: [
-        
+
         {
           text: 'Auswählen',
           handler: data => {
@@ -197,14 +206,14 @@ export class OrderCustomerPage {
       if (this.viewarr[iterH].Category == "Hauptspeise" ) {
         this.HauptspeiseArr.push(this.viewarr[iterH]);
       }
-     
+
     }
     //alle Nachspeisen
     for (var iterN in this.viewarr) {
       if (this.viewarr[iterN].Category == "Nachspeise" ) {
         this.NachspeiseArr.push(this.viewarr[iterN]);
       }
-     
+
     }
   }
 }

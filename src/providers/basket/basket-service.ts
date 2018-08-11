@@ -33,10 +33,15 @@ export class BasketService {
   }
 
    checkBasketContent() {
+
+    console.log('this.ItemSelection.length',this.ItemSelection.length);
+
     if (this.ItemSelection.length > 0) {
       this.BasketStateColor = "#0094d2"; //blau
     } else {
-      this.BasketStateColor = "#99cc33"; //grün 
+      //this.BasketStateColor = "#99cc33"; //grün
+      this.BasketStateColor = "#ffffff"; //weiß
+
     }
   }
 
@@ -78,5 +83,5 @@ createOrder(ItemSelection){
   }
 }
 
-  
+
 }

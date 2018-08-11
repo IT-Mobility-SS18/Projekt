@@ -28,10 +28,13 @@ export class OrderViewCustomerPage {
       console.log(this.viewarr);
     })
   }
-  
+
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
+  }
 
   goToBasket(){
-    this.navCtrl.setRoot(BasketPage);
+    this.navCtrl.push(BasketPage);
   }
 
   // not in use at the moment

@@ -7,6 +7,8 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { OrderCustomerPage } from '../order-customer/order-customer';
 import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 import { UserViewPage } from '../user-view/user-view';
+import { RestaurantPage } from '../restaurant/restaurant';
+
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -97,9 +99,9 @@ export class UserStartPage {
 
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
-        
-        this.navCtrl.push(OrderCustomerPage, {});
-        
+
+        this.navCtrl.setRoot(RestaurantPage);
+
         this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
         //this.alert(myData);
         this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId

@@ -26,6 +26,8 @@ export class BasketPage {
   // Amount to pay
   amount: string;
 
+  inputDisabled: boolean = true;
+
   // Initialize order and its attributes
   order: Order = {
     ItemId: undefined,
@@ -46,11 +48,30 @@ export class BasketPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService, public alertCtrl: AlertController) {
   }
 
+  updateButtonState(){
+
+    console.log('this.BasketService.ItemSelection.length',this.BasketService.ItemSelection.length);
+    console.log('this.BasketService.ItemSelection',this.BasketService.ItemSelection);
+
+    if (this.BasketService.ItemSelection.length > 0) {
+      this.inputDisabled=false;
+    }
+    else {
+      this.inputDisabled=true;
+    }
+  }
+
   // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
     this.sumPrices();
   }
+
+  ionViewWillEnter(){
+    this.updateButtonState();
+
+  }
+
 
   goToPayment() {
 
