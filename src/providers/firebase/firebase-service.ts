@@ -37,7 +37,21 @@ export class FirebaseService {
   }
 
   updateUser(user: User, UserId) {
-    this.UserCreationRef.child(UserId).set(user);
+    //this.UserCreationRef.child(UserId).set(user);  geht nicht mehr so da zusätzliches Attribut von Faceregcognition
+    this.UserCreationRef.child(UserId).child('BDay').set(user.BDay);
+    this.UserCreationRef.child(UserId).child('City').set(user.City);
+    this.UserCreationRef.child(UserId).child('Country').set(user.Country);
+    this.UserCreationRef.child(UserId).child('FirstName').set(user.FirstName);
+    this.UserCreationRef.child(UserId).child('LastName').set(user.LastName);
+    this.UserCreationRef.child(UserId).child('Mail').set(user.Mail);
+    this.UserCreationRef.child(UserId).child('Phone').set(user.Phone);
+    this.UserCreationRef.child(UserId).child('Sex').set(user.Sex);
+    this.UserCreationRef.child(UserId).child('Street').set(user.Street);
+    this.UserCreationRef.child(UserId).child('ZipCode').set(user.ZipCode);
+  }
+
+  updateUserNewsletter(CurrentOptInNewsletter, UserId) {
+    this.UserCreationRef.child(UserId).child('OptInNewsletter').set(CurrentOptInNewsletter);
   }
 
   changeOrderState(newOrderState: String, SearchedOrderId) {
