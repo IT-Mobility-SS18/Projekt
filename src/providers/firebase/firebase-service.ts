@@ -4,10 +4,10 @@ import { Order } from '../../models/order/order.model';
 import firebase from "firebase";
 import { User } from '../../models/order/user.model';
 import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class FirebaseService {
-
 
   fireOrderData = firebase.database().ref('/Orders');
   OrderArray= [];
@@ -17,9 +17,11 @@ export class FirebaseService {
   UserListData = firebase.database().ref('/User');
   ItemListData = firebase.database().ref('/Items');
 
-  constructor(public dbInstance: AngularFireDatabase) {
+  CurrentUserFirstName:any;
 
-}
+  constructor(public dbInstance: AngularFireDatabase, private fire: AngularFireAuth) {
+    this.CurrentUserFirstName=this.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
+  }
 
   removeItem(id) {
     this.dbInstance.list('/shoppingItems/').remove(id);
@@ -144,6 +146,31 @@ export class FirebaseService {
   })
   return promise;
   }
+
+
+  getCurrentUserFirstName(UserId) {
+      var promise = new Promise((resolve, reject) => {
+        this.UserListData.child(UserId).orderByChild('uid').once('value', (snapshot) => {
+          let UserData = snapshot.val();
+          let tmparr = [];
+          for (var key in UserData) {
+              tmparr.push(UserData[key]);
+          }
+
+          console.log('getCurrentUserFirstName');
+          console.log(tmparr);
+          if(tmparr!=null){
+            this.CurrentUserFirstName=tmparr[4];
+            resolve(true);
+          } else {
+            resolve('kein CurrentUserName gefunden');
+          }
+        }).catch((err) => {
+            reject(err);
+        })
+    })
+    return promise;
+    }
 
 
   getUserData(UserId) {

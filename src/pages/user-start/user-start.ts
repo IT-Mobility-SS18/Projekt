@@ -8,7 +8,7 @@ import { OrderViewCustomerPage } from '../order-view-customer/order-view-custome
 import { UserViewPage } from '../user-view/user-view';
 import { RestaurantPage } from '../restaurant/restaurant';
 import { ToastController } from 'ionic-angular';
-
+import { FirebaseService } from '../../providers/firebase/firebase-service';
 
 //import { IonicPage } from 'ionic-angular';
 
@@ -23,8 +23,9 @@ export class UserStartPage {
   @ViewChild('slider') slider: Slides;
   page = 0;
 
-  username: string;
-  UserId: string;
+  // username: string;
+  // UserId: string;
+  CurrentFirstName:string;
 
   constructor(private fire: AngularFireAuth,
               public navCtrl: NavController,
@@ -33,10 +34,10 @@ export class UserStartPage {
               private qrScanner: QRScanner,
               private menu: MenuController,
               public alertCtrl: AlertController,
+              public FirebaseService: FirebaseService,
               private toastCtrl: ToastController
             ) {
-    this.username = fire.auth.currentUser.email;
-    this.UserId = fire.auth.currentUser.uid;
+    //this.UserId = fire.auth.currentUser.uid;
   }
 
   ionViewWillEnter() {
@@ -44,6 +45,11 @@ export class UserStartPage {
     setTimeout(() => {
     this.scanQRcode();
   }, 1);
+  }
+
+  ngOnInit() {
+    //this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
+
   }
 
   ionViewCanLeave() {
@@ -56,6 +62,9 @@ export class UserStartPage {
         this.menu.swipeEnable(false);
   }
 
+  ionViewCanEnter() {
+
+  }
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }
