@@ -35,8 +35,15 @@ export class UserStartPage {
     this.UserId = fire.auth.currentUser.uid;
   }
 
-  ionViewDidLoad() {
+  ionViewWillEnter() {
     /*this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');*/
+    setTimeout(() => {
+    this.scanQRcode();
+  }, 1);
+  }
+
+  ionViewCanLeave() {
+    this.stop();
   }
 
   ionViewDidEnter() {
@@ -75,6 +82,7 @@ export class UserStartPage {
     //stoppe den qr code scann vorgang
   stop(){
     this.qrScanner.destroy();
+    console.log("Scanner destroyed!");
   }
 
   presentToast() {
