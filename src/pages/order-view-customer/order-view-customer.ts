@@ -26,8 +26,10 @@ export class OrderViewCustomerPage {
       this.ListCategory = res;
       this.viewarr = res;
       console.log(this.viewarr);
+      this.translateOrderState();
     })
   }
+  
 
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
@@ -37,6 +39,23 @@ export class OrderViewCustomerPage {
     this.navCtrl.push(BasketPage);
   }
 
+  translateOrderState() {
+    for(var ordit in this.viewarr) {
+      if (this.viewarr[ordit].OrderState == "open") {
+        this.viewarr[ordit].OrderState = "Deine Bestellung wurde aufgenommen.";
+      }
+      if (this.viewarr[ordit].OrderState == "ready") {
+        this.viewarr[ordit].OrderState = "Deine Bestellung wird in Kürze zu dir gebracht.";
+      }
+      if (this.viewarr[ordit].OrderState == "done") {
+        this.viewarr[ordit].OrderState = "Deine Bestellung ist abgeschlossen.";
+      }
+      if (this.viewarr[ordit].OrderState == "preparing") {
+        this.viewarr[ordit].OrderState = "Deine Bestellung wird gerade zubereitet.";
+      }
+    }
+   
+  }
   // not in use at the moment
   details() {
     const alert = this.alertCtrl.create({
