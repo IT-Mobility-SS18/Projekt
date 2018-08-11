@@ -34,11 +34,7 @@ export class OrderViewCustomerPage {
   }
 
   goToBasket(){
-<<<<<<< HEAD
     this.navCtrl.push(BasketPage);
-=======
-    this.navCtrl.push(BasketPage, {});
->>>>>>> cac80edaa3cf1055751e18261cadc4035f3f99cd
   }
 
   // not in use at the moment
