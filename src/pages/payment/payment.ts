@@ -66,7 +66,7 @@ export class PaymentPage {
   }
 
   goToBasket(){
-    this.navCtrl.setRoot(BasketPage);
+    this.navCtrl.push(BasketPage, {});
   }
 
 }

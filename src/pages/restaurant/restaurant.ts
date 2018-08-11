@@ -28,11 +28,15 @@ export class RestaurantPage {
 
 
   goToBasket() {
+<<<<<<< HEAD
     this.navCtrl.push(BasketPage);
   }
 
   goToOrderCustomer(){
     this.navCtrl.push(OrderCustomerPage);
+=======
+    this.navCtrl.push(BasketPage, {});
+>>>>>>> cac80edaa3cf1055751e18261cadc4035f3f99cd
   }
 
 

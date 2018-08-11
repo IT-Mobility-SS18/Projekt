@@ -17,6 +17,6 @@ export class TermsAndConditionsPage {
   }
 
   goToBasket() {
-    this.navCtrl.setRoot(BasketPage, {});
+    this.navCtrl.push(BasketPage, {});
   }
 }
