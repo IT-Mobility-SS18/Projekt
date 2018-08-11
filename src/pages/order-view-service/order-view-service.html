@@ -95,7 +95,7 @@
                           <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
                           <h2><b>{{ item.Name }}</b></h2>
                           <p>Tisch: {{ item.TableId }}, Uhrzeit: {{ item.TimeStamp }} </p>
-                          <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end>Ausliefern</button>
+                          <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end style="height:50px;">Ausliefern</button>
                         </ion-item>
                       <!--  <ion-item-options side="right">
                           <button ion-button color="danger">
