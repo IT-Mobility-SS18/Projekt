@@ -22,6 +22,10 @@ export class UserStartPage {
   BasketStateColor = this.BasketService.BasketStateColor;
   @ViewChild('slider') slider: Slides;
   page = 0;
+
+  username: string;
+  UserId: string;
+
   constructor(private fire: AngularFireAuth,
               public navCtrl: NavController,
               public navParams: NavParams,
@@ -43,7 +47,9 @@ export class UserStartPage {
   }
 
   ionViewCanLeave() {
+    console.log('i will leave')
     this.stop();
+    console.log('stopped')
   }
 
   ionViewDidEnter() {
@@ -59,8 +65,7 @@ export class UserStartPage {
     this.slider.slideTo(index);
   }
 
-  username: string;
-  UserId: string;
+
 
   // not in use at the moment
   alert(message: string) {
@@ -86,6 +91,8 @@ export class UserStartPage {
   }
 
   presentToast() {
+    console.log("lecker toast!");
+
     let toast = this.toastCtrl.create({
       message: 'Es gab ein Problem mit dem QR-Code!',
       duration: 4000,
@@ -93,6 +100,7 @@ export class UserStartPage {
       cssClass: 'toast-container'
     });
     toast.present();
+      console.log("goodbye toast!");
   }
 
     // start qr scanner
@@ -123,9 +131,9 @@ export class UserStartPage {
 
         this.navCtrl.setRoot(RestaurantPage);
 
-        this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
+        //this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
         //this.alert(myData);
-        
+
         this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId
         console.log("QR: RestaurantID: " +  myData.split(" ")[1]);
         this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
