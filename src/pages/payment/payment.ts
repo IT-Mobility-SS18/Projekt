@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { paypalConfig } from '../../environment';
 import { BasketPage } from '../basket/basket';
@@ -22,7 +22,8 @@ export class PaymentPage {
   constructor(private payPal: PayPal,
     public navCtrl: NavController,
     public navParams: NavParams,
-    private BasketService: BasketService) {
+    private BasketService: BasketService,
+    private toastCtrl: ToastController) {
     this.paymentAmount = navParams.get('amount');
 
 
@@ -48,7 +49,9 @@ export class PaymentPage {
           // Successfully paid
           this.BasketService.createOrder(this.ItemSelection);
           this.BasketService.removeAll();
+          this.BasketService.checkBasketContent();
           this.navCtrl.setRoot(OrderViewCustomerPage);
+          this.presentToast();
         }, () => {
           // Error or render dialog closed without being successful
           // Wenn ein User die Zahlung abbricht
@@ -69,6 +72,16 @@ export class PaymentPage {
 
   goToBasket(){
     this.navCtrl.push(BasketPage);
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Vielen Dank für deine Bestellung!',
+      duration: 4000,
+      position: 'bottom',
+      cssClass: 'toast-container'
+    });
+    toast.present();
   }
 
 }

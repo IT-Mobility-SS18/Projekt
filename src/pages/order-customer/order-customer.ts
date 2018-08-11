@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides, AlertController, Item} from 'ionic-angular';
+import { NavController, Slides, AlertController, Item, ToastController} from 'ionic-angular';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { Order } from '../../models/order/order.model'
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from 'angularfire2/auth';
-import firebase from "firebase";
 import { BasketService } from '../../providers/basket/basket-service';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
@@ -66,6 +65,19 @@ export class OrderCustomerPage {
    @ViewChild('slider') slider: Slides;
    page = 0;
 
+   ionViewCanEnter() {
+    try {
+      this.CurrentRestaurantId = this.BasketService.QRRestaurantId;
+      if(this.CurrentRestaurantId == undefined) {
+        console.log("CurrentRestaurantId ist undefined");
+        this.presentToast();
+        return false; //wichtig, dadurch bricht das Laden der Seite ab!
+      }
+     } catch (error) {
+       console.log("Fehler bei ionViewWillEnter: ", error);
+     }
+   }
+
    ionViewWillEnter() {
     this.FillItemArray();
    }
@@ -75,10 +87,21 @@ export class OrderCustomerPage {
       private fire: AngularFireAuth,
       private alertCtrl: AlertController,
       private BasketService: BasketService,
-      private uniqueDeviceID: UniqueDeviceID
+      private uniqueDeviceID: UniqueDeviceID,
+      private toastCtrl: ToastController
     ) {
     this.UserId = this.fire.auth.currentUser.uid;
    }
+
+   presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Kein Turty Code gescannt, leg los!',
+      duration: 4000,
+      position: 'bottom',
+      cssClass: 'toast-container'
+    });
+    toast.present();
+  }
 
    async getRestaurantId() {
     try {
@@ -99,7 +122,7 @@ export class OrderCustomerPage {
    }
 
    goToBasket() {
-    this.navCtrl.push(BasketPage, {});
+    this.navCtrl.push(BasketPage);
    }
 
    ionViewDidEnter(){
