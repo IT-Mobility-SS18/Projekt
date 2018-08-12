@@ -49,7 +49,7 @@
 
       <ion-item>
         <ion-label stacked required>Geburtsdatum</ion-label>
-        <ion-datetime [(ngModel)]="MyUser.BDay" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" required></ion-datetime>
+        <ion-datetime [(ngModel)]="MyUser.BDay" displayFormat="DD.MM.YYYY" pickerFormat="DD MM YYYY" max="{{ myDate }}" required></ion-datetime>
       </ion-item>
 
       <ion-item>

@@ -39,6 +39,7 @@ export class RegistrationPage {
   MyErrorMessage = "Ein Fehler ist aufgetreten:";
   UserId: string;
   UserMail: string;
+  public myDate;
   MyUser: User = {
     FirstName: undefined,
     LastName: undefined,
@@ -64,13 +65,20 @@ export class RegistrationPage {
     public events: Events
   ) {
     console.log('hello registration page');
-    var myYear = new Date().getFullYear();
-    var myDay = new Date().getDate();
-    var myMonth = new Date().getUTCMonth();
-    var myDate = myYear + "-" + myMonth + "-" + myDay;
-    console.log('myDate', myDate);
+    
   }
 
+  ionViewCanEnter() {
+    var myYear = new Date().getFullYear();
+    var myDay = new Date().getDate();
+    var myMonth = new Date().getUTCMonth()+1;
+    var myMonthString = myMonth.toString();
+    if (myMonthString.length === 1) {
+      myMonthString = "0" + myMonth;
+  }
+    this.myDate = myYear + "-" + myMonthString + "-" + myDay;
+    console.log('myDate', this.myDate);
+  }
   // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistrationPage');
