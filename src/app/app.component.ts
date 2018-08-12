@@ -21,6 +21,7 @@ import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
 import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
 import { FurtherPagesPage } from '../pages/further-pages/further-pages';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { FirebaseService } from '../providers/firebase/firebase-service';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,14 +33,17 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private fire: AngularFireAuth) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private fire: AngularFireAuth, private FirebaseService: FirebaseService) {
     
     const unsubscribe = fire.auth.onAuthStateChanged(user => {
       if (!user) {
         this.nav.setRoot(StartPage);
         unsubscribe();
       } else {
-        this.nav.setRoot(UserStartPage);
+        // then ist wichtig da erst der Wert gelesen worden sein muss
+        this.FirebaseService.CurrentUserFirstName=this.FirebaseService.getCurrentUserFirstName(this.fire.auth.currentUser.uid).then(()=> {
+          this.nav.setRoot(UserStartPage)
+        });
         unsubscribe();
       }
     })

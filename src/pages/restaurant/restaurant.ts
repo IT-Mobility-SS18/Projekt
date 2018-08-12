@@ -24,7 +24,7 @@ export class RestaurantPage {
     console.log('ionViewDidLoad RestaurantPage');
   }
 
-  ionViewDidEnter(){
+  ionViewCanEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
 
     this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;

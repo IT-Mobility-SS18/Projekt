@@ -17,10 +17,10 @@ export class FirebaseService {
   UserListData = firebase.database().ref('/User');
   ItemListData = firebase.database().ref('/Items');
 
-  CurrentUserFirstName:any;
+  public CurrentUserFirstName:any;
 
   constructor(public dbInstance: AngularFireDatabase, private fire: AngularFireAuth) {
-    this.CurrentUserFirstName=this.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
+    //this.CurrentUserFirstName=this.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
   }
 
   removeItem(id) {

@@ -43,7 +43,10 @@ userStart(){
   .then( data => {
     console.log('Login data passed', this.fire.auth.currentUser);
     this.alert('Login erfolgreich.');
-    this.navCtrl.setRoot( UserStartPage );
+    //wichtig für Anzeige der Variablen in der HTML da diese erst vorliegen müssen
+    this.FirebaseService.CurrentUserFirstName=this.FirebaseService.getCurrentUserFirstName(this.fire.auth.currentUser.uid).then(()=>{ 
+    this.navCtrl.setRoot( UserStartPage )
+  });
   })
   .catch( error => {
     console.log('Error during login', error);

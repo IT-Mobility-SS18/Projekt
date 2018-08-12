@@ -63,7 +63,7 @@ export class UserStartPage {
   }
 
   ionViewCanEnter() {
-
+    this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
   }
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
