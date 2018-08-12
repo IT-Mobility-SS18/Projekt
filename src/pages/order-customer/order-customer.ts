@@ -46,6 +46,12 @@ export class OrderCustomerPage {
   CurrentQuantity;
   EnteredQuantity;
 
+  dayOfMonth;
+  monthOfYear;
+  year;
+  hours;
+  minutes;
+
   //Datenbank-Auswahl
   onChangeVariant(SelectedValue){
     console.log("Selected Variant", SelectedValue);
@@ -144,6 +150,12 @@ export class OrderCustomerPage {
       this.ItemSelection = this.BasketService.ItemSelection;
       let varOurOrderId;
 
+      this.dayOfMonth = new Date().getDate();
+      this.monthOfYear = new Date().getMonth();
+      this.year = new Date().getFullYear();
+      this.hours = new Date().getHours();
+      this.minutes = new Date().getMinutes();
+
       this.uniqueDeviceID.get()
     .then((uuid: any) => varOurOrderId = uuid + new Date().getTime()).then(() => {
       console.log("uuid ist: ",varOurOrderId);
@@ -156,7 +168,7 @@ export class OrderCustomerPage {
         Price: Price,
         TableId: this.BasketService.QRTischNr,
         RestaurantId: this.BasketService.QRRestaurantId,
-        TimeStamp: new Date().getTime(),
+        TimeStamp: this.dayOfMonth + "." + this.monthOfYear + "." + this.year + " " + this.hours + ":" + this.minutes,
         Size: 'mysize',
         Variant: 'myvariant',
         Annotations: 'myannot',
