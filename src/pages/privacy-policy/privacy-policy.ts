@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { BasketPage } from '../basket/basket';
+import { BasketService } from '../../providers/basket/basket-service';
 
 @Component({
   selector: 'page-privacy-policy',
   templateUrl: 'privacy-policy.html',
 })
 export class PrivacyPolicyPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  BasketStateColor = this.BasketService.BasketStateColor;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {
   }
 
   ionViewDidLoad() {
@@ -18,5 +18,9 @@ export class PrivacyPolicyPage {
 
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
+  }
+
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 }

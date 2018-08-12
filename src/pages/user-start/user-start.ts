@@ -60,11 +60,13 @@ export class UserStartPage {
 
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
+        this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
   ionViewCanEnter() {
     this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
   }
+
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }

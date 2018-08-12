@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { BasketService } from '../../providers/basket/basket-service';
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
@@ -40,7 +40,8 @@ export class SettingsPage {
   CurrentSex;
   CurrentStreet;
   CurrentZipCode;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private fire: AngularFireAuth,public FirebaseService: FirebaseService) {
+  BasketStateColor = this.BasketService.BasketStateColor;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private fire: AngularFireAuth,public FirebaseService: FirebaseService,private BasketService: BasketService) {
 
   }
 
@@ -65,6 +66,10 @@ export class SettingsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
+  }
+
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
   goToBasket() {

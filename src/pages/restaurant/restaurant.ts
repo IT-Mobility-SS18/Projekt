@@ -40,5 +40,8 @@ export class RestaurantPage {
     this.navCtrl.push(OrderCustomerPage);
   }
 
-
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
+  }
+  
 }

@@ -49,6 +49,11 @@ export class UserViewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, public FirebaseService: FirebaseService, private BasketService: BasketService) {
   }
+  
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
+  }
+
   ngOnInit() {
     this.UserId = this.fire.auth.currentUser.uid;
     this.FirebaseService.getUserData(this.UserId).then((res: any) => {
