@@ -36,6 +36,7 @@
   <br/>
 
   <button [disabled]="!formCtrl.form.valid" ion-button block (click)="updateUser()">Auswahl aktualisieren</button>
-  <a class="center-text" (click)="cancelChanges()">Abbrechen</a>
+  <!--<a class="center-text" (click)="cancelChanges()">Abbrechen</a>-->
+  <button [disabled]="inputDisabled" ion-button block (click)="cancelChanges()" color="lightgrey">Abbrechen</button>
   </form>
 </ion-content>

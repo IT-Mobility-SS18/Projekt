@@ -85,7 +85,7 @@
       </ion-item>
     </ion-list>
 
-    &nbsp;
+    
 
     <ion-item>
       <ion-label stacked required>Newsletter empfangen?</ion-label>
@@ -95,9 +95,12 @@
       </ion-select>
     </ion-item>
 
+&nbsp;
 
     <button block ion-button (click)="checkRegistrationFields()" item-left>Account erstellen</button>
-    <a class="center-text" (click)="cancelRegistration()">Abbrechen</a>
+    <!--<a class="center-text" (click)="cancelRegistration()">Abbrechen</a>-->
+    <button ion-button block (click)="cancelRegistration()" color="lightgrey">Abbrechen</button>
+ 
   </ion-card-content>
 </ion-content>
 
