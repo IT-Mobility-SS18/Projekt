@@ -16,4 +16,16 @@ page-order-view-customer {
 .item-md {
   padding-left: 0px !important;
 }
+
+.border {
+border-top: 3px solid #99cc33 !important;
+}
+
+.green-title {
+  color: #99cc33;
+}
+
+.item-md.item-block .item-inner{
+  border-bottom: none !important;
+}
 }

@@ -30,17 +30,21 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-thumbnail item-left style="border-bottom: none !important;">
+            <ion-thumbnail item-left>
               <img src="https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/RestaurantPics%2Fbar-1869656_1280.jpg?alt=media" class="bild">
             </ion-thumbnail>
-            <p><strong>Restaurant:<br/>Freu Dich!</strong></p>
+            <p style="zoom: 1.2 !important;">
+                <strong>Restaurant:</strong>
+                <br/>
+              <span class="green-title" style="zoom: 1.5 !important;"><b>„Freu Dich!“</b></span>
+            </p>
           </ion-item>
 
-          <ion-list>
+          <ion-list class="border">
               <ion-item-divider *ngFor="let item of viewarr">
-                <p>Name: {{ item.Name }}</p>
-                <p>Preis: {{ item.Price }}</p>
-                <p class="myStateClass">Bestellstatus: {{ item.OrderState }}</p>
+                <p><b>Name:</b> {{ item.Name }}</p>
+                <p><b>Preis:</b> {{ item.Price }}</p>
+                <p class="myStateClass"><b>Bestellstatus:</b> {{ item.OrderState }}</p>
               </ion-item-divider>
             </ion-list>
         </ion-col>
