@@ -1,10 +1,19 @@
 page-order-view-customer {
-  .bild {
+  /*.bild {
     max-width: 100%;
     height: auto;
-  }
+  }*/
   .myStateClass{
     text-overflow: inherit;
     white-space: normal;
   }
+
+  .item ion-thumbnail ion-img,
+.item ion-thumbnail img {
+  width: auto !important;
+}
+
+.item-md {
+  padding-left: 0px !important;
+}
 }

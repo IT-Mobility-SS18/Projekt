@@ -32,6 +32,9 @@
       <ion-option value="nein" >Lieber nicht</ion-option>
     </ion-select>
   </ion-item>
+  
+  <br/>
+
   <button [disabled]="!formCtrl.form.valid" ion-button block (click)="updateUser()">Auswahl aktualisieren</button>
   <a class="center-text" (click)="cancelChanges()">Abbrechen</a>
   </form>

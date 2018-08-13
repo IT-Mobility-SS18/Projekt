@@ -28,12 +28,12 @@
      <!--  <div align="center" *ngIf="formCtrl.form.valid">
         <h4>{{user.name}}</h4>   Wird nirgendwo angezeigt?!
       </div> -->
-      <ion-list>
+      <!--<ion-list>-->
         <ion-item>
             <ion-label stacked required>Anrede</ion-label>
             <ion-select [disabled]="inputDisabled" #newSelect [(ngModel)]="CurrentSex" name="CurrentSex" required >
-            <ion-option value="m" >Herr</ion-option>
             <ion-option value="w" >Frau</ion-option>
+            <ion-option value="m" >Herr</ion-option>
           </ion-select>
       </ion-item>
 
@@ -95,14 +95,8 @@
           <ion-label stacked>PayPal</ion-label>
           <ion-input type="text" [(ngModel)]="user.payPal" name="payPal" required></ion-input>
         </ion-item> -->
-
-
-        <ion-item style="display:none;">
-          <ion-icon></ion-icon>
-          <ion-input></ion-input>
-        </ion-item>
-
-      </ion-list>
+      <!--</ion-list>-->
+      <br/>
       <button [disabled]="inputDisabled" ion-button block (click)="updateUser()">Speichern</button>
       <a class="center-text" (click)="cancelChanges()">Abbrechen</a>
     </form>
