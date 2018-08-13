@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { BasketService } from '../../providers/basket/basket-service';
 import { FaceRecognitionPage } from '../face-recognition/face-recognition';
 import { AlertController } from 'ionic-angular';
+import { OrderCustomerPage } from '../order-customer/order-customer';
 
 //import { checkBindingNoChanges, Item } from '@angular/core/src/view/util';
 //import { IonicPage } from 'ionic-angular';
@@ -138,7 +139,7 @@ export class BasketPage {
           handler: () => {
             this.BasketService.removeAll();
             this.BasketService.checkBasketContent();
-            this.navCtrl.pop();
+            this.navCtrl.setRoot(OrderCustomerPage);
           }
         },
         {
