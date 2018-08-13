@@ -96,7 +96,7 @@ export class RegistrationPage {
     this.fire.auth.createUserWithEmailAndPassword(this.user.value, this.password.value)
     .then(data => {
       console.log('data passed ', data);
-      this.alert('Registrierung erfolgreich!');
+      //this.alert('Registrierung erfolgreich!');
       console.log('user registered: ', this.user.value);
       this.UserId = this.fire.auth.currentUser.uid;
       this.MyUser.Mail = this.fire.auth.currentUser.email;
