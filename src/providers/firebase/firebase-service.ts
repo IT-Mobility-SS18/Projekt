@@ -23,6 +23,31 @@ export class FirebaseService {
     //this.CurrentUserFirstName=this.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
   }
 
+  deleteUser(UserId, user) {
+
+    var promise = new Promise((resolve, reject) => { 
+    //von DB
+    try {
+      this.UserListData.child(UserId).remove(); 
+      console.log("DB: User gelöscht!");
+    } catch (error) {
+      console.log("DB: Error beim Löschen vom User!", error);
+      reject();
+    }
+    //von auth
+    user.delete().then(function() {
+      console.log("Auth: User gelöscht!");
+      resolve();
+    }).catch(function(error) {
+      console.log("Auth: Error beim Löschen vom User!", error);
+      reject();
+    })
+
+    });
+    return promise;
+    
+  }
+
   removeItem(id) {
     this.dbInstance.list('/shoppingItems/').remove(id);
   }
