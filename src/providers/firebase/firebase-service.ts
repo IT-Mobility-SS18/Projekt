@@ -51,7 +51,7 @@ export class FirebaseService {
       //this.nav.setRoot(StartPage);
       }
       //reject();
-    }).then(() => {
+    })/* .then(() => {
       //von DB
       try {
         this.UserListData.child(UserId).remove(); 
@@ -60,11 +60,25 @@ export class FirebaseService {
         console.log("DB: Error beim Löschen vom User!", error);
         reject(error);
       }
-    });
+    }); */
 
     });
     return promise;
     
+  }
+
+  deleteDBUser(UserId) {
+    return new Promise((resolve, reject)=>{
+      this.UserListData.child(UserId).remove((result) => {
+        resolve(result);
+      }), err => { 
+        reject(err);
+      }
+      
+  
+      
+      
+    });//end promise
   }
 
   deleteUserPics(userId) {

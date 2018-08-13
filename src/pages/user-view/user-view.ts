@@ -122,7 +122,13 @@ export class UserViewPage {
             this.FirebaseService.deleteUser(userId,user).then((result) => {
               console.log("Result delteUser Function", result);
               this.FirebaseService.deleteUserPics(userId);
-              this.navCtrl.setRoot(StartPage);
+              this.FirebaseService.deleteDBUser(userId).then((resultDB) => {
+                console.log("DB Daten löschen erfolgreich");
+                this.navCtrl.setRoot(StartPage);
+              }).catch((err) => {
+                console.log("DB Daten löschen nicht erfolgreich", err);
+              })
+              
             }).catch((error) => {
               console.log("Error delteUser Function", error);
               firebase.auth().signOut();

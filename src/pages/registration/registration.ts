@@ -100,7 +100,11 @@ export class RegistrationPage {
       console.log('user registered: ', this.user.value);
       this.UserId = this.fire.auth.currentUser.uid;
       this.MyUser.Mail = this.fire.auth.currentUser.email;
-      this.addUserDataToDatabase();
+      this.addUserDataToDatabase().then(() => {
+        setTimeout(() => {
+        this.FirebaseService.CurrentUserFirstName=this.FirebaseService.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
+      }, 2000);
+      });
 
 
       console.log('starting event: ');
@@ -229,8 +233,10 @@ export class RegistrationPage {
 
 
   addUserDataToDatabase() {
+    return new Promise((resolve, reject)=>{
     this.FirebaseService.addUser(this.MyUser, this.UserId);
     this.navCtrl.setRoot(UserStartPage);
-
+    resolve(true);
+  });//end promise
   }
 }
