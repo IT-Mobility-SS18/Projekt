@@ -19,9 +19,48 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <button block ion-button (click)="changePageKontakt()" item-left>Kontakt</button>
+<ion-content>
+  <!--<button block ion-button (click)="changePageKontakt()" item-left>Kontakt</button>
   <button block ion-button (click)="changePageAGB()" item-left>AGB</button>
   <button block ion-button (click)="changePageDatenschutz()" item-left>Datenschutz</button>
-  <button block ion-button (click)="changePageImpressum()" item-left>Impressum</button>
+  <button block ion-button (click)="changePageImpressum()" item-left>Impressum</button>-->
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button block ion-button (click)="changePageKontakt()" style="height:70px;">
+            <div> 
+          <ion-icon name="md-mail" style="zoom:1.7; padding-bottom: 3px;"></ion-icon><br> 
+          <label>Kontakt</label>
+        </div> 
+        </button>
+      </ion-col>
+      <ion-col>
+        <button block ion-button (click)="changePageAGB()" style="height:70px;">
+            <div>
+          <ion-icon name="ios-paper" style="zoom:1.7; padding-bottom: 3px;"></ion-icon><br> 
+          <label>AGB</label>
+        </div> 
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button block ion-button (click)="changePageDatenschutz()" style="height:70px;">
+            <div>
+          <ion-icon name="ios-contact" style="zoom:1.7; padding-bottom: 3px;"></ion-icon><br> 
+          <label>Datenschutz</label>
+        </div> 
+        </button>
+      </ion-col>
+      <ion-col>
+        <button block ion-button (click)="changePageImpressum()" style="height:70px;">
+            <div>
+          <ion-icon name="md-information-circle" style="zoom:1.7; padding-bottom: 3px;"></ion-icon><br> 
+          <label>Impressum</label>
+        </div> 
+        </button>
+      </ion-col>
+    </ion-row>
+    </ion-grid>
 </ion-content>
