@@ -18,11 +18,11 @@ export class OrderViewKitchenPage {
   readyArr = [];
 
   constructor(public navCtrl: NavController, public firebaseService: FirebaseService) {
-    
+
   }
 
   getallOrdersFromFirebase() {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
     this.firebaseService.getAllOrders().then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
@@ -35,14 +35,26 @@ export class OrderViewKitchenPage {
 
   ionViewWillEnter() {
     this.getallOrdersFromFirebase().then(() => this.filterItems());
-    
+
    }
-  
+
   goToBasket(){
     this.navCtrl.push(BasketPage, {});
   }
 
-  filterItems() {
+
+  async manipulateTimeStamp(){
+    var tmpstr:string;
+    for (var iterH in this.viewarr) {
+      tmpstr = this.viewarr[iterH].TimeStamp;
+      tmpstr = tmpstr.substring(tmpstr.length-5, tmpstr.length);
+      this.viewarr[iterH].TimeStamp=tmpstr;
+    }
+  }
+
+  async filterItems() {
+
+    await this.manipulateTimeStamp();
      //await this.getallOrdersFromFirebase();
     //alle offenen
     for (var iterG in this.viewarr) {
@@ -56,7 +68,7 @@ export class OrderViewKitchenPage {
       if (this.viewarr[iterH].OrderState == "preparing" ) {
         this.preparingArr.push(this.viewarr[iterH]);
       }
-     
+
     }
     console.log("preparingArr", this.preparingArr);
     //alle zur Abholung durch Service fertigen
@@ -64,7 +76,7 @@ export class OrderViewKitchenPage {
       if (this.viewarr[iterN].OrderState == "ready" ) {
         this.readyArr.push(this.viewarr[iterN]);
       }
-     
+
     }
     console.log("readyArr", this.readyArr);
   }
@@ -77,7 +89,7 @@ export class OrderViewKitchenPage {
     }, 500);
     //}
    // )
-    
+
   }
 
   testFunc() {

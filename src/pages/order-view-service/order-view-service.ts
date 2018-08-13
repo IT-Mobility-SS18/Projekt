@@ -30,7 +30,7 @@ export class OrderViewServicePage {
   }
 
   getallOrdersFromFirebase() {
-    return new Promise((resolve, reject) => { 
+    return new Promise((resolve, reject) => {
     this.firebaseService.getAllOrders().then((res: any) => {
       this.ListCategory = res;
       this.viewarr = res;
@@ -43,10 +43,22 @@ export class OrderViewServicePage {
 
   ionViewWillEnter() {
     this.getallOrdersFromFirebase().then(() => this.filterItems());
-    
+
    }
 
-   filterItems() {
+   async manipulateTimeStamp(){
+     var tmpstr:string;
+     for (var iterH in this.viewarr) {
+       tmpstr = this.viewarr[iterH].TimeStamp;
+       tmpstr = tmpstr.substring(tmpstr.length-5, tmpstr.length);
+       this.viewarr[iterH].TimeStamp=tmpstr;
+     }
+   }
+
+   async filterItems() {
+
+   await this.manipulateTimeStamp();
+
    //alle offenen
    for (var iterG in this.viewarr) {
      if (this.viewarr[iterG].OrderState == "open" ) {
@@ -59,7 +71,7 @@ export class OrderViewServicePage {
      if (this.viewarr[iterH].OrderState == "preparing" ) {
        this.preparingArr.push(this.viewarr[iterH]);
      }
-    
+
    }
    console.log("preparingArr", this.preparingArr);
    //alle zur Abholung durch Service fertigen
@@ -67,7 +79,7 @@ export class OrderViewServicePage {
      if (this.viewarr[iterN].OrderState == "ready" ) {
        this.readyArr.push(this.viewarr[iterN]);
      }
-    
+
    }
    console.log("readyArr", this.readyArr);
 //alle abgeschlossenen Bestellungen
@@ -75,7 +87,7 @@ export class OrderViewServicePage {
     if (this.viewarr[iterD].OrderState == "done" ) {
       this.doneArr.push(this.viewarr[iterD]);
     }
-   
+
   }
   console.log("doneArr", this.doneArr);
  }
@@ -95,7 +107,7 @@ export class OrderViewServicePage {
       setTimeout(() => {
       this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }, 500);
-   
-    
+
+
   }
 }
