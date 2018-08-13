@@ -102,6 +102,6 @@
     </form>
   </ion-card-content>
   <ion-card-content>
-    <button ion-button block (click)="deleteUser()">Profil unwiderruflich löschen</button>
+    <button [disabled]="inputDisabled" ion-button block (click)="deleteUser()">Profil unwiderruflich löschen</button>
   </ion-card-content>
 </ion-content>
