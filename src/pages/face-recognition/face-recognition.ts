@@ -96,7 +96,7 @@ export class FaceRecognitionPage {
     public events: Events,
     public loadingCtrl: LoadingController
     ) {
-    
+
     //amount durchgeschliffen für payment
     this.amount = navParams.get('amount');
     console.log('amount: '+ this.amount);
@@ -160,7 +160,9 @@ export class FaceRecognitionPage {
     //if (this.registration == undefined || this.registration == null || this.registration == false){
     if (this.registration == true){
       console.log('eventhandler registrieren');
-      this.creation_new(this.groupName, this.personGroupId, this.userId, this.userName)
+      this.creation_new(this.groupName, this.personGroupId, this.userId, this.userName).then(()=> {
+        this.navCtrl.setRoot(UserStartPage);
+      })
     }
 
     if (this.amount != '0.0'){
@@ -170,15 +172,60 @@ export class FaceRecognitionPage {
     console.log('goodbye eventhandler');
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FaceRecognitionPage');
+    this.presentLoadingDefault();
+  }
+
+  ionViewDidLeave(){
+    this.presentDismissDefault();
+  }
+
+  presentLoadingDefault() {
+    this.loading.present();
+  }
+
+  presentDismissDefault(){
+    console.log('presentDismissDefault');
+    this.loading.dismiss();
+  }
+
+  // *******************************************************
+  // Zentrale Funktion für Registrierung
+  // *******************************************************
+
+  creation_new(groupName:string, personGroupId:string, userId:string, username:string){
+
+      return this.createPersonGroup_FaceApi(groupName, personGroupId)
+      .then(() => this.createPersonGroup_Firebase(userId, personGroupId))
+      .then(() => this.CreatePersonGroupPerson_FaceApi(personGroupId, username))
+      .then(resultCreatePersonGroupPerson=>{
+        if(resultCreatePersonGroupPerson){
+          console.log('resultCreatePersonGroupPerson personId: '+resultCreatePersonGroupPerson);
+          this.personId = JSON.stringify(resultCreatePersonGroupPerson);
+          this.personId = this.personId.substring(1, this.personId.length-1);
+        }
+      })
+      .then(() => this.PersonIdCreate_Firebase(userId, personGroupId, this.personId))
+
+
+      //nächster schritt: ein selfie machen
+      .then(() => this.takePictureAndUploadToFirebase(userId))
+
+      //url zum hochladen auslesen
+      .then(() => this.getUrlfromFirebaseUserPictures(userId, this.pictureName))
+
+      //danach das Selfie der Person zuordnen
+      .then(() => this.addingface(userId, this.pictureName, personGroupId, this.personId, this.img_url));
+  }
 
   bezahlen(){
     console.log('hello bezahlen');
 
     return this.PersonIdFromFirebase()
     .then(() => this.takePictureAndUploadToFirebase(this.userId))
-    .then(() => this.verify_me(this.userId, this.pictureName, this.img_url, this.personId, this.personGroupId))
-    .then(() => this.addingface(this.userId, this.pictureName, this.personGroupId, this.personId, this.img_url));
-
+    .then(() => this.verify_me(this.userId, this.pictureName, this.img_url, this.personId, this.personGroupId));
+    //.then(() => this.addingface(this.userId, this.pictureName, this.personGroupId, this.personId, this.img_url));
   }
 
   PersonIdFromFirebase(){
@@ -204,15 +251,9 @@ export class FaceRecognitionPage {
     }).present();
   }
 
-  presentLoadingDefault() {
-    this.loading.present();
+  async delay(ms: number) {
+    await new Promise(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
   }
-
-  presentDismissDefault(){
-    console.log('presentDismissDefault');
-    this.loading.dismiss();
-  }
-
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -247,6 +288,7 @@ export class FaceRecognitionPage {
 
         setTimeout(() => {
 
+        //this.delay(1000);
 
         // Schritt 5.1: Bild zu faceApi - face detect hochladen. FaceId wird zurückgegeben
         this.faceapi.FaceIdFromFaceDetect(this.img_url)
@@ -299,11 +341,12 @@ export class FaceRecognitionPage {
 
             }
 
+            console.log('goodbye verify_me');
+            this.addingface(this.userId, this.pictureName, this.personGroupId, this.personId, this.img_url);
+
           });//end resultVerificationFromVerify
         });//end resultFaceIdFromFaceDetect
 
-
-        console.log('goodbye verify_me');
         }, 5000);
 
 
@@ -367,7 +410,7 @@ export class FaceRecognitionPage {
 
     console.log("Hello function addingface");
 
-    if (this.verify_me_delivered_isidentical==true) {
+    if (this.verify_me_delivered_isidentical==true || this.registration == true) {
 
       this.getUrlfromFirebaseUserPictures(userId, pictureName)
       .then(resultgetUrlfromFirebaseUserPictures=>{
@@ -395,8 +438,8 @@ export class FaceRecognitionPage {
         }
       });//end resultgetUrlfromFirebaseUserPictures
     } else {
-      // this.verify_me_delivered_isidentical hat false geliefert
-      // Gesicht/Selfie wird nicht hinzugefügt
+      console.log('this.verify_me_delivered_isidentical || this.registration hat false geliefert');
+      //Gesicht/Selfie wird nicht hinzugefügt
     }
 
   }
@@ -452,36 +495,6 @@ export class FaceRecognitionPage {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// *******************************************************
-// Zentrale Funktion für Registrierung
-// *******************************************************
-
-creation_new(groupName:string, personGroupId:string, userId:string, username:string){
-
-    return this.createPersonGroup_FaceApi(groupName, personGroupId)
-    .then(() => this.createPersonGroup_Firebase(userId, personGroupId))
-    .then(() => this.CreatePersonGroupPerson_FaceApi(personGroupId, username))
-    .then(resultCreatePersonGroupPerson=>{
-      if(resultCreatePersonGroupPerson){
-        console.log('resultCreatePersonGroupPerson personId: '+resultCreatePersonGroupPerson);
-        this.personId = JSON.stringify(resultCreatePersonGroupPerson);
-        this.personId = this.personId.substring(1, this.personId.length-1);
-      }
-    })
-    .then(() => this.PersonIdCreate_Firebase(userId, personGroupId, this.personId))
-
-
-    //nächster schritt: ein selfie machen
-    .then(() => this.takePictureAndUploadToFirebase(userId))
-
-    //url zum hochladen auslesen
-    .then(() => this.getUrlfromFirebaseUserPictures(userId, this.pictureName))
-
-    //danach das Selfie der Person zuordnen
-    .then(() => this.addingface(userId, this.pictureName, personGroupId, this.personId, this.img_url));
-}
-
 
 
   // *******************************************************
@@ -717,26 +730,27 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
          console.log('YEAAHHH endlich hochgeladen :D');
 
          resolve(true);
-      }).catch( (err) => {
-        console.log("Error on Line 725 camera.getPicture");
-        var val=this.navCtrl.getPrevious();
-        console.log("error catch facereg: letzte seite:" , val.component.name);
-        if( val.component.name === "BasketPage"){
-          console.log("User kommt von BasketPage und Registration ist", this.registration);
-            this.myeventhandler();  
-        }
-        if( val.component.name === "UserStartPage"){
-          console.log("User kommt von UserStartPage/Registrierung und Registration ist", this.registration);
-          // Registrierung wird abgebrochen und Daten gelöscht!
-          var user = firebase.auth().currentUser;
-          console.log("aktuelle Userid: ",this.userId); 
-          console.log("aktueller User: ",user); 
-          this.FirebaseService.deleteUser(this.userId,user).then(() => {
-            this.navCtrl.setRoot(StartPage);
-          })
-        }
-      }
-    )});
+        }).catch( (err) => {
+          console.log("Error @ camera.getPicture");
+          var val=this.navCtrl.getPrevious();
+          console.log("error catch facereg: letzte seite:" , val.component.name);
+          if( val.component.name === "BasketPage"){
+            console.log("User kommt von BasketPage und Registration ist", this.registration);
+              this.myeventhandler();
+          }
+          if( val.component.name === "UserStartPage"){
+            console.log("User kommt von UserStartPage/Registrierung und Registration ist", this.registration);
+            // Registrierung wird abgebrochen und Daten gelöscht!
+            var user = firebase.auth().currentUser;
+            console.log("aktuelle Userid: ",this.userId);
+            console.log("aktueller User: ",user);
+            this.FirebaseService.deleteUser(this.userId,user).then(() => {
+              this.navCtrl.setRoot(StartPage);
+            });
+          } //end if userstartpage
+        }//end catch
+      )// end catch
+    });//end promise
 
   }
 
@@ -778,14 +792,14 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
   // allg. Funktionen zum Start der Seite
   // *******************************************************
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FaceRecognitionPage');
-    this.presentLoadingDefault();
+  pushUserStartPage() {
+    this.navCtrl.push(UserStartPage);
   }
 
-  ionViewDidLeave(){
-    this.presentDismissDefault();
+  pushUserViewPage() {
+    this.navCtrl.push(UserViewPage);
   }
+
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }
@@ -802,11 +816,4 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
     return this.domSanitizer.bypassSecurityTrustUrl(this.base64Image_mit_attrib);
   }
 
-  pushUserStartPage() {
-    this.navCtrl.push(UserStartPage);
-  }
-
-  pushUserViewPage() {
-    this.navCtrl.push(UserViewPage);
-  }
 }

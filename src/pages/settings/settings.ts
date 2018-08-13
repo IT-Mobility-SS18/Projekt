@@ -98,7 +98,7 @@ export class SettingsPage {
   onChangeOptInNewsletter(SelectedValue){
     console.log("Selected OptInNewsletter", SelectedValue);
   }
-  
+
   inputDisabled: boolean = true;
   goToSetting(){
     if(this.inputDisabled==true) {
@@ -110,8 +110,9 @@ export class SettingsPage {
     }
   }
   cancelChanges(){
+    if(this.inputDisabled==false) {
     this.navCtrl.setRoot(SettingsPage);
 }
-
+}
 
 }
