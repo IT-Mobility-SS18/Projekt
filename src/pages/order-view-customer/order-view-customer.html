@@ -26,16 +26,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-card-content>
     <ion-grid>
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-thumbnail item-left>
+            <ion-thumbnail item-left style="border-bottom: none !important;">
               <img src="https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/RestaurantPics%2Fbar-1869656_1280.jpg?alt=media" class="bild">
             </ion-thumbnail>
-            <p><strong>Restaurant: Freu Dich!</strong> </p>
+            <p><strong>Restaurant:<br/>Freu Dich!</strong></p>
           </ion-item>
+
           <ion-list>
               <ion-item-divider *ngFor="let item of viewarr">
                 <p>Name: {{ item.Name }}</p>
@@ -46,7 +46,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </ion-card-content>
 </ion-content>
 
 
