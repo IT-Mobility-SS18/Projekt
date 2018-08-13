@@ -48,6 +48,24 @@ export class FirebaseService {
     
   }
 
+  deleteUserPics(userId) {
+    var promise = new Promise((resolve, reject) => { 
+    try {
+      firebase.storage().ref().child('UserPictures/').child(userId).delete().catch((error) =>{
+        console.log("Error beim Löschen von UserPics durch Firebase!", error);
+        resolve();
+        return promise;
+      })
+      resolve();
+    } catch (error) {
+      console.log("Error beim Löschen von UserPics!", error);
+      resolve();
+      return promise;
+    }
+    });
+  return promise;
+  }
+
   removeItem(id) {
     this.dbInstance.list('/shoppingItems/').remove(id);
   }

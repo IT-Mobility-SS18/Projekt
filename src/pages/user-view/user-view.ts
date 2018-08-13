@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../models/order/user.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';
 import { BasketService } from '../../providers/basket/basket-service';
+import { StartPage } from '../start/start';
+import firebase from 'firebase';
 //import { UserStartPage } from '../user-start/user-start';
 
 //import { IonicPage } from 'ionic-angular';
@@ -47,7 +49,12 @@ export class UserViewPage {
   BasketStateColor = this.BasketService.BasketStateColor;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, public FirebaseService: FirebaseService, private BasketService: BasketService) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private fire: AngularFireAuth, 
+    public FirebaseService: FirebaseService, 
+    private BasketService: BasketService,
+    public alertCtrl: AlertController) {
   }
 
   ionViewDidEnter(){
@@ -97,6 +104,35 @@ export class UserViewPage {
 
   goToBasket(){
     this.navCtrl.push(BasketPage, {});
+  }
+
+  deleteUser() {
+    const confirm = this.alertCtrl.create({
+      title: 'Profil löschen?',
+      message: 'Möchtest du dein Profil wirklich löschen? Dies kann nicht rückgängig gemacht werden!',
+      buttons: [
+        {
+          text: 'Ja',
+          handler: () => {
+            var user = firebase.auth().currentUser;
+            var userId = this.fire.auth.currentUser.uid;
+            console.log("aktuelle Userid: ",userId); 
+            console.log("aktueller User: ",user);
+            this.FirebaseService.deleteUser(userId,user).then(() => {
+              this.FirebaseService.deleteUserPics(userId);
+              this.navCtrl.setRoot(StartPage);
+            });
+          }
+        },
+        {
+          text: 'Abbrechen',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
   inputDisabled: boolean = true;
