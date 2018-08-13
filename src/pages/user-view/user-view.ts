@@ -49,7 +49,7 @@ export class UserViewPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, public FirebaseService: FirebaseService, private BasketService: BasketService) {
   }
-  
+
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }
@@ -76,9 +76,9 @@ export class UserViewPage {
    /* ionViewDidLoad() {
     console.log('ionViewDidLoad UserViewPage');
      */
-  
 
-  
+
+
   updateUser() {
     this.user.BDay = this.CurrentBDay;
     this.user.City = this.CurrentCity;
@@ -110,6 +110,8 @@ export class UserViewPage {
   }
 
   cancelChanges(){
+    if(this.inputDisabled==false) {
     this.navCtrl.setRoot(UserViewPage);
+}
 }
 }
