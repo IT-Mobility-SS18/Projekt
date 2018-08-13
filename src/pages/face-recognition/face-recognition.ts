@@ -16,6 +16,7 @@ import * as firebase from 'firebase';
 import { Events } from 'ionic-angular';
 import { UserViewPage } from '../user-view/user-view';
 import { UserStartPage } from '../user-start/user-start';
+import { StartPage } from '../start/start';
 
 
 @Component({
@@ -95,7 +96,7 @@ export class FaceRecognitionPage {
     public events: Events,
     public loadingCtrl: LoadingController
     ) {
-
+    
     //amount durchgeschliffen für payment
     this.amount = navParams.get('amount');
     console.log('amount: '+ this.amount);
@@ -716,8 +717,26 @@ creation_new(groupName:string, personGroupId:string, userId:string, username:str
          console.log('YEAAHHH endlich hochgeladen :D');
 
          resolve(true);
-      })
-    });
+      }).catch( (err) => {
+        console.log("Error on Line 725 camera.getPicture");
+        var val=this.navCtrl.getPrevious();
+        console.log("error catch facereg: letzte seite:" , val.component.name);
+        if( val.component.name === "BasketPage"){
+          console.log("User kommt von BasketPage und Registration ist", this.registration);
+            this.myeventhandler();  
+        }
+        if( val.component.name === "UserStartPage"){
+          console.log("User kommt von UserStartPage/Registrierung und Registration ist", this.registration);
+          // Registrierung wird abgebrochen und Daten gelöscht!
+          var user = firebase.auth().currentUser;
+          console.log("aktuelle Userid: ",this.userId); 
+          console.log("aktueller User: ",user); 
+          this.FirebaseService.deleteUser(this.userId,user).then(() => {
+            this.navCtrl.setRoot(StartPage);
+          })
+        }
+      }
+    )});
 
   }
 

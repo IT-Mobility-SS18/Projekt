@@ -23,8 +23,8 @@ export class StartPage {
     private fire:AngularFireAuth,
     public navParams: NavParams, 
     public FirebaseService: FirebaseService,
-    private toastCtrl: ToastController){
-    
+    private toastCtrl: ToastController,
+    ){
   }
 
   ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
@@ -34,6 +34,7 @@ export class StartPage {
   ionViewWillLeave() { //beim Verlassen der Seite Side-Menu wieder einblenden
     this.menu.enable(true);
   }
+  
 
   // not in use at the moment
 alert(message: string) {

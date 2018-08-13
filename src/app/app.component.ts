@@ -48,6 +48,10 @@ export class MyApp {
       }
     })
     this.initializeApp();
+    //document.addEventListener("backbutton", this.onBackKeyDown, false);
+    platform.registerBackButtonAction(() => {
+      console.log("backPressed 1 aus app.component");
+    },1);
 
     //test
     // used for an example of ngFor and navigation
@@ -73,6 +77,11 @@ export class MyApp {
       /*{ title: 'Gesichtserkennung', component: FaceRecognitionPage },*/
     ];
   }
+
+  onBackKeyDown() {
+    // Handle the back button
+    console.log("Back button override from app.component");
+}
 
   initializeApp() {
     this.platform.ready().then(() => {
