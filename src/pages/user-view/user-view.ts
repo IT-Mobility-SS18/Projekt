@@ -100,6 +100,7 @@ export class UserViewPage {
     this.user.Street = this.CurrentStreet;
     this.user.ZipCode = this.CurrentZipCode;
     this.FirebaseService.updateUser(this.user, this.UserId);
+    this.PenStateColor = "#ffffff";
     this.navCtrl.getActive(this.inputDisabled=true);
   }
 
@@ -145,6 +146,7 @@ export class UserViewPage {
     } else if (this.inputDisabled==false){
       this.navCtrl.getActive(this.inputDisabled=true);
       this.PenStateColor = "#ffffff";
+      this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }
   }
 
