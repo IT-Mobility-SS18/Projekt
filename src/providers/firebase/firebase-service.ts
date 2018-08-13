@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Order } from '../../models/order/order.model';
 import firebase from "firebase";
 import { User } from '../../models/order/user.model';
-import { resolveDefinition } from '../../../node_modules/@angular/core/src/view/util';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { StartPage } from '../../pages/start/start';
+import {App} from 'ionic-angular';
 
 @Injectable()
 export class FirebaseService {
@@ -18,30 +19,48 @@ export class FirebaseService {
   ItemListData = firebase.database().ref('/Items');
 
   public CurrentUserFirstName:any;
+  public reAuthNecess = false;
 
-  constructor(public dbInstance: AngularFireDatabase, private fire: AngularFireAuth) {
+  constructor(public dbInstance: AngularFireDatabase, 
+    private fire: AngularFireAuth,
+    private app: App) {
     //this.CurrentUserFirstName=this.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
+    let nav = this.app.getActiveNav();
+  }
+
+  public ChangeReAuthNecess(myvar) {
+    this.reAuthNecess = myvar;
   }
 
   deleteUser(UserId, user) {
 
     var promise = new Promise((resolve, reject) => { 
-    //von DB
-    try {
-      this.UserListData.child(UserId).remove(); 
-      console.log("DB: User gelöscht!");
-    } catch (error) {
-      console.log("DB: Error beim Löschen vom User!", error);
-      reject();
-    }
+    
     //von auth
-    user.delete().then(function() {
+    user.delete().then(function(){
       console.log("Auth: User gelöscht!");
       resolve();
     }).catch(function(error) {
       console.log("Auth: Error beim Löschen vom User!", error);
-      reject();
-    })
+      if (error.code === "auth/requires-recent-login") {
+      console.log("Error auth/requires-recent-login");
+      reject(error);
+      //return true;
+      //this.UserViewPage.reauthfunc();
+      //this.ChangeReAuthNecess(true);
+      //this.nav.setRoot(StartPage);
+      }
+      //reject();
+    }).then(() => {
+      //von DB
+      try {
+        this.UserListData.child(UserId).remove(); 
+        console.log("DB: User gelöscht!");
+      } catch (error) {
+        console.log("DB: Error beim Löschen vom User!", error);
+        reject(error);
+      }
+    });
 
     });
     return promise;

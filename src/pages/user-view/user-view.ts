@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 import { User } from '../../models/order/user.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
@@ -55,7 +55,8 @@ export class UserViewPage {
     private fire: AngularFireAuth, 
     public FirebaseService: FirebaseService, 
     private BasketService: BasketService,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController,
+    private toastCtrl: ToastController) {
   }
 
   ionViewDidEnter(){
@@ -84,8 +85,6 @@ export class UserViewPage {
    /* ionViewDidLoad() {
     console.log('ionViewDidLoad UserViewPage');
      */
-
-
 
   updateUser() {
     this.user.BDay = this.CurrentBDay;
@@ -120,8 +119,14 @@ export class UserViewPage {
             var userId = this.fire.auth.currentUser.uid;
             console.log("aktuelle Userid: ",userId); 
             console.log("aktueller User: ",user);
-            this.FirebaseService.deleteUser(userId,user).then(() => {
+            this.FirebaseService.deleteUser(userId,user).then((result) => {
+              console.log("Result delteUser Function", result);
               this.FirebaseService.deleteUserPics(userId);
+              this.navCtrl.setRoot(StartPage);
+            }).catch((error) => {
+              console.log("Error delteUser Function", error);
+              firebase.auth().signOut();
+              this.presentToast();
               this.navCtrl.setRoot(StartPage);
             });
           }
@@ -135,6 +140,21 @@ export class UserViewPage {
       ]
     });
     confirm.present();
+    //this.navCtrl.setRoot(StartPage);
+    /* if (this.FirebaseService.reAuthNecess === true) {
+      this.FirebaseService.ChangeReAuthNecess(false);
+      this.navCtrl.setRoot(StartPage);
+    } */
+  }
+
+  presentToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Neue Anmeldung erforderlich! Bitte danach erneut versuchen.',
+      duration: 2000,
+      position: 'bottom',
+      cssClass: 'toast-container'
+    });
+    toast.present();
   }
 
   inputDisabled: boolean = true;
