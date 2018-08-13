@@ -47,6 +47,7 @@ export class UserViewPage {
   CurrentZipCode;
 
   BasketStateColor = this.BasketService.BasketStateColor;
+  PenStateColor = "#ffffff";
 
 
   constructor(public navCtrl: NavController, 
@@ -140,8 +141,10 @@ export class UserViewPage {
   goToSetting(){
     if(this.inputDisabled==true) {
       this.navCtrl.getActive(this.inputDisabled=false);
+      this.PenStateColor = "#0094d2";
     } else if (this.inputDisabled==false){
       this.navCtrl.getActive(this.inputDisabled=true);
+      this.PenStateColor = "#ffffff";
     }
   }
 

@@ -16,6 +16,7 @@ export class SettingsPage {
   CurrentOptInNewsletter;
   isYesSelected = false;
   isNoSelected = false;
+  PenStateColor = "#ffffff";
   user: User = {
     FirstName: 'undefined',
     LastName: 'undefined',
@@ -102,8 +103,10 @@ export class SettingsPage {
   goToSetting(){
     if(this.inputDisabled==true) {
       this.navCtrl.getActive(this.inputDisabled=false);
+      this.PenStateColor = "#0094d2";
     } else if (this.inputDisabled==false){
       this.navCtrl.getActive(this.inputDisabled=true);
+      this.PenStateColor = "#ffffff";
     }
   }
   cancelChanges(){
