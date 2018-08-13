@@ -63,8 +63,9 @@ export class MyApp {
       /*{ title: 'Kontakt', component: ContactPage },*/
       { title: 'Benutzerprofil', component: UserViewPage },
       { title: 'Einstellungen', component: SettingsPage },
-      { title: 'Abmelden', component: LogoutPage },
-      { title: 'Weiteres', component: FurtherPagesPage }
+      { title: 'Weiteres', component: FurtherPagesPage },
+      { title: 'Abmelden', component: LogoutPage }
+
       /*{ title: 'AGB', component: TermsAndConditionsPage },*/
       /*{ title: 'Datenschutz', component: PrivacyPolicyPage },*/
       /*{ title: 'Impressum', component: ImprintPage },*/
