@@ -1,19 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { StartPage } from '../start/start';
-import { BasketPage } from '../basket/basket';
-import { User } from '../../models/user/user.model'
-import { FirebaseService } from '../../providers/firebase/firebase-service';
-import { UserStartPage } from '../user-start/user-start';
 import firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Component, ViewChild } from '@angular/core';
+import { Events, MenuController, NavController, NavParams, AlertController } from 'ionic-angular';
 
-//import { IonicPage } from 'ionic-angular';
-import { MenuController } from 'ionic-angular'; //Side-Menu löschen
-
-//bei FaceRecognition registrieren
+// import pages
 import { FaceRecognitionPage } from '../face-recognition/face-recognition';
-import { Events } from 'ionic-angular';
+import { StartPage } from '../start/start';
+import { UserStartPage } from '../user-start/user-start';
+
+// import services
+import { FirebaseService } from '../../providers/firebase/firebase-service';
+
+// import models
+import { User } from '../../models/user/user.model'
 
 @Component({
   selector: 'page-registration',
@@ -206,33 +205,6 @@ export class RegistrationPage {
         this.MyErrorMessage = "Bitte alle Felder (korrekt) ausfüllen!";
         this.alert(this.MyErrorMessage);
       }
-      /* switch(myerr) {
-        case "missingFirstName":
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Vorname angegeben.";
-        break;
-        case error: "missingLastName"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Nachname angegeben.";
-        break;
-        case error: "missingSex"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Geschlecht angegeben.";
-        case error: "missingBDay"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Geburtsdatum angegeben.";
-        case error: "missingStreet"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Straße angegeben.";
-        case error: "missingZipCode"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Postleitzahl angegeben.";
-        case error: "missingCity"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Stadt angegeben.";
-        case error: "missingCountry"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde kein Land angegeben.";
-        case error: "missingPhone"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Telefonnummer angegeben.";
-        case error: "missingOptInNewsletter"
-        this.MyErrorMessage = this.MyErrorMessage + " " + "Es wurde keine Angabe zum Newsletter gemacht."; */
-        //case Error: "differentPasswords"
-        //this.MyErrorMessage = this.MyErrorMessage + " " + "Die eingegebenen Passwörter stimmen nicht überein."
-
-
     }
 
 

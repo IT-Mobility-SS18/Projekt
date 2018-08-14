@@ -1,16 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Slides,MenuController, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { BasketPage } from '../basket/basket';
-import { BasketService } from '../../providers/basket/basket-service';
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
-import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
-import { UserViewPage } from '../user-view/user-view';
-import { RestaurantPage } from '../restaurant/restaurant';
-import { ToastController } from 'ionic-angular';
-import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, Slides, MenuController, AlertController, ToastController} from 'ionic-angular';
 
-//import { IonicPage } from 'ionic-angular';
+// import pages
+import { BasketPage } from '../basket/basket';
+import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
+import { RestaurantPage } from '../restaurant/restaurant';
+import { UserViewPage } from '../user-view/user-view';
+
+// import plugins
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
+
+// import services
+import { BasketService } from '../../providers/basket/basket-service';
+import { FirebaseService } from '../../providers/firebase/firebase-service';
 
 @Component({
   selector: 'page-user-start',
@@ -53,9 +56,7 @@ export class UserStartPage {
   }
 
   ionViewCanLeave() {
-    console.log('i will leave')
     this.stop();
-    console.log('stopped')
   }
 
   // refresh basket state color
@@ -99,13 +100,10 @@ export class UserStartPage {
     //stoppe den qr code scann vorgang
   stop(){
     this.qrScanner.destroy();
-    console.log("Scanner destroyed!");
   }
 
   // create toast
   presentToast() {
-    console.log("lecker toast!");
-
     let toast = this.toastCtrl.create({
       message: 'Es gab ein Problem mit dem QR-Code!',
       duration: 4000,
@@ -113,44 +111,28 @@ export class UserStartPage {
       cssClass: 'toast-container'
     });
     toast.present();
-      console.log("goodbye toast!");
   }
 
     // start qr scanner
   scanQRcode() {
     // Optionally request the permission early
-
-    console.log('Hello qrcode scanner');
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
 
     if (status.authorized) {
-      console.log('authorized is true');
       // camera permission was granted
       // start scanning
       this.qrScanner.show();
-      console.log('qrScanner.show');
       let scanSub = this.qrScanner.scan().subscribe((text: string) => {
         var myData = <any>{};
         myData  = text;
         this.BasketService.removeAll();
         this.BasketService.checkBasketContent();
-
-        console.log(myData);
-        console.log('result', myData['result']);
-
-
         this.qrScanner.hide(); // hide camera preview
         scanSub.unsubscribe(); // stop scanning
 
         this.navCtrl.setRoot(RestaurantPage);
-
-        //this.qrScanner.destroy(); // zerstör die kamera auch wieder ...
-        //this.alert(myData);
-
         this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId
-        console.log("QR: RestaurantID: " +  myData.split(" ")[1]);
         this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
-        console.log("QR: TischNr: " +  myData.split(" ")[3]);
         if(myData == undefined || !this.BasketService.QRRestaurantId || !this.BasketService.QRTischNr) {
           //this.alert("Es gab ein Problem mit dem QR-Code!");
           this.presentToast();

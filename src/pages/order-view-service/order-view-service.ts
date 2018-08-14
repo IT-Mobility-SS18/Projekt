@@ -10,12 +10,7 @@ import { FirebaseService } from './../../providers/firebase/firebase-service';
 })
 
 export class OrderViewServicePage {
-  @ViewChild('slider') slider: Slides;
-  selectedSegment: string;
-  slides: any;
-   page = 0;
 
-  ListCategory = [];
   viewarr= [];
   openOrdersArr = [];
   preparingArr = [];
@@ -25,12 +20,11 @@ export class OrderViewServicePage {
   constructor(public navCtrl: NavController, public firebaseService: FirebaseService) {
   }
 
+  // read orders from firebase
   getallOrdersFromFirebase() {
     return new Promise((resolve, reject) => {
     this.firebaseService.getAllOrders().then((res: any) => {
-      this.ListCategory = res;
       this.viewarr = res;
-      console.log(this.viewarr);
       resolve(this.viewarr);
       reject();
     })
@@ -39,19 +33,20 @@ export class OrderViewServicePage {
 
   ionViewWillEnter() {
     this.getallOrdersFromFirebase().then(() => this.filterItems());
+  }
 
-   }
+  // get only time (format xx:xx) from timestamp
+  async manipulateTimeStamp(){
+    var tmpstr:string;
+    for (var iterH in this.viewarr) {
+      tmpstr = this.viewarr[iterH].TimeStamp;
+      tmpstr = tmpstr.substring(tmpstr.length-5, tmpstr.length);
+      this.viewarr[iterH].TimeStamp=tmpstr;
+    }
+  }
 
-   async manipulateTimeStamp(){
-     var tmpstr:string;
-     for (var iterH in this.viewarr) {
-       tmpstr = this.viewarr[iterH].TimeStamp;
-       tmpstr = tmpstr.substring(tmpstr.length-5, tmpstr.length);
-       this.viewarr[iterH].TimeStamp=tmpstr;
-     }
-   }
-
-   async checkTime(){
+  // is an order waiting too long? (over 20 minutes) -> if yes, mark red
+  async checkTime(){
     var tsHours:number;
     var tsMinutes:number;
     var tsNumber:number;
@@ -63,6 +58,7 @@ export class OrderViewServicePage {
     myMinutes = new Date().getMinutes(); //35
     myNumber = myHours*60+myMinutes; //17*60+35=1055
 
+    // cut values for each item
     for (var iterI in this.viewarr) {
       tmpstr = this.viewarr[iterI].TimeStamp;
       tmpstr = tmpstr.substring(tmpstr.length-5, tmpstr.length);
@@ -72,64 +68,59 @@ export class OrderViewServicePage {
       tsMinutes = +this.viewarr[iterI].TimeStamp.substring(3,5); //4
       tsNumber = tsHours*60+tsMinutes; //17*60+4=1024
 
+      // is an order waiting longer than 20 minutes?
       if(myNumber-tsNumber > 20){ //1055-1024=31
-        //Schreibe "red" in timecheck
+        // write "red" in timecheck
         this.viewarr[iterI].timeCheck="red";
       }
       else{
-        //Schreibe "black" in timecheck
+        // write "black" in timecheck
         this.viewarr[iterI].timeCheck="black";
       }
     }
-   }
+  }
 
-   async filterItems() {
+  // put items into the categories
+  async filterItems() {
 
-   await this.manipulateTimeStamp();
-   await this.checkTime();
+    // waiting for the functions to be executed
+    await this.manipulateTimeStamp();
+    await this.checkTime();
 
-   //alle offenen
-   for (var iterG in this.viewarr) {
-     if (this.viewarr[iterG].OrderState == "open" ) {
-       this.openOrdersArr.push(this.viewarr[iterG]);
-     }
-   }
-   console.log("openOrdersArr", this.openOrdersArr);
-   //alle in Zubereitung
-   for (var iterH in this.viewarr) {
-     if (this.viewarr[iterH].OrderState == "preparing" ) {
-       this.preparingArr.push(this.viewarr[iterH]);
-     }
-
-   }
-   console.log("preparingArr", this.preparingArr);
-   //alle zur Abholung durch Service fertigen
-   for (var iterN in this.viewarr) {
-     if (this.viewarr[iterN].OrderState == "ready" ) {
-       this.readyArr.push(this.viewarr[iterN]);
-     }
-
-   }
-   console.log("readyArr", this.readyArr);
-//alle abgeschlossenen Bestellungen
-   for (var iterD in this.viewarr) {
-    if (this.viewarr[iterD].OrderState == "done" ) {
-      this.doneArr.push(this.viewarr[iterD]);
+    // open orders
+    for (var iterG in this.viewarr) {
+      if (this.viewarr[iterG].OrderState == "open" ) {
+        this.openOrdersArr.push(this.viewarr[iterG]);
+      }
     }
 
-  }
-  console.log("doneArr", this.doneArr);
- }
+    // orders in preparation
+    for (var iterH in this.viewarr) {
+      if (this.viewarr[iterH].OrderState == "preparing" ) {
+        this.preparingArr.push(this.viewarr[iterH]);
+      }
+    }
 
-  // not in use at the moment
-  selectedTab(index) {
-       this.slider.slideTo(index);
-     }
+    // orders awaiting pickup from service
+    for (var iterN in this.viewarr) {
+      if (this.viewarr[iterN].OrderState == "ready" ) {
+        this.readyArr.push(this.viewarr[iterN]);
+      }
+    }
+
+    // fulfilled orders
+    for (var iterD in this.viewarr) {
+      if (this.viewarr[iterD].OrderState == "done" ) {
+        this.doneArr.push(this.viewarr[iterD]);
+      }
+    }
+  }
 
   changeOrderState(newOrderState: String, SearchedOrderId) {
-    console.log("Hello func changeOrderState");
     this.firebaseService.changeOrderState(newOrderState,SearchedOrderId);
-      setTimeout(() => {
+    // if there would be no timeout, the change would not have been written into db but have been already read
+    setTimeout(() => {
+      // set active page as root (aka refresh page)
       this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }, 500);
 

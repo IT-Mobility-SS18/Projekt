@@ -1,12 +1,13 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController} from 'ionic-angular';
+import { MenuController, NavController, NavParams, AlertController, ToastController} from 'ionic-angular';
+
+//import pages
 import { RegistrationPage } from '../registration/registration';
 import { UserStartPage } from '../user-start/user-start';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseService } from '../../providers/firebase/firebase-service';
 
-//import { IonicPage } from 'ionic-angular';
-import { MenuController } from 'ionic-angular'; //Side-Menu löschen
+// import services
+import { FirebaseService } from '../../providers/firebase/firebase-service';
 
 @Component({
   selector: 'page-start',
@@ -60,7 +61,6 @@ userStart(){
   this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value)
   .then( data => {
     console.log('Login data passed', this.fire.auth.currentUser);
-    //this.alert('Login erfolgreich.');
     this.presentToast("Login erfolgreich.", 1000);
     //wichtig für Anzeige der Variablen in der HTML da diese erst vorliegen müssen
     this.FirebaseService.CurrentUserFirstName=this.FirebaseService.getCurrentUserFirstName(this.fire.auth.currentUser.uid).then(()=>{ 

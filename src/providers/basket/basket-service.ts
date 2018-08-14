@@ -1,8 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Order } from '../../models/order/order.model';
-import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { AngularFireAuth } from "../../../node_modules/angularfire2/auth";
+import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { Injectable } from "@angular/core";
 
+// import models
+import { Order } from '../../models/order/order.model';
 
 //jeden neuen Provider als Provider in app module eintragen
 @Injectable()
@@ -33,8 +34,6 @@ export class BasketService {
   }
 
    checkBasketContent() {
-
-    console.log('this.ItemSelection.length',this.ItemSelection.length);
 
     if (this.ItemSelection.length > 0) {
       this.BasketStateColor = "#0094d2"; //blau
@@ -78,10 +77,8 @@ createOrder(ItemSelection){
     this.order.UserId = ItemSelection[idIteration].UserId;
     this.order.OrderState = ItemSelection[idIteration].OrderState;
     this.order.OurOrderId = ItemSelection[idIteration].OurOrderId;
-    console.log('aktuelle Menge: ' + this.order.Quantity);
     this.FirebaseService.addCustomerOrder(this.order);
   }
 }
-
 
 }

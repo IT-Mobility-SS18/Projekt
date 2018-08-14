@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
+// import pages
 import { BasketPage } from '../basket/basket';
+
+// import services
 import { BasketService } from '../../providers/basket/basket-service';
 
 @Component({
   selector: 'page-privacy-policy',
   templateUrl: 'privacy-policy.html',
 })
+
 export class PrivacyPolicyPage {
   BasketStateColor = this.BasketService.BasketStateColor;
   constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {

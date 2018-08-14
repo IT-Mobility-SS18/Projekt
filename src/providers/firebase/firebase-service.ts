@@ -1,11 +1,11 @@
+import firebase from "firebase";
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+
+// import models
 import { Order } from '../../models/order/order.model';
-import firebase from "firebase";
 import { User } from '../../models/user/user.model';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { StartPage } from '../../pages/start/start';
-import {App} from 'ionic-angular';
 
 @Injectable()
 export class FirebaseService {
@@ -22,10 +22,7 @@ export class FirebaseService {
   public reAuthNecess = false;
 
   constructor(public dbInstance: AngularFireDatabase, 
-    private fire: AngularFireAuth,
-    private app: App) {
-    //this.CurrentUserFirstName=this.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
-    let nav = this.app.getActiveNav();
+    private fire: AngularFireAuth) {
   }
 
   public ChangeReAuthNecess(myvar) {

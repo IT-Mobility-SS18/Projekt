@@ -1,15 +1,18 @@
+import firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
-import { User } from '../../models/user/user.model';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { FirebaseService } from '../../providers/firebase/firebase-service';
-import { BasketPage } from '../basket/basket';
-import { BasketService } from '../../providers/basket/basket-service';
-import { StartPage } from '../start/start';
-import firebase from 'firebase';
-//import { UserStartPage } from '../user-start/user-start';
 
-//import { IonicPage } from 'ionic-angular';
+// import pages
+import { BasketPage } from '../basket/basket';
+import { StartPage } from '../start/start';
+
+// import services
+import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { BasketService } from '../../providers/basket/basket-service';
+
+// import models
+import { User } from '../../models/user/user.model';
 
 @Component({
   selector: 'page-user-view',
@@ -84,7 +87,6 @@ export class UserViewPage {
       this.CurrentSex = this.viewarr[9];
       this.CurrentStreet = this.viewarr[10];
       this.CurrentZipCode = this.viewarr[11];
-      console.log("Array viewarr: " ,this.viewarr);
     })
   }
 
@@ -120,13 +122,9 @@ export class UserViewPage {
           handler: () => {
             var user = firebase.auth().currentUser;
             var userId = this.fire.auth.currentUser.uid;
-            console.log("aktuelle Userid: ",userId); 
-            console.log("aktueller User: ",user);
             this.FirebaseService.deleteUser(userId,user).then((result) => {
-              console.log("Result delteUser Function", result);
               this.FirebaseService.deleteUserPics(userId);
               this.FirebaseService.deleteDBUser(userId).then((resultDB) => {
-                console.log("DB Daten löschen erfolgreich");
                 this.navCtrl.setRoot(StartPage);
               }).catch((err) => {
                 console.log("DB Daten löschen nicht erfolgreich", err);
@@ -143,7 +141,6 @@ export class UserViewPage {
         {
           text: 'Abbrechen',
           handler: () => {
-            console.log('Cancel clicked');
           }
         }
       ]

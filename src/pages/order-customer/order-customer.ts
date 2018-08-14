@@ -67,8 +67,8 @@ export class OrderCustomerPage {
   ionViewCanEnter() {
     try {
       this.CurrentRestaurantId = this.BasketService.QRRestaurantId;
+      // restaurant id is undefined
       if(this.CurrentRestaurantId == undefined) {
-        console.log("CurrentRestaurantId ist undefined");
         this.presentToast();
         return false; //important! cancels site loading
       }
@@ -150,7 +150,6 @@ export class OrderCustomerPage {
     // deviceID needed for uuid (our orderID)
     this.uniqueDeviceID.get()
     .then((uuid: any) => varOurOrderId = uuid + new Date().getTime()).then(() => {
-      console.log("uuid ist: ",varOurOrderId);
       this.ItemSelection.push({
         ItemId: ItemId,
         Quantity: 'myquant',

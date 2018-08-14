@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { paypalConfig } from '../../environment';
+
+// import pages
 import { BasketPage } from '../basket/basket';
-import { BasketService } from '../../providers/basket/basket-service';
 import { OrderViewCustomerPage } from '../order-view-customer/order-view-customer';
 
-//import { IonicPage } from 'ionic-angular';
-
+// import services
+import { BasketService } from '../../providers/basket/basket-service';
 
 @Component({
   selector: 'page-payment',

@@ -44,7 +44,6 @@ export class MyApp {
     this.initializeApp();
     // hardware backbutton is overwritten and not usable
     platform.registerBackButtonAction(() => {
-      console.log("backPressed 1 aus app.component");
     },1);
 
     // used for hamburger menu

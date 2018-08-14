@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { BasketService } from '../../providers/basket/basket-service';
-import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
+import { Component } from '@angular/core';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
+
+// import pages
+import { BasketPage } from '../basket/basket';
+
+// import services
+import { BasketService } from '../../providers/basket/basket-service';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
+
+// import models
 import { User } from '../../models/user/user.model';
 
 @Component({
@@ -66,7 +72,6 @@ export class SettingsPage {
       this.CurrentSex = this.viewarr[9];
       this.CurrentStreet = this.viewarr[10];
       this.CurrentZipCode = this.viewarr[11];
-      console.log("Array viewarr: " ,this.viewarr);
     })
   }
 
