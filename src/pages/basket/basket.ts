@@ -1,21 +1,23 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { PaymentPage } from '../payment/payment';
-import { Order } from '../../models/order/order.model';
-import { FirebaseService } from '../../providers/firebase/firebase-service';
+import { AlertController, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { BasketService } from '../../providers/basket/basket-service';
+import { Component } from '@angular/core';
+
+// import pages
 import { FaceRecognitionPage } from '../face-recognition/face-recognition';
-import { AlertController } from 'ionic-angular';
 import { OrderCustomerPage } from '../order-customer/order-customer';
 
-//import { checkBindingNoChanges, Item } from '@angular/core/src/view/util';
-//import { IonicPage } from 'ionic-angular';
+// import services
+import { BasketService } from '../../providers/basket/basket-service';
+import { FirebaseService } from '../../providers/firebase/firebase-service';
+
+// import models
+import { Order } from '../../models/order/order.model';
 
 @Component({
   selector: 'page-basket',
   templateUrl: 'basket.html',
 })
+
 export class BasketPage {
 
   // Basket icon: green if empty, blue if not
@@ -27,6 +29,7 @@ export class BasketPage {
   // Amount to pay
   amount: string;
 
+  // Button status
   inputDisabled: boolean = true;
 
   // Initialize order and its attributes
@@ -49,11 +52,20 @@ export class BasketPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService, public alertCtrl: AlertController) {
   }
 
+  // After loading the page
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad BasketPage');
+    // Sum prices of the items put in the basket
+    this.sumPrices();
+  }
+
+  ionViewWillEnter(){
+    // Set button status before entering
+    this.updateButtonState();
+  }
+
+  // Disable payment & clear button if there is no item in the basket
   updateButtonState(){
-
-    console.log('this.BasketService.ItemSelection.length',this.BasketService.ItemSelection.length);
-    console.log('this.BasketService.ItemSelection',this.BasketService.ItemSelection);
-
     if (this.BasketService.ItemSelection.length > 0) {
       this.inputDisabled=false;
     }
@@ -62,50 +74,16 @@ export class BasketPage {
     }
   }
 
-  // After loading the page
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BasketPage');
-    this.sumPrices();
-  }
-
-  ionViewWillEnter(){
-    this.updateButtonState();
-
-  }
-
 
   goToPayment() {
-
-    //Aufruf FaceRecognition page
+    // Call FaceRecognition page
     this.navCtrl.push(FaceRecognitionPage, {amount: this.amount, registration: false});
-
-    //this.navCtrl.push(PaymentPage, {amount: this.amount});
   }
 
+  // When cancel button is pressed
   cancelBasket(){
+    // Pop basket page and go to the page shown before
     this.navCtrl.pop();
-  }
-
-  // Unused at the moment -> was at PaymentOK
-  createOrder(ItemSelection){
-    for (var idIteration in ItemSelection) {
-      //hier müssen alle order bestandteile rein!! später auch die oben hardgecodeden
-      this.order.ItemId = ItemSelection[idIteration].ItemId;
-      this.order.Quantity = ItemSelection[idIteration].Quantity;
-      this.order.UserId = ItemSelection[idIteration].UserId;
-      this.order.OrderState = ItemSelection[idIteration].OrderState;
-      this.order.Name = ItemSelection[idIteration].Name;
-      this.order.Price = ItemSelection[idIteration].Price;
-      this.order.TableId = ItemSelection[idIteration].TableId;
-      this.order.RestaurantId = ItemSelection[idIteration].RestaurantId;
-      this.order.TimeStamp = ItemSelection[idIteration].TimeStamp;
-      this.order.Size = ItemSelection[idIteration].Size;
-      this.order.Variant = ItemSelection[idIteration].Variant;
-      this.order.Annotations = ItemSelection[idIteration].Annotations;
-      this.order.OurOrderId = ItemSelection[idIteration].OurOrderId;
-      console.log('aktuelle Menge: ' + this.order.Quantity);
-      this.FirebaseService.addCustomerOrder(this.order);
-    }
   }
 
   // Sum prices of items put in the basket -> after loading and when removing an item
@@ -121,7 +99,6 @@ export class BasketPage {
   removeItem(ind) {
     this.BasketService.removeFromArray(ind);
     this.sumPrices();
-    console.log(this.ItemSelection.length);
     if (this.ItemSelection.length < 1) {
       this.BasketService.checkBasketContent();
       this.navCtrl.pop();
@@ -145,7 +122,6 @@ export class BasketPage {
         {
           text: 'Abbrechen',
           handler: () => {
-            console.log('Cancel clicked');
           }
         }
       ]
