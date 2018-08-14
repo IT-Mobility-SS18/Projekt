@@ -5,13 +5,8 @@
         <ion-icon name="menu" item-left></ion-icon>
       </button>
     </ion-buttons>
-
     <ion-title>Hallo {{ CurrentFirstName }}!</ion-title>
-
     <ion-buttons end>
-      <!--<button ion-button>
-        <ion-icon name="flash" item-right></ion-icon>
-      </button>-->
       <button ion-button (click)="goToBasket()">
         <ion-icon name="basket"item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
@@ -20,14 +15,5 @@
 </ion-header>
 
 <ion-content style="background: none transparent !important;">
-    <div class="instruction-box center-text"><h6 text-wrap>Scannen Sie bitte den QR-Code ein.</h6></div>
-    <!-- <button ion-button (click)="scanQRcode()">Scan QR-Code</button> -->
-    <!--<button ion-button (click)="Taschenlampe_einschalten()">Taschenlampe einschalten</button>-->
-    <!--<button ion-button (click)="stop()">STOP</button>-->
-    <!--<button ion-button (click)="goToOrderViewCustomer()">Meine Bestellungen</button>-->
-    <!--button ion-button (click)="goToUserView()">Benutzerprofil</button>-->
+    <div class="instruction-box center-text"><h6 text-wrap>Bitte scannen Sie den QR-Code.</h6></div>
 </ion-content>
-
-
-<ion-footer>
-</ion-footer>

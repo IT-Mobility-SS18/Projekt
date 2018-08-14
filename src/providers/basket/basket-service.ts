@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 // import models
 import { Order } from '../../models/order/order.model';
 
-//jeden neuen Provider als Provider in app module eintragen
+// name every new provider in app module
 @Injectable()
 export class BasketService {
    public ItemSelection = [];
@@ -33,14 +33,12 @@ export class BasketService {
   constructor( public FirebaseService: FirebaseService, private fire: AngularFireAuth) {
   }
 
-   checkBasketContent() {
-
+  // check whether there is an item in the basket -> change color of basket icon
+  checkBasketContent() {
     if (this.ItemSelection.length > 0) {
-      this.BasketStateColor = "#0094d2"; //blau
+      this.BasketStateColor = "#0094d2"; //blue
     } else {
-      //this.BasketStateColor = "#99cc33"; //grün
-      this.BasketStateColor = "#ffffff"; //weiß
-
+      this.BasketStateColor = "#ffffff"; //white
     }
   }
 
@@ -51,34 +49,36 @@ export class BasketService {
       Name: ItemName,
       Price: ItemPrice}
     );
-}
-
-removeFromArray(GivenIndex) {
-    (this.ItemSelection).splice(GivenIndex,1);
-}
-
-removeAll() {
-  this.ItemSelection = [];
-}
-
-createOrder(ItemSelection){
-  for (var idIteration in ItemSelection) {
-    //hier müssen alle order bestandteile rein!! später auch die oben hardgecodeden
-    this.order.ItemId = ItemSelection[idIteration].ItemId;
-    this.order.Quantity = ItemSelection[idIteration].Quantity;
-    this.order.Name = ItemSelection[idIteration].Name;
-    this.order.Price = ItemSelection[idIteration].Price;
-    this.order.Size = ItemSelection[idIteration].Size;
-    this.order.Variant = ItemSelection[idIteration].Variant;
-    this.order.Annotations = ItemSelection[idIteration].Annotations;
-    this.order.TableId = ItemSelection[idIteration].TableId;
-    this.order.RestaurantId = ItemSelection[idIteration].RestaurantId;
-    this.order.TimeStamp = ItemSelection[idIteration].TimeStamp;
-    this.order.UserId = ItemSelection[idIteration].UserId;
-    this.order.OrderState = ItemSelection[idIteration].OrderState;
-    this.order.OurOrderId = ItemSelection[idIteration].OurOrderId;
-    this.FirebaseService.addCustomerOrder(this.order);
   }
-}
+
+  // remove single basket item
+  removeFromArray(GivenIndex) {
+      (this.ItemSelection).splice(GivenIndex,1);
+  }
+
+  // clear basket array
+  removeAll() {
+    this.ItemSelection = [];
+  }
+
+  createOrder(ItemSelection){
+    for (var idIteration in ItemSelection) {
+      // all order attributes need to be declarated here
+      this.order.ItemId = ItemSelection[idIteration].ItemId;
+      this.order.Quantity = ItemSelection[idIteration].Quantity;
+      this.order.Name = ItemSelection[idIteration].Name;
+      this.order.Price = ItemSelection[idIteration].Price;
+      this.order.Size = ItemSelection[idIteration].Size;
+      this.order.Variant = ItemSelection[idIteration].Variant;
+      this.order.Annotations = ItemSelection[idIteration].Annotations;
+      this.order.TableId = ItemSelection[idIteration].TableId;
+      this.order.RestaurantId = ItemSelection[idIteration].RestaurantId;
+      this.order.TimeStamp = ItemSelection[idIteration].TimeStamp;
+      this.order.UserId = ItemSelection[idIteration].UserId;
+      this.order.OrderState = ItemSelection[idIteration].OrderState;
+      this.order.OurOrderId = ItemSelection[idIteration].OurOrderId;
+      this.FirebaseService.addCustomerOrder(this.order);
+    }
+  }
 
 }

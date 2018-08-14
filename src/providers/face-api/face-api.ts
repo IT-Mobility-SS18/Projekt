@@ -12,7 +12,6 @@ export class FaceApiProvider {
   public detectFaceId:string;
   public persistedFaceId:string;
 
-
   public data: any = null;
   public result: any = {};
 

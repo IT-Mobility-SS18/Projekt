@@ -4,11 +4,6 @@ page-start {
     margin-bottom: 10px !important;
   }
 
-  /*#slogan {
-    font-size: 20px;
-    font-weight: bold;
-  }*/
-
   .logo {
     width: 65%;
     height: auto;
@@ -26,11 +21,11 @@ page-start {
     text-align: center;
   }
 
-h3 {
-  zoom: 2.2 !important;
-  color: #fff  !important;
-  font-weight: bold !important;
-}
+  h3 {
+    zoom: 2.2 !important;
+    color: #fff  !important;
+    font-weight: bold !important;
+  }
 
   p {
     color: #fff  !important;
@@ -93,36 +88,38 @@ h3 {
   }
 
   .item-md.item-block .item-inner,
-.item-md.item-input.input-has-focus .item-inner,
-.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner,
-.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner,
-.list-md .item-input.input-has-focus:last-child,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child,
-.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+  .item-md.item-input.input-has-focus .item-inner,
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner,
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner,
+  .list-md .item-input.input-has-focus:last-child,
+  .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child,
+  .list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
     border-bottom: none;
     box-shadow: none;
-}
-.list-md .item-input.input-has-focus:last-child .item-inner,
-.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner,
-.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child .item-inner {
+  }
+
+  .list-md .item-input.input-has-focus:last-child .item-inner,
+  .list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner,
+  .list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child .item-inner {
     box-shadow: none; 
-}
+  }
 
-.item-md {
-  padding-left: 5px !important;
-}
+  .item-md {
+    padding-left: 5px !important;
+  }
 
-.item-md [item-left], 
-.item-md [item-right], 
-.item-md [item-start], 
-.item-md [item-end] {
-  margin: 10px 0px 9px 0 !important;
-}
+  .item-md [item-left], 
+  .item-md [item-right], 
+  .item-md [item-start], 
+  .item-md [item-end] {
+    margin: 10px 0px 9px 0 !important;
+  }
 
-.item-md ion-icon[item-left] + .item-inner, 
-.item-md ion-icon[item-left] + .item-input, 
-.item-md ion-icon[item-start] + .item-inner, 
-.item-md ion-icon[item-start] + .item-input {
-  margin-left: 20px !important;
-}
+  .item-md ion-icon[item-left] + .item-inner, 
+  .item-md ion-icon[item-left] + .item-input, 
+  .item-md ion-icon[item-start] + .item-inner, 
+  .item-md ion-icon[item-start] + .item-input {
+    margin-left: 20px !important;
+  }
+  
 }

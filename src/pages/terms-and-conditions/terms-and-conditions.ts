@@ -9,8 +9,11 @@ import { BasketService } from '../../providers/basket/basket-service';
   selector: 'page-terms-and-conditions',
   templateUrl: 'terms-and-conditions.html',
 })
+
 export class TermsAndConditionsPage {
+
   BasketStateColor = this.BasketService.BasketStateColor;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {
   }
 
@@ -19,8 +22,9 @@ export class TermsAndConditionsPage {
     console.log('ionViewDidLoad TermsAndConditionsPage');
   }
 
+  // go to basket page
   goToBasket() {
-    this.navCtrl.push(BasketPage, {});
+    this.navCtrl.push(BasketPage);
   }
 
   // refresh basket state color

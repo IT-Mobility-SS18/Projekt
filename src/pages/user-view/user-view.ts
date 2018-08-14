@@ -20,21 +20,22 @@ import { User } from '../../models/user/user.model';
 })
 
 export class UserViewPage {
+
   UserId;
   inputDisabled: boolean = true;
 
   user: User = {
-    FirstName: 'undefined',
-    LastName: 'undefined',
-    Street: 'undefined',
-    ZipCode: 'undefined',
-    City: 'undefined',
-    Country: 'undefined',
-    Phone: 'undefined',
-    Sex: 'undefined',
-    Mail: 'undefined',
-    OptInNewsletter: 'undefined',
-    BDay: 'undefined'
+    FirstName: undefined,
+    LastName: undefined,
+    Street: undefined,
+    ZipCode: undefined,
+    City: undefined,
+    Country: undefined,
+    Phone: undefined,
+    Sex: undefined,
+    Mail: undefined,
+    OptInNewsletter: undefined,
+    BDay: undefined
   }
 
   viewarr= [];
@@ -53,7 +54,6 @@ export class UserViewPage {
   BasketStateColor = this.BasketService.BasketStateColor;
   PenStateColor = "#ffffff";
 
-
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private fire: AngularFireAuth, 
@@ -63,6 +63,7 @@ export class UserViewPage {
     private toastCtrl: ToastController) {
   }
 
+  // after loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserViewPage');
   }
@@ -108,6 +109,7 @@ export class UserViewPage {
     this.ConfirmChanges();
   }
 
+  // go to basket page
   goToBasket(){
     this.navCtrl.push(BasketPage, {});
   }
@@ -122,7 +124,7 @@ export class UserViewPage {
           handler: () => {
             var user = firebase.auth().currentUser;
             var userId = this.fire.auth.currentUser.uid;
-            this.FirebaseService.deleteUser(userId,user).then((result) => {
+            this.FirebaseService.deleteUser(user).then((result) => {
               this.FirebaseService.deleteUserPics(userId);
               this.FirebaseService.deleteDBUser(userId).then((resultDB) => {
                 this.navCtrl.setRoot(StartPage);
@@ -146,11 +148,6 @@ export class UserViewPage {
       ]
     });
     confirm.present();
-    //this.navCtrl.setRoot(StartPage);
-    /* if (this.FirebaseService.reAuthNecess === true) {
-      this.FirebaseService.ChangeReAuthNecess(false);
-      this.navCtrl.setRoot(StartPage);
-    } */
   }
 
   // yummie, excellent toast!
@@ -174,7 +171,8 @@ export class UserViewPage {
     toast.present();
   }
 
-  goToSetting(){
+  // enable/disable changes
+  goToSettings(){
     if(this.inputDisabled==true) {
       this.navCtrl.getActive(this.inputDisabled=false);
       this.PenStateColor = "#0094d2";
@@ -187,7 +185,8 @@ export class UserViewPage {
 
   cancelChanges(){
     if(this.inputDisabled==false) {
-    this.navCtrl.setRoot(UserViewPage);
-}
-}
+      this.navCtrl.setRoot(UserViewPage);
+    }
+  }
+
 }

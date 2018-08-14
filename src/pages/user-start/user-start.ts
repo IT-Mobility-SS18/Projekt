@@ -21,13 +21,8 @@ import { FirebaseService } from '../../providers/firebase/firebase-service';
 })
 
 export class UserStartPage {
-  public images: any;
+  
   BasketStateColor = this.BasketService.BasketStateColor;
-  @ViewChild('slider') slider: Slides;
-  page = 0;
-
-  // username: string;
-  // UserId: string;
   CurrentFirstName:string;
 
   constructor(private fire: AngularFireAuth,
@@ -40,64 +35,54 @@ export class UserStartPage {
               public FirebaseService: FirebaseService,
               private toastCtrl: ToastController
             ) {
-    //this.UserId = fire.auth.currentUser.uid;
   }
 
+  // wait with camera loading till everything else is there
   ionViewWillEnter() {
-    /*this.alert('Scannen Sie bitte den QR-Code auf Ihrem Tisch im Restaurant.');*/
     setTimeout(() => {
-    this.scanQRcode();
-  }, 1);
+      this.scanQRcode();
+    }, 1);
   }
 
-  ngOnInit() {
-    //this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
-
-  }
-
+  // stop camera when leaving site
   ionViewCanLeave() {
     this.stop();
   }
 
   // refresh basket state color
   ionViewDidEnter() {
-        this.menu.swipeEnable(false);
-        this.BasketStateColor = this.BasketService.BasketStateColor;
+    this.menu.swipeEnable(false);
+    this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
   ionViewCanEnter() {
     this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
   }
 
+  // go to basket page
   goToBasket() {
-    this.navCtrl.push(BasketPage, {});
+    this.navCtrl.push(BasketPage);
   }
 
-  // not in use at the moment
-  selectedTab(index) {
-    this.slider.slideTo(index);
-  }
-
-
-
-  // not in use at the moment
   alert(message: string) {
-        this.alertCtrl.create({
-            title: 'Information',
-            subTitle: message,
-            buttons: ['Okay']
-        }).present();
-    }
+    this.alertCtrl.create({
+      title: 'Information',
+      subTitle: message,
+      buttons: ['Okay']
+    }).present();
+  }
 
-    goToOrderViewCustomer(){
-      this.navCtrl.push(OrderViewCustomerPage);
-    }
+  // go to order overview
+  goToOrderViewCustomer(){
+    this.navCtrl.push(OrderViewCustomerPage);
+  }
 
-    goToUserView(){
-      this.navCtrl.push(UserViewPage);
-    }
+  // go to user profile
+  goToUserView(){
+    this.navCtrl.push(UserViewPage);
+  }
 
-    //stoppe den qr code scann vorgang
+  //stop scanning
   stop(){
     this.qrScanner.destroy();
   }
@@ -113,46 +98,42 @@ export class UserStartPage {
     toast.present();
   }
 
-    // start qr scanner
+  // start qr scanner
   scanQRcode() {
     // Optionally request the permission early
     this.qrScanner.prepare().then((status: QRScannerStatus) => {
+      if (status.authorized) {
+        // camera permission was granted
+        // start scanning
+        this.qrScanner.show();
+        let scanSub = this.qrScanner.scan().subscribe((text: string) => {
+          var myData = <any>{};
+          myData  = text;
+          this.BasketService.removeAll();
+          this.BasketService.checkBasketContent();
+          this.qrScanner.hide(); // hide camera preview
+          scanSub.unsubscribe(); // stop scanning
 
-    if (status.authorized) {
-      // camera permission was granted
-      // start scanning
-      this.qrScanner.show();
-      let scanSub = this.qrScanner.scan().subscribe((text: string) => {
-        var myData = <any>{};
-        myData  = text;
-        this.BasketService.removeAll();
-        this.BasketService.checkBasketContent();
-        this.qrScanner.hide(); // hide camera preview
-        scanSub.unsubscribe(); // stop scanning
+          this.navCtrl.setRoot(RestaurantPage);
+          this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId
+          this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
+          if(myData == undefined || !this.BasketService.QRRestaurantId || !this.BasketService.QRTischNr) {
+            this.presentToast();
+            this.navCtrl.setRoot(UserStartPage);
+          }
+        });
+      } else if (status.denied) {
+        // camera permission was permanently denied
+        // you must use QRScanner.openSettings() method to guide the user to the settings page
+        // then they can grant the permission from there
+      } else {
+        // permission was denied, but not permanently. You can ask for permission again at a later time.
+      }
 
-        this.navCtrl.setRoot(RestaurantPage);
-        this.BasketService.QRRestaurantId = parseInt(myData.split(" ")[1]);  //Value of RestaurantId
-        this.BasketService.QRTischNr = parseInt(myData.split(" ")[3]); //Value of TischNr
-        if(myData == undefined || !this.BasketService.QRRestaurantId || !this.BasketService.QRTischNr) {
-          //this.alert("Es gab ein Problem mit dem QR-Code!");
-          this.presentToast();
-          this.navCtrl.setRoot(UserStartPage);
-        }
-      });
-
-
-    } else if (status.denied) {
-      // camera permission was permanently denied
-      // you must use QRScanner.openSettings() method to guide the user to the settings page
-      // then they can grant the permission from there
-    } else {
-      // permission was denied, but not permanently. You can ask for permission again at a later time.
-    }
-
-  })
-  .catch((e: any) => {
-    console.log('Error is', e);
-      this.alert(e.message);
-  });
+    })
+    .catch((e: any) => {
+      console.log('Error ist ', e);
+        this.alert(e.message);
+    });
   }
 }
