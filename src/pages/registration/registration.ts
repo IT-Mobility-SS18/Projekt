@@ -6,6 +6,7 @@ import { BasketPage } from '../basket/basket';
 import { User } from '../../models/user/user.model'
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { UserStartPage } from '../user-start/user-start';
+import firebase from 'firebase';
 
 //import { IonicPage } from 'ionic-angular';
 import { MenuController } from 'ionic-angular'; //Side-Menu löschen
@@ -103,6 +104,14 @@ export class RegistrationPage {
       this.addUserDataToDatabase().then(() => {
         setTimeout(() => {
         this.FirebaseService.CurrentUserFirstName=this.FirebaseService.getCurrentUserFirstName(this.fire.auth.currentUser.uid);
+        var user = firebase.auth().currentUser;
+        firebase.auth().languageCode = 'de';
+        user.sendEmailVerification().then(function() {
+        // Email sent.
+        }).catch(function(error) {
+         // An error happened.
+        });
+
       }, 2000);
       });
 
