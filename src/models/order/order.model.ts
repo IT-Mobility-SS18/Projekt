@@ -12,8 +12,4 @@ export interface Order {
     Variant;
     Annotations;
     OurOrderId;
-    /* Picture;
-    DeliveryCosts;
-    PayStatus;
-     */
 }
