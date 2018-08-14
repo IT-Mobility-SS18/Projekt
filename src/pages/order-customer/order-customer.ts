@@ -150,11 +150,23 @@ export class OrderCustomerPage {
       this.ItemSelection = this.BasketService.ItemSelection;
       let varOurOrderId;
 
-      this.dayOfMonth = new Date().getDate();
-      this.monthOfYear = new Date().getMonth();
-      this.year = new Date().getFullYear();
-      this.hours = new Date().getHours();
-      this.minutes = new Date().getMinutes();
+      this.dayOfMonth = JSON.stringify(new Date().getDate());
+      this.monthOfYear = JSON.stringify(new Date().getMonth());
+      this.year = JSON.stringify(new Date().getFullYear());
+      this.hours = JSON.stringify(new Date().getHours());
+      this.minutes = JSON.stringify(new Date().getMinutes());
+      if(this.dayOfMonth.length < 2){
+        this.dayOfMonth = "0" + this.dayOfMonth;
+      }
+      if(this.monthOfYear.length < 2){
+        this.monthOfYear = "0" + this.monthOfYear;
+      }
+      if(this.hours.length < 2){
+        this.hours = "0" + this.hours;
+      }
+      if(this.minutes.length < 2){
+        this.minutes = "0" + this.minutes;
+      }
 
       this.uniqueDeviceID.get()
     .then((uuid: any) => varOurOrderId = uuid + new Date().getTime()).then(() => {
