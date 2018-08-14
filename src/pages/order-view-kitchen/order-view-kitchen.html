@@ -29,7 +29,7 @@
       <ion-item>
         <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
         <h2><b>{{ item.Name }}</b></h2>
-        <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+        <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
         <button class="button-height" ion-button color="danger" (click)="changeOrderState('preparing', item.OurOrderId)" item-end style="height:50px;">Zubereiten</button>
       </ion-item>
       <!--<ion-item-options side="right">
@@ -48,7 +48,7 @@
       <ion-item *ngFor="let item of preparingArr">
             <ion-icon name="md-restaurant" color="danger" item-start></ion-icon>
             <h2><b>{{ item.Name }}</b></h2>
-            <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+            <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
             <button ion-button color="danger" (click)="changeOrderState('ready', item.OurOrderId)" item-end style="height:50px;">Zubereitet</button>
         </ion-item>
         <!--<ion-item-options side="right">

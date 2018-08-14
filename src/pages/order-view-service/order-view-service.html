@@ -55,7 +55,7 @@
           <ion-item>
             <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
             <h2><b>{{ item.Name }}</b></h2>
-            <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+            <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }}</p>
             <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end style="height:50px;">Ausliefern</button>
           </ion-item>
         <!--  <ion-item-options side="right">
@@ -76,7 +76,7 @@
               <ion-item>
                 <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
                 <h2><b>{{ item.Name }}</b></h2>
-                <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+                <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
               </ion-item>
               <!--<ion-item-options side="right">
                 <button ion-button color="danger">
@@ -95,7 +95,7 @@
                   <ion-item>
                     <ion-icon name="md-restaurant" color="cyellow" item-start></ion-icon>
                     <h2><b>{{ item.Name }}</b></h2>
-                    <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+                    <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }}</p>
                   </ion-item>
                   <!--<ion-item-options side="right">
                     <button ion-button color="danger">

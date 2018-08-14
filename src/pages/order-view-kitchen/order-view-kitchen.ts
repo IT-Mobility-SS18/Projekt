@@ -52,9 +52,43 @@ export class OrderViewKitchenPage {
     }
   }
 
+  async checkTime(){
+    var tsHours:number;
+    var tsMinutes:number;
+    var tsNumber:number;
+    var myHours:number;
+    var myMinutes:number;
+    var myNumber:number;
+    var tmpstr:string;
+    myHours = new Date().getHours(); //17
+    myMinutes = new Date().getMinutes(); //35
+    myNumber = myHours*60+myMinutes; //17*60+35=1055
+
+    for (var iterI in this.viewarr) {
+      tmpstr = this.viewarr[iterI].TimeStamp;
+      tmpstr = tmpstr.substring(tmpstr.length-5, tmpstr.length);
+      this.viewarr[iterI].TimeStamp=tmpstr;
+
+      tsHours = +this.viewarr[iterI].TimeStamp.substring(0,2); //17
+      tsMinutes = +this.viewarr[iterI].TimeStamp.substring(3,5); //4
+      tsNumber = tsHours*60+tsMinutes; //17*60+4=1024
+
+      if(myNumber-tsNumber > 20){ //1055-1024=31
+        //Schreibe "red" in timecheck
+        this.viewarr[iterI].timeCheck="red";
+      }
+      else{
+        //Schreibe "black" in timecheck
+        this.viewarr[iterI].timeCheck="black";
+      }
+    }
+   }
+
   async filterItems() {
 
     await this.manipulateTimeStamp();
+    await this.checkTime();
+
      //await this.getallOrdersFromFirebase();
     //alle offenen
     for (var iterG in this.viewarr) {
