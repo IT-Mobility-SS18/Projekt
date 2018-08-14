@@ -1,41 +1,32 @@
 <ion-header>
-    <ion-navbar>
-      <ion-buttons left>
-        <button ion-button menuToggle>
-          <ion-icon name="menu" item-left></ion-icon>
-        </button>
-      </ion-buttons>
-
-      <ion-title>Hallo {{ CurrentFirstName }}!</ion-title>
-
-      <ion-buttons end>
-        <!--<button ion-button>
-          <ion-icon name="search" item-right></ion-icon>
-        </button>
-        <button ion-button>
-          <ion-icon name="md-options" item-right></ion-icon>
-        </button>
-        <button ion-button>
-          <ion-icon name="flash" item-right></ion-icon>
-        </button>-->
-        <button ion-button (click)="goToBasket()">
-          <ion-icon name="basket" item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
-        </button>
-      </ion-buttons>
-    </ion-navbar>
-  </ion-header>
-
+  <ion-navbar>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu" item-left></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Hallo {{ CurrentFirstName }}!</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="goToBasket()">
+        <ion-icon name="basket" item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding>
-
   <img src="https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/RestaurantPics%2Fbar-1869656_1280.jpg?alt=media" class="bild">
-
   <h3><strong>Du bist im Restaurant <span class="green-title">„Freu Dich!“</span></strong></h3>
-
-  <p>Hier gibt es leckere Kreationen aus regionalen und frischen Zutaten in famili&auml;rer Atmosph&auml;re.</p>
+  <p>
+    Hier gibt es leckere Kreationen aus regionalen und frischen Zutaten in famili&auml;rer Atmosph&auml;re.
+  </p>
   <h6>Heutige Empfehlungen:</h6>
-  <p>1. Kürbissuppe mit steirischem Kürbiskernöl  (4,20 €)</p>
-  <p>2. Hausgemachte Wild-Röllchen auf Gemüsebett  (7,33 €)</p>
+  <p>
+    1. Kürbissuppe mit steirischem Kürbiskernöl  (4,20 €)
+  </p>
+  <p>
+    2. Hausgemachte Wild-Röllchen auf Gemüsebett  (7,33 €)
+  </p>
   <br>
   <button block ion-button (click)="goToOrderCustomer()">Jetzt wird's lecker ...</button>
 </ion-content>

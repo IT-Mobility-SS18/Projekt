@@ -17,6 +17,7 @@ import { BasketService } from '../../providers/basket/basket-service';
 export class PaymentPage {
 
   paymentAmount: string;
+
   // Items put in basket
   ItemSelection = this.BasketService.ItemSelection;
 
@@ -25,47 +26,48 @@ export class PaymentPage {
     public navParams: NavParams,
     private BasketService: BasketService,
     private toastCtrl: ToastController) {
-    this.paymentAmount = navParams.get('amount');
 
+      // get handed amount parameter
+      this.paymentAmount = navParams.get('amount');
 
-    //init: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
-    this.payPal.init({
-      PayPalEnvironmentProduction: paypalConfig.PayPalEnvironmentProduction,
-      PayPalEnvironmentSandbox: paypalConfig.PayPalEnvironmentSandbox
-    }).then(() => {
-      // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
+      //init: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
+      this.payPal.init({
+        PayPalEnvironmentProduction: paypalConfig.PayPalEnvironmentProduction,
+        PayPalEnvironmentSandbox: paypalConfig.PayPalEnvironmentSandbox
+      }).then(() => {
+        // Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
 
-      //prepareToRender: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
-      this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-        languageOrLocale: 'de',
-        merchantName: 'Turty'
-        // Only needed if you get an "Internal Service Error" after PayPal login!
-        //payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-      })).then(() => {
-        let payment = new PayPalPayment(this.paymentAmount, 'EUR', 'Bestellung über Turty', 'sale');
+        //prepareToRender: You must preconnect to PayPal to prepare the device for processing payments. This improves the user experience, by making the presentation of the UI faster. The preconnect is valid for a limited time, so the recommended time to preconnect is on page load.
+        this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
+          languageOrLocale: 'de',
+          merchantName: 'Turty'
+          // Only needed if you get an "Internal Service Error" after PayPal login!
+          // payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
+        })).then(() => {
+          let payment = new PayPalPayment(this.paymentAmount, 'EUR', 'Bestellung über Turty', 'sale');
 
-        //renderSinglePaymentUI: Start PayPal UI to collect payment from the user. See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/ for more documentation of the params.
-        this.payPal.renderSinglePaymentUI(payment).then(() => {
+          // renderSinglePaymentUI: Start PayPal UI to collect payment from the user. See https://developer.paypal.com/webapps/developer/docs/integration/mobile/ios-integration-guide/ for more documentation of the params.
+          this.payPal.renderSinglePaymentUI(payment).then(() => {
 
-          // Successfully paid
-          this.BasketService.createOrder(this.ItemSelection);
-          this.BasketService.removeAll();
-          this.BasketService.checkBasketContent();
-          this.navCtrl.setRoot(OrderViewCustomerPage);
-          this.presentToast();
+            // Successfully paid
+            this.BasketService.createOrder(this.ItemSelection);
+            this.BasketService.removeAll();
+            this.BasketService.checkBasketContent();
+            this.navCtrl.setRoot(OrderViewCustomerPage);
+            this.presentToast();
+          }, () => {
+            // Error or render dialog closed without being successful
+            // if a user cancels payment
+            this.navCtrl.pop();
+          });
         }, () => {
-          // Error or render dialog closed without being successful
-          // Wenn ein User die Zahlung abbricht
-          this.navCtrl.pop();
+          // Error in configuration
         });
       }, () => {
-        // Error in configuration
+        // Error in initialization, maybe PayPal isn't supported or something else
       });
-    }, () => {
-      // Error in initialization, maybe PayPal isn't supported or something else
-    });
   }
-
+ 
   // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');

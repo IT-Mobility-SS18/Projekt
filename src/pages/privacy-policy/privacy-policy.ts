@@ -24,7 +24,7 @@ export class PrivacyPolicyPage {
 
   // go to basket page
   goToBasket() {
-    this.navCtrl.push(BasketPage, {});
+    this.navCtrl.push(BasketPage);
   }
 
   // refresh basket state color

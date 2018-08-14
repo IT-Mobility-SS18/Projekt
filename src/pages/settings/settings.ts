@@ -16,6 +16,7 @@ import { User } from '../../models/user/user.model';
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
+
 export class SettingsPage {
   UserId;
   viewarr= [];
@@ -47,14 +48,16 @@ export class SettingsPage {
   CurrentSex;
   CurrentStreet;
   CurrentZipCode;
+
+  inputDisabled: boolean = true;
   BasketStateColor = this.BasketService.BasketStateColor;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private fire: AngularFireAuth,
     public FirebaseService: FirebaseService,
     private BasketService: BasketService,
     private toastCtrl: ToastController) {
-
   }
 
   ionViewWillEnter() {
@@ -90,6 +93,7 @@ export class SettingsPage {
     this.navCtrl.push(BasketPage, {});
   }
 
+  // create toast
   ConfirmChanges() {
     let toast = this.toastCtrl.create({
       message: 'Gespeichert!',
@@ -100,32 +104,16 @@ export class SettingsPage {
     toast.present();
   }
 
+  // write changes to db
   updateUser() {
-    /* this.user.BDay = this.CurrentBDay;
-    this.user.City = this.CurrentCity;
-    this.user.Country = this.CurrentCountry;
-    this.user.FirstName = this.CurrentFirstName;
-    this.user.LastName = this.CurrentLastName;
-    this.user.Mail = this.CurrentMail;
-    this.user.OptInNewsletter = this.CurrentOptInNewsletter;
-    this.user.Phone = this.CurrentPhone;
-    this.user.Sex = this.CurrentSex;
-    this.user.Street = this.CurrentStreet;
-    this.user.ZipCode = this.CurrentZipCode;
-    this.FirebaseService.updateUser(this.user, this.UserId); */
     this.FirebaseService.updateUserNewsletter(this.CurrentOptInNewsletter, this.UserId);
     this.PenStateColor = "#ffffff";
     this.navCtrl.getActive(this.inputDisabled=true);
     this.ConfirmChanges();
   }
 
-  //Datenbank-Auswahl
-  onChangeOptInNewsletter(SelectedValue){
-    console.log("Selected OptInNewsletter", SelectedValue);
-  }
-
-  inputDisabled: boolean = true;
-  goToSetting(){
+  // enable/disable settings
+  goToSettings(){
     if(this.inputDisabled==true) {
       this.navCtrl.getActive(this.inputDisabled=false);
       this.PenStateColor = "#0094d2";
@@ -134,10 +122,12 @@ export class SettingsPage {
       this.PenStateColor = "#ffffff";
     }
   }
+
+  // reload settings page (don't save changes!)
   cancelChanges(){
     if(this.inputDisabled==false) {
-    this.navCtrl.setRoot(SettingsPage);
-}
-}
+      this.navCtrl.setRoot(SettingsPage);
+    }
+  }
 
 }

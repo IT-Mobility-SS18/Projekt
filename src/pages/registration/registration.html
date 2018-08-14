@@ -5,15 +5,14 @@
         <ion-icon name="menu" item-left></ion-icon>
       </button>
     </ion-buttons>
-
     <ion-title>Registrierung</ion-title>
-
   </ion-navbar>
 </ion-header>
 
 <ion-content>
   <ion-card-content>
     <ion-list>
+
       <ion-item>
         <ion-label stacked required>E-Mail</ion-label>
         <ion-input type="email" #username required></ion-input>
@@ -31,7 +30,7 @@
 
       <ion-item>
         <ion-label stacked required>Anrede</ion-label>
-        <ion-select #newSelect [(ngModel)]="MyUser.Sex" (change)="onChangeSex(MyUser.Sex)">
+        <ion-select #newSelect [(ngModel)]="MyUser.Sex">
           <ion-option value="w">Frau</ion-option>
           <ion-option value="m">Herr</ion-option>
         </ion-select>
@@ -77,32 +76,21 @@
         <ion-input type="number" [(ngModel)]="MyUser.Phone"></ion-input>
       </ion-item>
 
-
-
       <ion-item style="display:none;">
         <ion-icon></ion-icon>
         <ion-input></ion-input>
       </ion-item>
+
     </ion-list>
-
-    
-
     <ion-item>
       <ion-label stacked required>Newsletter empfangen?</ion-label>
-      <ion-select #newSelect [(ngModel)]="MyUser.OptInNewsletter" (change)="onChangeOptInNewsletter(MyUser.OptInNewsletter)">
+      <ion-select #newSelect [(ngModel)]="MyUser.OptInNewsletter">
         <ion-option value="ja">Ja</ion-option>
         <ion-option value="nein">Lieber nicht</ion-option>
       </ion-select>
     </ion-item>
-
-&nbsp;
-
+    &nbsp;
     <button block ion-button (click)="checkRegistrationFields()" item-left>Account erstellen</button>
-    <!--<a class="center-text" (click)="cancelRegistration()">Abbrechen</a>-->
     <button ion-button block (click)="cancelRegistration()" color="lightgrey">Abbrechen</button>
- 
   </ion-card-content>
 </ion-content>
-
-<ion-footer>
-</ion-footer>

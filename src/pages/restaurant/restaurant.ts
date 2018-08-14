@@ -13,6 +13,7 @@ import { FirebaseService } from '../../providers/firebase/firebase-service';
   selector: 'page-restaurant',
   templateUrl: 'restaurant.html',
 })
+
 export class RestaurantPage {
 
   BasketStateColor:any;
@@ -29,10 +30,10 @@ export class RestaurantPage {
     console.log('ionViewDidLoad RestaurantPage');
   }
 
+  // values need to be present before rendering because otherwise they would not be shown
   ionViewCanEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
     this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
-
   }
 
   // go to basket page
@@ -40,6 +41,7 @@ export class RestaurantPage {
     this.navCtrl.push(BasketPage);
   }
 
+  // go to order overview
   goToOrderCustomer(){
     this.navCtrl.push(OrderCustomerPage);
   }
