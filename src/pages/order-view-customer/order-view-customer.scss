@@ -1,31 +1,29 @@
 page-order-view-customer {
-  /*.bild {
-    max-width: 100%;
-    height: auto;
-  }*/
+
   .myStateClass{
     text-overflow: inherit;
     white-space: normal;
   }
 
   .item ion-thumbnail ion-img,
-.item ion-thumbnail img {
-  width: auto !important;
-}
+  .item ion-thumbnail img {
+    width: auto !important;
+  }
 
-.item-md {
-  padding-left: 0px !important;
-}
+  .item-md {
+    padding-left: 0px !important;
+  }
 
-.border {
-border-top: 3px solid #99cc33 !important;
-}
+  .border {
+    border-top: 3px solid #99cc33 !important;
+  }
 
-.green-title {
-  color: #99cc33;
-}
+  .green-title {
+    color: #99cc33;
+  }
 
-.item-md.item-block .item-inner{
-  border-bottom: none !important;
-}
+  .item-md.item-block .item-inner{
+    border-bottom: none !important;
+  }
+  
 }

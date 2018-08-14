@@ -5,124 +5,63 @@
         <ion-icon name="menu" item-left></ion-icon>
       </button>
     </ion-buttons>
-
     <ion-title>Serviceübersicht</ion-title>
-
     <ion-buttons end>
-      <!--<button ion-button>
-        <ion-icon name="search" item-right></ion-icon>
-      </button>
-      <button ion-button>
-        <ion-icon name="md-options" item-right></ion-icon>
-      </button>-->
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-
 <ion-content>
-  <!--<ion-list>
+  <ion-list>
     <ion-list-header color="light">
-      <b>Auslieferung</b>
+      <b>Zur Auslieferung bereit</b>
     </ion-list-header>
-
-    <ion-item-sliding *ngFor="let item of viewarr">
+    <ion-item-sliding *ngFor="let item of readyArr">
       <ion-item>
-        <ion-icon name="ios-radio-button-off"  item-start></ion-icon>
-        <h2>{{ item.Quantity }}x {{ item.Name }}</h2>
-        <p>Tisch {{ item.TableId }}</p>-->
-        <!--
-        <p>Tisch Nummer:{{ item.TableId }}</p>
-        <p>Bestell Nummer:{{ item.OrderId }}</p>
-        <p>Name: {{ item.Name }}</p>
-        <p>Menge: {{ item.Quantity }}</p>
-        <p>Zahlung: {{ item.PayStatus }}</p>-->
-      <!--</ion-item>
-      <ion-item-options side="right">
-        <button ion-button color="danger">
-          <ion-icon name="trash"></ion-icon> Stornieren</button>
-          <button ion-button color="secondary">
-            <ion-icon name="checkmark"></ion-icon>Fertig</button>
-          </ion-item-options>
-        </ion-item-sliding>
-      </ion-list>-->
-      <ion-list>
-        <ion-list-header color="light">
-          <b>Zur Auslieferung bereit</b>
-        </ion-list-header>
-
-        <ion-item-sliding *ngFor="let item of readyArr">
-          <ion-item>
-            <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
-            <h2><b>{{ item.Name }}</b></h2>
-            <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }}</p>
-            <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end style="height:50px;">Ausliefern</button>
-          </ion-item>
-        <!--  <ion-item-options side="right">
-            <button ion-button color="danger">
-              <ion-icon name="trash"></ion-icon>Stornieren</button>
-              <button ion-button color="primary">
-                <ion-icon name="checkmark"></ion-icon>Fertig</button>
-              </ion-item-options>-->
-            </ion-item-sliding>
-          </ion-list>
+        <ion-icon name="ios-archive" color="danger" item-start></ion-icon>
+        <h2><b>{{ item.Name }}</b></h2>
+        <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }}</p>
+        <button ion-button color="danger" (click)="changeOrderState('done', item.OurOrderId)" item-end style="height:50px;">Ausliefern</button>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
           
-          <ion-list>
-            <ion-list-header color="light">
-              <b>Offen</b>
-            </ion-list-header>
+  <ion-list>
+    <ion-list-header color="light">
+      <b>Offen</b>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of openOrdersArr">
+      <ion-item>
+        <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
+        <h2><b>{{ item.Name }}</b></h2>
+        <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 
-            <ion-item-sliding *ngFor="let item of openOrdersArr">
-              <ion-item>
-                <ion-icon name="md-unlock" color="lightgrey" item-start></ion-icon>
-                <h2><b>{{ item.Name }}</b></h2>
-                <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
-              </ion-item>
-              <!--<ion-item-options side="right">
-                <button ion-button color="danger">
-                  <ion-icon name="trash"></ion-icon> Stornieren</button>
-                  <button ion-button color="secondary">
-                    <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                  </ion-item-options>-->
-                </ion-item-sliding>
-              </ion-list>
-              <ion-list>
-                <ion-list-header color="light">
-                  <b>In Zubereitung</b>
-                </ion-list-header>
+  <ion-list>
+    <ion-list-header color="light">
+      <b>In Zubereitung</b>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of preparingArr">
+      <ion-item>
+        <ion-icon name="md-restaurant" color="cyellow" item-start></ion-icon>
+          <h2><b>{{ item.Name }}</b></h2>
+          <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }}</p>
+        </ion-item>
+    </ion-item-sliding>
+  </ion-list>
 
-                <ion-item-sliding *ngFor="let item of preparingArr">
-                  <ion-item>
-                    <ion-icon name="md-restaurant" color="cyellow" item-start></ion-icon>
-                    <h2><b>{{ item.Name }}</b></h2>
-                    <p [ngStyle]="{'color': item.timeCheck}">Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }}</p>
-                  </ion-item>
-                  <!--<ion-item-options side="right">
-                    <button ion-button color="danger">
-                      <ion-icon name="trash"></ion-icon> Stornieren</button>
-                      <button ion-button color="secondary">
-                        <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                      </ion-item-options>-->
-                    </ion-item-sliding>
-                  </ion-list>
-                  <ion-list>
-                    <ion-list-header color="light">
-                      <b>Erledigt</b>
-                    </ion-list-header>
-
-                    <ion-item-sliding *ngFor="let item of doneArr">
-                      <ion-item>
-                        <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
-                        <h2><b>{{ item.Name }}</b></h2>
-                        <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
-                      </ion-item>
-                      <!--<ion-item-options side="right">
-                        <button ion-button color="danger">
-                          <ion-icon name="trash"></ion-icon> Stornieren</button>
-                          <button ion-button color="secondary">
-                            <ion-icon name="checkmark"></ion-icon>Fertig</button>
-                          </ion-item-options>-->
-                        </ion-item-sliding>
-                      </ion-list>
-
-                </ion-content>
+  <ion-list>
+    <ion-list-header color="light">
+      <b>Erledigt</b>
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let item of doneArr">
+      <ion-item>
+        <ion-icon name="checkmark-circle" color="primary" item-start></ion-icon>
+        <h2><b>{{ item.Name }}</b></h2>
+        <p>Tisch: {{ item.TableId }}<br/> Eingang: {{ item.TimeStamp }} </p>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

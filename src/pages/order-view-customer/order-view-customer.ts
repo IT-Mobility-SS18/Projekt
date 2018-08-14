@@ -1,13 +1,14 @@
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { NavController, AlertController} from 'ionic-angular';
-import { FirebaseService } from '../../providers/firebase/firebase-service';
-import { AngularFireAuth } from 'angularfire2/auth';
+
+// import pages
 import { BasketPage } from '../basket/basket';
-import { BasketService } from '../../providers/basket/basket-service';
 import { UserStartPage } from '../user-start/user-start';
 
-//import { ViewChild } from '@angular/core';
-//import { Slides } from 'ionic-angular';
+// import services
+import { BasketService } from '../../providers/basket/basket-service';
+import { FirebaseService } from '../../providers/firebase/firebase-service';
 
 @Component({
   selector: 'page-order-view-customer',
@@ -16,16 +17,13 @@ import { UserStartPage } from '../user-start/user-start';
 
 export class OrderViewCustomerPage {
 
-  ListCategory = [];
   viewarr= [];
   UserId = this.fire.auth.currentUser.uid;
   BasketStateColor = this.BasketService.BasketStateColor;
 
   constructor(public navCtrl: NavController, public firebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService, public alertCtrl: AlertController) {
     this.firebaseService.getOrdersPerUser(this.UserId).then((res: any) => {
-      this.ListCategory = res;
       this.viewarr = res;
-      console.log(this.viewarr);
       this.translateOrderState();
     })
   }
@@ -57,18 +55,10 @@ export class OrderViewCustomerPage {
     }
    
   }
-  // not in use at the moment
-  details() {
-    const alert = this.alertCtrl.create({
-      title: 'Text',
-      subTitle: 'Text',
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 
-  //Weiterleitung auf die Startseite
+  // go to qr code page
   cancelPage(){
     this.navCtrl.setRoot(UserStartPage);
   }
+
 }

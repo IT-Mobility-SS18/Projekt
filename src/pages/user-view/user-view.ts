@@ -18,6 +18,7 @@ import firebase from 'firebase';
 
 export class UserViewPage {
   UserId;
+  inputDisabled: boolean = true;
 
   user: User = {
     FirstName: 'undefined',
@@ -59,6 +60,10 @@ export class UserViewPage {
     private toastCtrl: ToastController) {
   }
 
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad UserViewPage');
+  }
+
   // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
@@ -81,10 +86,6 @@ export class UserViewPage {
       this.CurrentZipCode = this.viewarr[11];
       console.log("Array viewarr: " ,this.viewarr);
     })
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserViewPage');
   }
 
   updateUser() {
@@ -155,6 +156,7 @@ export class UserViewPage {
     } */
   }
 
+  // yummie, excellent toast!
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Neue Anmeldung erforderlich! Bitte danach erneut versuchen.',
@@ -174,8 +176,6 @@ export class UserViewPage {
     });
     toast.present();
   }
-
-  inputDisabled: boolean = true;
 
   goToSetting(){
     if(this.inputDisabled==true) {

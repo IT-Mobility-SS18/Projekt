@@ -1,12 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Slides } from 'ionic-angular';
-import { FirebaseService } from './../../providers/firebase/firebase-service';
-import { BasketPage } from '../basket/basket';
 
-//import { IonicPage, AlertController } from 'ionic-angular';
-//import { Order } from '../../models/order/order.model'
-//import { AngularFireAuth } from 'angularfire2/auth';
-//import firebase, { storage } from "firebase";
+// import services
+import { FirebaseService } from './../../providers/firebase/firebase-service';
 
 @Component({
   selector: 'page-order-view-service',
@@ -136,7 +132,6 @@ export class OrderViewServicePage {
       setTimeout(() => {
       this.navCtrl.setRoot(this.navCtrl.getActive().component);
     }, 500);
-
 
   }
 }

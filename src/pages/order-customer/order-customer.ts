@@ -1,6 +1,6 @@
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Component, ViewChild } from '@angular/core';
-import { NavController, Slides, AlertController, ToastController} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, AlertController, ToastController} from 'ionic-angular';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
 // import pages
@@ -53,6 +53,17 @@ export class OrderCustomerPage {
   hours;
   minutes;
 
+  constructor(public navCtrl: NavController,
+    public FirebaseService: FirebaseService,
+    private fire: AngularFireAuth,
+    private alertCtrl: AlertController,
+    private BasketService: BasketService,
+    private uniqueDeviceID: UniqueDeviceID,
+    private toastCtrl: ToastController
+  ) {
+    this.UserId = this.fire.auth.currentUser.uid;
+  }
+
   ionViewCanEnter() {
     try {
       this.CurrentRestaurantId = this.BasketService.QRRestaurantId;
@@ -66,21 +77,16 @@ export class OrderCustomerPage {
     }
   }
 
+  // refresh basket state color
+  ionViewDidEnter(){
+    this.BasketStateColor = this.BasketService.BasketStateColor;
+  }
+
   ionViewWillEnter() {
     this.FillItemArray();
   }
 
-  constructor(public navCtrl: NavController,
-    public FirebaseService: FirebaseService,
-    private fire: AngularFireAuth,
-    private alertCtrl: AlertController,
-    private BasketService: BasketService,
-    private uniqueDeviceID: UniqueDeviceID,
-    private toastCtrl: ToastController
-  ) {
-    this.UserId = this.fire.auth.currentUser.uid;
-  }
-
+  // create toast
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Kein Turty Code gescannt, leg los!',
@@ -91,6 +97,7 @@ export class OrderCustomerPage {
     toast.present();
   }
 
+  // get restaurant id from qr code scan
   async getRestaurantId() {
     try {
       this.CurrentRestaurantId = this.BasketService.QRRestaurantId;
@@ -99,6 +106,7 @@ export class OrderCustomerPage {
     }
   }
 
+  // get restaurant items from db
   async FillItemArray() {
     await this.getRestaurantId();
     this.FirebaseService.getRestaurantItems(this.CurrentRestaurantId).then((res: any) => {
@@ -110,11 +118,6 @@ export class OrderCustomerPage {
   // go to basket page
   goToBasket() {
     this.navCtrl.push(BasketPage);
-  }
-
-  // refresh basket state color
-  ionViewDidEnter(){
-    this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
   // add to (temporary) basket array

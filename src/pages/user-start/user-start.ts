@@ -102,6 +102,7 @@ export class UserStartPage {
     console.log("Scanner destroyed!");
   }
 
+  // create toast
   presentToast() {
     console.log("lecker toast!");
 

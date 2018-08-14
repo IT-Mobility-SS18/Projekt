@@ -70,10 +70,12 @@ export class PaymentPage {
     console.log('ionViewDidLoad PaymentPage');
   }
 
+  // go to basket page
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }
 
+  // create toast
   presentToast() {
     let toast = this.toastCtrl.create({
       message: 'Vielen Dank für deine Bestellung!',
