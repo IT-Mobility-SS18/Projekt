@@ -83,9 +83,9 @@ export class UserViewPage {
     })
   }
 
-   /* ionViewDidLoad() {
+  ionViewDidLoad() {
     console.log('ionViewDidLoad UserViewPage');
-     */
+  }
 
   updateUser() {
     this.user.BDay = this.CurrentBDay;

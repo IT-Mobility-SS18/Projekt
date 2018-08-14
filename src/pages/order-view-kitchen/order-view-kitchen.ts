@@ -38,11 +38,6 @@ export class OrderViewKitchenPage {
 
    }
 
-  goToBasket(){
-    this.navCtrl.push(BasketPage, {});
-  }
-
-
   async manipulateTimeStamp(){
     var tmpstr:string;
     for (var iterH in this.viewarr) {

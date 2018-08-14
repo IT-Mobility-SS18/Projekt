@@ -130,10 +130,6 @@ export class OrderViewServicePage {
        this.slider.slideTo(index);
      }
 
-  goToBasket(){
-    this.navCtrl.push(BasketPage, {});
-  }
-
   changeOrderState(newOrderState: String, SearchedOrderId) {
     console.log("Hello func changeOrderState");
     this.firebaseService.changeOrderState(newOrderState,SearchedOrderId);

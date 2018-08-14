@@ -20,6 +20,7 @@ export class RestaurantPage {
       public navParams: NavParams) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestaurantPage');
   }
@@ -30,6 +31,7 @@ export class RestaurantPage {
 
   }
 
+  // go to basket page
   goToBasket() {
     this.navCtrl.push(BasketPage);
   }

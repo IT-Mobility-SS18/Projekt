@@ -19,6 +19,7 @@ export class ContactPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
   }
@@ -28,6 +29,7 @@ export class ContactPage {
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
+  // go to basket page
   goToBasket() {
     this.navCtrl.push(BasketPage);
   }

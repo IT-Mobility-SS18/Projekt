@@ -70,6 +70,7 @@ export class SettingsPage {
     })
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
@@ -79,6 +80,7 @@ export class SettingsPage {
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
+  // go to basket page
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }

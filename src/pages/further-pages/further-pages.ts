@@ -23,6 +23,7 @@ export class FurtherPagesPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad FurtherPagesPage');
   }

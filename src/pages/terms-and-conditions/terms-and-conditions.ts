@@ -12,6 +12,7 @@ export class TermsAndConditionsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad TermsAndConditionsPage');
   }

@@ -172,6 +172,7 @@ export class FaceRecognitionPage {
     console.log('goodbye eventhandler');
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad FaceRecognitionPage');
     this.presentLoadingDefault();
@@ -802,6 +803,7 @@ export class FaceRecognitionPage {
     this.navCtrl.push(UserViewPage);
   }
 
+  // go to basket page
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }

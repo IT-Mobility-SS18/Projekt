@@ -12,10 +12,12 @@ export class PrivacyPolicyPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private BasketService: BasketService) {
   }
 
+  // After loading the page
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrivacyPolicyPage');
   }
 
+  // go to basket page
   goToBasket() {
     this.navCtrl.push(BasketPage, {});
   }

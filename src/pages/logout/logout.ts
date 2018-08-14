@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import firebase from "firebase";
+
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+
+// import pages
 import { StartPage } from '../start/start';
 import { BasketService } from '../../providers/basket/basket-service';
 
@@ -8,6 +11,7 @@ import { BasketService } from '../../providers/basket/basket-service';
   selector: 'page-logout',
   templateUrl: 'logout.html',
 })
+
 export class LogoutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private BasketService: BasketService) {

@@ -35,6 +35,7 @@ export class OrderViewCustomerPage {
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }
 
+  // go to basket page
   goToBasket(){
     this.navCtrl.push(BasketPage);
   }
