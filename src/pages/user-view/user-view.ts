@@ -101,6 +101,7 @@ export class UserViewPage {
     this.FirebaseService.updateUser(this.user, this.UserId);
     this.PenStateColor = "#ffffff";
     this.navCtrl.getActive(this.inputDisabled=true);
+    this.ConfirmChanges();
   }
 
   goToBasket(){
@@ -157,6 +158,16 @@ export class UserViewPage {
     let toast = this.toastCtrl.create({
       message: 'Neue Anmeldung erforderlich! Bitte danach erneut versuchen.',
       duration: 2000,
+      position: 'bottom',
+      cssClass: 'toast-container'
+    });
+    toast.present();
+  }
+
+  ConfirmChanges() {
+    let toast = this.toastCtrl.create({
+      message: 'Gespeichert!',
+      duration: 1000,
       position: 'bottom',
       cssClass: 'toast-container'
     });

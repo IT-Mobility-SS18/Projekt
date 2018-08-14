@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { BasketService } from '../../providers/basket/basket-service';
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
@@ -42,7 +42,12 @@ export class SettingsPage {
   CurrentStreet;
   CurrentZipCode;
   BasketStateColor = this.BasketService.BasketStateColor;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private fire: AngularFireAuth,public FirebaseService: FirebaseService,private BasketService: BasketService) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private fire: AngularFireAuth,
+    public FirebaseService: FirebaseService,
+    private BasketService: BasketService,
+    private toastCtrl: ToastController) {
 
   }
 
@@ -77,6 +82,16 @@ export class SettingsPage {
     this.navCtrl.push(BasketPage, {});
   }
 
+  ConfirmChanges() {
+    let toast = this.toastCtrl.create({
+      message: 'Gespeichert!',
+      duration: 1000,
+      position: 'bottom',
+      cssClass: 'toast-container'
+    });
+    toast.present();
+  }
+
   updateUser() {
     /* this.user.BDay = this.CurrentBDay;
     this.user.City = this.CurrentCity;
@@ -91,7 +106,9 @@ export class SettingsPage {
     this.user.ZipCode = this.CurrentZipCode;
     this.FirebaseService.updateUser(this.user, this.UserId); */
     this.FirebaseService.updateUserNewsletter(this.CurrentOptInNewsletter, this.UserId);
+    this.PenStateColor = "#ffffff";
     this.navCtrl.getActive(this.inputDisabled=true);
+    this.ConfirmChanges();
   }
 
   //Datenbank-Auswahl
