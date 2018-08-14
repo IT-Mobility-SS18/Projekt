@@ -84,6 +84,7 @@ export class RegistrationPage {
     console.log('ionViewDidLoad RegistrationPage');
   }
 
+  // refresh basket state color
   ionViewDidEnter() { //beim Öffnen der Seite Side-Menu wieder ausblenden
     this.menu.enable(false);
   }

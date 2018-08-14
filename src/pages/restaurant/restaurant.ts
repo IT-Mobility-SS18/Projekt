@@ -26,11 +26,9 @@ export class RestaurantPage {
 
   ionViewCanEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
-
     this.CurrentFirstName = this.FirebaseService.CurrentUserFirstName;
 
   }
-
 
   goToBasket() {
     this.navCtrl.push(BasketPage);
@@ -40,6 +38,7 @@ export class RestaurantPage {
     this.navCtrl.push(OrderCustomerPage);
   }
 
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }

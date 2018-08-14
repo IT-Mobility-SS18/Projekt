@@ -59,6 +59,7 @@ export class UserViewPage {
     private toastCtrl: ToastController) {
   }
 
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }

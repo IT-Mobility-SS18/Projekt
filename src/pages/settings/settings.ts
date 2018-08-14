@@ -74,6 +74,7 @@ export class SettingsPage {
     console.log('ionViewDidLoad SettingsPage');
   }
 
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }

@@ -30,7 +30,7 @@ export class OrderViewCustomerPage {
     })
   }
   
-
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }

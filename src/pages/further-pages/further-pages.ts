@@ -27,6 +27,7 @@ export class FurtherPagesPage {
     console.log('ionViewDidLoad FurtherPagesPage');
   }
 
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }

@@ -20,6 +20,7 @@ export class PrivacyPolicyPage {
     this.navCtrl.push(BasketPage, {});
   }
 
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }

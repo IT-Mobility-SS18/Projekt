@@ -58,6 +58,7 @@ export class UserStartPage {
     console.log('stopped')
   }
 
+  // refresh basket state color
   ionViewDidEnter() {
         this.menu.swipeEnable(false);
         this.BasketStateColor = this.BasketService.BasketStateColor;

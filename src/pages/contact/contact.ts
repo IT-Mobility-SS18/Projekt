@@ -23,6 +23,7 @@ export class ContactPage {
     console.log('ionViewDidLoad ContactPage');
   }
 
+  // refresh basket state color
   ionViewDidEnter(){
     this.BasketStateColor = this.BasketService.BasketStateColor;
   }
