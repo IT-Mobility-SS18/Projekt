@@ -1,3 +1,26 @@
 page-basket {
+    .item-inner {
+        padding-right: 0px !important;
+    }
 
+    .item-md {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+
+    .item-right {
+        float: right !important;
+    }
+
+    .item-left {
+        float: left !important;
+    }
+
+    .border {
+        border-top: 3px solid #3e3e3e !important;
+    }
+    
+    .item-md.item-block .item-inner{
+      border-bottom: none !important;
+    }
 }

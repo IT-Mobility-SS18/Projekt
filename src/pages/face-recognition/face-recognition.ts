@@ -744,7 +744,9 @@ export class FaceRecognitionPage {
             var user = firebase.auth().currentUser;
             console.log("aktuelle Userid: ",this.userId);
             console.log("aktueller User: ",user);
+
             this.FirebaseService.deleteUser(this.userId,user).then(() => {
+              this.FirebaseService.deleteDBUser(this.userId);
               this.navCtrl.setRoot(StartPage);
             });
           } //end if userstartpage

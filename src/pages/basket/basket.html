@@ -26,14 +26,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-card-content>
+  <ion-card-content >
     <ion-slides #slider>
       <ion-slide>
         <ion-grid>
           <ion-row>
             <ion-col>
                 <ion-item>
-                    <button ion-button *ngFor="let item of ItemSelection; let ind = index;" (click)="removeItem(ind)" class="button-inner">{{item.Name}} ... {{item.Price.toFixed(2)}} €</button>
+                    <button ion-button block *ngFor="let item of ItemSelection; let ind = index;" (click)="removeItem(ind)" class="button-inner" style="height:35px;" text-wrap>
+                        {{item.Name}} &nbsp;&nbsp;&nbsp;
+                        {{item.Price.toFixed(2)}} €
+                    </button>
                   </ion-item>
             </ion-col>
           </ion-row>
@@ -77,12 +80,13 @@
 </ion-slide>-->
 </ion-slides>
 <!--<ion-item><p>Lieferkosten:</p></ion-item>-->
-<ion-item><p>Betrag: {{ amount }} €</p></ion-item>
+<ion-item class="border"><p><b>Betrag: <span class="item-right">{{ amount }} €</span></b></p></ion-item>
+&nbsp;
 <button ion-button block [disabled]="inputDisabled" (click)="goToPayment()">Bezahlen</button>
 <!--<button ion-button block padding>Kellner rufen</button>-->
 <!--<button ion-button block (click)="createOrder(ItemSelection)">PaymentOK</button>-->
 <!--<a class="center-text" (click)="cancelBasket()">Abbrechen</a>-->
-<button ion-button block [disabled]="inputDisabled" (click)="clearBasket()">Warenkorb leeren</button>
+<button ion-button block [disabled]="inputDisabled" (click)="clearBasket()" color="lightgrey">Warenkorb leeren</button>
 </ion-card-content>
 </ion-content>
 

@@ -98,7 +98,10 @@
       <!--</ion-list>-->
       <br/>
       <button [disabled]="inputDisabled" ion-button block (click)="updateUser()">Speichern</button>
-      <a class="center-text" (click)="cancelChanges()">Abbrechen</a>
+      <!--<a class="center-text" (click)="cancelChanges()">Abbrechen</a>-->
+
+      <button [disabled]="inputDisabled" ion-button block (click)="cancelChanges()" color="lightgrey">Abbrechen</button>
+ 
     </form>
   </ion-card-content>
   <ion-card-content>

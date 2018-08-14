@@ -242,6 +242,9 @@ export class OrderCustomerPage {
     alert.present();
   }
   async filterItems() {
+    this.GetraenkeArr = [];
+    this.HauptspeiseArr = [];
+    this.NachspeiseArr = [];
     //alle Getränke
     for (var iterG in this.viewarr) {
       if (this.viewarr[iterG].Category == "Getränke" ) {
