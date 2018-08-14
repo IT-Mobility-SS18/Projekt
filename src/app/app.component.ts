@@ -40,7 +40,7 @@ export class MyApp {
         this.nav.setRoot(StartPage);
         unsubscribe();
       } else {
-        // then ist wichtig da erst der Wert gelesen worden sein muss
+        // firstName has to be read so the root can be set -> sequential execution needs a then
         this.FirebaseService.CurrentUserFirstName=this.FirebaseService.getCurrentUserFirstName(this.fire.auth.currentUser.uid).then(()=> {
           this.nav.setRoot(UserStartPage)
         });
@@ -48,13 +48,12 @@ export class MyApp {
       }
     })
     this.initializeApp();
-    //document.addEventListener("backbutton", this.onBackKeyDown, false);
+    // hardware backbutton is overwritten and not usable
     platform.registerBackButtonAction(() => {
       console.log("backPressed 1 aus app.component");
     },1);
 
-    //test
-    // used for an example of ngFor and navigation
+    // used for hamburger menu
     this.pages = [
       /*{ title: 'Login', component: StartPage },*/
       /*{ title: 'Registrierung', component: RegistrationPage },*/

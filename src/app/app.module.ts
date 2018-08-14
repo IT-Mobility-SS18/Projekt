@@ -1,127 +1,117 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
+import { HttpClientModule} from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
 import { MyApp } from './app.component';
-import { StartPage } from '../pages/start/start';
+
 import { BasketPage } from '../pages/basket/basket';
-import { PaymentPage } from '../pages/payment/payment';
-import { RegistrationPage } from '../pages/registration/registration';
-import { UserStartPage } from '../pages/user-start/user-start';
+import { ContactPage } from '../pages/contact/contact';
+import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
+import { FurtherPagesPage } from '../pages/further-pages/further-pages';
+import { ImprintPage } from '../pages/imprint/imprint';
+import { LogoutPage } from '../pages/logout/logout';
+import { OrderCustomerPage } from '../pages/order-customer/order-customer';
 import { OrderViewKitchenPage } from '../pages/order-view-kitchen/order-view-kitchen';
 import { OrderViewServicePage } from '../pages/order-view-service/order-view-service';
 import { OrderViewCustomerPage } from '../pages/order-view-customer/order-view-customer';
-import { FaceRecognitionPage } from '../pages/face-recognition/face-recognition';
-import { UserViewPage } from '../pages/user-view/user-view';
-import { OrderCustomerPage } from '../pages/order-customer/order-customer';
-import { ImprintPage } from '../pages/imprint/imprint';
-import { LogoutPage } from '../pages/logout/logout';
-
-import { ContactPage } from '../pages/contact/contact';
-import { SettingsPage } from '../pages/settings/settings';
+import { PaymentPage } from '../pages/payment/payment';
 import { PrivacyPolicyPage } from '../pages/privacy-policy/privacy-policy';
-import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
-import { FurtherPagesPage } from '../pages/further-pages/further-pages';
+import { RegistrationPage } from '../pages/registration/registration';
 import { RestaurantPage } from '../pages/restaurant/restaurant';
+import { SettingsPage } from '../pages/settings/settings';
+import { StartPage } from '../pages/start/start';
+import { TermsAndConditionsPage } from '../pages/terms-and-conditions/terms-and-conditions';
+import { UserStartPage } from '../pages/user-start/user-start';
+import { UserViewPage } from '../pages/user-view/user-view';
 
-import { PayPal } from '@ionic-native/paypal'
+import { BasketService } from '../providers/basket/basket-service';
+import { FaceApiProvider } from '../providers/face-api/face-api';
+import { FirebaseService } from '../providers/firebase/firebase-service';
+
+import { Camera } from '@ionic-native/camera';
+import { IonicStorageModule } from '@ionic/storage';
+import { PayPal } from '@ionic-native/paypal';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { IonicStorageModule } from '@ionic/storage';
-import { HttpModule } from '@angular/http';
-
-import { AngularFireModule } from 'angularfire2';
-import { firebaseConfig } from '../environment';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { FirebaseService } from '../providers/firebase/firebase-service';
-import { BasketService } from '../providers/basket/basket-service';
 import { UniqueDeviceID } from '@ionic-native/unique-device-id';
 
-//for face api
-import { FaceApiProvider } from '../providers/face-api/face-api';
-import { HttpClientModule,} from '@angular/common/http';
-// end face api
-
-import { Camera } from '@ionic-native/camera'; /* QR-Code und face api*/
-import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner'; /* QR-Code */
-
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../environment';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    StartPage,
     BasketPage,
+    ContactPage,
+    FaceRecognitionPage,
+    FurtherPagesPage,
+    ImprintPage,
     LogoutPage,
-    UserStartPage,
-    PaymentPage,
-    RegistrationPage,
-    UserStartPage,
+    OrderCustomerPage,
+    OrderViewCustomerPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
-    OrderViewCustomerPage,
-    FaceRecognitionPage,
-    OrderCustomerPage,
-    UserViewPage,
-    ImprintPage,
-    ContactPage,
-    SettingsPage,
+    PaymentPage,
     PrivacyPolicyPage,
-    TermsAndConditionsPage,
-    FurtherPagesPage,
+    RegistrationPage,
     RestaurantPage,
+    SettingsPage,
+    StartPage,
+    TermsAndConditionsPage,
+    UserStartPage,
+    UserStartPage,
+    UserViewPage
   ],
   imports: [
-    BrowserModule,
-    HttpModule,
-    IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    BrowserModule,
     HttpClientModule,
     HttpModule,
-
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot() 
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    StartPage,
     BasketPage,
+    ContactPage,
+    FaceRecognitionPage,
+    FurtherPagesPage,
+    ImprintPage,
     LogoutPage,
-    UserStartPage,
-    PaymentPage,
-    UserStartPage,
+    OrderCustomerPage,
+    OrderViewCustomerPage,
     OrderViewKitchenPage,
     OrderViewServicePage,
-    OrderViewCustomerPage,
-    FaceRecognitionPage,
-    OrderCustomerPage,
-    UserViewPage,
-    RegistrationPage,
-    ImprintPage,
-    ContactPage,
-    SettingsPage,
+    PaymentPage,
     PrivacyPolicyPage,
-    TermsAndConditionsPage,
-    FurtherPagesPage,
+    RegistrationPage,
     RestaurantPage,
+    SettingsPage,
+    StartPage,
+    TermsAndConditionsPage,
+    UserStartPage,
+    UserStartPage,
+    UserViewPage
   ],
   providers: [
-    PayPal,
-    StatusBar,
-    FirebaseService,
     BasketService,
+    Camera,
+    FaceApiProvider,
+    FirebaseService,
+    PayPal,
+    QRScanner,
     SplashScreen,
-    Camera, /* QR-Code und face api*/
-    QRScanner, /* QR-Code */
+    StatusBar,
     UniqueDeviceID,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    //{provide: Camera, useClass: CameraMock},
-    FaceApiProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}
