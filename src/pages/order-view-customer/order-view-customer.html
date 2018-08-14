@@ -43,7 +43,7 @@
           <ion-list class="border">
               <ion-item-divider *ngFor="let item of viewarr">
                 <p><b>Name:</b> {{ item.Name }}</p>
-                <p><b>Preis:</b> {{ item.Price }}</p>
+                <p><b>Preis:</b> {{ item.Price.toFixed(2) }} €</p>
                 <p class="myStateClass"><b>Bestellstatus:</b> {{ item.OrderState }}</p>
               </ion-item-divider>
             </ion-list>
