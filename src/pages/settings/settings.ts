@@ -4,7 +4,7 @@ import { BasketService } from '../../providers/basket/basket-service';
 import { BasketPage } from '../basket/basket';
 import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
-import { User } from '../../models/order/user.model';
+import { User } from '../../models/user/user.model';
 
 @Component({
   selector: 'page-settings',

@@ -3,7 +3,7 @@ import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { StartPage } from '../start/start';
 import { BasketPage } from '../basket/basket';
-import { User } from '../../models/order/user.model'
+import { User } from '../../models/user/user.model'
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { UserStartPage } from '../user-start/user-start';
 

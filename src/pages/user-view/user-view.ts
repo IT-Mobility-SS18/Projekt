@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
-import { User } from '../../models/order/user.model';
+import { User } from '../../models/user/user.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { FirebaseService } from '../../providers/firebase/firebase-service';
 import { BasketPage } from '../basket/basket';

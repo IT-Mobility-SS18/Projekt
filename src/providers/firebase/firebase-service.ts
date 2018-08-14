@@ -2,7 +2,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
 import { Order } from '../../models/order/order.model';
 import firebase from "firebase";
-import { User } from '../../models/order/user.model';
+import { User } from '../../models/user/user.model';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { StartPage } from '../../pages/start/start';
 import {App} from 'ionic-angular';
