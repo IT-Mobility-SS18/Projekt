@@ -5,19 +5,8 @@
         <ion-icon name="menu" item-left></ion-icon>
       </button>
     </ion-buttons>
-
     <ion-title>Deine Bestellungen</ion-title>
-
     <ion-buttons end>
-      <!--<button ion-button>
-        <ion-icon name="search" item-right></ion-icon>
-      </button>
-      <button ion-button>
-        <ion-icon name="md-options" item-right></ion-icon>
-      </button>
-      <button ion-button>
-        <ion-icon name="flash" item-right></ion-icon>
-      </button>-->
       <button ion-button (click)="goToBasket()">
         <ion-icon name="basket" item-right [ngStyle]="{'color': BasketStateColor}"></ion-icon>
       </button>
@@ -34,19 +23,18 @@
               <img src="https://firebasestorage.googleapis.com/v0/b/payment-restaurant.appspot.com/o/RestaurantPics%2Fbar-1869656_1280.jpg?alt=media" class="bild">
             </ion-thumbnail>
             <p style="zoom: 1.2 !important;">
-                <strong>Restaurant:</strong>
-                <br/>
+              <strong>Restaurant:</strong>
+              <br/>
               <span class="green-title" style="zoom: 1.5 !important;"><b>„Freu Dich!“</b></span>
             </p>
           </ion-item>
-
           <ion-list class="border">
-              <ion-item-divider *ngFor="let item of viewarr">
-                <p><b>Name:</b> {{ item.Name }}</p>
-                <p><b>Preis:</b> {{ item.Price.toFixed(2) }} €</p>
-                <p class="myStateClass"><b>Bestellstatus:</b> {{ item.OrderState }}</p>
-              </ion-item-divider>
-            </ion-list>
+            <ion-item-divider *ngFor="let item of viewarr">
+              <p><b>Name:</b> {{ item.Name }}</p>
+              <p><b>Preis:</b> {{ item.Price.toFixed(2) }} €</p>
+              <p class="myStateClass"><b>Bestellstatus:</b> {{ item.OrderState }}</p>
+            </ion-item-divider>
+          </ion-list>
         </ion-col>
       </ion-row>
     </ion-grid>
