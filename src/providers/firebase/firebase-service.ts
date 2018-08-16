@@ -129,8 +129,17 @@ export class FirebaseService {
           tmparr.push(UserData[key]);
         }
         if(tmparr!=null){
-          personId=tmparr[0].FacePersonId;
-          resolve(personId);
+          console.log("mylog",tmparr);
+          if(tmparr[0].FacePersonId != undefined) {
+            personId=tmparr[0].FacePersonId;
+            console.log("tmparr an stelle 0 enthält FacePersonId",tmparr[0].FacePersonId);
+            resolve(personId);
+          }
+          if(tmparr[1].FacePersonId != undefined) {
+            personId=tmparr[1].FacePersonId;
+            console.log("tmparr an stelle 1 enthält FacePersonId",tmparr[1].FacePersonId);
+            resolve(personId);
+          }          
         } else {
           resolve('keine personId gefunden');
         }
