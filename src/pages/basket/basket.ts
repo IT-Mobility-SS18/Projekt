@@ -1,6 +1,5 @@
 import { AlertController, NavController, NavParams } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 // import pages
 import { FaceRecognitionPage } from '../face-recognition/face-recognition';
@@ -19,7 +18,6 @@ import { Order } from '../../models/order/order.model';
 })
 
 export class BasketPage {
-
   // Basket icon: green if empty, blue if not
   BasketStateColor = this.BasketService.BasketStateColor;
 
@@ -49,7 +47,12 @@ export class BasketPage {
     OurOrderId: undefined
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public FirebaseService: FirebaseService, private fire: AngularFireAuth, private BasketService: BasketService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public FirebaseService: FirebaseService, 
+    private BasketService: BasketService, 
+    public alertCtrl: AlertController,
+    private zone: NgZone) {
   }
 
   // After loading the page
@@ -98,7 +101,10 @@ export class BasketPage {
   // Remove an item from the basket by clicking on it
   removeItem(ind) {
     this.BasketService.removeFromArray(ind);
-    this.sumPrices();
+    this.zone.run(() => {
+      //force update the screen
+      this.sumPrices();
+    });
     if (this.ItemSelection.length < 1) {
       this.BasketService.checkBasketContent();
       this.navCtrl.pop();
